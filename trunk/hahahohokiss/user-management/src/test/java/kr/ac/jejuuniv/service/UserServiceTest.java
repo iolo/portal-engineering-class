@@ -26,16 +26,13 @@ public class UserServiceTest {
 
 	@Test
 	public void testListSuccess() {
-		UserService userService = new UserServiceImpl(userRepository);
+		UserService userService = setUserService();
 		List<User> users = new ArrayList<User>();
 		when(userRepository.findAll()).thenAnswer(new Answer<List<User>>() {
 			public List<User> answer(InvocationOnMock invocation)
 					throws Throwable {
 				List<User> users = new ArrayList<User>();
-				User user = new User();
-				user.setId("0");
-				user.setName("한진수");
-				user.setPassword("password");
+				User user = setTestUser();
 
 				users.add(user);
 				return users;
@@ -46,11 +43,10 @@ public class UserServiceTest {
 		assertTrue(users.size() > 0);
 		assertThat(users.get(0).getId(), is("0"));
 	}
-
 	
 	@Test
 	public void testGetUserSuccess() {
-		UserService userService = new UserServiceImpl(userRepository);
+		UserService userService = setUserService();
 		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				User user = new User();
@@ -62,12 +58,14 @@ public class UserServiceTest {
 		});
 		User user = userService.get("0");
 		assertThat(user.getId(), is("0"));
+		assertThat(user.getName(), is("한진수"));
+		assertThat(user.getPassword(), is("password"));
 	}
 	
 	
 	@Test(expected=DataNotFoundException.class)
 	public void testGetUserFail() throws DataNotFoundException{
-		UserService userService = new UserServiceImpl(userRepository);
+		UserService userService = setUserService();
 		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				return null;
@@ -78,11 +76,8 @@ public class UserServiceTest {
 
 	@Test
 	public void testAddUserSuccess() {
-		UserService userService = new UserServiceImpl(userRepository);
-		User user = new User();
-		user.setId("0");
-		user.setName("한진수");
-		user.setPassword("password");
+		UserService userService = setUserService();
+		User user = setTestUser();
 		when(userRepository.create(user)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				return (User) invocation.getArguments()[0];
@@ -97,12 +92,9 @@ public class UserServiceTest {
 	
 	@Test(expected=DuplicateKeyException.class)
 	public void testAddUserFail() {
-		UserService userService = new UserServiceImpl(userRepository);
+		UserService userService = setUserService();
 		
-		User user = new User();
-		user.setId("0");
-		user.setName("한진수");
-		user.setPassword("password");
+		User user = setTestUser();
 		
 		when(userRepository.create(user)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
@@ -117,11 +109,8 @@ public class UserServiceTest {
 	
 	@Test
 	public void testModifyUserSuccess() {
-		UserService userService = new UserServiceImpl(userRepository);
-		User user = new User();
-		user.setId("1");
-		user.setName("하하하");
-		user.setPassword("비밀번호");
+		UserService userService = setUserService();
+		User user = setTestUser();
 		when(userRepository.update(user)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				User user = (User) invocation.getArguments()[0];
@@ -130,19 +119,16 @@ public class UserServiceTest {
 		});
 		user = userService.modify(user);
 
-		assertThat(user.getId(), is("1"));
-		assertThat(user.getName(), is("하하하"));
-		assertThat(user.getPassword(), is("비밀번호"));
+		assertThat(user.getId(), is("0"));
+		assertThat(user.getName(), is("한진수"));
+		assertThat(user.getPassword(), is("password"));
 
 	}
 	
 	@Test(expected=DataNotFoundException.class)
 	public void testModifyUserFail() {
-		UserService userService = new UserServiceImpl(userRepository);
-		User user = new User();
-		user.setId("0");
-		user.setName("한진수");
-		user.setPassword("password");
+		UserService userService = setUserService();
+		User user = setTestUser();
 		
 		when(userRepository.update(user)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
@@ -151,14 +137,23 @@ public class UserServiceTest {
 		});
 		userService.modify(user);
 	}
+
+	private User setTestUser() {
+		User user = new User();
+		user.setId("0");
+		user.setName("한진수");
+		user.setPassword("password");
+		return user;
+	}
 	
 	@Test
 	public void testDeleteUser() {
-		UserService userService = new UserServiceImpl(userRepository);
+		UserService userService = setUserService();
 		userService.remove("0");
 	}
-	@Test 
-	public void testCommit() {
-		
+	
+	private UserService setUserService() {
+		UserService userService = new UserServiceImpl(userRepository);
+		return userService;
 	}
 }
