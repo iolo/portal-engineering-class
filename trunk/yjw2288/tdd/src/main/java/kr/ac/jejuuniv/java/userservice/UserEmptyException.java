@@ -1,14 +1,14 @@
 package kr.ac.jejuuniv.java.userservice;
 
-public class ListNotException extends RuntimeException {
+public class UserEmptyException extends RuntimeException {
 
 	private static final long serialVersionUID = -279246733062900375L;
 
-	public ListNotException() {
+	public UserEmptyException() {
 		super();
 	}
 
-	public ListNotException(String message) {
+	public UserEmptyException(String message) {
 		super(message);
 	}
 
