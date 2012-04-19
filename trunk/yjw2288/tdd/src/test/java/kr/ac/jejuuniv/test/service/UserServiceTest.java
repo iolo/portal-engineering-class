@@ -31,6 +31,34 @@ public class UserServiceTest {
 		assertThat(service, notNullValue());
 	}
 
+	@Test(expected = UserNotFoundException.class)
+	public void getFail() {
+		UserRepository mockRepository = mock(UserRepository.class);
+		when(mockRepository.findUserById("1")).thenAnswer(new Answer<User>() {
+			@Override
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+		});
+
+		service.setRepository(mockRepository);
+		service.getUser("1");
+	}
+
+	@Test
+	public void getSuccess() {
+		UserRepository mockRepository = mock(UserRepository.class);
+		when(mockRepository.findUserById("1")).thenReturn(
+				new User("1", "양진원", "abcd"));
+
+		service.setRepository(mockRepository);
+		User user = service.getUser("1");
+
+		assertThat(user.getId(), is(user.getId()));
+		assertThat(user.getName(), is(user.getName()));
+		assertThat(user.getPassword(), is(user.getPassword()));
+	}
+
 	@Test(expected = UserExistException.class)
 	public void addFail() {
 		String id = "3";

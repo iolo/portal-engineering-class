@@ -18,4 +18,6 @@ public interface UserService {
 	void modify(User user);
 
 	List<User> listUser();
+
+	User findById(String id);
 }
