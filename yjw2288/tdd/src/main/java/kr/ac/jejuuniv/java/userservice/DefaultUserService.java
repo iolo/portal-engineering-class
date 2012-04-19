@@ -22,11 +22,6 @@ public class DefaultUserService implements UserService {
 	}
 
 	@Override
-	public UserRepository getRepository() {
-		return repository;
-	}
-
-	@Override
 	public User getUser(String id) {
 		User user = repository.findUserById(id);
 		if (user == null) {

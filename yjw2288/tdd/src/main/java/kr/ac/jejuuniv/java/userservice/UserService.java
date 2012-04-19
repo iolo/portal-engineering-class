@@ -7,8 +7,6 @@ import kr.ac.jejuuniv.java.userrepository.UserRepository;
 
 public interface UserService {
 
-	UserRepository getRepository();
-
 	void setRepository(UserRepository repository);
 
 	User getUser(String id);
