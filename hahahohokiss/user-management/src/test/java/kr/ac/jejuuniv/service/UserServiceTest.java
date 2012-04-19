@@ -57,9 +57,7 @@ public class UserServiceTest {
 			}
 		});
 		User user = userService.get("0");
-		assertThat(user.getId(), is("0"));
-		assertThat(user.getName(), is("한진수"));
-		assertThat(user.getPassword(), is("password"));
+		checkUserResult(user);
 	}
 	
 	
@@ -85,9 +83,7 @@ public class UserServiceTest {
 		});
 		user = userService.add(user);
 
-		assertThat(user.getId(), is("0"));
-		assertThat(user.getName(), is("한진수"));
-		assertThat(user.getPassword(), is("password"));
+		checkUserResult(user);
 	}
 	
 	@Test(expected=DuplicateKeyException.class)
@@ -119,12 +115,10 @@ public class UserServiceTest {
 		});
 		user = userService.modify(user);
 
-		assertThat(user.getId(), is("0"));
-		assertThat(user.getName(), is("한진수"));
-		assertThat(user.getPassword(), is("password"));
+		checkUserResult(user);
 
 	}
-	
+
 	@Test(expected=DataNotFoundException.class)
 	public void testModifyUserFail() {
 		UserService userService = setUserService();
@@ -137,6 +131,12 @@ public class UserServiceTest {
 		});
 		userService.modify(user);
 	}
+	
+	@Test
+	public void testDeleteUser() {
+		UserService userService = setUserService();
+		userService.remove("0");
+	}
 
 	private User setTestUser() {
 		User user = new User();
@@ -146,10 +146,10 @@ public class UserServiceTest {
 		return user;
 	}
 	
-	@Test
-	public void testDeleteUser() {
-		UserService userService = setUserService();
-		userService.remove("0");
+	private void checkUserResult(User user) {
+		assertThat(user.getId(), is("0"));
+		assertThat(user.getName(), is("한진수"));
+		assertThat(user.getPassword(), is("password"));
 	}
 	
 	private UserService setUserService() {
