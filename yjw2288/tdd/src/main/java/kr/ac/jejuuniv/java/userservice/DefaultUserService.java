@@ -12,7 +12,7 @@ public class DefaultUserService implements UserService {
 	private UserRepository repository;
 
 	@Override
-	public void addUser(User user) {
+	public void add(User user) {
 		User oldUser = repository.findUserById(user.getId());
 		if (oldUser != null) {
 			throw new UserAddException("user.getId() (이)가 이미 존재하고 있습니다");
@@ -37,7 +37,7 @@ public class DefaultUserService implements UserService {
 	}
 
 	@Override
-	public void removeUser(User user) {
+	public void remove(User user) {
 		User target = repository.findUserById(user.getId());
 		if (target == null) {
 			throw new UserNotRemoveException("user.getId()"
@@ -53,7 +53,7 @@ public class DefaultUserService implements UserService {
 	}
 
 	@Override
-	public void modifyUser(User user) {
+	public void modify(User user) {
 		User target = repository.findUserById(user.getId());
 		if (target == null) {
 			throw new ModifyNotException("user.getId()" + " 이(가) 존재하지 않습니다.");

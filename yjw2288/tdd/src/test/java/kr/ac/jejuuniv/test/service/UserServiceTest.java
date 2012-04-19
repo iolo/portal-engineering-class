@@ -53,7 +53,7 @@ public class UserServiceTest {
 		user.setName("양진원");
 		user.setPassword("1234");
 
-		service.addUser(user);
+		service.add(user);
 	}
 
 	@Test
@@ -67,8 +67,8 @@ public class UserServiceTest {
 		user.setName("양진원");
 		user.setPassword("abcd");
 
-		doAnswer(new Answer<User>() {
-			public User answer(InvocationOnMock invocation) throws Throwable {
+		doAnswer(new Answer<Void>() {
+			public Void answer(InvocationOnMock invocation) throws Throwable {
 				User user = (User) invocation.getArguments()[0];
 				userList.add(user);
 				return null;
@@ -90,7 +90,7 @@ public class UserServiceTest {
 			}
 		});
 
-		service.addUser(user);
+		service.add(user);
 
 		User returnUser = service.getUser("3");
 		assertThat(user.getId(), is(returnUser.getId()));
@@ -123,7 +123,7 @@ public class UserServiceTest {
 		});
 
 		User user = new User("4", "양진원", "bbb");
-		service.removeUser(user);
+		service.remove(user);
 	}
 
 	@Test(expected = UserNotFoundException.class)
@@ -154,8 +154,8 @@ public class UserServiceTest {
 					}
 				});
 
-		doAnswer(new Answer<User>() {
-			public User answer(InvocationOnMock invocation) throws Throwable {
+		doAnswer(new Answer<Void>() {
+			public Void answer(InvocationOnMock invocation) throws Throwable {
 				String id = (String) invocation.getArguments()[0];
 
 				for (int i = 0; i < userList.size(); i++) {
@@ -169,7 +169,7 @@ public class UserServiceTest {
 			}
 		}).when(mockRepository).deleteUserById(target.getId());
 
-		service.removeUser(target);
+		service.remove(target);
 		assertNull(mockRepository.findUserById(target.getId()));
 		service.getUser(target.getId());
 	}
@@ -179,7 +179,7 @@ public class UserServiceTest {
 		UserRepository mockRepository = mock(UserRepository.class);
 		service.setRepository(mockRepository);
 		User user = new User("3", "양진원", "abcd");
-		service.modifyUser(user);
+		service.modify(user);
 	}
 
 	@Test
@@ -192,8 +192,8 @@ public class UserServiceTest {
 		final User newUser = new User(id, "고정욱", "abcd");
 		when(mockRepository.findUserById(id)).thenReturn(preUser);
 
-		doAnswer(new Answer<User>() {
-			public User answer(InvocationOnMock invocation) throws Throwable {
+		doAnswer(new Answer<Void>() {
+			public Void answer(InvocationOnMock invocation) throws Throwable {
 				User param = (User) invocation.getArguments()[0];
 
 				preUser.setName(param.getName());
@@ -209,7 +209,7 @@ public class UserServiceTest {
 		assertThat(preUser.getName(), is(answerUser.getName()));
 		assertThat(preUser.getPassword(), is(answerUser.getPassword()));
 
-		service.modifyUser(newUser);
+		service.modify(newUser);
 		answerUser = service.getUser(id);
 
 		assertThat(newUser.getId(), is(answerUser.getId()));
