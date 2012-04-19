@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.jejuuniv.repository.UserRepository">
+	<sql id="selectUser">id, name, password</sql>
+	<select id="findAll" resultType="User" >
+		select 
+		<include refid="selectUser"/>
+		from userinfo
+	</select>
+	<select id="findById" resultType="User">
+		select 
+		<include refid="selectUser"/>
+		from userinfo where id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="User">
+		insert into userinfo values(#{id}, #{name}, #{password})
+	</insert>
+	<update id="update" parameterType="User"> 
+		update userinfo set name=#{name}, password=#{password} where id = #{id}
+	</update>
+	<delete id="delete">
+		delete from userinfo where id = #{id}
+	</delete>
+</mapper>
