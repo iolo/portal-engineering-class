@@ -66,4 +66,10 @@ public class DefaultUserService implements UserService {
 
 		return users;
 	}
+
+	@Override
+	public User findById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
