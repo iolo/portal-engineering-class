@@ -13,11 +13,11 @@ public interface UserService {
 
 	User getUser(String id);
 
-	void addUser(User user);
+	void add(User user);
 
-	void removeUser(User user);
+	void remove(User user);
 
-	void modifyUser(User user);
+	void modify(User user);
 
 	List<User> listUser();
 }
