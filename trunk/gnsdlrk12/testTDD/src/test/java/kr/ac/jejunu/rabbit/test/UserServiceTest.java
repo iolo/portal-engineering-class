@@ -1,134 +1,199 @@
 package kr.ac.jejunu.rabbit.test;
 
+import static org.junit.Assert.*;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.jejunu.rabbit.model.User;
+import kr.ac.jejunu.rabbit.service.DuplicatedUserIdException;
+import kr.ac.jejunu.rabbit.service.UserAlreadyDeleteException;
+import kr.ac.jejunu.rabbit.service.UserNotFoundException;
+import kr.ac.jejunu.rabbit.service.UserRepositoryEmptyException;
+import kr.ac.jejunu.rabbit.service.UserService;
+import kr.ac.jejunu.rabbit.service.UserServiceImpl;
 import kr.ac.jejunu.rebbit.repository.UserRepository;
 
-import org.apache.taglibs.standard.tag.common.xml.WhenTag;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/root-context.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
 public class UserServiceTest {
-	@Autowired
-	private UserServiceTest userservice;
+
+	private UserService service = new UserServiceImpl();
+	private Map<String, User> users = new HashMap<String, User>();
+
 	@Mock
-	private UserRepository userRepository;
-	private User user;
-	private String Id;
-	private List<User> userList = new ArrayList<User>();
+	private UserRepository repository;
 
 	@Before
-	public void Init() {
-		userRepository = mock(UserRepository.class);
-		doAnswer(new Answer<Void>() {
+	public void settingService() {
+		prepareMockRepository();
+		settingMockRepositoryData();
+	}
 
+
+	private void prepareMockRepository() {
+		repository = mock(UserRepository.class);		
+		when(repository.findById(anyString())).thenAnswer(new Answer<User>() {
 			@Override
-			public Void answer(InvocationOnMock invocation) throws Throwable {
-				userList.add((User) invocation.getArguments()[0]);
-				return null;
-			}
-
-		}).when(userRepository).insert(user);
-
-		doAnswer(new Answer<Void>() {
-
-			@Override
-			public Void answer(InvocationOnMock invocation) throws Throwable {
-				// TODO : modify 미구현
-				return null;
-			}
-
-		}).when(userRepository).update(user);
-
-		doAnswer(new Answer<Void>() {
-
-			@Override
-			public Void answer(InvocationOnMock invocation) throws Throwable {
-				// TODO : delete 미구현
-				return null;
-			}
-
-		}).when(userRepository).delete(Id);
-
-		when(userRepository.findAll()).thenAnswer(new Answer<List<User>>() {
-
-			@Override
-			public List<User> answer(InvocationOnMock invocation)
-					throws Throwable {
-				return userList;
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return users.get(invocation.getArguments()[0]);
 			}
 		});
 		
-		when(userRepository.findById(Id)).thenAnswer(new Answer<User>() {
-
+		when(repository.findAll()).thenAnswer(new Answer<List<User>>() {
 			@Override
-			public User answer(InvocationOnMock invocation) throws Throwable {
-				//TODO findById 구현
-				return null;
+			public List<User> answer(InvocationOnMock invocation)
+					throws Throwable {
+				List<User> foundUser = new ArrayList<User>();
+				Collection<User> usersCollection = users.values();
+				
+				for (User current : usersCollection) {
+					foundUser.add(current);
+				}
+				
+				return foundUser;
 			}
 		});
+
+		doAnswer(new Answer<Void>() {
+			@Override
+			public Void answer(InvocationOnMock invocation) throws Throwable {
+				User user = (User) invocation.getArguments()[0];
+				users.put(user.getId(), user);
+				return null;
+			}
+		}).when(repository).insert(any(User.class));
+
+		doAnswer(new Answer<Void>() {
+			@Override
+			public Void answer(InvocationOnMock invocation) throws Throwable {
+				String userId = (String) invocation.getArguments()[0];
+				users.remove(userId);
+				return null;
+			}
+		}).when(repository).delete(anyString());
+		
+		doAnswer(new Answer<Void>() {
+			@Override
+			public Void answer(InvocationOnMock invocation) throws Throwable {
+				User user = (User) invocation.getArguments()[0];
+				users.put(user.getId(), user);
+				return null;
+			}
+		}).when(repository).update(any(User.class));
+		service.setUserRepository(repository);
+	}
+	
+	private void settingMockRepositoryData() {
+		User user = new User();
+		user.setId("mac");
+		user.setName("애플");
+		user.setPassword("abcd");
+		users.put(user.getId(), user);
+
+		User user2 = new User();
+		user2.setId("google");
+		user2.setName("안드로이드");
+		user2.setPassword("허니콤");
+		users.put(user2.getId(), user2);
 	}
 
 	@Test
-	public void insert() {
-		userRepository.insert(user);
+	public void testUserGet() {
+		User user = service.get("mac");
+
+		assertNotNull(user);
+		assertEquals("애플", user.getName());
+	}
+
+	@Test(expected = UserNotFoundException.class)
+	public void testUserGetFail() {
+		service.get("mac1");
 	}
 
 	@Test
-	public void insertfail() {
-		userRepository.insert(user);
+	public void addUserTest() {
+		User user = new User();
+
+		user.setId("google2");
+		user.setName("안드로이드");
+		user.setPassword("허니콤");
+		service.addUser(user);
 	}
 
-	@Test
-	public void modify() {
-		userRepository.update(user);
+	@Test(expected = DuplicatedUserIdException.class)
+	public void addUserTestFail() {
+		User user = new User();
+
+		user.setId("google");
+		user.setName("안드로이드");
+		user.setPassword("허니콤");
+		service.addUser(user);
 	}
 
-	@Test
-	public void modifyfail() {
-		userRepository.update(user);
+	@Test(expected=UserNotFoundException.class)
+	public void deleteTestFail1() {
+		service.removeById("google");
+		service.get("google");
 	}
-
-	@Test
-	public void delete() {
-		userRepository.delete(Id);
+	
+	@Test(expected=UserAlreadyDeleteException.class)
+	public void deleteTestFail2() {
+		service.removeById("google");
+		service.removeById("google");
 	}
-
+	
 	@Test
-	public void deleteFail() {
-		userRepository.delete(Id);
+	public void deleteTest() {
+		service.removeById("google");
 	}
-
+	
 	@Test
-	public void get() {
-		userRepository.findById(Id);
+	public void modifyTest() {
+		User user = new User();
+		user.setId("google");
+		user.setName("야인시대");
+		user.setPassword("1234");
+		
+		service.modifyUser(user);
+		
+		user = service.get("google");
+		assertEquals("야인시대", user.getName());
 	}
-
-	@Test
-	public void getFail() {
-		userRepository.findById(Id);
+	
+	@Test(expected=UserNotFoundException.class)
+	public void modifyFailTest() {
+		User user = new User();
+		user.setId("google2");
+		user.setName("야인시대");
+		user.setPassword("1234");
+		
+		service.modifyUser(user);
 	}
-
+	
 	@Test
-	public void list() {
-		userRepository.findAll();
+	public void findAllTest() {
+		List<User> foundUsers = service.findAll();
+		assertSame(2, foundUsers.size());
 	}
-
-	@Test
-	public void listFail() {
-		userRepository.findAll();
+	
+	@Test(expected=UserRepositoryEmptyException.class)
+	public void findAllFailTest() {
+		users.clear();
+		service.findAll();
 	}
 }
