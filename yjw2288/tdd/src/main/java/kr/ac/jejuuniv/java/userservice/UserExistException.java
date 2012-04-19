@@ -1,7 +1,7 @@
 package kr.ac.jejuuniv.java.userservice;
 
-public class UserAddException extends RuntimeException {
-	public UserAddException(String message) {
+public class UserExistException extends RuntimeException {
+	public UserExistException(String message) {
 		super(message);
 	}
 

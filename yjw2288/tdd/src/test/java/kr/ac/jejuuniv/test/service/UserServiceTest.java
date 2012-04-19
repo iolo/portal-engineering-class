@@ -31,7 +31,7 @@ public class UserServiceTest {
 		assertThat(service, notNullValue());
 	}
 
-	@Test(expected = UserAddException.class)
+	@Test(expected = UserExistException.class)
 	public void addFail() {
 		String id = "3";
 
@@ -174,7 +174,7 @@ public class UserServiceTest {
 		service.getUser(target.getId());
 	}
 
-	@Test(expected = ModifyNotException.class)
+	@Test(expected = ModifyNotUserExistException.class)
 	public void modifyFail() {
 		UserRepository mockRepository = mock(UserRepository.class);
 		service.setRepository(mockRepository);
@@ -217,7 +217,7 @@ public class UserServiceTest {
 		assertThat(newUser.getPassword(), is(answerUser.getPassword()));
 	}
 
-	@Test(expected = ListNotException.class)
+	@Test(expected = UserEmptyException.class)
 	public void listEmptyFail() {
 		UserRepository mockRepository = mock(UserRepository.class);
 		service.setRepository(mockRepository);
@@ -227,7 +227,7 @@ public class UserServiceTest {
 		service.listUser();
 	}
 
-	@Test(expected = ListNotException.class)
+	@Test(expected = UserEmptyException.class)
 	public void listNullFail() {
 		UserRepository mockRepository = mock(UserRepository.class);
 		service.setRepository(mockRepository);
