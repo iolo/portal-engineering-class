@@ -157,4 +157,8 @@ public class UserServiceTest {
 		UserService userService = new UserServiceImpl(userRepository);
 		userService.remove("0");
 	}
+	@Test 
+	public void testCommit() {
+		
+	}
 }
