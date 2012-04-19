@@ -15,7 +15,7 @@ public class DefaultUserService implements UserService {
 	public void add(User user) {
 		User oldUser = repository.findUserById(user.getId());
 		if (oldUser != null) {
-			throw new UserExistException("user.getId() (이)가 이미 존재하고 있습니다");
+			throw new UserExistException(user.getId() + " (이)가 이미 존재하고 있습니다");
 		}
 
 		repository.insertUser(user);
@@ -40,8 +40,7 @@ public class DefaultUserService implements UserService {
 	public void remove(User user) {
 		User target = repository.findUserById(user.getId());
 		if (target == null) {
-			throw new UserNotRemoveException("user.getId()"
-					+ " 이(가) 존재하지 않습니다.");
+			throw new UserNotRemoveException(user.getId() + " 이(가) 존재하지 않습니다.");
 		}
 
 		repository.deleteUserById(user.getId());
@@ -56,7 +55,8 @@ public class DefaultUserService implements UserService {
 	public void modify(User user) {
 		User target = repository.findUserById(user.getId());
 		if (target == null) {
-			throw new ModifyNotUserExistException("user.getId()" + " 이(가) 존재하지 않습니다.");
+			throw new ModifyNotUserExistException(user.getId()
+					+ " 이(가) 존재하지 않습니다.");
 		}
 
 		repository.updateUser(user);
@@ -65,10 +65,10 @@ public class DefaultUserService implements UserService {
 	@Override
 	public List<User> listUser() {
 		List<User> users = repository.findAllUser();
-		if(users == null || users.isEmpty()) {
+		if (users == null || users.isEmpty()) {
 			throw new UserEmptyException("사용자가 한명도 존재하지 않습니다. 사용자를 추가해주세요");
 		}
-		
+
 		return users;
 	}
 }
