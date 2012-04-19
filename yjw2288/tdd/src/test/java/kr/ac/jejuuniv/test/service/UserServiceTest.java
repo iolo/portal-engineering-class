@@ -54,9 +54,9 @@ public class UserServiceTest {
 		service.setRepository(mockRepository);
 		User user = service.getUser("1");
 
-		assertThat(user.getId(), is(user.getId()));
-		assertThat(user.getName(), is(user.getName()));
-		assertThat(user.getPassword(), is(user.getPassword()));
+		assertThat("1", is(user.getId()));
+		assertThat("양진원", is(user.getName()));
+		assertThat("abcd", is(user.getPassword()));
 	}
 
 	@Test(expected = UserExistException.class)
