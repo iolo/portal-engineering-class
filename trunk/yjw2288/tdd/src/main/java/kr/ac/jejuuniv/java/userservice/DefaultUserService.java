@@ -65,7 +65,7 @@ public class DefaultUserService implements UserService {
 	@Override
 	public List<User> listUser() {
 		List<User> users = repository.findAllUser();
-		if(users.isEmpty()) {
+		if(users == null || users.isEmpty()) {
 			throw new ListNotException("사용자가 한명도 존재하지 않습니다. 사용자를 추가해주세요");
 		}
 		

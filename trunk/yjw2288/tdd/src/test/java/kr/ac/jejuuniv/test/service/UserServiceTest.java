@@ -218,11 +218,21 @@ public class UserServiceTest {
 	}
 
 	@Test(expected = ListNotException.class)
-	public void listFail() {
+	public void listEmptyFail() {
 		UserRepository mockRepository = mock(UserRepository.class);
 		service.setRepository(mockRepository);
 
 		when(mockRepository.findAllUser()).thenReturn(new ArrayList<User>());
+
+		service.listUser();
+	}
+
+	@Test(expected = ListNotException.class)
+	public void listNullFail() {
+		UserRepository mockRepository = mock(UserRepository.class);
+		service.setRepository(mockRepository);
+
+		when(mockRepository.findAllUser()).thenReturn(null);
 
 		service.listUser();
 	}
