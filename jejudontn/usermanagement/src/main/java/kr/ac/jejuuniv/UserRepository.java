@@ -1,4 +1,4 @@
-package com.jejuuniv;
+package kr.ac.jejuuniv;
 
 import java.util.List;
 

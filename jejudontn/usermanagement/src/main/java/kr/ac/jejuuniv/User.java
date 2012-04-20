@@ -1,4 +1,4 @@
-package com.jejuuniv;
+package kr.ac.jejuuniv;
 
 public class User {
 	private String id;
