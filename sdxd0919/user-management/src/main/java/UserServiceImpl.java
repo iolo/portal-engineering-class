@@ -37,7 +37,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void update(User user) {
-		userRepository.update(user);
+		if(userRepository.findById(user.getId()) != null){
+			userRepository.update(user);
+			System.out.println(user.getId() + " " + user.getName() + "  " + user.getPassword());
+		}
 	}
 
 }

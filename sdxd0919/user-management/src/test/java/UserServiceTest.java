@@ -117,6 +117,17 @@ public class UserServiceTest {
 	
 	@Test
 	public void update_success(){
+		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId(invocation.getArguments()[0].toString());
+				user.setName("HSY");
+				user.setPassword("abc");
+				
+				return user;
+			}
+		});
+		
 		UserService userService = new UserServiceImpl(userRepository);
 		
 		User user = new User();
@@ -126,6 +137,7 @@ public class UserServiceTest {
 		
 		userService.update(user);
 	}
+	
 	
 	@Test
 	public void delete(){
