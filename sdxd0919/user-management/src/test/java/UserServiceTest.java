@@ -1,8 +1,9 @@
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,6 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.test.AssertThrows;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
@@ -58,7 +58,6 @@ public class UserServiceTest {
 
 				return user;
 			}
-		
 		});
 		UserService userService = new UserServiceImpl(userRepository);
 		User user = userService.get("0");
@@ -92,6 +91,28 @@ public class UserServiceTest {
 		
 		userService.add(user);
 		
+	}
+	
+	@Test(expected=DuplicateKeyException.class)
+	public void add_fail(){
+		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId(invocation.getArguments()[0].toString());
+				user.setName("HSY");
+				user.setPassword("abc");
+				
+				return user;
+			}
+		});
+		
+		User user = new User();
+		user.setId("0");
+		user.setName("aaa");
+		user.setPassword("bbb");
+		
+		UserService userService = new UserServiceImpl(userRepository);
+		userService.add(user);
 	}
 	
 	@Test
