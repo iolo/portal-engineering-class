@@ -138,6 +138,23 @@ public class UserServiceTest {
 		userService.update(user);
 	}
 	
+	@Test(expected=DataNotFoundException.class)
+	public void update_fail(){
+		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+			
+		});
+		UserService userService = new UserServiceImpl(userRepository);
+		
+		User user = new User();
+		user.setId("0");
+		user.setName("SY");
+		user.setPassword("123");
+		
+		userService.update(user);
+	}
 	
 	@Test
 	public void delete(){
