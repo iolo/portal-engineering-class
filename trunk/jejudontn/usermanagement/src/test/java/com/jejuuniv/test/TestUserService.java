@@ -5,6 +5,11 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import kr.ac.jejuuniv.User;
+import kr.ac.jejuuniv.UserRepository;
+import kr.ac.jejuuniv.UserService;
+import kr.ac.jejuuniv.UserServiceImplement;
 import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.Test;
@@ -14,10 +19,6 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
-import com.jejuuniv.User;
-import com.jejuuniv.UserRepository;
-import com.jejuuniv.UserService;
-import com.jejuuniv.UserServiceImplement;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestUserService {
@@ -37,7 +38,7 @@ public class TestUserService {
 
 				User user = new User();
 				user.setId("1");
-				user.setName("À¯´ëÀº");
+				user.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				user.setPassword("1234");
 
 				users.add(user);
@@ -57,7 +58,7 @@ public class TestUserService {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				User user = new User();
 				user.setId("1");
-				user.setName("À¯´ëÀº");
+				user.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				user.setPassword("1234");
 				return user;
 			}
@@ -65,7 +66,7 @@ public class TestUserService {
 
 		User user = userService.getUserList("1");
 		assertThat(user.getId(), is("1"));
-		assertThat(user.getName(), is("À¯´ëÀº"));
+		assertThat(user.getName(), is("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 		assertThat(user.getPassword(), is("1234"));
 
 	}
@@ -78,14 +79,14 @@ public class TestUserService {
 		userService = new UserServiceImplement(userRepository);
 		User user = new User();
 		user.setId("1");
-		user.setName("À¯´ëÀº");
+		user.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		user.setPassword("1234");
 		
 		when(userRepository.addUser(user)).thenAnswer(new Answer<User>() {
             public User answer(InvocationOnMock invocation) throws Throwable {
             	User user = new User();
 				user.setId("2");
-				user.setName("ÇãÀ±È£");
+				user.setName("ï¿½ï¿½ï¿½ï¿½È£");
 				user.setPassword("2345");
                 return user;
             }
@@ -94,7 +95,7 @@ public class TestUserService {
 		
 		user = userService.addUser(user);
 		assertThat(user.getId(), is("2"));
-		assertThat(user.getName(), is("ÇãÀ±È£"));
+		assertThat(user.getName(), is("ï¿½ï¿½ï¿½ï¿½È£"));
 		assertThat(user.getPassword(), is("2345"));
 		
 		
@@ -109,7 +110,7 @@ public class TestUserService {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				User user = new User();
 				user.setId("1");
-				user.setName("À¯´ëÀº");
+				user.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				user.setPassword("1234");
 				return user;
 			}
@@ -117,7 +118,7 @@ public class TestUserService {
 
 		User user = userService.deleteUserList("1");
 		assertThat(user.getId(), is("1"));
-		assertThat(user.getName(), is("À¯´ëÀº"));
+		assertThat(user.getName(), is("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
 		assertThat(user.getPassword(), is("1234"));
 	}
 }

@@ -1,4 +1,4 @@
-package com.jejuuniv;
+package kr.ac.jejuuniv;
 
 public class DataNotFoundException extends Exception {
 
