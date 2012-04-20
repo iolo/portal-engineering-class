@@ -11,11 +11,13 @@ public class UserServiceImpl implements UserService {
 	public UserServiceImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
-
+	
+	
 	public List<User> list() {
 		return userRepository.findAll();
 	}
 
+	
 	public User get(String id) {
 		if(userRepository.findById(id) == null){
 			throw new DataNotFoundException("id = " + id +"인 데이타가 없습니다.");
@@ -24,6 +26,7 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	
 	public void add(User user) {
 		if(userRepository.findById(user.getId()) == null){
 			userRepository.insert(user);
@@ -31,9 +34,12 @@ public class UserServiceImpl implements UserService {
 			throw new DuplicateKeyException("id가 중복되어, 저장할 수 없습니다.");
 		}
 	}
+	
+	
 	public void remove(String id) {
 		userRepository.delete(id);
 	}
+	
 
 	public void update(User user) {
 		if(userRepository.findById(user.getId()) != null){
