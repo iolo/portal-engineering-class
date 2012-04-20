@@ -1,4 +1,4 @@
-package jnu.ce.bs.userservice;
+package jnu.ce.bs.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -6,6 +6,11 @@ import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jnu.ce.bs.repository.UserRepository;
+import jnu.ce.bs.service.User;
+import jnu.ce.bs.service.UserService;
+import jnu.ce.bs.service.UserServiceImpl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

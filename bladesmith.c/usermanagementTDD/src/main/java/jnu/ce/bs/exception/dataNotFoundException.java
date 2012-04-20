@@ -1,4 +1,4 @@
-package jnu.ce.bs.userservice;
+package jnu.ce.bs.exception;
 
 public class dataNotFoundException extends RuntimeException {
 

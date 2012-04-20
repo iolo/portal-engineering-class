@@ -1,6 +1,11 @@
-package jnu.ce.bs.userservice;
+package jnu.ce.bs.service;
 
 import java.util.List;
+
+import jnu.ce.bs.exception.dataNotFoundException;
+import jnu.ce.bs.exception.userNotFoundException;
+import jnu.ce.bs.repository.UserRepository;
+
 import org.springframework.dao.DuplicateKeyException;
 
 public class UserServiceImpl implements UserService {

@@ -1,6 +1,8 @@
-package jnu.ce.bs.userservice;
+package jnu.ce.bs.repository;
 
 import java.util.List;
+
+import jnu.ce.bs.service.User;
 
 public interface UserRepository {
 
