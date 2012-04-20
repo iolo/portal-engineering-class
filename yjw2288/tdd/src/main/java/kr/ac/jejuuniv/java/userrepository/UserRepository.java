@@ -5,8 +5,6 @@ import java.util.List;
 import kr.ac.jejuuniv.java.User;
 
 public interface UserRepository {
-	void registerUser();
-
 	User findUserById(String id);
 
 	void insertUser(User user);

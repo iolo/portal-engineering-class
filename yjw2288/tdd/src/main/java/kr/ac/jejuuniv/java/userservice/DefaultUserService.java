@@ -5,6 +5,7 @@ import java.util.List;
 import kr.ac.jejuuniv.java.User;
 import kr.ac.jejuuniv.java.userrepository.UserRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -65,11 +66,5 @@ public class DefaultUserService implements UserService {
 		}
 
 		return users;
-	}
-
-	@Override
-	public User findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
