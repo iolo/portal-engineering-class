@@ -40,6 +40,7 @@ public class ListUserRepository implements UserRepository {
 
 		if (i >= 0) {
 			userList.remove(i);
+		}else {
 		}
 	}
 
