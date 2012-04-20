@@ -191,4 +191,14 @@ public class UserServiceTest {
 		UserService userService = new UserServiceImpl(userRepository);
 		return userService;
 	}
+	
+	@Test
+	public void testUserGetFaill2() {
+		User user = new User();
+		user.setId("0");
+		user.setName("한진수");
+		user.setPassword("password");
+		UserService userService = new UserServiceImpl(userRepository);
+		userService.add(user);
+	}
 }
