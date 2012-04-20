@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
 		if(userRepository.findById(user.getId()) == null){
 			userRepository.insert(user);
 		}else{
-			System.out.println("user = " + userRepository.findById(user.getId()).getId());
 			throw new DuplicateKeyException("id가 중복되어, 저장할 수 없습니다.");
 		}
 	}
@@ -39,8 +38,10 @@ public class UserServiceImpl implements UserService {
 	public void update(User user) {
 		if(userRepository.findById(user.getId()) != null){
 			userRepository.update(user);
-			System.out.println(user.getId() + " " + user.getName() + "  " + user.getPassword());
+		}else{
+			throw new DataNotFoundException("id = " + user.getId() + "인 데이터가 없어서 수정할 수 없습니다.");
 		}
+		
 	}
 
 }
