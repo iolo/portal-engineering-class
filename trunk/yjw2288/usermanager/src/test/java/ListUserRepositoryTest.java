@@ -1,5 +1,6 @@
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.ListUserRepository;
+import kr.ac.jejuuniv.repository.RowNotExistException;
 import kr.ac.jejuuniv.repository.UserRepository;
 
 import static org.junit.Assert.*;
@@ -43,7 +44,23 @@ public class ListUserRepositoryTest {
 		assertNull(userRepository.findUserById("4"));
 	}
 
-	@Test
+	@Test(expected = DuplicateKeyException.class)
+	public void testInsertFailTest() {
+		UserRepository userRepository = new ListUserRepository();
+	
+		User testUser1 = new User("1", "111", "1234");
+		User testUser2 = new User("2", "222", "1234");
+		User testUser3 = new User("3", "333", "1234");
+	
+		userRepository.insertUser(testUser1);
+		userRepository.insertUser(testUser2);
+		userRepository.insertUser(testUser3);
+	
+		User testUser4 = new User("3", "444", "1234");
+		userRepository.insertUser(testUser4);
+	}
+
+	@Test(expected=RowNotExistException.class)
 	public void deleteFailTest() {
 		UserRepository repository = new ListUserRepository();
 
@@ -56,22 +73,6 @@ public class ListUserRepositoryTest {
 		repository.insertUser(testUser3);
 
 		repository.deleteUserById("4");
-	}
-
-	@Test(expected = DuplicateKeyException.class)
-	public void testInsertFailTest() {
-		UserRepository userRepository = new ListUserRepository();
-
-		User testUser1 = new User("1", "111", "1234");
-		User testUser2 = new User("2", "222", "1234");
-		User testUser3 = new User("3", "333", "1234");
-
-		userRepository.insertUser(testUser1);
-		userRepository.insertUser(testUser2);
-		userRepository.insertUser(testUser3);
-
-		User testUser4 = new User("3", "444", "1234");
-		userRepository.insertUser(testUser4);
 	}
 
 	private void equalUser(User sourceUser, User targetUser) {
