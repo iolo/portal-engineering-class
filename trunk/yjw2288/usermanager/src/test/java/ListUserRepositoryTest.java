@@ -91,7 +91,7 @@ public class ListUserRepositoryTest {
 		equalUser(repository.findUserById(id), newUser);
 	}
 
-	@Test
+	@Test(expected=RowNotExistException.class)
 	public void userUpdateTestFail() {
 		UserRepository repository = new ListUserRepository();
 		
