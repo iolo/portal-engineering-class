@@ -55,6 +55,8 @@ public class ListUserRepository implements UserRepository {
 
 	@Override
 	public void updateUser(User user) {
+		int index = findIndex(user.getId());
+		userList.set(index, user);
 	}
 
 	@Override
