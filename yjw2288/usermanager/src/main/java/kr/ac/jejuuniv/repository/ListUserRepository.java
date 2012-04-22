@@ -39,8 +39,9 @@ public class ListUserRepository implements UserRepository {
 
 		if (i >= 0) {
 			userList.remove(i);
-		}else {
-			throw new RowNotExistException();
+		} else {
+			throw new RowNotExistException("삭제하려는 User " + id
+					+ " (이)가 존재하지 않습니다");
 		}
 	}
 
@@ -56,11 +57,16 @@ public class ListUserRepository implements UserRepository {
 	@Override
 	public void updateUser(User user) {
 		int index = findIndex(user.getId());
+		if (userList.isEmpty() || index == -1) {
+			throw new RowNotExistException("수정하려는 User " + user.getId()
+					+ " (이)가 존재하지 않습니다");
+		}
+
 		userList.set(index, user);
 	}
 
 	@Override
 	public List<User> findAllUser() {
-		return null;
+		return userList;
 	}
 }

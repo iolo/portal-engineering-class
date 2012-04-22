@@ -1,5 +1,8 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+
+import java.util.List;
+
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.IdExistException;
 import kr.ac.jejuuniv.repository.ListUserRepository;
@@ -7,7 +10,6 @@ import kr.ac.jejuuniv.repository.RowNotExistException;
 import kr.ac.jejuuniv.repository.UserRepository;
 
 import org.junit.Test;
-import org.springframework.web.bind.UnsatisfiedServletRequestParameterException;
 
 public class ListUserRepositoryTest {
 	@Test
@@ -91,10 +93,10 @@ public class ListUserRepositoryTest {
 		equalUser(repository.findUserById(id), newUser);
 	}
 
-	@Test(expected=RowNotExistException.class)
+	@Test(expected = RowNotExistException.class)
 	public void userUpdateTestFail() {
 		UserRepository repository = new ListUserRepository();
-		
+
 		String id = "1";
 		String newId = "3";
 		User oldUser = new User(id, "양진원", "abcd");
@@ -103,7 +105,28 @@ public class ListUserRepositoryTest {
 		repository.insertUser(oldUser);
 		repository.updateUser(newUser);
 	}
-	
+
+	@Test
+	public void userFindAllTest() {
+		UserRepository repository = new ListUserRepository();
+
+		User user1 = new User("abc", "aaa", "bbb");
+		User user2 = new User("def", "ccc", "ddd");
+		User user3 = new User("ghi", "eee", "fff");
+		User user4 = new User("jkl", "ggg", "hhh");
+		User user5 = new User("mno", "iii", "jjj");
+
+		List<User> users = repository.findAllUser();
+
+		assertEquals(users.size(), 5);
+
+		equalUser(users.get(0), user1);
+		equalUser(users.get(1), user2);
+		equalUser(users.get(2), user3);
+		equalUser(users.get(3), user4);
+		equalUser(users.get(4), user5);
+	}
+
 	private void equalUser(User sourceUser, User targetUser) {
 		assertEquals(sourceUser.getId(), targetUser.getId());
 		assertEquals(sourceUser.getName(), targetUser.getName());
