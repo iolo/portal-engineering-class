@@ -118,6 +118,12 @@ public class ListUserRepositoryTest {
 
 		List<User> users = repository.findAllUser();
 
+		users.add(user1);
+		users.add(user2);
+		users.add(user3);
+		users.add(user4);
+		users.add(user5);
+		
 		assertEquals(users.size(), 5);
 
 		equalUser(users.get(0), user1);
