@@ -7,6 +7,7 @@ import kr.ac.jejuuniv.repository.RowNotExistException;
 import kr.ac.jejuuniv.repository.UserRepository;
 
 import org.junit.Test;
+import org.springframework.web.bind.UnsatisfiedServletRequestParameterException;
 
 public class ListUserRepositoryTest {
 	@Test
@@ -90,6 +91,19 @@ public class ListUserRepositoryTest {
 		equalUser(repository.findUserById(id), newUser);
 	}
 
+	@Test
+	public void userUpdateTestFail() {
+		UserRepository repository = new ListUserRepository();
+		
+		String id = "1";
+		String newId = "3";
+		User oldUser = new User(id, "양진원", "abcd");
+		User newUser = new User(newId, "양진용", "abcd");
+
+		repository.insertUser(oldUser);
+		repository.updateUser(newUser);
+	}
+	
 	private void equalUser(User sourceUser, User targetUser) {
 		assertEquals(sourceUser.getId(), targetUser.getId());
 		assertEquals(sourceUser.getName(), targetUser.getName());
