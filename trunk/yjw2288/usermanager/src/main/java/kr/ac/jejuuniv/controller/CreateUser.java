@@ -10,17 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/save")
+@RequestMapping("save")
 public class CreateUser {
 	@Autowired
 	private UserService service;
-
+	
+	@RequestMapping
 	public String action(@RequestParam("id") String id,
 			@RequestParam("name") String name,
 			@RequestParam("password") String password, ModelMap model) {
 		User user = new User(id, name, password);
 		service.add(user);
 
+		//TODO : 이 부분이 약간 꺼림직함, 좋은 해결 방안이 없을까......
+		model.addAttribute("userList", service.listUser());
 		return "list";
 	}
 }
