@@ -1,4 +1,4 @@
-package kr.ac.jejuuniv.service;
+package kr.ac.jejuuniv.exception;
 
 public class DataNotFoundException extends RuntimeException{
 	/**
