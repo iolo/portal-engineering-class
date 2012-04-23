@@ -18,6 +18,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<view-controller path="/" view-name="index"/>
+	<view-controller path="/" view-name="index" />
 	<view-controller path="/**/*.jeju" />
 </beans:beans>
