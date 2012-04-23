@@ -11,7 +11,8 @@ public interface UserService {
 
 	User getUser(String id);
 
-	void add(User user);
+	//TODO :(나중에하기) modify에서 하는 일을 save에서 할 수 있도록 만든다.
+	void save(User user);
 
 	void remove(User user);
 
