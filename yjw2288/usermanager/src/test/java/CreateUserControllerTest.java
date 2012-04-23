@@ -1,5 +1,8 @@
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+
+import java.util.List;
+
 import kr.ac.jejuuniv.controller.CreateUser;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserService;
@@ -25,14 +28,26 @@ public class CreateUserControllerTest {
 		String name = "양진원";
 		String password = "abcd";
 
-		ModelMap mm = new ModelMap();
+		ModelMap model = new ModelMap();
+		assertThat("list", is(controller.action(id, name, password, model)));
 
-		assertThat("list", is(controller.action(id, name, password, mm)));
+		User user2 = service.getUser(id);
+		User user1 = new User(id, name, password);
+		assertUser(user1, user2);
 
-		User user = service.getUser(id);
+		List<User> users = service.listUser();
+		@SuppressWarnings("unchecked")
+		List<User> getUsers = (List<User>) model.get("userList");
 
-		assertThat(id, is(user.getId()));
-		assertThat(name, is(user.getName()));
-		assertThat(password, is(user.getPassword()));
+		assertThat(users.size(), is(getUsers.size()));
+		for (int i = 0; i < users.size(); i++) {
+			assertUser(users.get(i), getUsers.get(i));
+		}
+	}
+
+	private void assertUser(User user1, User user2) {
+		assertThat(user1.getId(), is(user2.getId()));
+		assertThat(user1.getName(), is(user2.getName()));
+		assertThat(user1.getPassword(), is(user2.getPassword()));
 	}
 }
