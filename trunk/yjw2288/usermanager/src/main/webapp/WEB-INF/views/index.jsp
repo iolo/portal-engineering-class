@@ -5,6 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>hahaha</h2>
+	<a href="list">목록보기</a>
+	<br />
+	<a href="create.jeju">등록하기</a>
 </body>
 </html>
