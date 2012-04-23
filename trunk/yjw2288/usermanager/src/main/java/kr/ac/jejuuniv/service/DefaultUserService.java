@@ -14,7 +14,7 @@ public class DefaultUserService implements UserService {
 	private UserRepository repository;
 
 	@Override
-	public void add(User user) {
+	public void save(User user) {
 		User oldUser = repository.findUserById(user.getId());
 		if (oldUser != null) {
 			throw new UserExistException(user.getId() + " (이)가 이미 존재하고 있습니다");

@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import kr.ac.jejuuniv.controller.CreateUser;
+import kr.ac.jejuuniv.controller.SaveUserController;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserService;
 
@@ -18,7 +18,7 @@ import org.springframework.ui.ModelMap;
 @ContextConfiguration(locations = "/test-servlet-context.xml")
 public class CreateUserControllerTest {
 	@Autowired
-	private CreateUser controller;
+	private SaveUserController controller;
 	@Autowired
 	private UserService service;
 
@@ -29,7 +29,7 @@ public class CreateUserControllerTest {
 		String password = "abcd";
 
 		ModelMap model = new ModelMap();
-		assertThat("list", is(controller.action(id, name, password, model)));
+		assertThat("list", is(controller.saveUserGet(id, name, password, model)));
 
 		User user2 = service.getUser(id);
 		User user1 = new User(id, name, password);
