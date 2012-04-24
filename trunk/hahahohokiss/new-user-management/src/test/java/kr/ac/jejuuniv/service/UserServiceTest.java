@@ -56,7 +56,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testUserAdd() {
+	public void testUserGet() {
 		userService = new UserServiceImpl(userRepository);
 		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
@@ -69,6 +69,27 @@ public class UserServiceTest {
 		});
 		
 		User user = userService.get("0");
+		assertThat(user.getId(), is("0"));
+		assertThat(user.getName(), is("한진수"));
+		assertThat(user.getPassword(), is("비밀번호"));
+	}
+	
+	@Test
+	public void testUserAdd() {
+		userService = new UserServiceImpl(userRepository);
+		User user = new User();
+		user.setId("0");
+		user.setName("한진수");
+		user.setPassword("비밀번호");
+		when(userRepository.insert(user)).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return (User)invocation.getArguments()[0];
+			}
+			
+		});
+		
+		user = userService.add(user);
+		
 		assertThat(user.getId(), is("0"));
 		assertThat(user.getName(), is("한진수"));
 		assertThat(user.getPassword(), is("비밀번호"));
