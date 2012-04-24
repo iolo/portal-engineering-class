@@ -1,6 +1,7 @@
 package kr.ac.jejuuniv.service;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
@@ -115,5 +116,12 @@ public class UserServiceTest {
 		assertThat(user.getId(), is("0"));
 		assertThat(user.getName(), is("한진수"));
 		assertThat(user.getPassword(), is("비밀번호"));
+	}
+	
+	@Test
+	public void testUserDelete() {
+		userService = new UserServiceImpl(userRepository);
+		userService.delete("0");
+		assertNull(userService.get("0"));
 	}
 }
