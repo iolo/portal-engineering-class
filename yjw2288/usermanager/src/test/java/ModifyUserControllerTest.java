@@ -1,9 +1,6 @@
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
-import javax.servlet.http.HttpServlet;
-
 import kr.ac.jejuuniv.controller.ModifyUserController;
 import kr.ac.jejuuniv.controller.SaveUserController;
 import kr.ac.jejuuniv.model.User;
