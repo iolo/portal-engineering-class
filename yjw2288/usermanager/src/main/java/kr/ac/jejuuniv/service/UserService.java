@@ -16,7 +16,5 @@ public interface UserService {
 
 	void remove(User user);
 
-	void modify(User user);
-
 	List<User> listUser();
 }
