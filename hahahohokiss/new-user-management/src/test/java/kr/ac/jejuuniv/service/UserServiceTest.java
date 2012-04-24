@@ -1,7 +1,6 @@
 package kr.ac.jejuuniv.service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
@@ -79,7 +78,11 @@ public class UserServiceTest {
 	@Test(expected=DataNotFoundException.class)
 	public void testUserGetFail() {
 		userService = new UserServiceImpl(userRepository);
-		
+		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+		});
 		User user = userService.get("0");
 		
 	}
@@ -132,6 +135,5 @@ public class UserServiceTest {
 	public void testUserDelete() {
 		userService = new UserServiceImpl(userRepository);
 		userService.delete("0");
-		assertNull(userService.get("0"));
 	}
 }
