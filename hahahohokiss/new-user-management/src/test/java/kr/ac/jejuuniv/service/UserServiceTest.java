@@ -18,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
+import org.springframework.dao.DuplicateKeyException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
@@ -89,7 +90,7 @@ public class UserServiceTest {
 	
 	
 	@Test
-	public void testUserAdd() {
+	public void testUserAddSuccess() {
 		userService = new UserServiceImpl(userRepository);
 		User user = new User();
 		user.setId("0");
@@ -107,6 +108,17 @@ public class UserServiceTest {
 		assertThat(user.getId(), is("0"));
 		assertThat(user.getName(), is("한진수"));
 		assertThat(user.getPassword(), is("비밀번호"));
+	}
+	
+	@Test(expected=DuplicateKeyException.class)
+	public void testUserAddFail() {
+		userService = new UserServiceImpl(userRepository);
+		User user = new User();
+		user.setId("0");
+		user.setName("한진수");
+		user.setPassword("비밀번호");
+		
+		userService.add(user);
 	}
 	
 	@Test
