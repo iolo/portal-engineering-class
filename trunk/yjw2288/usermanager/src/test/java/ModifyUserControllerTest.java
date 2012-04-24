@@ -38,13 +38,17 @@ public class ModifyUserControllerTest {
 	// TODO : (생각해보기)이 테스트를 이곳에 넣는게 맞을까?
 	public void saveControllerTestUsePost() {
 		BindingResult result = mock(BindingResult.class);
-		when(result.hasErrors()).thenReturn(true);
+		when(result.hasErrors()).thenReturn(false);
+
+		String name;
 
 		User user = new User("0000", "양진원", "abcd");
-		createController.saveUserPost(user, result);
+		name = createController.saveUserPost(user, new ModelMap(), result);
+		assertThat(name, is("list"));
 
 		User newUser = new User("0000", "양진용", "bbbb");
-		createController.saveUserPost(newUser, result);
+		name = createController.saveUserPost(newUser, new ModelMap(), result);
+		assertThat(name, is("list"));
 
 		assertUser(newUser, userService.getUser(newUser.getId()));
 	}

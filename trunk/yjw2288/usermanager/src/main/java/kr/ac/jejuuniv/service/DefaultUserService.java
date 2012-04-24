@@ -17,10 +17,11 @@ public class DefaultUserService implements UserService {
 	public void save(User user) {
 		User oldUser = repository.findUserById(user.getId());
 		if (oldUser != null) {
-			throw new UserExistException(user.getId() + " (이)가 이미 존재하고 있습니다");
+			modify(user);
+		} else {
+			repository.insertUser(user);
 		}
 
-		repository.insertUser(user);
 	}
 
 	@Override
@@ -49,17 +50,6 @@ public class DefaultUserService implements UserService {
 	}
 
 	@Override
-	public void modify(User user) {
-		User target = repository.findUserById(user.getId());
-		if (target == null) {
-			throw new ModifyNotUserExistException(user.getId()
-					+ " 이(가) 존재하지 않습니다.");
-		}
-
-		repository.updateUser(user);
-	}
-
-	@Override
 	public List<User> listUser() {
 		List<User> users = repository.findAllUser();
 		if (users == null) {
@@ -67,5 +57,15 @@ public class DefaultUserService implements UserService {
 		}
 
 		return users;
+	}
+
+	private void modify(User user) {
+		User target = repository.findUserById(user.getId());
+		if (target == null) {
+			throw new ModifyNotUserExistException(user.getId()
+					+ " 이(가) 존재하지 않습니다.");
+		}
+
+		repository.updateUser(user);
 	}
 }

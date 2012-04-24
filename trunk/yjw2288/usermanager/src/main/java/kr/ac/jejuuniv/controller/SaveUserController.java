@@ -31,7 +31,13 @@ public class SaveUserController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String saveUserPost(@ModelAttribute User user, BindingResult result) {
-		return null;
+	public String saveUserPost(@ModelAttribute User user, ModelMap model, BindingResult result) {
+		if (result.hasErrors()) {
+			return "modify";
+		}
+
+		service.save(user);
+		model.addAttribute("userList", service.listUser());
+		return "list";
 	}
 }
