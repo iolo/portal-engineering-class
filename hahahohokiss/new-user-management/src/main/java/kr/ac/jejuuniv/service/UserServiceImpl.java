@@ -3,13 +3,18 @@ package kr.ac.jejuuniv.service;
 import java.util.List;
 
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.repository.UserRepository;
 
 public class UserServiceImpl implements UserService {
 
-	@Override
+	UserRepository userRepository;
+	
+	public UserServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+	
 	public List<User> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findAll();
 	}
 
 }
