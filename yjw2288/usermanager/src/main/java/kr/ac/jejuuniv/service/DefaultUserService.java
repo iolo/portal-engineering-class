@@ -35,13 +35,13 @@ public class DefaultUserService implements UserService {
 	}
 
 	@Override
-	public void remove(User user) {
-		User target = repository.findUserById(user.getId());
+	public void remove(String id) {
+		User target = repository.findUserById(id);
 		if (target == null) {
-			throw new UserNotRemoveException(user.getId() + " 이(가) 존재하지 않습니다.");
+			throw new UserNotRemoveException(id + " 이(가) 존재하지 않습니다.");
 		}
 
-		repository.deleteUserById(user.getId());
+		repository.deleteUserById(id);
 	}
 
 	@Override

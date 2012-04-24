@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import kr.ac.jejuuniv.controller.DeleteUserController;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserNotRemoveException;
 import kr.ac.jejuuniv.service.UserService;
@@ -45,15 +46,15 @@ public class DeleteUserTest {
 		assertThat(name, is("list"));
 
 		@SuppressWarnings("unchecked")
-		List<User> users = (List<User>)model.get("userList");
-		
+		List<User> users = (List<User>) model.get("userList");
+
 		boolean flag = true;
-		for(User user:users) {
-			if(user.getId().equals(targetId)){
+		for (User user : users) {
+			if (user.getId().equals(targetId)) {
 				flag = false;
 			}
 		}
-		
+
 		assertThat(flag, is(true));
 	}
 }
