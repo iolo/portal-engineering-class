@@ -21,4 +21,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findById(id);
 	}
 
+	public User add(User user) {
+		return userRepository.insert(user);
+	}
+
 }
