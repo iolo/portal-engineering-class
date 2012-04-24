@@ -29,4 +29,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.update(user);
 	}
 
+	public void delete(String id) {
+		userRepository.delete(id);
+	}
+
 }
