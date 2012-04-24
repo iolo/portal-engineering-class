@@ -3,7 +3,7 @@ package kr.ac.jejuuniv.service;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,6 +139,15 @@ public class UserServiceTest {
 		user.setName("한진수");
 		user.setPassword("비밀번호");
 		
+		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId("0");
+				user.setName("한진수");
+				user.setPassword("비밀번호");
+				return user;
+			}
+		});
 		when(userRepository.update(user)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				return (User)invocation.getArguments()[0];
@@ -161,12 +170,38 @@ public class UserServiceTest {
 		user.setName("한진수");
 		user.setPassword("비밀번호");
 		
+		when(userRepository.findById(user.getId())).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+		});
+		
 		user = userService.modify(user);
 	}
 	
 	@Test
-	public void testUserDelete() {
+	public void testUserDeleteSuccess() {
 		userService = new UserServiceImpl(userRepository);
+		doAnswer(new Answer() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId("0");
+				user.setName("한진수");
+				user.setPassword("password");
+				return user;
+			}
+		}).when(userRepository).findById("0");
+		userService.delete("0");
+	}
+	
+	@Test(expected=DataNotFoundException.class)
+	public void testUserDeleteFail() {
+		userService = new UserServiceImpl(userRepository);
+		doAnswer(new Answer() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+		}).when(userRepository).findById("0");
 		userService.delete("0");
 	}
 }

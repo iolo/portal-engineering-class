@@ -36,11 +36,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User modify(User user) {
-		return userRepository.update(user);
+		if(userRepository.findById(user.getId()) == null)
+			throw new DataNotFoundException();
+		else 
+			return userRepository.update(user);
 	}
 
 	public void delete(String id) {
-		userRepository.delete(id);
+		if(userRepository.findById(id) != null)
+			userRepository.delete(id);
+		else 
+			throw new DataNotFoundException();
 	}
 
 }
