@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.exception.DataNotFoundException;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
 
@@ -23,10 +24,10 @@ import org.mockito.stubbing.Answer;
 public class UserServiceTest {
 	/*
 	 * User List 가져오기(실패)
-	 * User id 로 가져오기(성공, 실패)
-	 * User 추가하기 (성공, 실패)
-	 * User 수정하기 (성공, 실패)
-	 * User 삭제하기 (성공, 실패)
+	 * User id 로 가져오기(실패)
+	 * User 추가하기 (실패)
+	 * User 수정하기 (실패)
+	 * User 삭제하기 (실패)
 	 */
 
 	@Mock
@@ -57,7 +58,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testUserGet() {
+	public void testUserGetSuccess() {
 		userService = new UserServiceImpl(userRepository);
 		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
@@ -74,6 +75,15 @@ public class UserServiceTest {
 		assertThat(user.getName(), is("한진수"));
 		assertThat(user.getPassword(), is("비밀번호"));
 	}
+	
+	@Test(expected=DataNotFoundException.class)
+	public void testUserGetFail() {
+		userService = new UserServiceImpl(userRepository);
+		
+		User user = userService.get("0");
+		
+	}
+	
 	
 	@Test
 	public void testUserAdd() {
