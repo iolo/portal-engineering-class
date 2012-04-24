@@ -131,8 +131,8 @@ public class UserServiceTest {
 		userService.add(user);
 	}
 	
-	@Test
-	public void testUserModify() {
+	@Test()
+	public void testUserModifySuccess() {
 		userService = new UserServiceImpl(userRepository);
 		User user = new User();
 		user.setId("0");
@@ -151,6 +151,17 @@ public class UserServiceTest {
 		assertThat(user.getId(), is("0"));
 		assertThat(user.getName(), is("한진수"));
 		assertThat(user.getPassword(), is("비밀번호"));
+	}
+	
+	@Test(expected=DataNotFoundException.class)
+	public void testUserModifyFail() {
+		userService = new UserServiceImpl(userRepository);
+		User user = new User();
+		user.setId("0");
+		user.setName("한진수");
+		user.setPassword("비밀번호");
+		
+		user = userService.modify(user);
 	}
 	
 	@Test
