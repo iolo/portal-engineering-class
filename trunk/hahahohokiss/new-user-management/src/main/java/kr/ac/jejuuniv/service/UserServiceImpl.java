@@ -2,6 +2,7 @@ package kr.ac.jejuuniv.service;
 
 import java.util.List;
 
+import kr.ac.jejuuniv.exception.DataNotFoundException;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
 
@@ -18,7 +19,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User get(String id) {
-		return userRepository.findById(id);
+		if(userRepository.findById(id) == null){
+			throw new DataNotFoundException();
+		}
+		else
+			return userRepository.findById(id);
 	}
 
 	public User add(User user) {
