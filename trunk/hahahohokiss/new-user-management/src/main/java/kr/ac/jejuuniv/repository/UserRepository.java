@@ -12,4 +12,6 @@ public interface UserRepository {
 
 	User insert(User user);
 
+	User update(User user);
+
 }

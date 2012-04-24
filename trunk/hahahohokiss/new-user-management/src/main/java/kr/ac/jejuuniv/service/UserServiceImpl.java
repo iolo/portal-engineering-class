@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User modify(User user) {
-		return null;
+		return userRepository.update(user);
 	}
 
 }
