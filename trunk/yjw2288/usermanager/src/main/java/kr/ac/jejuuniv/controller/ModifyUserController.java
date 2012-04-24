@@ -12,6 +12,6 @@ public class ModifyUserController {
 	@RequestMapping
 	public String action(ModelMap map) {
 		map.addAttribute(new User());
-		return "list";
+		return "save";
 	}
 }

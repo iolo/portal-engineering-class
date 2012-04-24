@@ -1,7 +1,8 @@
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-import kr.ac.jejuuniv.controller.SaveUserController;
+import static org.mockito.Mockito.*;
 import kr.ac.jejuuniv.controller.ModifyUserController;
+import kr.ac.jejuuniv.controller.SaveUserController;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserService;
 
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 
 //TODO : (생각해보기)test하고 실전에서 쓰이는 컨텍스트를 분리할 수 있겠네... 어떻게?
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,18 +30,21 @@ public class ModifyUserControllerTest {
 		ModelMap map = new ModelMap();
 		String jsp = controller.action(map);
 
-		assertThat(User.class, is(map.get("user")));
+		assertTrue(map.get("user") instanceof User);
 		assertThat("save", is(jsp));
 	}
 
 	@Test
-	//TODO : (생각해보기)이 테스트를 이곳에 넣는게 맞을까? 
-	public void createControllerTestUsePost() {
+	// TODO : (생각해보기)이 테스트를 이곳에 넣는게 맞을까?
+	public void saveControllerTestUsePost() {
+		BindingResult result = mock(BindingResult.class);
+		when(result.hasErrors()).thenReturn(true);
+
 		User user = new User("0000", "양진원", "abcd");
-		createController.saveUserPost(user);
+		createController.saveUserPost(user, result);
 
 		User newUser = new User("0000", "양진용", "bbbb");
-		createController.saveUserPost(newUser);
+		createController.saveUserPost(newUser, result);
 
 		assertUser(newUser, userService.getUser(newUser.getId()));
 	}
