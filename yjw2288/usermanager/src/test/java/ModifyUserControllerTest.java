@@ -1,6 +1,9 @@
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
+
+import javax.servlet.http.HttpServlet;
+
 import kr.ac.jejuuniv.controller.ModifyUserController;
 import kr.ac.jejuuniv.controller.SaveUserController;
 import kr.ac.jejuuniv.model.User;
@@ -27,11 +30,17 @@ public class ModifyUserControllerTest {
 
 	@Test
 	public void modifyController() {
-		ModelMap map = new ModelMap();
-		String jsp = controller.action(map);
+		String id = "0000";
+		User user = new User(id, "양진원", "abcd");
+		userService.save(user);
 
-		assertTrue(map.get("user") instanceof User);
-		assertThat("save", is(jsp));
+		ModelMap map = new ModelMap();
+		String jsp = controller.action(id, map);
+
+		User returnUser = (User) map.get("user");
+
+		assertThat("modify", is(jsp));
+		assertUser(user, returnUser);
 	}
 
 	@Test

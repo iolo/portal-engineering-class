@@ -22,7 +22,7 @@
 				<legend>사용자 수정</legend>
 				<p>
 					<label>아이디</label>
-					<form:input path="id"/>
+					<form:input path="id" readonly="true"/>
 					<form:errors path="id" />
 				</p>
 				<p>
