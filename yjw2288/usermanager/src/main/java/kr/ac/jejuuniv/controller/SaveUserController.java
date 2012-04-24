@@ -6,6 +6,7 @@ import kr.ac.jejuuniv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,8 +31,7 @@ public class SaveUserController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	//TODO : (생각해보기) BindingResult 때문에 테스트 코드 만들기 힘들다.... 방법 없나?
-	public String saveUserPost(@ModelAttribute User user) {
+	public String saveUserPost(@ModelAttribute User user, BindingResult result) {
 		return null;
 	}
 }
