@@ -12,4 +12,6 @@ public interface UserService {
 
 	User add(User user);
 
+	User modify(User user);
+
 }
