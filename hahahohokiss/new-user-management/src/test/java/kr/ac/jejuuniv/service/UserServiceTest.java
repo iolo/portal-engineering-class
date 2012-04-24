@@ -102,6 +102,14 @@ public class UserServiceTest {
 		user.setId("0");
 		user.setName("한진수");
 		user.setPassword("비밀번호");
+		
+		when(userRepository.update(user)).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return (User)invocation.getArguments()[0];
+			}
+		});
+		
+		
 		user = userService.modify(user);
 		
 		assertThat(user.getId(), is("0"));
