@@ -24,8 +24,8 @@ public class UserServiceTest {
 	 * User List 가져오기(실패)
 	 * User id 로 가져오기(성공, 실패)
 	 * User 추가하기 (성공, 실패)
-	 * User 삭제하기 (성공, 실패)
 	 * User 수정하기 (성공, 실패)
+	 * User 삭제하기 (성공, 실패)
 	 */
 
 	@Mock
@@ -89,6 +89,20 @@ public class UserServiceTest {
 		});
 		
 		user = userService.add(user);
+		
+		assertThat(user.getId(), is("0"));
+		assertThat(user.getName(), is("한진수"));
+		assertThat(user.getPassword(), is("비밀번호"));
+	}
+	
+	@Test
+	public void testUserModify() {
+		userService = new UserServiceImpl(userRepository);
+		User user = new User();
+		user.setId("0");
+		user.setName("한진수");
+		user.setPassword("비밀번호");
+		user = userService.modify(user);
 		
 		assertThat(user.getId(), is("0"));
 		assertThat(user.getName(), is("한진수"));
