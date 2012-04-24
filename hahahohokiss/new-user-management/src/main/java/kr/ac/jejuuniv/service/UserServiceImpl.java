@@ -17,4 +17,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll();
 	}
 
+	public User get(String id) {
+		return null;
+	}
+
 }
