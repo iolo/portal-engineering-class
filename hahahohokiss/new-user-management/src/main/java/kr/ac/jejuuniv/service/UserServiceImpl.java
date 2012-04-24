@@ -2,6 +2,8 @@ package kr.ac.jejuuniv.service;
 
 import java.util.List;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import kr.ac.jejuuniv.exception.DataNotFoundException;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
@@ -27,7 +29,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User add(User user) {
-		return userRepository.insert(user);
+		if(userRepository.findById(user.getId()) != null)
+			throw new DuplicateKeyException(null);
+		else
+			return userRepository.insert(user);
 	}
 
 	public User modify(User user) {

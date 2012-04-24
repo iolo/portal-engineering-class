@@ -118,6 +118,16 @@ public class UserServiceTest {
 		user.setName("한진수");
 		user.setPassword("비밀번호");
 		
+		when(userRepository.findById(user.getId())).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId("0");
+				user.setName("한진수");
+				user.setPassword("비밀번호");
+				return user;
+			}
+		});
+		
 		userService.add(user);
 	}
 	
