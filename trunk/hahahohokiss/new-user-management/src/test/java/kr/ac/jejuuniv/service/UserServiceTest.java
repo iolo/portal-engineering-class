@@ -60,12 +60,9 @@ public class UserServiceTest {
 		});
 		
 		User user = userService.get("0");
-		assertThat(user.getId(), is("0"));
-		assertThat(user.getName(), is("한진수"));
-		assertThat(user.getPassword(), is("비밀번호"));
+		verifyUserInfo(user);
 	}
 
-	
 	@Test(expected=DataNotFoundException.class)
 	public void testUserGetFail() {
 		when(userRepository.findById("0")).thenAnswer(new Answer<User>() {
@@ -90,9 +87,7 @@ public class UserServiceTest {
 		
 		user = userService.add(user);
 		
-		assertThat(user.getId(), is("0"));
-		assertThat(user.getName(), is("한진수"));
-		assertThat(user.getPassword(), is("비밀번호"));
+		verifyUserInfo(user);
 	}
 	
 	@Test(expected=DuplicateKeyException.class)
@@ -129,9 +124,7 @@ public class UserServiceTest {
 		
 		user = userService.modify(user);
 		
-		assertThat(user.getId(), is("0"));
-		assertThat(user.getName(), is("한진수"));
-		assertThat(user.getPassword(), is("비밀번호"));
+		verifyUserInfo(user);
 	}
 	
 	@Test(expected=DataNotFoundException.class)
@@ -167,6 +160,7 @@ public class UserServiceTest {
 		}).when(userRepository).findById("0");
 		userService.delete("0");
 	}
+	
 
 	private User setUserInfo() {
 		User user = new User();
@@ -174,5 +168,11 @@ public class UserServiceTest {
 		user.setName("한진수");
 		user.setPassword("비밀번호");
 		return user;
+	}
+	
+	private void verifyUserInfo(User user) {
+		assertThat(user.getId(), is("0"));
+		assertThat(user.getName(), is("한진수"));
+		assertThat(user.getPassword(), is("비밀번호"));
 	}
 }
