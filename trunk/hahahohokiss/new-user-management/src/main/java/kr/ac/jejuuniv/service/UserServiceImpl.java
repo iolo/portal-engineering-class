@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 			return userRepository.update(user);
 	}
 
-	public void delete(String id) {
+	public void remove(String id) {
 		if(userRepository.findById(id) != null)
 			userRepository.delete(id);
 		else 

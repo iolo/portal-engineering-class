@@ -148,7 +148,7 @@ public class UserServiceTest {
 				return user;
 			}
 		}).when(userRepository).findById("0");
-		userService.delete("0");
+		userService.remove("0");
 	}
 	
 	@Test(expected=DataNotFoundException.class)
@@ -158,7 +158,7 @@ public class UserServiceTest {
 				return null;
 			}
 		}).when(userRepository).findById("0");
-		userService.delete("0");
+		userService.remove("0");
 	}
 	
 
