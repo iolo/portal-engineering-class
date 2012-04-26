@@ -16,7 +16,7 @@ public class UserAddController {
 	public ModelAndView add(User user) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject(userService.add(user));
-		modelAndView.setViewName("/list");
+		modelAndView.setViewName("list");
 		return modelAndView;
 	}
 }
