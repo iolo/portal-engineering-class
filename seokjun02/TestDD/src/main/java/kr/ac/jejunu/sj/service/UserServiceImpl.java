@@ -5,11 +5,13 @@ import java.util.List;
 import kr.ac.jejunu.sj.model.User;
 import kr.ac.jejunu.sj.repository.UserRepository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class UserServiceImpl implements UserService {
 
+	@Autowired
 	private UserRepository repository;
 
 	@Override
@@ -67,7 +69,7 @@ public class UserServiceImpl implements UserService {
 			throw new UserEmptyException();
 		}
 
-		return repository.findAll();
+		return users;
 	}
 
 }
