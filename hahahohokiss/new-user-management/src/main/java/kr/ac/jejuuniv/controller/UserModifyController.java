@@ -1,13 +1,11 @@
 package kr.ac.jejuuniv.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import kr.ac.jejuuniv.exception.DataNotFoundException;
+import kr.ac.jejuuniv.service.UserService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import kr.ac.jejuuniv.exception.DataNotFoundException;
-import kr.ac.jejuuniv.model.User;
-import kr.ac.jejuuniv.service.UserService;
 
 @Controller
 @RequestMapping("/modify")
@@ -29,7 +27,7 @@ public class UserModifyController {
 			modelAndView.setViewName("redirect:/modify");
 			return modelAndView;
 		}
-		modelAndView.setViewName("list");
+		modelAndView.setViewName("redirect:/list");
 		return modelAndView;
 	}
 }
