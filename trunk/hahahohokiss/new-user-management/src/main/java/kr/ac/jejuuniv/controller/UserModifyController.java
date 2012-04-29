@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.ac.jejuuniv.exception.DataNotFoundException;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserService;
 
@@ -21,9 +22,14 @@ public class UserModifyController {
 	@RequestMapping
 	public ModelAndView modify(String id) {
 		ModelAndView modelAndView = new ModelAndView();
+		try{
+			modelAndView.addObject(userService.get(id));
+			
+		}catch (DataNotFoundException exception) {
+			modelAndView.setViewName("redirect:/modify");
+			return modelAndView;
+		}
 		modelAndView.setViewName("list");
-		modelAndView.addObject(userService.get(id));
 		return modelAndView;
 	}
-
 }
