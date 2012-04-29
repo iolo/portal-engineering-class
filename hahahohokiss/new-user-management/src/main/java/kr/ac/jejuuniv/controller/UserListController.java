@@ -13,13 +13,13 @@ import kr.ac.jejuuniv.service.UserService;
 @RequestMapping("/list")
 public class UserListController {
 	
+	@Autowired
 	UserService userService;
 	
 	public UserListController() {
 		
 	}
 	
-	@Autowired
 	public UserListController(UserService userService) {
 		this.userService = userService;
 	}

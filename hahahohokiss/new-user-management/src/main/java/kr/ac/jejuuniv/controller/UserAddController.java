@@ -27,10 +27,10 @@ public class UserAddController {
 		try {
 			modelAndView.addObject(userService.add(user));
 		} catch (DuplicateKeyException exception) {
-			modelAndView.setViewName("create");
+			modelAndView.setViewName("redirect:/create");
 			return modelAndView;
 		}
-		modelAndView.setViewName("list");
+		modelAndView.setViewName("redirect:/list");
 		return modelAndView;
 	}
 }
