@@ -3,14 +3,20 @@ package kr.ac.jejuuniv.service;
 import java.util.List;
 
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Service;
 
 import kr.ac.jejuuniv.exception.DataNotFoundException;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	UserRepository userRepository;
+	
+	public UserServiceImpl() {
+		
+	}
 	
 	public UserServiceImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
