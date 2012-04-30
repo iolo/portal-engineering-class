@@ -1,16 +1,16 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejuuniv.repository;
 
 import java.util.List;
+
+import kr.ac.jejuuniv.model.User;
 
 public interface UserRepository {
 
 	List<User> findAll();
 
-	void deleteById(String id);
+	void delete(String id);
 
 	void insert(User user);
-
-	User findUser(String id);
 
 	User findById(String id);
 

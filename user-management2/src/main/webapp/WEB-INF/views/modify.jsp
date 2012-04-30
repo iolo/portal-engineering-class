@@ -14,7 +14,7 @@
 	</div>
 	<div id="Menu">
 		<a href="list">목록보기</a><br/>
-		<a href="create.jeju">수정하기</a>
+		<a href="create">수정하기</a>
 	</div>
 	<div id="Content">
 		<form:form modelAttribute="user" action="save" method="post">

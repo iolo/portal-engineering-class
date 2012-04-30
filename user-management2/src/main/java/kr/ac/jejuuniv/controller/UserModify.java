@@ -1,4 +1,7 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejuuniv.controller;
+
+import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +15,7 @@ public class UserModify {
 	
 	@RequestMapping
 	public User modify(String id){
-		User user = userService.modify(id);
+		User user = userService.getUser(id);
 		return user;
 	}
 }

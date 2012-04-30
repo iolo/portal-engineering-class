@@ -1,6 +1,8 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejuuniv.service;
 
 import java.util.List;
+
+import kr.ac.jejuuniv.model.User;
 
 public interface UserService {
 
@@ -10,7 +12,6 @@ public interface UserService {
 
 	void save(User user);
 
-	User modify(String id);
-
+	User getUser(String id);
 	
 }
