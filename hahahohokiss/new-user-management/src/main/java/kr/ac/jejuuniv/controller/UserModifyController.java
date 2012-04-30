@@ -6,6 +6,7 @@ import kr.ac.jejuuniv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,16 +24,16 @@ public class UserModifyController {
 	}
 	
 	@RequestMapping
-	public ModelAndView modify(String id) {
+	public ModelAndView modify(@RequestParam String id) {
 		ModelAndView modelAndView = new ModelAndView();
 		try{
 			modelAndView.addObject(userService.get(id));
 			
 		}catch (DataNotFoundException exception) {
-			modelAndView.setViewName("redirect:/modify");
+			modelAndView.setViewName("redirect:/list");
 			return modelAndView;
 		}
-		modelAndView.setViewName("redirect:/list");
+		modelAndView.setViewName("modify");
 		return modelAndView;
 	}
 }

@@ -12,7 +12,7 @@ import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserService;
 
 @Controller
-@RequestMapping("/create")
+@RequestMapping("/add")
 public class UserAddController {
 	
 	@Autowired
@@ -32,7 +32,7 @@ public class UserAddController {
 		try {
 			modelAndView.addObject(userService.add(user));
 		} catch (DuplicateKeyException exception) {
-			modelAndView.setViewName("redirect:/create");
+			modelAndView.setViewName("create");
 			return modelAndView;
 		}
 		modelAndView.setViewName("redirect:/list");

@@ -21,6 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<view-controller path="/**/*.jeju" />
 	<!-- Imports user-defined @Controller beans that process client requests -->
 
 </beans:beans>
