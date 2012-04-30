@@ -18,4 +18,8 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteById(id);
 	}
 
+	public void save(User user) {
+		userRepository.insert(user);
+	}
+
 }

@@ -14,7 +14,7 @@
 	</div>
 	<div id="Menu">
 		<a href="list">목록보기</a><br/>
-		<a href="create.jeju">등록하기</a>
+		<a href="create">등록하기</a>
 	</div>
 	<div id="Content">
 		<table>

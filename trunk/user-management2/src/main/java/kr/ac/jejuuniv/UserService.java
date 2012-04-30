@@ -8,5 +8,7 @@ public interface UserService {
 
 	void remove(String id);
 
+	void save(User user);
+
 	
 }

@@ -29,4 +29,9 @@ public class UserRepositoryImpl implements UserRepository {
 		}
 	}
 
+
+	public void insert(User user) {
+		users.add(user);
+	}
+
 }
