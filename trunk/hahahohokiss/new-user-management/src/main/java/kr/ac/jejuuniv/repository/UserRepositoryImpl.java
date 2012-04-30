@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import kr.ac.jejuuniv.model.User;
 
 @Repository
-public class UserRepositoryDummy implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
 	
 	private static List<User> users ;
 	
-	public UserRepositoryDummy(){
+	public UserRepositoryImpl(){
 		users = new ArrayList<User>();
 		User user1 = new User("0", "한진수", "비밀번호");
 		User user2 = new User("1", "이진수", "비밀번호");
@@ -34,7 +34,7 @@ public class UserRepositoryDummy implements UserRepository {
 
 	public User findById(String id) {
 		for(int i=0; i<users.size(); i++) {
-			if(users.get(i).getId()==id){
+			if(users.get(i).getId().equals(id)){
 				return users.get(i);
 			}
 		}
@@ -48,7 +48,7 @@ public class UserRepositoryDummy implements UserRepository {
 
 	public User update(User user) {
 		for(int i=0; i<users.size(); i++) {
-			if(users.get(i).getId() == user.getId()) {
+			if(users.get(i).getId().equals(user.getId())) {
 				users.get(i).setName(user.getName());
 				users.get(i).setPassword(user.getPassword());
 			}
@@ -58,7 +58,7 @@ public class UserRepositoryDummy implements UserRepository {
 
 	public void delete(String id) {
 		for(int i=0; i<users.size(); i++) {
-			if(users.get(i).getId() == id) {
+			if(users.get(i).getId().equals(id)) {
 				users.remove(i);
 			}
 		}

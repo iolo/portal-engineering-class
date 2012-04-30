@@ -12,7 +12,7 @@ import kr.ac.jejuuniv.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+	@Autowired
 	UserRepository userRepository;
 	
 	public UserServiceImpl() {
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void remove(String id) {
-		if(userRepository.findById(id) != null)
+		if(get(id) != null)
 			userRepository.delete(id);
 		else 
 			throw new DataNotFoundException();

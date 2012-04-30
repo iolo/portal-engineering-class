@@ -15,12 +15,17 @@ import kr.ac.jejuuniv.service.UserService;
 @RequestMapping("/create")
 public class UserAddController {
 	
-	UserService userService;
 	@Autowired
+	UserService userService;
+	
+	public UserAddController() {
+		
+	}
 	public UserAddController(UserService userService) {
 		this.userService = userService;
 	}
 
+	
 	@RequestMapping
 	public ModelAndView add(User user) {
 		ModelAndView modelAndView = new ModelAndView();
