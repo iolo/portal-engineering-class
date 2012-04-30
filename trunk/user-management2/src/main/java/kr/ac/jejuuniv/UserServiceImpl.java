@@ -19,7 +19,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void save(User user) {
-		userRepository.insert(user);
+		if(userRepository.findById(user.getId()) == null){
+			userRepository.insert(user);
+		}else{
+			userRepository.update(user);
+		}
+	}
+
+	public User modify(String id) {
+		return userRepository.findUser(id);
 	}
 
 }

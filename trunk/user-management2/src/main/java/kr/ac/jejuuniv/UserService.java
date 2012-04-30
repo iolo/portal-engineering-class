@@ -10,5 +10,7 @@ public interface UserService {
 
 	void save(User user);
 
+	User modify(String id);
+
 	
 }
