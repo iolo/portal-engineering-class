@@ -10,4 +10,10 @@ public interface UserRepository {
 
 	void insert(User user);
 
+	User findUser(String id);
+
+	User findById(String id);
+
+	void update(User user);
+
 }
