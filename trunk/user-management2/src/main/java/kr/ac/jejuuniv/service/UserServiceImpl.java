@@ -1,6 +1,9 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejuuniv.service;
 
 import java.util.List;
+
+import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void remove(String id) {
-		userRepository.deleteById(id);
+		userRepository.delete(id);
 	}
 
 	public void save(User user) {
@@ -26,8 +29,8 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	public User modify(String id) {
-		return userRepository.findUser(id);
+	public User getUser(String id) {
+		return userRepository.findById(id);
 	}
 
 }

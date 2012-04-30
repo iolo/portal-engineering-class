@@ -1,6 +1,9 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejuuniv.repository;
 import java.util.ArrayList;
 import java.util.List;
+
+import kr.ac.jejuuniv.model.User;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -21,32 +24,14 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 
-	public void deleteById(String id) {
-		User user = null;
-		for(int i=0; i<users.size(); i++){
-			if(users.get(i).getId().equals(id)){
-				user = users.get(i);
-			}
-		}
+	public void delete(String id) {
+		User user = findById(id);
 		users.remove(user);
 	}
 
 
 	public void insert(User user) {
 		users.add(user);
-	}
-
-	public User findUser(String id) {
-		User user = null;
-		for(int i=0; i<users.size(); i++){
-			if(users.get(i).getId().equals(id)){
-				user = users.get(i);
-			}
-		}
-		user.setId(user.getId());
-		user.setName(user.getName());
-		user.setPassword(user.getPassword());
-		return user;
 	}
 
 
