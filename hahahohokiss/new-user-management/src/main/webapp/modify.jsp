@@ -17,7 +17,7 @@
 		<a href="create.jeju">수정하기</a>
 	</div>
 	<div id="Content">
-		<form:form modelAttribute="user" action="save" method="post">
+		<form:form modelAttribute="user" action="update" method="post">
 			<fieldset>
 				<legend>사용자 수정</legend>
 				<p>

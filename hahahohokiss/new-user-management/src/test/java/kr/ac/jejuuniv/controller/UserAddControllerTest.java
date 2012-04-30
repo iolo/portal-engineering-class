@@ -39,6 +39,6 @@ public class UserAddControllerTest {
 		User user = new User();
 		doThrow(new DuplicateKeyException(null)).when(userService).add(user);
 		ModelAndView modelAndView = userAddController.add(user);
-		assertThat(modelAndView.getViewName(), is("redirect:/create"));
+		assertThat(modelAndView.getViewName(), is("create"));
 	}
 }
