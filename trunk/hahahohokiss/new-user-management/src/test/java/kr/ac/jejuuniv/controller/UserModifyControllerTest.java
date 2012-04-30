@@ -46,7 +46,7 @@ public class UserModifyControllerTest {
 		User user = new User("0", "한진수", "비밀번호");
 		doThrow(new DataNotFoundException()).when(userService).get(user.getId());
 		ModelAndView modelAndView = userModifyController.modify(user.getId());
-		assertThat(modelAndView.getViewName(), is("redirect:/modify"));
+		assertThat(modelAndView.getViewName(), is("redirect:/list"));
 	}
 }
 
