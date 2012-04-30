@@ -13,7 +13,7 @@
 	</div>
 	<div id="Menu">
 		<a href="list">목록보기</a><br/>
-		<a href="create.jsp">등록하기</a>
+		<a href="create">등록하기</a>
 	</div>
 	<div id="Content">
 		<form action="save" method="post">
