@@ -37,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository {
 			if(users.get(i).getId().equals(id)){
 				return users.get(i);
 			}
-		}
+		} 
 		return null;
 	}
 
