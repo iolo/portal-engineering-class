@@ -9,14 +9,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/save")
 public class UserSave {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping
+	@RequestMapping("/save")
 	public String save(User user){
 		userService.save(user);
 		return "redirect:/list";
 	}
+	
+	@RequestMapping("/create")
+	public void create(User user) {
+	}  
+
 }
