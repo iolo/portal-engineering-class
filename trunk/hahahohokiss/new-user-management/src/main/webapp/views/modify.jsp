@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>사용자 수정</title>
-	<link href="/user/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 	<div id="Header">
@@ -22,7 +22,7 @@
 				<legend>사용자 수정</legend>
 				<p>
 					<label>아이디</label>
-					<form:input path="id"/>
+					<form:input path="id" readonly="true"/>
 					<form:errors path="id" />
 				</p>
 				<p>
