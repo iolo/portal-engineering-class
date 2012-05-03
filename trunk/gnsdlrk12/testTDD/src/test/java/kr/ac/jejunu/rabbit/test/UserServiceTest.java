@@ -12,10 +12,10 @@ import java.util.Map;
 
 import kr.ac.jejunu.rabbit.model.User;
 import kr.ac.jejunu.rabbit.repository.UserRepository;
+import kr.ac.jejunu.rabbit.repository.UserRepositoryEmptyException;
 import kr.ac.jejunu.rabbit.service.DuplicatedUserIdException;
 import kr.ac.jejunu.rabbit.service.UserAlreadyDeleteException;
 import kr.ac.jejunu.rabbit.service.UserNotFoundException;
-import kr.ac.jejunu.rabbit.service.UserRepositoryEmptyException;
 import kr.ac.jejunu.rabbit.service.UserService;
 import kr.ac.jejunu.rabbit.service.UserServiceImpl;
 
@@ -99,16 +99,10 @@ public class UserServiceTest {
 	}
 	
 	private void settingMockRepositoryData() {
-		User user = new User();
-		user.setId("mac");
-		user.setName("애플");
-		user.setPassword("abcd");
+		User user = new User("mac", "애플", "abcd");
 		users.put(user.getId(), user);
 
-		User user2 = new User();
-		user2.setId("google");
-		user2.setName("안드로이드");
-		user2.setPassword("허니콤");
+		User user2 = new User("google", "안드로이드", "허니콤");
 		users.put(user2.getId(), user2);
 	}
 
@@ -127,21 +121,14 @@ public class UserServiceTest {
 
 	@Test
 	public void addUserTest() {
-		User user = new User();
-
-		user.setId("google2");
-		user.setName("안드로이드");
-		user.setPassword("허니콤");
+		User user = new User("google", "안드로이드", "허니콤");
 		service.addUser(user);
 	}
 
 	@Test(expected = DuplicatedUserIdException.class)
 	public void addUserTestFail() {
-		User user = new User();
+		User user = new User("google", "안드로이드", "허니");
 
-		user.setId("google");
-		user.setName("안드로이드");
-		user.setPassword("허니콤");
 		service.addUser(user);
 	}
 
@@ -164,10 +151,7 @@ public class UserServiceTest {
 	
 	@Test
 	public void modifyTest() {
-		User user = new User();
-		user.setId("google");
-		user.setName("야인시대");
-		user.setPassword("1234");
+		User user = new User("google", "야인시대", "1234");
 		
 		service.modifyUser(user);
 		
@@ -177,23 +161,20 @@ public class UserServiceTest {
 	
 	@Test(expected=UserNotFoundException.class)
 	public void modifyFailTest() {
-		User user = new User();
-		user.setId("google2");
-		user.setName("야인시대");
-		user.setPassword("1234");
+		User user = new User("google2", "야인시대", "1234");
 		
 		service.modifyUser(user);
 	}
 	
 	@Test
 	public void findAllTest() {
-		List<User> foundUsers = service.findAll();
+		List<User> foundUsers = service.list();
 		assertSame(2, foundUsers.size());
 	}
 	
 	@Test(expected=UserRepositoryEmptyException.class)
 	public void findAllFailTest() {
 		users.clear();
-		service.findAll();
+		service.list();
 	}
 }
