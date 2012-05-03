@@ -14,7 +14,8 @@ public interface UserService {
 
 	public void modifyUser(User user);
 	
-	public List<User> findAll();
+	public List<User> list();
 	
 	public void setUserRepository(UserRepository repository);
+
 }

@@ -4,17 +4,19 @@ import java.util.List;
 
 import kr.ac.jejunu.rabbit.model.User;
 import kr.ac.jejunu.rabbit.repository.UserRepository;
+import kr.ac.jejunu.rabbit.repository.UserRepositoryEmptyException;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class UserServiceImpl implements UserService {
-
-	private UserRepository repository;
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	public User get(String id) {
-		User user = repository.findById(id);
+		User user = userRepository.findById(id);
 		if(user == null)
 			throw new UserNotFoundException(id);
 		return user;
@@ -22,14 +24,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void removeById(String id) {
-		if (repository.findById(id) == null)
+		if (userRepository.findById(id) == null)
 			throw new UserAlreadyDeleteException(id);
-		repository.delete(id);
+		userRepository.delete(id);
 	}
 
 	@Override
 	public void addUser(User user) {
-		User foundUser = repository.findById(user.getId());
+		User foundUser = userRepository.findById(user.getId());
 		if(foundUser != null)
 			throw new DuplicatedUserIdException(foundUser.getId());
 		
@@ -37,24 +39,26 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void modifyUser(User user) {
-		User foundUser = repository.findById(user.getId());
+		User foundUser = userRepository.findById(user.getId());
 		
 		if(foundUser == null)
 			throw new UserNotFoundException(user.getId());
 		
-		repository.update(user);
+		userRepository.update(user);
 	}
 
 	@Override
 	public void setUserRepository(UserRepository repository) {
-		this.repository = repository;
+		this.userRepository = repository;
 	}
 
 	@Override
-	public List<User> findAll() {
-		List<User> foundusers = repository.findAll();
-		if(foundusers.size() == 0)
+	public List<User> list() {
+		
+		List<User> users = userRepository.findAll();
+		if (users.isEmpty()) {
 			throw new UserRepositoryEmptyException();
-		return foundusers;
-	}
+		}
+
+		return users;	}
 }
