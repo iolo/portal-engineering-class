@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import static org.mockito.Mockito.*;
-import static org.mockito.Matchers.*;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.springframework.test.context.ContextConfiguration;
@@ -88,4 +87,5 @@ public class UserServiceTest {
 		List<User> foundUser = service.findAll();
 		Assert.assertSame(2, foundUser.size());
 		}
+	
 	} 
