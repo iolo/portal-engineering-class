@@ -8,6 +8,7 @@ public interface UserRepository {
 	User findById(String id);
 	void insert(User user);
 	void delete(String id);
+	void update(User user);
 
 	
 

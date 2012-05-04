@@ -1,6 +1,8 @@
 package kr.ac.jejuuniv;
 
+import org.apache.ibatis.type.Alias;
 
+@Alias("User")
 public class User {
 	private String id;
 	private String name;
@@ -9,6 +11,9 @@ public class User {
 		this.setId(id);
 		this.setName(name);
 		this.setPassword(password);
+	}
+	public User(){
+		
 	}
 	public String getId() {
 		return id;
