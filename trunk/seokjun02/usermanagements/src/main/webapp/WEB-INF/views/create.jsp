@@ -16,7 +16,7 @@
 		<a href="create.jeju">등록하기</a>
 	</div>
 	<div id="Content">
-		<form action="create" method="post">
+		<form action="save" method="post">
 			<fieldset>
 				<legend>사용자 등록</legend>
 				<p>
