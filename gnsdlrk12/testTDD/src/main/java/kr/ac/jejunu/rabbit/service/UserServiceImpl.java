@@ -54,11 +54,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> list() {
-		
 		List<User> users = userRepository.findAll();
 		if (users.isEmpty()) {
 			throw new UserRepositoryEmptyException();
 		}
-
-		return users;	}
+		return users;	
+	}
 }
