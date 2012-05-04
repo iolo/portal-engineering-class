@@ -9,7 +9,18 @@ import kr.ac.jejunu.rabbit.model.User;
 
 @Repository
 public class UserRepositoryimpl implements UserRepository {
+	
+	 static List<User> users;
 
+	 
+	 public UserRepositoryimpl(){
+		 users = new ArrayList<User>();
+			
+			users.add(new User("1", "가나다", "1233"));
+			users.add(new User("2", "정재훈", "1233"));
+			users.add(new User("3", "홍길동", "1233"));
+		 
+	 }
 	@Override
 	public void insert(User user) {
 		// TODO Auto-generated method stub
@@ -36,11 +47,6 @@ public class UserRepositoryimpl implements UserRepository {
 
 	@Override
 	public List<User> findAll() {
-		List<User> users = new ArrayList<User>();
-		User user = new User("1", "가나다라마바사", "1233");
-		
-		users.add(user);
-		
 		return users;
 	}
 
