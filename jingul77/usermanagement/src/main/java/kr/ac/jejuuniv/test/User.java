@@ -4,6 +4,18 @@ public class User {
 	private String id;
 	private String name;
 	private String password;
+	
+	public User(String id, String name, String password) {
+
+		this.setId(id);
+		this.setName(name);
+		this.setPassword(password);
+
+	}
+
+	public User(){
+		
+	}
 
 	public String getId() {
 		return id;
