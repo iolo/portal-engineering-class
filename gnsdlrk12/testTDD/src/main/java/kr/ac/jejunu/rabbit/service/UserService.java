@@ -10,12 +10,16 @@ public interface UserService {
 
 	public void removeById(String Id);
 
-	public void addUser(User user);
-
 	public void modifyUser(User user);
 	
 	public List<User> list();
 	
 	public void setUserRepository(UserRepository repository);
+
+	public void addUser(String id, String name, String password);
+
+	public User findById(String id);
+
+	public void userModify(String id, String name, String password);
 
 }

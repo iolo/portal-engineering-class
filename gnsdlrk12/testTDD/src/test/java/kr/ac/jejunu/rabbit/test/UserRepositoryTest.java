@@ -1,9 +1,8 @@
 package kr.ac.jejunu.rabbit.test;
 
-import org.junit.Test;
-
-import kr.ac.jejunu.rabbit.repository.UserRepository;
 import kr.ac.jejunu.rabbit.repository.UserRepositoryimpl;
+
+import org.junit.Test;
 
 public class UserRepositoryTest {
 	@Test
