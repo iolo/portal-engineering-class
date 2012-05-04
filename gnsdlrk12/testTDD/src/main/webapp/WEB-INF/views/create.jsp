@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>사용자 등록</title>
-	<link href="/main/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/testTDD/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 	<div id="Header">
@@ -14,7 +14,7 @@
 		<a href="create.jeju">등록하기</a>
 	</div>
 	<div id="Content">
-		<form action="save" method="post">
+		<form action="create" method="post">
 			<fieldset>
 				<legend>사용자 등록</legend>
 				<p>

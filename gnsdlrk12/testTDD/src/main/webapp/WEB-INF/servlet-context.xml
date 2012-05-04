@@ -14,16 +14,16 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/resources/*" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<!-- <view-controller path="/**/*.jeju" />
+	 <view-controller path="/**/*.jeju" />
 	
-	Imports user-defined @Controller beans that process client requests
+	<!-- Imports user-defined @Controller beans that process client requests -->
 	<beans:import resource="repository.xml" />
- -->
+
 </beans:beans>
