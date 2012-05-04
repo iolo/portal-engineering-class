@@ -6,8 +6,8 @@ public interface UserService {
 
 	List<User> list();
 	User get(String id);
-	void create(User user);
 	void remove(String id);
+	void save(User user);
 
 	
 

@@ -5,13 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/modify")
-public class UserModify {
-	
+@RequestMapping("/save")
+public class UserSave {
+
 	@Autowired
 	private UserService userService;
 	@RequestMapping
-	public User action(String id){
-		return userService.get(id); 
+	public String action(User user){
+		userService.save(user);
+		return "redirect:/list";
 	}
 }

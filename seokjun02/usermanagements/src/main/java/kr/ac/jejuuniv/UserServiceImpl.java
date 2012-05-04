@@ -9,26 +9,24 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Override
+
 	public List<User> list() {
 		return userRepository.findAll();
 	}
 
-	@Override
-	public void create(User user) {
-		userRepository.insert(user);
-		
-	}
-
-	@Override
 	public void remove(String id) {
 		userRepository.delete(id);
 	}
 
-	@Override
 	public User get(String id) {
 		return userRepository.findById(id);
+	}
+
+	public void save(User user) {
+		if (get(user.getId()) == null)
+			userRepository.insert(user);
+		else
+			userRepository.update(user);
 	}
 
 }

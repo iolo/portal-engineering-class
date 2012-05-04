@@ -8,30 +8,36 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
-	public static List<User> users = new ArrayList<User>();
-	
-	public List<User> findAll() {
+	private List<User> users = new ArrayList<User>();
+
+	public UserRepositoryImpl() {
+		super();
 		users.add(new User("1", "이석준", "1234"));
 		users.add(new User("2", "강동인", "4321"));
+	}
+
+	public List<User> findAll() {
 		return users;
 	}
 
-	@Override
 	public void insert(User user) {
 		users.add(user);
 	}
 
-	@Override
 	public void delete(String id) {
-		
-		
+
 	}
 
-	@Override
 	public User findById(String id) {
-		// TODO Auto-generated method stub
-		return (User) users;
+		for (User user : users) {
+			if(user.getId().equals(id))
+				return user;			
+		}
+		throw new UserNotFoundExcpetion(id);
+	}
+
+	public void update(User user) {
+
 	}
 
 }
-

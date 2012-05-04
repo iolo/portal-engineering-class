@@ -13,7 +13,7 @@ public class UserCreate {
 	
 	@RequestMapping
 	public String action(User user) {
-		userService.create(user);
+		userService.save(user);
 		return "redirect:/list";
 	}
 
