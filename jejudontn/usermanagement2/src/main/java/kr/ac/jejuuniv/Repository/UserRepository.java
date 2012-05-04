@@ -1,6 +1,8 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejuuniv.Repository;
 
 import java.util.List;
+
+import kr.ac.jejununiv.model.User;
 
 
 public interface UserRepository {
@@ -8,7 +10,7 @@ public interface UserRepository {
 	List<User> findAll();
 
 
-	void createUser(String id, String name, String password);
+	boolean createUser(String id, String name, String password);
 
 
 	void deleteUser(String string);

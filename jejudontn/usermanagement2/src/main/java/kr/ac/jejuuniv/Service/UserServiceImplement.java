@@ -1,7 +1,10 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejuuniv.Service;
 
 
 import java.util.List;
+
+import kr.ac.jejununiv.model.User;
+import kr.ac.jejuuniv.Repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +33,8 @@ public class UserServiceImplement implements UserService {
 	}
 
 	@Override
-	public void userCreate(String id, String name, String password) {
-		userRepository.createUser(id, name, password);
+	public boolean userCreate(String id, String name, String password) {
+		return userRepository.createUser(id, name, password);
 	}
 
 	@Override

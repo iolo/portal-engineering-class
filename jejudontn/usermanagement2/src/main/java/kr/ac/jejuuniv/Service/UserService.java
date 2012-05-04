@@ -1,6 +1,8 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejuuniv.Service;
 
 import java.util.List;
+
+import kr.ac.jejununiv.model.User;
 
 public interface UserService {
 
@@ -10,7 +12,7 @@ public interface UserService {
 	void deleteUserList(String string);
 
 
-	void userCreate(String id, String name, String password);
+	boolean userCreate(String id, String name, String password);
 
 
 	User findById(String id);

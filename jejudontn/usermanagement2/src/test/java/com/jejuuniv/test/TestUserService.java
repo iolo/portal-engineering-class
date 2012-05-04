@@ -6,10 +6,10 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.ac.jejuuniv.User;
-import kr.ac.jejuuniv.UserRepository;
-import kr.ac.jejuuniv.UserService;
-import kr.ac.jejuuniv.UserServiceImplement;
+import kr.ac.jejununiv.model.User;
+import kr.ac.jejuuniv.Repository.UserRepository;
+import kr.ac.jejuuniv.Service.UserService;
+import kr.ac.jejuuniv.Service.UserServiceImplement;
 import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.Test;
