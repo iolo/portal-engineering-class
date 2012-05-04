@@ -1,4 +1,4 @@
-package kr.ac.jejuuniv;
+package kr.ac.jejununiv.model;
 
 public class User {
 

@@ -1,7 +1,7 @@
 package kr.ac.jejuuniv.controller;
 
 
-import kr.ac.jejuuniv.UserService;
+import kr.ac.jejuuniv.Service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +17,16 @@ public class UserCreate {
 	private UserService userService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String action(@RequestParam("id")  String id,  @RequestParam("name") String name, @RequestParam("password") String password) {	
-		userService.userCreate(id, name, password);
-		return "redirect:/list";
+	public String createUser(@RequestParam("id")  String id,  @RequestParam("name") String name, @RequestParam("password") String password) {
+		boolean idExist;
+		idExist = userService.userCreate(id, name, password);
+		if(idExist){
+			return "redirect:/list";
+		} else {
+			///예외처리
+			return "redirect:/create.jeju";
+		}
+		
 	}
 	
 	
