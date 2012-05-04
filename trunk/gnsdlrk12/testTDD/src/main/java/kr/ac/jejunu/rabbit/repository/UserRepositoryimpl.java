@@ -21,11 +21,6 @@ public class UserRepositoryimpl implements UserRepository {
 			users.add(new User("3", "홍길동", "1233"));
 		 
 	 }
-	@Override
-	public void insert(User user) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void update(User user) {
@@ -48,6 +43,23 @@ public class UserRepositoryimpl implements UserRepository {
 	@Override
 	public List<User> findAll() {
 		return users;
+	}
+
+	@Override
+	public void insert(String id, String name, String password) {
+		users.add(new User(id, name, password));		
+	}
+
+	@Override
+	public void modifyUser(String id, String name, String password) {
+		for(int index=0; index < users.size(); index++) {
+			if(users.get(index).getId().equals(id)) {
+				users.get(index).setId(id);
+				users.get(index).setName(name);
+				users.get(index).setPassword(password);
+			}
+		}
+		
 	}
 
 }

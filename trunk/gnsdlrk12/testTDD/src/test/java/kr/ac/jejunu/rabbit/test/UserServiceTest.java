@@ -76,7 +76,7 @@ public class UserServiceTest {
 				users.put(user.getId(), user);
 				return null;
 			}
-		}).when(repository).insert(any(User.class));
+		}).when(repository).insert(anyString(), anyString(), anyString());
 
 		doAnswer(new Answer<Void>() {
 			@Override
@@ -122,14 +122,14 @@ public class UserServiceTest {
 	@Test
 	public void addUserTest() {
 		User user = new User("google", "안드로이드", "허니콤");
-		service.addUser(user);
+		service.addUser(user.getId(), user.getName(), user.getPassword());
 	}
 
 	@Test(expected = DuplicatedUserIdException.class)
 	public void addUserTestFail() {
 		User user = new User("google", "안드로이드", "허니");
 
-		service.addUser(user);
+		service.addUser(user.getId(), user.getName(), user.getPassword());
 	}
 
 	@Test(expected=UserNotFoundException.class)

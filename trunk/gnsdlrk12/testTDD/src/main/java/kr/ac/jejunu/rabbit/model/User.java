@@ -1,27 +1,41 @@
 package kr.ac.jejunu.rabbit.model;
 
 public class User {
-	private String Id;
-	private String Name;
-	private String Password;
+	private String id;
+	private String name;
+	private String password;
 
-	public User(String id, String name, String pass) {
+	public User(String id, String name, String password) {
 
-		this.Id = id;
-		this.Name = name;
-		this.Password = pass;
+		this.setId(id);
+		this.setName(name);
+		this.setPassword(password);
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+		
 	}
 
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 }

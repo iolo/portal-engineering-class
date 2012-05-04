@@ -5,8 +5,6 @@ import java.util.List;
 import kr.ac.jejunu.rabbit.model.User;
 public interface UserRepository {
 
-	void insert(User user);
-
 	void update(User user);	
 	
 	void delete(String id);
@@ -14,5 +12,9 @@ public interface UserRepository {
 	User findById(String id);
 	
 	List<User> findAll();
+
+	void insert(String id, String name, String password);
+
+	void modifyUser(String id, String name, String password);
 	
 }

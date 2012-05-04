@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
+	
+	static List<User> users;
 
 	@Override
 	public User get(String id) {
@@ -30,10 +32,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addUser(User user) {
-		User foundUser = userRepository.findById(user.getId());
-		if(foundUser != null)
-			throw new DuplicatedUserIdException(foundUser.getId());
+	public void addUser(String id, String name, String password) {
+		userRepository.insert(id, name, password);
 		
 	}
 
@@ -59,5 +59,15 @@ public class UserServiceImpl implements UserService {
 			throw new UserRepositoryEmptyException();
 		}
 		return users;	
+	}
+
+	@Override
+	public User findById(String id) {
+		return userRepository.findById(id);
+	}
+
+	@Override
+	public void userModify(String id, String name, String password) {
+		userRepository.modifyUser(id, name, password);
 	}
 }
