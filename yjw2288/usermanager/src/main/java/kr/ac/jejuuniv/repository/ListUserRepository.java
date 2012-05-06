@@ -27,7 +27,7 @@ public class ListUserRepository implements UserRepository {
 	public void insertUser(User user) {
 		int index = findIndex(user.getId());
 		if (!userList.isEmpty() && index != -1) {
-			throw new IdExistException("같은 아이디를 가지고 있는 User가 이미 존재하고 있습니다.");
+			throw new IdExistNotException("같은 아이디를 가지고 있는 User가 이미 존재하고 있습니다.");
 		}
 
 		userList.add(user);
