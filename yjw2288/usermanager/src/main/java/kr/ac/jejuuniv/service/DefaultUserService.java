@@ -21,15 +21,12 @@ public class DefaultUserService implements UserService {
 		} else {
 			repository.insertUser(user);
 		}
-
 	}
 
 	@Override
 	public User getUser(String id) {
 		User user = repository.findUserById(id);
-		if (user == null) {
-			throw new UserNotFoundException();
-		}
+		checkThrow(user == null, new UserNotFoundException());
 
 		return user;
 	}
@@ -37,9 +34,8 @@ public class DefaultUserService implements UserService {
 	@Override
 	public void remove(String id) {
 		User target = repository.findUserById(id);
-		if (target == null) {
-			throw new UserNotRemoveException(id + " 이(가) 존재하지 않습니다.");
-		}
+		checkThrow(target == null, new UserNotRemoveException(id
+				+ " 이(가) 존재하지 않습니다."));
 
 		repository.deleteUserById(id);
 	}
@@ -52,20 +48,23 @@ public class DefaultUserService implements UserService {
 	@Override
 	public List<User> listUser() {
 		List<User> users = repository.findAllUser();
-		if (users == null || users.isEmpty()) {
-			throw new UserEmptyException("사용자가 한명도 존재하지 않습니다. 사용자를 추가해주세요");
-		}
+		checkThrow(users == null || users.isEmpty(), new UserEmptyException(
+				"사용자가 한명도 존재하지 않습니다. 사용자를 추가해주세요"));
 
 		return users;
 	}
 
 	private void modify(User user) {
 		User target = repository.findUserById(user.getId());
-		if (target == null) {
-			throw new ModifyNotUserExistException(user.getId()
-					+ " 이(가) 존재하지 않습니다.");
-		}
-
+		checkThrow(target == null, new ModifyNotUserExistException(user.getId()
+					+ " 이(가) 존재하지 않습니다."));
+		
 		repository.updateUser(user);
+	}
+
+	private void checkThrow(boolean value, RuntimeException exception) {
+		if (value) {
+			throw exception;
+		}
 	}
 }
