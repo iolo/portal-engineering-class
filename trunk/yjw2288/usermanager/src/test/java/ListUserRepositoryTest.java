@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import kr.ac.jejuuniv.model.User;
-import kr.ac.jejuuniv.repository.IdExistException;
+import kr.ac.jejuuniv.repository.IdExistNotException;
 import kr.ac.jejuuniv.repository.ListUserRepository;
 import kr.ac.jejuuniv.repository.RowNotExistException;
 import kr.ac.jejuuniv.repository.UserRepository;
@@ -47,7 +47,7 @@ public class ListUserRepositoryTest {
 		assertNull(userRepository.findUserById("4"));
 	}
 
-	@Test(expected = IdExistException.class)
+	@Test(expected = IdExistNotException.class)
 	public void testInsertFailTest() {
 		UserRepository userRepository = new ListUserRepository();
 
