@@ -2,6 +2,7 @@
 
 `root-context.xml`
 {{{
+	<!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean below) -->
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
 			<!-- all methods starting with 'find' are read-only -->
