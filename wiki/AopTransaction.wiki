@@ -1,4 +1,4 @@
-= `root-context.xml` =
+=== `root-context.xml` ===
 {{{
 <!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean 
 		below) -->
