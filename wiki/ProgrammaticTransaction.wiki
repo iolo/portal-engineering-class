@@ -1,8 +1,6 @@
-#summary One-sentence summary of this page.
-
 = Programmatic Transaction  =
 
-UserService.java
+`UserService.java`
 {{{
 	@Autowired
 	private DataSourceTransactionManager txManager;
