@@ -3,7 +3,7 @@ package kr.ac.jejuuniv.model;
 public class Tweet {
 	private String userId;
 	private String imageUrl;
-	private String contentId;
+	private int contentId;
 	private String content;
 	private String date;
 	
@@ -19,10 +19,10 @@ public class Tweet {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	public String getContentId() {
+	public int getContentId() {
 		return contentId;
 	}
-	public void setContentId(String contentId) {
+	public void setContentId(int contentId) {
 		this.contentId = contentId;
 	}
 	public String getContent() {
