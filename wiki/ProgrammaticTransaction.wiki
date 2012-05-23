@@ -1,5 +1,3 @@
-= Programmatic Transaction  =
-
 `UserService.java`
 {{{
 	@Autowired
