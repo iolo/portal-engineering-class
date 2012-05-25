@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<mapper namespace="kr.ac.jejuuniv.repository.LoginMapper">
+
+	<select id="findUserById" resultType="kr.ac.jejuuniv.model.User">
+		SELECT * FROM user WHERE id = #{id} and password = #{password}
+	</select>
+	
+	
+	
+</mapper>
