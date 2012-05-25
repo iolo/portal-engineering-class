@@ -1,5 +1,27 @@
 package kr.ac.jejuuniv.test;
 
-public class UserServiceTest {
+import kr.ac.jejuuniv.service.UserService;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.web.multipart.MultipartFile;
+
+@RunWith(MockitoJUnitRunner.class)
+public class UserServiceTest {
+	
+	UserService userservice;
+
+	@Test
+	public void userCreate() {
+		String id = "1";
+		String password="1234";
+		String name = "aaa";
+		String information ="bbb";
+		MultipartFile profileImage = null;
+		
+		userservice.createUser(id, password, name, information, profileImage);
+		
+		
+	}
 }

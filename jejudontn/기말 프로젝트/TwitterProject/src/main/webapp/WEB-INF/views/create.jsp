@@ -9,31 +9,31 @@
 </head>
 <body>
 	<div id="Header">
-		사용자 관리
+		사용자 등록
 	</div>
 	<div>
-		<form action="register" method="post">
+		<form action="register"  method="post"  enctype="multipart/form-data">
 			<fieldset>
 				<legend>회원가입</legend>
 				<p>
-					<label>ID</label>
+					<label>ID </label>
 					<input type="text" name="id" />
 				</p>
 				<p>
-					<label>Password</label>
+					<label>Password </label>
 					<input type="password" name="password" />
 				</p>
 				<p>
-					<label>이름</label>
+					<label>이름 </label>
 					<input type="name" name="name" />
 				</p>
 				<p>
-					<label>설명</label>
+					<label>설명 </label>
 					<input type="text" name="information" />
 				</p>
 				<p>
-					<label>프로필이미지</label>
-					<input type="text" name="profileImage" />
+					<label>프로필이미지 </label>
+					<input type="file" name="profileImage" />
 				</p>
 				<p>
 					<input type="submit" value="등록" />
