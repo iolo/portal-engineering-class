@@ -18,7 +18,7 @@ public class UserServiceTest {
 		String password="1234";
 		String name = "aaa";
 		String information ="bbb";
-		MultipartFile profileImage = null;
+		MultipartFile profileImage= null;
 		
 		userservice.createUser(id, password, name, information, profileImage);
 			
@@ -33,6 +33,7 @@ public class UserServiceTest {
 		assertTrue(userServiceImplement.validationImageExt("img.jpg"));
 		assertTrue(userServiceImplement.validationImageExt("img.jpeg"));
 		assertTrue(userServiceImplement.validationImageExt("img.gif"));
+		assertTrue(userServiceImplement.validationImageExt(""));
 		
 		assertFalse(userServiceImplement.validationImageExt("img.exe"));
 		assertFalse(userServiceImplement.validationImageExt("img.text"));

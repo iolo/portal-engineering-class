@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserRegisterController {
 	@Autowired
 	UserService userService;
-
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public String userRegister(@RequestParam("id") String id,
 			@RequestParam("password") String password,
