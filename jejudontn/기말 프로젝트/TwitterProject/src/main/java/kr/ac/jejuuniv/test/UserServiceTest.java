@@ -1,6 +1,7 @@
 package kr.ac.jejuuniv.test;
 
 import kr.ac.jejuuniv.service.UserService;
+import kr.ac.jejuuniv.service.UserServiceImplement;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,8 @@ public class UserServiceTest {
 
 	@Test
 	public void userCreate() {
+		userservice = new UserServiceImplement();
+		
 		String id = "1";
 		String password="1234";
 		String name = "aaa";
@@ -21,7 +24,7 @@ public class UserServiceTest {
 		MultipartFile profileImage = null;
 		
 		userservice.createUser(id, password, name, information, profileImage);
-		
-		
+			
 	}
+	
 }
