@@ -1,21 +1,18 @@
 package kr.ac.jejuuniv.test;
 
+import static org.junit.Assert.*;
 import kr.ac.jejuuniv.service.UserService;
 import kr.ac.jejuuniv.service.UserServiceImplement;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.web.multipart.MultipartFile;
 
-@RunWith(MockitoJUnitRunner.class)
+
 public class UserServiceTest {
-	
-	UserService userservice;
 
 	@Test
 	public void userCreate() {
-		userservice = new UserServiceImplement();
+		UserService userservice = new UserServiceImplement();
 		
 		String id = "1";
 		String password="1234";
@@ -25,6 +22,22 @@ public class UserServiceTest {
 		
 		userservice.createUser(id, password, name, information, profileImage);
 			
+	}
+	
+	@Test
+	public void imageValidationExtTest(){
+		
+		UserServiceImplement userServiceImplement = new UserServiceImplement();
+		
+		assertTrue(userServiceImplement.validationImageExt("img.png"));
+		assertTrue(userServiceImplement.validationImageExt("img.jpg"));
+		assertTrue(userServiceImplement.validationImageExt("img.jpeg"));
+		assertTrue(userServiceImplement.validationImageExt("img.gif"));
+		
+		assertFalse(userServiceImplement.validationImageExt("img.exe"));
+		assertFalse(userServiceImplement.validationImageExt("img.text"));
+		assertFalse(userServiceImplement.validationImageExt("img.dll"));
+		
 	}
 	
 }

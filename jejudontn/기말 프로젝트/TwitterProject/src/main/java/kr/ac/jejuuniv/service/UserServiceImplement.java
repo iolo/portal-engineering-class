@@ -9,7 +9,7 @@ public class UserServiceImplement implements UserService {
 			String information, MultipartFile profileImage) {
 		
 		
-		if(validationImageExt(profileImage)){
+		if(validationImageExt(profileImage.getOriginalFilename())){
 			// DB에 넣을부분
 		}
 		
@@ -17,10 +17,8 @@ public class UserServiceImplement implements UserService {
 
 	}
 	
-	public boolean validationImageExt(MultipartFile profileImage){
+	public boolean validationImageExt(String filename){
 	
-			if (!profileImage.isEmpty()) {
-				String filename = profileImage.getOriginalFilename();
 				String imgExt = filename.substring(filename.lastIndexOf(".") + 1,
 						filename.length());
 
@@ -32,8 +30,6 @@ public class UserServiceImplement implements UserService {
 				} else {
 					return false;
 				}
-			}
-		return false;
 	}
 
 
