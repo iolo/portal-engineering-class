@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LoginMapper {
 
-	User findUserById(String id, String password);
+	User findUserById(User user);
 	
 	
 

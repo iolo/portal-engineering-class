@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImplement implements LoginService {
 	static User user;
 	
-	@Autowired
 	LoginMapper loginMapper;
 	
 	
@@ -19,7 +18,7 @@ public class LoginServiceImplement implements LoginService {
 	@Override
 	public boolean checkIdAndPassword(String id, String password) {
 		
-		user = loginMapper.findUserById(id, password);
+		user = loginMapper.findUserById(new User());
 		
 		
 		return true;
