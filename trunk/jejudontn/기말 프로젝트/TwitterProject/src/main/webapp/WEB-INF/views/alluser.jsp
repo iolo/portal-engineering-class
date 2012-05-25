@@ -14,9 +14,10 @@
 	</div>
 	<div>
 	<p>
-		${user.name}
+		<input type="button" value="${user.name}"
+							onclick="location.href='/personal'"; />
 		<input type="button" value="글쓰기"
-		onclick="window.open('/write','win','width=400,height=300,toolbar=0,scrollbars=0,resizable=0')"; />
+		onclick="window.open('/write','win','width=400,height=480,toolbar=0,scrollbars=0,resizable=0')"; />
 		<input type="button" value="Following"
 							onclick="location.href='/following'"; />
 		<input type="button" value="Follower"

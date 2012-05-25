@@ -14,11 +14,12 @@
 	</div>
 	<div>
 	<p>
-		${user.name}
+		<input type="button" value="${user.name}"
+							onclick="location.href='/personal'"; />
 		<input type="button" value="프로필 수정"
-							omclick="location.href='/modify'"; />
+							onclick="location.href='/modify'"; />
 		<input type="button" value="글쓰기"
-		omclick="window.open('/write','win','width=350,height=250,toolbar=0,scrollbars=0,resizable=0')"; />
+		onclick="window.open('/write','win','width=350,height=250,toolbar=0,scrollbars=0,resizable=0')"; />
 	</p>
 	</div>
 	

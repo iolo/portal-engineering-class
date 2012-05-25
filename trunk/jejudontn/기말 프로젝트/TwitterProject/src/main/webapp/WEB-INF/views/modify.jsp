@@ -12,7 +12,7 @@
 	<div>
 		프로필 수정
 	</div>
-	<div id>
+	<div>
 		<form:form modelAttribute="user" action="modify" method="post">
 			<fieldset>
 				<legend>사용자 수정</legend>

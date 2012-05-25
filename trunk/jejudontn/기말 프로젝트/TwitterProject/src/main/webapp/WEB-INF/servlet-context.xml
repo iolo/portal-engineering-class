@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd	
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+		>
 
 	<!-- Scans within the base package of the application for @Components to configure as beans -->
 	<context:component-scan base-package="kr.ac.jejuuniv" />
@@ -22,7 +23,6 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<view-controller path="/**/*.jeju" />
 	
 	<!-- Configure the multipart resolver -->
     <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -30,12 +30,20 @@
         <beans:property name="maxUploadSize" value="2000000"/>
     </beans:bean>
 
-    <!-- Configure the file upload directory-->
-    <beans:bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
-        <beans:constructor-arg>
-        	<beans:value>C:/upload/</beans:value>
-        </beans:constructor-arg>
-    </beans:bean>
-
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" 
+		p:driverClass="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://117.17.102.203:3306/twitter_project?unicode=true&amp;characterEncoding=utf-8"
+		p:username="twiitproject"
+		p:password="twiitproject" />
+	
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+	<!-- 	<property name="typeAliasesPackage" value="kr.ac.jejuuniv.model"/> -->
+	</beans:bean>
+		
+		<beans:bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<beans:property name="basePackage" value="kr.ac.jejuuniv.repository" />
+		<beans:property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		</beans:bean>
 
 </beans:beans>

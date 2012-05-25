@@ -4,12 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/modefy")
+@RequestMapping("/modify")
 public class ModifyController {
 	
 	@RequestMapping()
 	public void modify(){
 		
+				
 	}
 
 }
