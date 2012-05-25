@@ -30,8 +30,8 @@
         <beans:property name="maxUploadSize" value="2000000"/>
     </beans:bean>
 
-	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" 
-		p:driverClass="com.mysql.jdbc.Driver"
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+		p:driverClassName="com.mysql.jdbc.Driver"
 		p:url="jdbc:mysql://117.17.102.203:3306/twitter_project?unicode=true&amp;characterEncoding=utf-8"
 		p:username="twiitproject"
 		p:password="twiitproject" />
