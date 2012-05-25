@@ -1,5 +1,8 @@
 package kr.ac.jejuuniv.controller;
 
+import kr.ac.jejuuniv.service.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,16 +12,20 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/register")
 public class UserRegisterController {
+	@Autowired
+	UserService userService;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String userRegister(@RequestParam("id") String id,
 			@RequestParam("password") String password,
 			@RequestParam("name") String name,
-			@RequestParam("information") String infromation,
+			@RequestParam("information") String information,
 			@RequestParam("profileImage") MultipartFile profileImage) {
 		
-		return "redirect:/index";
+		userService.createUser(id, password, name, information, profileImage);
 		
+		return "redirect:/index";
+
 	}
 
 }
