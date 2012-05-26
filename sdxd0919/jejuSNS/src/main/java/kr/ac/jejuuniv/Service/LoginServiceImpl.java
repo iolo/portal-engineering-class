@@ -17,11 +17,7 @@ public class LoginServiceImpl implements LoginService{
 		this.userRepository = userRepository;
 	}
 
-	public Boolean checkUser(String id, String password) {
-		User user = userRepository.checkUser(id, password); 
-		if(user.getPassword().equals(password)){
-			return true;
-		}
-		return false;
+	public User checkUser(String id, String password) {
+		return userRepository.checkUser(id, password); 
 	}
 }
