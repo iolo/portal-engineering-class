@@ -18,6 +18,8 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
+import com.mysql.jdbc.log.Log;
+
 @RunWith(MockitoJUnitRunner.class)
 public class LoginTest {
 	@Mock
@@ -72,6 +74,30 @@ public class LoginTest {
 		LoginService loginService = new LoginServiceImpl(userRepository);
 		User user = loginService.checkUser("aaa", "bbb");
 		
+	}
+	
+	@Test(expected=IdNotFoundException.class)
+	public void LoginIdFail(){
+		when(userRepository.checkUser("aaa", "bbb")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				List<User> users = new ArrayList<User>();
+				users.add(new User("abc", "aaa"));
+				users.add(new User("bbb", "bbb"));
+				
+				User user = null;
+				for(int i=0; i<users.size(); i++){
+					if(users.get(i).getId().equals("aaa")){
+						user = users.get(i);
+					}
+				}
+				
+				return user;
+			}
+			
+		});
+		
+		LoginService loginService = new LoginServiceImpl(userRepository);
+		User user = loginService.checkUser("aaa", "bbb");
 	}
 	
 }

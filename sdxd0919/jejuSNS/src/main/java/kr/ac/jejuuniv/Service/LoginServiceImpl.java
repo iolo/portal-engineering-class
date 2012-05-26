@@ -19,9 +19,14 @@ public class LoginServiceImpl implements LoginService{
 
 	public User checkUser(String id, String password) {
 		User user = userRepository.checkUser(id, password);
-		if(!user.getPassword().equals(password)){
-			throw new PasswordInconsistencyException();
+		
+		if(user == null){
+			throw new IdNotFoundException();
+		}else{
+			if(!user.getPassword().equals(password)){
+				throw new PasswordInconsistencyException();
+			}
+			return userRepository.checkUser(id, password); 
 		}
-		return userRepository.checkUser(id, password); 
 	}
 }
