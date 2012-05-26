@@ -14,7 +14,6 @@
        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
        
 	<!-- Root Context: defines shared resources visible to all other web components -->
-<context:component-scan base-package="kr.ac.jejuuniv" />
 
 
 
