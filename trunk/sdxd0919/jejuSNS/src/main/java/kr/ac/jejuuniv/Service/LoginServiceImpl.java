@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class LoginServiceImpl implements LoginService{
 
-	@Autowired
 	private UserRepository userRepository;
 
 	public LoginServiceImpl() {
