@@ -1,9 +1,11 @@
 package kr.ac.jejuuniv.Service;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
+
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
 
@@ -14,6 +16,7 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
+import org.springframework.dao.DuplicateKeyException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LoginTest {
@@ -23,8 +26,8 @@ public class LoginTest {
 	
 	@Test
 	public void LoginSuccess(){
-		when(userRepository.checkUser("aaa", "bbb")).thenAnswer(new Answer<Boolean>() {
-			public Boolean answer(InvocationOnMock invocation) throws Throwable {
+		when(userRepository.checkUser("aaa", "bbb")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
 				List<User> users = new ArrayList<User>();
 				users.add(new User("aaa", "bbb"));
 				users.add(new User("bbb", "ccc"));
@@ -35,23 +38,16 @@ public class LoginTest {
 						user = users.get(i);
 					}
 				}
-				
-				if(user.getPassword().equals("bbb")){
-					return true;
-				}else{
-					return false;
-				}
+
+				return user;
 			}
 		});
 		
 		LoginService loginService = new LoginServiceImpl(userRepository);
-		boolean flag = loginService.checkUser("aaa","bbb");
+		Boolean flag = loginService.checkUser("aaa","bbb");
 
 		assertTrue(flag);
 	}
-	
-
-	
 	
 	
 }

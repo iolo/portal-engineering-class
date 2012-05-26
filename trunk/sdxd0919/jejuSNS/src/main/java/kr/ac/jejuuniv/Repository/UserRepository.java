@@ -1,7 +1,9 @@
 package kr.ac.jejuuniv.Repository;
 
+import kr.ac.jejuuniv.Model.User;
+
 public interface UserRepository {
 
-	boolean checkUser(String id, String password);
+	User checkUser(String id, String password);
 
 }
