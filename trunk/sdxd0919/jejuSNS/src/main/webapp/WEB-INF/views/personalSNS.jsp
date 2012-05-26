@@ -14,7 +14,7 @@
 <body>
 	<div id="Header">
 		<p>
-			<label id="${userName}"></label>
+			<label id="${user.userName}"></label>
 			<a href="/join"><input type="button" value="프로필수정" /></a>
 			<a href="/write"><input type="button" value="글쓰기" /></a>
 			<a href="/sns"><input type="button" value="메인페이지" /></a>
@@ -23,14 +23,13 @@
 		
 	<div id="PersonalListContent">
 		<c:forEach items="${messageList}" var="message" >
-			<div>
-				<p>
-					<img src = "${profileImg}" />
-					<label>${msg}</label>
-					<a href="/delete"><input type="button" value="삭제" /></a>
-					<label>${date}</label>
-				</p>		
-			</div>
+			<form action="messageDelete" method="post">
+				<input type="hidden" value="${message.num}">
+ 				<img src = "${user.profileImg}" />
+				<label>${message.msg}</label>
+				<input type="submit" value="삭제" />
+				<label>${message.date}</label>
+			</form>
 		</c:forEach>
 	</div>
 </body>

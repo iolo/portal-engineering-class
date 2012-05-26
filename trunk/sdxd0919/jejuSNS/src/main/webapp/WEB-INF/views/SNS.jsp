@@ -14,7 +14,7 @@
 <body>
 	<div id="Header">
 		<p>
-			<a href="/personalSNS"><label id="${userName}"></label></a>
+			<a href="/personalSNS"><label id="${user.userName}"></label></a>
 			<a href="/write"><input type="button" value="글쓰기" /></a>
 			<a href="/userlist"><input type="button" value="Following" /></a>
 			<a href="/userlist"><input type="button" value="Follower" /></a>
@@ -26,10 +26,10 @@
 		<c:forEach items="${messagelists}" var="message" >
 			<div>
 				<p>
-					<img src = "${profileImg}" />
-					<label>${name}</label>
-					<label>${content}</label>
-					<label>${date}</label>
+					<img src = "${message.userid.profileImg}" />
+					<label>${message.userid.name}</label>
+					<label>${message.content}</label>
+					<label>${message.date}</label>
 				</p>		
 			</div>
 		</c:forEach>
