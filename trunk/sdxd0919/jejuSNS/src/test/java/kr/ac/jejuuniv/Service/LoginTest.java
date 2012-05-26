@@ -1,8 +1,10 @@
 package kr.ac.jejuuniv.Service;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.hamcrest.CoreMatchers.*;
 import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +17,6 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
-import org.springframework.dao.DuplicateKeyException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LoginTest {
@@ -44,10 +44,10 @@ public class LoginTest {
 		});
 		
 		LoginService loginService = new LoginServiceImpl(userRepository);
-		Boolean flag = loginService.checkUser("aaa","bbb");
+		User user = loginService.checkUser("aaa","bbb");
 
-		assertTrue(flag);
+		assertThat(user.getId(), is("aaa"));
+		assertThat(user.getPassword(), is("bbb"));
 	}
-	
 	
 }
