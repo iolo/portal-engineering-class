@@ -7,7 +7,13 @@
 	<insert id="createUser" parameterType="kr.ac.jejuuniv.model.User">
                 insert into user (id, password, name, information, imageURI)
                 values (#{id},#{password},#{name},#{information},#{profileImageUri})
-        </insert>
+     </insert>
+     
+     <update id="modifyUser" parameterType="kr.ac.jejuuniv.model.User">
+     			UPDATE  user 
+     			SET password = #{password}, name = #{name}, information = #{information},  imageURI = #{profileImageUri}
+     			WHERE id = #{id}
+     </update>     
 
 	
 	
