@@ -27,21 +27,10 @@ public class LoginTest {
 
 	
 	@Test
-	public void LoginSuccess(){
+	public void loginSuccess(){
 		when(userRepository.checkUser("aaa", "bbb")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
-				List<User> users = new ArrayList<User>();
-				users.add(new User("aaa", "bbb"));
-				users.add(new User("bbb", "ccc"));
-				
-				User user = null;
-				for(int i=0; i<users.size(); i++){
-					if(users.get(i).getId().equals("aaa")){
-						user = users.get(i);
-					}
-				}
-
-				return user;
+				return serchUser("aaa");
 			}
 		});
 		
@@ -53,51 +42,46 @@ public class LoginTest {
 	}
 	
 	@Test(expected=PasswordInconsistencyException.class)
-	public void LoginPasswordFail(){
-		when(userRepository.checkUser("aaa", "bbb")).thenAnswer(new Answer<User>() {
+	public void loginPasswordFail(){
+		when(userRepository.checkUser("aaa", "abc")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
-				List<User> users = new ArrayList<User>();
-				users.add(new User("aaa","aaa"));
-				users.add(new User("bbb", "bbb"));
-				
-				User user = null;
-				for(int i=0; i<users.size(); i++){
-					if(users.get(i).getId().equals("aaa")){
-						user = users.get(i);
-					}
-				}
-
-				return user;
+				return serchUser("aaa");
 			}
 		});
 		
 		LoginService loginService = new LoginServiceImpl(userRepository);
-		User user = loginService.checkUser("aaa", "bbb");
+		User user = loginService.checkUser("aaa", "abc");
 		
 	}
 	
 	@Test(expected=IdNotFoundException.class)
-	public void LoginIdFail(){
-		when(userRepository.checkUser("aaa", "bbb")).thenAnswer(new Answer<User>() {
+	public void loginIdFail(){
+		when(userRepository.checkUser("abc", "bbb")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
-				List<User> users = new ArrayList<User>();
-				users.add(new User("abc", "aaa"));
-				users.add(new User("bbb", "bbb"));
-				
-				User user = null;
-				for(int i=0; i<users.size(); i++){
-					if(users.get(i).getId().equals("aaa")){
-						user = users.get(i);
-					}
-				}
-				
-				return user;
+				return serchUser("abc");
 			}
-			
 		});
 		
 		LoginService loginService = new LoginServiceImpl(userRepository);
-		User user = loginService.checkUser("aaa", "bbb");
+		User user = loginService.checkUser("abc", "bbb");
+	}
+
+	/**
+	 * @param userId
+	 * @return
+	 */
+	public User serchUser(String userId) {
+		List<User> users = new ArrayList<User>();
+		users.add(new User("aaa", "bbb"));
+		users.add(new User("bbb", "ccc"));
+		
+		User user = null;
+		for(int i=0; i<users.size(); i++){
+			if(users.get(i).getId().equals(userId)){
+				user = users.get(i);
+			}
+		}
+		return user;
 	}
 	
 }
