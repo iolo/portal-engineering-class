@@ -5,7 +5,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>메인화면</title>
+	<!-- 
 	<link href="/user/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
+	-->
 </head>
 <body>
 	<div id="Header">
@@ -13,23 +15,21 @@
 		<!--  <img src="/mainImg" />	-->
 	</div>
 	<div id="LoginContent">
-		<form action="login" method="post">
-			<fieldset>
-				<legend>Login</legend>
-				<p>
-					<label>ID</label>
-					<input type="text" name="id" />
-				</p>
-				<p>
-					<label>Password</label>
-					<input type="password" name="password" />
-				</p>
-				<p>
-					<input type="submit" value="로그인" />
-					<a href="/join"><input type="button" value="회원가입" /></a>
-				</p>
-			</fieldset>
-		</form>
+		<fieldset>
+			<legend>Login</legend>
+			<p>
+				<label>ID</label>
+				<input type="text" name="id" />
+			</p>
+			<p>
+				<label>Password</label>
+				<input type="password" name="password" />
+			</p>
+			<p>
+				<a href="/login"><input type="button" value="로그인"></a>
+				<a href="/join"><input type="button" value="회원가입" /></a>
+			</p>
+		</fieldset>
 	</div>
 </body>
 </html>

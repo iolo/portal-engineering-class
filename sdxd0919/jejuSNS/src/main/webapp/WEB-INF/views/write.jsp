@@ -11,14 +11,14 @@
 </head>
 <body>
 	<div id="WriteContent">
-		<form action="msgSave" method="post">
+		<form action="messageSave" method="post">
 			<legend>요즘 어떠신가요?</legend>
 			<p>
 				<input type="text" name="content" />
 			</p>
 			<p>
 				<input type="submit" value="등록" />
-				<a href="/list"><input type="button" value="취소"></a> 				
+				<a href="/personalSNS"><input type="button" value="취소"></a> 				
 			</p>
 		</form>
 	</div>
