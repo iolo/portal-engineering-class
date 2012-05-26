@@ -2,11 +2,18 @@ package kr.ac.jejuuniv.service;
 
 import java.io.File;
 
+import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.repository.UserMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserServiceImplement implements UserService {
+	
+	@Autowired
+	UserMapper userMapper;
 
 	@Override
 	public void createUser(String id, String password, String name,
@@ -21,6 +28,10 @@ public class UserServiceImplement implements UserService {
 			    e.printStackTrace();
 			}
 			// DB에 넣을부분(id, password, name, information, 파일 이름
+			User user = new User(id, password, name, information, fileURI);
+			
+			System.out.println(user.getProfileImageUri());
+			userMapper.createUser(user);
 			
 		}
 

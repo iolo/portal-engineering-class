@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.repository.UserMapper">
+
+	<insert id="createUser" parameterType="kr.ac.jejuuniv.model.User">
+                insert into user (id, password, name, information, imageURI)
+                values (#{id},#{password},#{name},#{information},#{profileImageUri})
+        </insert>
+
+	
+	
+	
+</mapper>

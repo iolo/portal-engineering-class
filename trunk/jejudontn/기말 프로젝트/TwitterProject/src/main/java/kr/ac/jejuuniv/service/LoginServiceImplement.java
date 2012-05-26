@@ -1,5 +1,6 @@
 package kr.ac.jejuuniv.service;
 
+import kr.ac.jejuuniv.model.LoginModel;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.LoginMapper;
 
@@ -15,7 +16,9 @@ public class LoginServiceImplement implements LoginService {
 
 	@Override
 	public boolean checkIdAndPassword(String id, String password) {
-		user = loginmapper.findUserById(id);
+		
+		LoginModel loginModel = new LoginModel(id,password);
+		user = loginmapper.findUserById(loginModel);
 
 		return true;
 	}
