@@ -30,7 +30,6 @@ public class UserServiceImplement implements UserService {
 			// DB에 넣을부분(id, password, name, information, 파일 이름
 			User user = new User(id, password, name, information, fileURI);
 			
-			System.out.println(user.getProfileImageUri());
 			userMapper.createUser(user);
 			
 		}
@@ -51,4 +50,27 @@ public class UserServiceImplement implements UserService {
 			return false;
 		}
 	}
+
+	@Override
+	public void modifyUser(String id, String password, String name,
+			String information, MultipartFile profileImage) {
+		
+		String fileURI = "C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\ProfileImageFolder\\" +  System.currentTimeMillis()+profileImage.getOriginalFilename() ; 
+		if (validationImageExt(profileImage.getOriginalFilename())) {
+			File f = new File(fileURI);                // File : java.io.file
+			try {
+				profileImage.transferTo(f);                // transferTo() 메소드를 사용하면 지정한 경로에 저장이 완료
+			} catch (Exception e) {
+			    e.printStackTrace();
+			}
+			// DB에 넣을부분(id, password, name, information, 파일 이름
+			User user = new User(id, password, name, information, fileURI);
+			System.out.println(information);
+			userMapper.modifyUser(user);
+			
+		}
+		
+	}
+
+	
 }

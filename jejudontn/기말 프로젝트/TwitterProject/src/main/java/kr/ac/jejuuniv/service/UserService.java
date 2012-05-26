@@ -7,4 +7,7 @@ public interface UserService {
 	void createUser(String id, String password, String name,
 			String information, MultipartFile profileImage);
 
+	void modifyUser(String id, String password, String name,
+			String information, MultipartFile profileImage);
+
 }

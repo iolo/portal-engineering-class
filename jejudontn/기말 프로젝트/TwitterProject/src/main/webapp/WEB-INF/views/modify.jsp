@@ -13,13 +13,12 @@
 		프로필 수정
 	</div>
 	<div>
-		<form:form modelAttribute="user" action="modify" method="post">
+		<form:form modelAttribute="user" action="modify" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>사용자 수정</legend>
 				<p>
 					<label>아이디</label>
-					<form:input path="id"/>
-					<label> </label>
+					<label>${user.id}</label>
 				</p>
 				<p>
 					<label>암호</label>
@@ -33,13 +32,12 @@
 				</p>
 				<p>
 					<label>설명</label>
-					<form:input path="infromation"/>
+					<form:input path="information"/>
 					<form:errors path="information" />
 				</p>
 				<p>
 					<label>프로필 이미지</label>
-					<form:input path="profilImage"/>
-					<form:errors path="profilImage" />
+					<input type="file" name="profileImage" />
 				</p>
 				<p>
 					<input type="submit" value="수정" />

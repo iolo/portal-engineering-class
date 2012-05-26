@@ -9,4 +9,6 @@ public interface UserMapper {
 
 	void createUser(User user);
 
+	void modifyUser(User user);
+
 }
