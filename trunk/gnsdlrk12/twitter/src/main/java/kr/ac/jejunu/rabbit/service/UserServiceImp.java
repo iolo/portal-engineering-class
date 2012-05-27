@@ -5,43 +5,63 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.ac.jejunu.rabbit.mapper.UserMapper;
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
-import kr.ac.jejunu.rabbit.repository.UserRepository;
 
 @Service
 public class UserServiceImp implements UserService{
 
 	@Autowired
-	UserRepository userRepository;
+	UserMapper usermapper;
 	
 	@Override
-	public void insert(User user) {
-		if (user.getUserid() == null)
-			userRepository.insert(user);
+	public void UserInsert(User user) {
+		if (UserGet(user.getUserid()) == null)
+			usermapper.UserInsert(user);
 		else
-			userRepository.update(user);
+			usermapper.UserUpdate(user);
 	}
 
 	@Override
-	public void delete(String userid) {
-		userRepository.delete(userid);
+	public void UserDelete(String userid) {
+		usermapper.UserDelete(userid);
 	}
 
 	@Override
-	public User get(String userid) {
-		return userRepository.findById(userid);
+	public User UserGet(String userid) {
+		return usermapper.findById(userid);
 	}
 
 	@Override
 	public List<User> UserList() {
-		List<User> users = userRepository.findUserAll();
+		List<User> users = usermapper.findUserAll();
 		return users;
 	}
 
 	@Override
-	public List<Post> GetUserPost(String loginid) {
-		List<Post> posts = userRepository.findPostAll(loginid);
+	public List<Post> GetUserPost(String userid) {
+		List<Post> posts = usermapper.findPostAll(userid);
+		return posts;
+	}
+
+	@Override
+	public void PostInsert(String userid, String content) {
+		usermapper.PostInsert(userid, content);
+		
+	}
+
+	@Override
+	public List<Post> Login(String userid, String password) {
+		List<Post> posts = null;
+		System.out.println(usermapper.Check(userid, password));
+		if(usermapper.Check(userid, password) != 0){
+			posts = GetUserPost(userid);
+			
+		}
+		else{
+			System.out.println(usermapper.Check(userid, password));
+		}
 		return posts;
 	}
 

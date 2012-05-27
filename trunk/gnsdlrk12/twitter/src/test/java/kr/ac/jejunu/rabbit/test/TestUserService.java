@@ -1,6 +1,15 @@
 package kr.ac.jejunu.rabbit.test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.activation.DataSource;
 
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
@@ -20,13 +29,14 @@ public class TestUserService {
 	UserService userService;
 	
 	@Test
-	public void UserInsert(){	//성공 테스트
+	public void UserInsert(){	//User 등록 성공 테스트
 		User user = new User();
 		user.setUserid("white");
 		user.setName("rabbit");
 		user.setPassword("1234");
 		
-		userService.insert(user);
+		userService.UserInsert(user);
+		assertThat(userService.UserGet("white").getUserid().isEmpty(), is(false));
 	}
 	
 	@Test
@@ -36,17 +46,17 @@ public class TestUserService {
 		user.setName("cat");
 		user.setPassword("5678");
 		
-		userService.insert(user);
+		userService.UserInsert(user);
 	}
 	
 	@Test
-	public void UserUpdate(){	//성공 테스트
+	public void UserUpdate(){	//Userinfo 수정 성공 테스트
 		User user = new User();
 		user.setUserid("white");
 		user.setName("bird");
 		user.setPassword("aaaa");
 		
-		userService.insert(user);
+		userService.UserInsert(user);
 	}
 	
 	@Test
@@ -55,17 +65,17 @@ public class TestUserService {
 		user.setUserid("white");
 		user.setPassword("aaaa");
 		
-		userService.insert(user);
+		userService.UserInsert(user);
 	}
 	
 	@Test
-	public void UserDelete(){	//성공 테스트
+	public void UserDelete(){	//User 삭제 성공 테스트
 		String DeleteUserId = "white";
-		userService.delete(DeleteUserId);
+		userService.UserDelete(DeleteUserId);
 	}
 	
 	@Test
-	public void TestList(){	//성공 테스트
+	public void TestList(){	//UserList 성공 테스트
 		List<User> users = userService.UserList();
 		printUsers(users);
 	}
@@ -79,10 +89,11 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void Login(){
-		String loginid = "white";
+	public void Login(){	//Login 성공테스트
+		String userid = "snow";
+		String password = "5678";
 		
-		List<Post> posts = userService.GetUserPost(loginid);
+		List<Post> posts = userService.Login(userid, password);
 		printPosts(posts);
 	}
 	
@@ -94,4 +105,11 @@ public class TestUserService {
 		System.out.println("------------------------------------------");
 	}
 	
+	@Test
+	public void Postinsert(){	//post 등록 성공 테스트
+		String userid = "snow";
+		String content = "test";
+		
+		userService.PostInsert(userid, content);
+	}
 }
