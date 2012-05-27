@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 import kr.ac.jejunu.rabbit.repository.UserRepository;
 
@@ -33,9 +34,15 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public List<User> List() {
-		List<User> users = userRepository.findAll();
+	public List<User> UserList() {
+		List<User> users = userRepository.findUserAll();
 		return users;
+	}
+
+	@Override
+	public List<Post> GetUserPost(String loginid) {
+		List<Post> posts = userRepository.findPostAll(loginid);
+		return posts;
 	}
 
 

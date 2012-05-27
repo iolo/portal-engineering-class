@@ -2,6 +2,7 @@ package kr.ac.jejunu.rabbit.test;
 
 import java.util.List;
 
+import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 import kr.ac.jejunu.rabbit.service.UserService;
 
@@ -65,7 +66,7 @@ public class TestUserService {
 	
 	@Test
 	public void TestList(){	//성공 테스트
-		List<User> users = userService.List();
+		List<User> users = userService.UserList();
 		printUsers(users);
 	}
 	
@@ -77,5 +78,20 @@ public class TestUserService {
 		System.out.println("------------------------------------------");
 	}
 	
+	@Test
+	public void Login(){
+		String loginid = "white";
+		
+		List<Post> posts = userService.GetUserPost(loginid);
+		printPosts(posts);
+	}
+	
+	public void printPosts(List<Post> posts) {
+		System.out.println("------------------------------------------");
+		for (Post post : posts) {
+			System.out.println("* " + post);
+		}
+		System.out.println("------------------------------------------");
+	}
 	
 }
