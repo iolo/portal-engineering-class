@@ -17,7 +17,7 @@ public class TestUserService {
 	UserService userService;
 	
 	@Test
-	public void insert(){ //성공 테스트
+	public void UserInsert(){ //성공 테스트
 		User user = new User();
 		user.setUserid("white");
 		user.setName("rabbit");
@@ -27,7 +27,7 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void failinsert(){	//기존에 있는 아이디를 입력할 경우 에러
+	public void FailUserInsert(){	//기존에 있는 아이디를 입력할 경우 에러
 		User user = new User();
 		user.setUserid("white");
 		user.setName("cat");
@@ -37,7 +37,7 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void update(){
+	public void UserUpdate(){ //성공 테스트
 		User user = new User();
 		user.setUserid("white");
 		user.setName("bird");
@@ -46,4 +46,18 @@ public class TestUserService {
 		userService.insert(user);
 	}
 	
+	@Test
+	public void FailUserUpdate(){	//name 값이 없을 경우 에러
+		User user = new User();
+		user.setUserid("white");
+		user.setPassword("aaaa");
+		
+		userService.insert(user);
+	}
+	
+	@Test
+	public void UserDelete(){
+		String DeleteUserId = "white";
+		userService.delete(DeleteUserId);
+	}
 }

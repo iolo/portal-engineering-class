@@ -6,9 +6,9 @@ public interface UserService {
 	
 	void insert(User user);
 	
-	void delete(String id);
+	void delete(String userid);
 	
-	User get(String id);
+	User get(String userid);
 	
 	<List>User List();
 }
