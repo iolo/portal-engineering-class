@@ -1,5 +1,7 @@
 package kr.ac.jejunu.rabbit.repository;
 
+import java.util.List;
+
 import kr.ac.jejunu.rabbit.model.User;
 
 import org.springframework.stereotype.Repository;
@@ -14,5 +16,7 @@ public interface UserRepository {
 	void delete(String userid);
 
 	User findById(String userid);
+	
+	List<User> findAll();
 	
 }

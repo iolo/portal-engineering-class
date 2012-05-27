@@ -1,5 +1,7 @@
 package kr.ac.jejunu.rabbit.test;
 
+import java.util.List;
+
 import kr.ac.jejunu.rabbit.model.User;
 import kr.ac.jejunu.rabbit.service.UserService;
 
@@ -17,7 +19,7 @@ public class TestUserService {
 	UserService userService;
 	
 	@Test
-	public void UserInsert(){ //성공 테스트
+	public void UserInsert(){	//성공 테스트
 		User user = new User();
 		user.setUserid("white");
 		user.setName("rabbit");
@@ -37,7 +39,7 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void UserUpdate(){ //성공 테스트
+	public void UserUpdate(){	//성공 테스트
 		User user = new User();
 		user.setUserid("white");
 		user.setName("bird");
@@ -56,8 +58,24 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void UserDelete(){
+	public void UserDelete(){	//성공 테스트
 		String DeleteUserId = "white";
 		userService.delete(DeleteUserId);
 	}
+	
+	@Test
+	public void TestList(){	//성공 테스트
+		List<User> users = userService.List();
+		printUsers(users);
+	}
+	
+	public void printUsers(List<User> users) {
+		System.out.println("------------------------------------------");
+		for (User user : users) {
+			System.out.println("* " + user);
+		}
+		System.out.println("------------------------------------------");
+	}
+	
+	
 }

@@ -1,6 +1,7 @@
 package kr.ac.jejunu.rabbit.model;
 
 public class User {
+	
 	private String userid;
 	private String name;
 	private String password;
@@ -22,5 +23,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "User [id=" + userid + ", name=" + name + ", password=" + password + "]";
+	}
+	
 }
