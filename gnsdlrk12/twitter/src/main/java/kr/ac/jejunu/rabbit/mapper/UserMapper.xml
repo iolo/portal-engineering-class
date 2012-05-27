@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejunu.rabbit.mapper.UserMapper">
+	<sql id="selectUser">userid, name, password</sql>
+	<sql id="selectPost">image, name, content, regdate</sql>
+	
+	<select id="findUserAll" resultType="kr.ac.jejunu.rabbit.model.User" >
+		select 
+		<include refid="selectUser"/>
+		from userinfo
+	</select>
+	
+	<select id="findPostAll" resultType="kr.ac.jejunu.rabbit.model.Post" >
+		select 
+		<include refid="selectPost"/>
+		from userinfo INNER JOIN userpost on (userinfo.`userid` = userpost.`userid`) where userinfo.userid = #{userid};
+	</select>
+	
+	<select id="findById" resultType="kr.ac.jejunu.rabbit.model.User">
+		select 
+		<include refid="selectUser"/>
+		from userinfo where userid = #{userid}
+	</select>
+	
+	<insert id="UserInsert" parameterType="kr.ac.jejunu.rabbit.model.User">
+		insert into userinfo(userid, name, password) values(#{userid}, #{name}, #{password})
+	</insert>
+	
+	<update id="UserUpdate" parameterType="kr.ac.jejunu.rabbit.model.User"> 
+		update userinfo set name=#{name}, password=#{password} where userid = #{userid}
+	</update>
+	
+	<delete id="UserDelete" parameterType="kr.ac.jejunu.rabbit.model.User">
+		delete from userinfo where userid = #{userid}
+	</delete>
+	
+	<insert id="PostInsert" parameterType="kr.ac.jejunu.rabbit.model.Post" >
+		insert into userpost(userid, content) values (#{userid}, #{content})
+	</insert>
+</mapper>

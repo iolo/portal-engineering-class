@@ -7,13 +7,17 @@ import kr.ac.jejunu.rabbit.model.User;
 
 public interface UserService {
 	
-	void insert(User user);
+	void UserInsert(User user);
 	
-	void delete(String userid);
+	void UserDelete(String userid);
 	
-	User get(String userid);
+	User UserGet(String userid);
 	
 	List<User> UserList();
 
 	List<Post> GetUserPost(String loginid);
+
+	void PostInsert(String userid, String content);
+
+	List<Post> Login(String userid, String password);
 }
