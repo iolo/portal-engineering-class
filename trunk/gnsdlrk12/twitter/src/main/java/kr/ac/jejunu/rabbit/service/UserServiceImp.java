@@ -1,5 +1,7 @@
 package kr.ac.jejunu.rabbit.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +33,9 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public <List> User List() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> List() {
+		List<User> users = userRepository.findAll();
+		return users;
 	}
 
 
