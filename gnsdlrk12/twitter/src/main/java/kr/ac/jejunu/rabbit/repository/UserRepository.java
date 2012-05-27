@@ -10,6 +10,8 @@ public interface UserRepository {
 	void insert(User user);
 	
 	void update(User user);
+	
+	void delete(String userid);
 
 	User findById(String userid);
 	

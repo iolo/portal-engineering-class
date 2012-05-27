@@ -20,7 +20,7 @@
 	<update id="update" parameterType="kr.ac.jejunu.rabbit.model.User"> 
 		update userinfo set name=#{name}, password=#{password} where userid = #{userid}
 	</update>
-	<!-- <delete id="delete">
-		delete from userinfo where id = #{id}
-	</delete> -->
+	<delete id="delete">
+		delete from userinfo where userid = #{userid}
+	</delete>
 </mapper>
