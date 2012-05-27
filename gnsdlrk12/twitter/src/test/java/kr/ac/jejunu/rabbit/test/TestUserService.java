@@ -3,7 +3,6 @@ package kr.ac.jejunu.rabbit.test;
 import kr.ac.jejunu.rabbit.model.User;
 import kr.ac.jejunu.rabbit.service.UserService;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +17,33 @@ public class TestUserService {
 	UserService userService;
 	
 	@Test
-	public void insert(){
+	public void insert(){ //성공 테스트
 		User user = new User();
 		user.setUserid("white");
 		user.setName("rabbit");
 		user.setPassword("1234");
 		
 		userService.insert(user);
-		Assert.assertTrue(true);
 	}
+	
+	@Test
+	public void failinsert(){	//기존에 있는 아이디를 입력할 경우 에러
+		User user = new User();
+		user.setUserid("white");
+		user.setName("cat");
+		user.setPassword("5678");
+		
+		userService.insert(user);
+	}
+	
+	@Test
+	public void update(){
+		User user = new User();
+		user.setUserid("white");
+		user.setName("bird");
+		user.setPassword("aaaa");
+		
+		userService.insert(user);
+	}
+	
 }

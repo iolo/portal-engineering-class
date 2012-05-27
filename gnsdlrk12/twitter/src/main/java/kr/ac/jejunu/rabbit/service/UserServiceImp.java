@@ -14,10 +14,10 @@ public class UserServiceImp implements UserService{
 	
 	@Override
 	public void insert(User user) {
-		if (get(user.getUserid()) == null)
+		if (user.getUserid() == null)
 			userRepository.insert(user);
-		//else
-			//userRepository.update(user);
+		else
+			userRepository.update(user);
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public User get(String userid) {
-		return null;//userRepository.findById(userid);
+		return userRepository.findById(userid);
 	}
 
 	@Override
@@ -36,5 +36,6 @@ public class UserServiceImp implements UserService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

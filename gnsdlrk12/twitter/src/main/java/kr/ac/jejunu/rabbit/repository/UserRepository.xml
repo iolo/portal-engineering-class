@@ -17,10 +17,10 @@
 	<insert id="insert" parameterType="kr.ac.jejunu.rabbit.model.User">
 		insert into userinfo(userid, name, password) values(#{userid}, #{name}, #{password})
 	</insert>
-	<!-- <update id="update" parameterType="User"> 
-		update userinfo set name=#{name}, password=#{password} where id = #{id}
+	<update id="update" parameterType="kr.ac.jejunu.rabbit.model.User"> 
+		update userinfo set name=#{name}, password=#{password} where userid = #{userid}
 	</update>
-	<delete id="delete">
+	<!-- <delete id="delete">
 		delete from userinfo where id = #{id}
 	</delete> -->
 </mapper>
