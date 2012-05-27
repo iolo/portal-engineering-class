@@ -2,6 +2,7 @@ package kr.ac.jejunu.rabbit.repository;
 
 import java.util.List;
 
+import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 
 import org.springframework.stereotype.Repository;
@@ -17,6 +18,8 @@ public interface UserRepository {
 
 	User findById(String userid);
 	
-	List<User> findAll();
+	List<User> findUserAll();
+	
+	List<Post> findPostAll(String userid);
 	
 }

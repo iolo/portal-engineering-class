@@ -2,6 +2,7 @@ package kr.ac.jejunu.rabbit.service;
 
 import java.util.List;
 
+import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 
 public interface UserService {
@@ -12,5 +13,7 @@ public interface UserService {
 	
 	User get(String userid);
 	
-	List<User> List();
+	List<User> UserList();
+
+	List<Post> GetUserPost(String loginid);
 }
