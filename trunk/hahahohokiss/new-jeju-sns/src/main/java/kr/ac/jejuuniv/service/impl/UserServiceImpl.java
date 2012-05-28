@@ -28,4 +28,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findPasswordByUserId(id);
 	}
 
+	public User add(User user) {
+		return	userRepository.insert(user);
+	}
+
 }

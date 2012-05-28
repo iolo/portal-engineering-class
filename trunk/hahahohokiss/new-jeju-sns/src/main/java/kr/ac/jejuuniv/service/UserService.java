@@ -8,4 +8,6 @@ public interface UserService {
 
 	String getPasswordByUserId(String id);
 
+	User add(User user);
+
 }

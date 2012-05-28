@@ -8,4 +8,6 @@ public interface UserRepository {
 
 	public String findPasswordByUserId(String id);
 
+	public User insert(User user);
+
 }
