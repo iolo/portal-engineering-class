@@ -44,4 +44,16 @@ public class PersonalSnsServiceTest {
 		assertThat(user.getName(), is("현소영"));
 	}
 	
+	@Test
+	public void tweet(){
+		PersonalSnsUserService personalSnsUserService = new PersonalSnsServiceImpl(personalSnsRepository);
+		
+		List<Tweet> tweets = personalSnsUserService.getTweet(1);
+		List<User> user = new ArrayList<User>();
+		
+		assertTrue(tweets.seize() > 0);
+		assertThat(tweets.get(1).getName(), is("현소영"));
+	
+	}
+	
 }
