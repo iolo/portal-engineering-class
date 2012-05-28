@@ -15,11 +15,11 @@
 	<div id="Header">
 		<p>
 			<label id="username"></label>
-			<a href="/twitter/join"><input type="button" value="프로필수정" /></a>
-			<a href="/twitter/write"><input type="button" value="글쓰기" /></a>
-			<a href="/twitter/userlist"><input type="button" value="Following" /></a>
-			<a href="/twitter/userlist"><input type="button" value="Follower" /></a>
-			<a href="/twitter/userlist"><input type="button" value="전체사용자" /></a>
+			<a href="/join"><input type="button" value="프로필수정" /></a>
+			<a href="/write"><input type="button" value="글쓰기" /></a>
+			<a href="/userlist"><input type="button" value="Following" /></a>
+			<a href="/userlist"><input type="button" value="Follower" /></a>
+			<a href="/userlist"><input type="button" value="전체사용자" /></a>
 		</p>
 	</div>
 		
@@ -30,14 +30,13 @@
 					<img src = "${profileImg}" />
 					<label>${name}</label>
 					<label>${description}</label>
-					<!-- 
 					<c:if memo="${ }">
-						<a href="/twitter/follow"><input type="button" value="Follow" /></a>
+						<a href="/follow"><input type="button" value="Follow" /></a>
 					</c:if>
 					<c:if memo="${}">
-						<a href="/twitter/unfollow"><input type="button" value="UnFollow" /></a>
+						<a href="/unfollow"><input type="button" value="UnFollow" /></a>
 					</c:if>
-					 -->
+					
 				</p>		
 			</div>
 		</c:forEach>
