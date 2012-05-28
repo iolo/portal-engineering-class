@@ -57,4 +57,37 @@ public class UserServiceTest {
 		});
 		userService.getUserByUserId("hahahohokiss");
 	}
+	
+	@Test
+	public void testAddUser() {
+		UserService userService = new UserServiceImpl(userRepositoy);
+		
+		User user = new User();
+		user.setId("hahahohokiss");
+		user.setPassword("password");
+		user.setName("한진수");
+		user.setExplanation("제주대학교");
+		user.setImageUrl("hahahohokiss-image-url");
+		
+		when(userRepositoy.insert(user)).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = (User)invocation.getArguments()[0];
+				return user;
+			}
+		});
+		when(userRepositoy.findUserByUserId("hahahohokiss")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId("hahahohokiss");
+				user.setPassword("password");
+				user.setName("한진수");
+				user.setExplanation("제주대학교");
+				user.setImageUrl("hahahohokiss-image-url");
+				return user;
+			}
+		});
+		userService.add(user);
+		user = userService.getUserByUserId("hahahohokiss");
+		assertThat(user.getId(), is("hahahohokiss"));
+	}
 }
