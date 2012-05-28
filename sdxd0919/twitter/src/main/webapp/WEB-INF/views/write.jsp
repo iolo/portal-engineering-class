@@ -18,7 +18,7 @@
 			</p>
 			<p>
 				<input type="submit" value="등록" />
-				<a href="/twitter/personalSNS"><input type="button" value="취소"></a> 				
+				<a href="/personalSNS"><input type="button" value="취소"></a> 				
 			</p>
 		</form>
 	</div>

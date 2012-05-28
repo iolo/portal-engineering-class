@@ -5,13 +5,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>메인화면</title>
-
+	<!-- 
 	<link href="/user/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
-
+	-->
 </head>
 <body>
 	<div id="Header">
-		제주 SNS 오신것을 환영합니다.
+		<label>제주 SNS 오신것을 환영합니다.</label>
 		<!--  <img src="/mainImg" />	-->
 	</div>
 	<div id="LoginContent">
@@ -26,7 +26,7 @@
 				<input type="password" name="password" />
 			</p>
 			<p>
-				<a href="/twitter/SNS"><input type="button" value="로그인"></a>
+				<a href="/twitter/personalSNS"><input type="button" value="로그인"></a>
 				<a href="/twitter/join"><input type="button" value="회원가입" /></a>
 			</p>
 		</fieldset>

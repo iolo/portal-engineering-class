@@ -17,18 +17,18 @@
 			<label id="${user.userName}"></label>
 			<a href="/twitter/join"><input type="button" value="프로필수정" /></a>
 			<a href="/twitter/write"><input type="button" value="글쓰기" /></a>
-			<a href="/twitter/SNS"><input type="button" value="메인페이지" /></a>
+			<a href="/twitter/sns"><input type="button" value="메인페이지" /></a>
 		</p>
 	</div>
 		
 	<div id="PersonalListContent">
-		<c:forEach items="${messageList}" var="message" >
-			<form action="messageDelete" method="post">
-				<input type="hidden" value="${message.num}">
+		<c:forEach items="${tweetList}" var="tweet" >
+			<form action="tweetDelete" method="post">
+				<input type="hidden" value="${tweet.num}">
  				<img src = "${user.profileImg}" />
-				<label>${message.msg}</label>
+				<label>${tweet.message}</label>
 				<input type="submit" value="삭제" />
-				<label>${message.date}</label>
+				<label>${tweet.date}</label>
 			</form>
 		</c:forEach>
 	</div>

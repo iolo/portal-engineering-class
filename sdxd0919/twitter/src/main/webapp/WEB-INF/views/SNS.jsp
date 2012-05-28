@@ -14,22 +14,22 @@
 <body>
 	<div id="Header">
 		<p>
-			<a href="/twitter/personalSNS"><label id="${user.userName}"></label></a>
-			<a href="/twitter/write"><input type="button" value="글쓰기" /></a>
-			<a href="/twitter/userlist"><input type="button" value="Following" /></a>
-			<a href="/twitter/userlist"><input type="button" value="Follower" /></a>
-			<a href="/twitter/userlist"><input type="button" value="전체사용자" /></a>
+			<a href="/personalSNS"><label id="${user.userName}"></label></a>
+			<a href="/write"><input type="button" value="글쓰기" /></a>
+			<a href="/userlist"><input type="button" value="Following" /></a>
+			<a href="/userlist"><input type="button" value="Follower" /></a>
+			<a href="/userlist"><input type="button" value="전체사용자" /></a>
 		</p>
 	</div>
 		
 	<div id="SNSListContent">
-		<c:forEach items="${tweetLists}" var="tweet" >
+		<c:forEach items="${messagelists}" var="message" >
 			<div>
 				<p>
-					<img src = "${tweet.userid.profileImg}" />
-					<label>${tweet.userid.name}</label>
-					<label>${tweet.content}</label>
-					<label>${tweet.date}</label>
+					<img src = "${message.userid.profileImg}" />
+					<label>${message.userid.name}</label>
+					<label>${message.content}</label>
+					<label>${message.date}</label>
 				</p>		
 			</div>
 		</c:forEach>
