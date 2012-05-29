@@ -1,9 +1,12 @@
 package kr.ac.jejuuniv.Service;
 
+import java.util.List;
+
+import kr.ac.jejuuniv.Model.Tweet;
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.PersonalSnsRepository;
 
-public class PersonalSnsServiceImpl implements PersonalSnsUserService {
+public class PersonalSnsServiceImpl implements PersonalSnsService {
 
 	private PersonalSnsRepository personalSnsRepository;
 
@@ -16,6 +19,10 @@ public class PersonalSnsServiceImpl implements PersonalSnsUserService {
 
 	public User getUser(int userNum) {
 		return personalSnsRepository.findByUserNum(userNum);
+	}
+
+	public List<Tweet> getTweet(int userNum) {
+		return personalSnsRepository.findTweetByUserNum(userNum);
 	}
 
 }
