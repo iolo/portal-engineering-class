@@ -4,9 +4,11 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.Model.Tweet;
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.PersonalSnsRepository;
 
@@ -26,7 +28,7 @@ public class PersonalSnsServiceTest {
 	//userNum 받아서, name과 user의 tweet 정보 가져오기.
 	@Test
 	public void action(){
-		PersonalSnsUserService personalSnsSerivce = new PersonalSnsServiceImpl(personalSnsRepository);
+		PersonalSnsService personalSnsSerivce = new PersonalSnsServiceImpl(personalSnsRepository);
 		
 		when(personalSnsRepository.findByUserNum(1)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
@@ -46,14 +48,29 @@ public class PersonalSnsServiceTest {
 	
 	@Test
 	public void tweet(){
-		PersonalSnsUserService personalSnsUserService = new PersonalSnsServiceImpl(personalSnsRepository);
+		PersonalSnsService personalSnsUserService = new PersonalSnsServiceImpl(personalSnsRepository);
+		
+		when(personalSnsRepository.findTweetByUserNum(1)).thenAnswer(new Answer<List<Tweet>>() {
+			public List<Tweet> answer(InvocationOnMock invocation)
+					throws Throwable {
+				List<Tweet> tweets = new ArrayList<Tweet>();
+				int userNum = Integer.parseInt(invocation.getArguments()[0].toString());
+				tweets.add(new Tweet(1, userNum, "1번임", new Date(20120528)));
+				tweets.add(new Tweet(2, userNum, "2번임",new Date(20120528)));
+				tweets.add(new Tweet(3, userNum, "3번임",new Date(2012529)));
+				
+				return tweets;
+			}
+		});
 		
 		List<Tweet> tweets = personalSnsUserService.getTweet(1);
-		List<User> user = new ArrayList<User>();
 		
-		assertTrue(tweets.seize() > 0);
-		assertThat(tweets.get(1).getName(), is("현소영"));
+		assertTrue(tweets.size() == 3);
+		assertThat(tweets.get(1).getUserNum(), is(1));
+		assertThat(tweets.get(0).getMessage(), is("1번임"));
 	
 	}
+	
+	
 	
 }
