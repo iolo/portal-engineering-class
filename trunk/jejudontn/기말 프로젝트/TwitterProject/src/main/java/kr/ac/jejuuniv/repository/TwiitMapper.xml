@@ -5,9 +5,20 @@
 <mapper namespace="kr.ac.jejuuniv.repository.TwiitMapper">
 
 	<insert id="createTwiit" parameterType="kr.ac.jejuuniv.model.Twitt">
-                insert into twiit (id, twiit, writeDate, twiitNumber)
+                insert into twitt (id, twiitText, writeDate, twiitNumber)
                 values (#{id},#{twiitt},#{writrDate},#{twiitID})
-        </insert>
+    </insert>
+    
+    <select id="getPersonalTwiit" parameterType="String"
+		resultType="kr.ac.jejuuniv.model.TwittList">
+		SELECT twiitText , twiitNumber, writeDate FROM twitt
+		WHERE id = #{id}
+	</select>
+	
+	<delete id="removeTwitt" parameterType="String">
+                delete from twitt where twiitNumber=#{twittId}
+        </delete>
+	
 
 	
 	

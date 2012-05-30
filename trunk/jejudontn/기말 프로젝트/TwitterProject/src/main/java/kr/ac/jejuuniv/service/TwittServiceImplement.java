@@ -2,17 +2,19 @@ package kr.ac.jejuuniv.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import kr.ac.jejuuniv.model.Twitt;
+import kr.ac.jejuuniv.model.TwittList;
 import kr.ac.jejuuniv.repository.TwiitMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WriteServiceImplement implements WriteService {
-	
+public class TwittServiceImplement implements TwittService {
+	List<TwittList> allTwiit;
 	@Autowired
 	TwiitMapper twiitMapper;
 	
@@ -31,6 +33,22 @@ public class WriteServiceImplement implements WriteService {
 		
 		twiitMapper.createTwiit(maketwiit);
 		
+		
+	}
+	
+	@Override
+	public List<TwittList> getPersonalTwiit(String id) {
+		
+		allTwiit = twiitMapper.getPersonalTwiit(id);
+		
+		
+		
+		return allTwiit;
+	}
+
+	@Override
+	public void removeTwitt(String twittId) {
+		twiitMapper.removeTwitt(twittId);
 		
 	}
 
