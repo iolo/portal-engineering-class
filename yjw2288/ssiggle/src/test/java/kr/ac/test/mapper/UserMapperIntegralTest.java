@@ -7,6 +7,7 @@ import java.util.List;
 
 import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.model.UserImpl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,22 +24,32 @@ public class UserMapperIntegralTest {
 	@Test
 	public void testSelect() {
 		User user = userMapper.selectUserById("sens");
+		assertNotNull(user);
 		System.out.println(user);
+	}
+
+	// @Test
+	// public void testSelectUsePassword() {
+	// IUser user = userMapper.selectUserById("sens", "sens");
+	// assertNotNull(user);
+	// System.out.println(user);
+	// }
+
+	@Test
+	public void testSelectFail() {
+		User user = userMapper.selectUserById("wwwEQWERQWR");
+		assertNull(user);
 	}
 
 	@Test
 	public void testAllUser() {
 		List<User> list = userMapper.selectAllUser();
 		assertThat(list.isEmpty(), is(false));
-
-		for (User u : list) {
-			System.out.println(u.getId() + " : " + u.getName());
-		}
 	}
 
-//	@Test
+	// @Test
 	public void testInsert() {
-		User user = new User();
+		User user = new UserImpl();
 		user.setId("test");
 		user.setPassword("test");
 		user.setIntroduce("eeee");
@@ -46,27 +57,27 @@ public class UserMapperIntegralTest {
 
 		userMapper.insertUser(user);
 	}
-	
-	@Test
+
+	// @Test
 	public void testUpdate() {
 		String name = "바뀐 이름";
 		String intro = "바뀐 설명";
-		
-		User user = new User();
+
+		User user = new UserImpl();
 		user.setId("test");
 		user.setPassword("test");
 		user.setIntroduce(intro);
 		user.setName(name);
-		
+
 		userMapper.updateUser(user);
-		
+
 		User newUser = userMapper.selectUserById("test");
-		
+
 		assertThat(newUser.getName(), is(name));
 		assertThat(newUser.getIntroduce(), is(intro));
 	}
-	
-	@Test
+
+	// @Test
 	public void testDelete() {
 		userMapper.deleteUser("test");
 		assertNull(userMapper.selectUserById("test"));

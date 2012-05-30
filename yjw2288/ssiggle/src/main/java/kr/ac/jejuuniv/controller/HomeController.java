@@ -2,8 +2,8 @@ package kr.ac.jejuuniv.controller;
 
 import java.util.List;
 
-import kr.ac.jejuuniv.model.Ssiggle;
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.model.Ssiggle;
 import kr.ac.jejuuniv.service.SsiggleService;
 import kr.ac.jejuuniv.service.UserService;
 

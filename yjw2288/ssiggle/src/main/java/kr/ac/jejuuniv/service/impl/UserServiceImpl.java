@@ -3,11 +3,11 @@ package kr.ac.jejuuniv.service.impl;
 import java.util.List;
 
 import kr.ac.jejuuniv.mapper.UserMapper;
+import kr.ac.jejuuniv.model.NotFoundUserException;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserService;
 import kr.ac.jejuuniv.service.user.FollowingUserNotFoundException;
 import kr.ac.jejuuniv.service.user.NotFollowingUserException;
-import kr.ac.jejuuniv.service.user.NotFoundUserException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

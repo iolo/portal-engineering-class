@@ -10,8 +10,9 @@ import java.util.List;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
-import kr.ac.jejuuniv.model.Ssiggle;
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.model.Ssiggle;
+import kr.ac.jejuuniv.model.UserImpl;
 import kr.ac.jejuuniv.service.SsiggleService;
 import kr.ac.jejuuniv.service.impl.SsiggleServiceImpl;
 import kr.ac.jejuuniv.service.ssiggle.NotExistSsiggleException;
@@ -40,7 +41,7 @@ public class SsiggleServiceTest {
 		ssiggleService = new SsiggleServiceImpl();
 		ssiggleService.setSsiggleMapper(ssiggleRepository);
 
-		user = new User();
+		user = new UserImpl();
 		user.setId("sens");
 		user.setIntroduce("테스트 입니다.");
 		user.setName("양진원");
@@ -115,7 +116,7 @@ public class SsiggleServiceTest {
 				ssiggle = (Ssiggle) invocation.getArguments()[0];
 				return null;
 			}
-		}).when(ssiggleRepository).insertSslggle(s);
+		}).when(ssiggleRepository).insertSsiggle(s);
 
 		when(ssiggleRepository.selectSsiggleById(1)).thenAnswer(
 				new Answer<Ssiggle>() {
@@ -214,10 +215,10 @@ public class SsiggleServiceTest {
 	// 팔로우 한 사람들의 Ssiggle 까지 다 읽어낼 수 있는지 테스트
 	@Test
 	public void followList() {
-		User userOne = new User();
+		UserImpl userOne = new UserImpl();
 		userOne.setId("one");
 
-		User userTwo = new User();
+		UserImpl userTwo = new UserImpl();
 		userTwo.setId("two");
 
 		userOne.getFollowingUser().add(userTwo);
