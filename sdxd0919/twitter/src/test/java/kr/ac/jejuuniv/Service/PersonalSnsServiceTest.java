@@ -71,6 +71,10 @@ public class PersonalSnsServiceTest {
 	
 	}
 	
-	
+	@Test
+	public void deleteTweet(){
+		PersonalSnsService personalSnsService = new PersonalSnsServiceImpl(personalSnsRepository);
+		personalSnsService.deleteTweet(1);
+	}
 	
 }

@@ -25,4 +25,8 @@ public class PersonalSnsServiceImpl implements PersonalSnsService {
 		return personalSnsRepository.findTweetByUserNum(userNum);
 	}
 
+	public void deleteTweet(int tweetSeq) {
+		personalSnsRepository.deleteTweet(tweetSeq);
+	}
+
 }
