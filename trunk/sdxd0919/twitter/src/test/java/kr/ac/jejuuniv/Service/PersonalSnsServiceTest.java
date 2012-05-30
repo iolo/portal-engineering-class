@@ -74,7 +74,7 @@ public class PersonalSnsServiceTest {
 	
 	}
 	
-	//tweet 삭제.
+	//tweet 삭제
 	@Test
 	public void deleteTweet(){
 		PersonalSnsService personalSnsService = new PersonalSnsServiceImpl(tweetRepository);
