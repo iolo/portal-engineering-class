@@ -39,12 +39,12 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${UserList}" var="user" >
+			<c:forEach items="${allUsersList}"var="Allusers" >
 				<tr>
-					<td>${user.profilImage} </td>
-					<td>${user.name} </td>
-					<td>${user.information} </td>
-					<td><a href="remove?id=${user.id}">${followFlag}</a></td>
+					<td> ${Allusers.id}	</td>
+					<td>${Allusers.name} </td>
+					<td>${Allusers.information} </td>
+					<td><a href="changefollow?follow=${Allusers.follow}&followId=${Allusers.id}">${Allusers.follow}</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>	
