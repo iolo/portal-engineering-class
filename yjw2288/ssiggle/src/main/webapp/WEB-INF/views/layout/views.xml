@@ -1,0 +1,26 @@
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.2//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name="template" template="/WEB-INF/views/mainTemplate.jsp">
+	</definition>
+	<definition name="testPage" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/test.jsp" />
+	</definition>
+	<definition name="loginpage" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
+	</definition>
+	<definition name="loginfail" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/loginfail.jsp" />
+	</definition>
+	<definition name="mainsns" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/main.jsp" />
+	</definition>
+	<definition name="usermodifypage" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/usermodifypage.jsp" />
+	</definition>
+	<definition name="domainTest" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/domaintest.jsp" />
+	</definition>
+</tiles-definitions>	
