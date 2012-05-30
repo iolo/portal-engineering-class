@@ -1,117 +1,49 @@
 package kr.ac.jejuuniv.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import kr.ac.jejuuniv.mapper.UserMapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.transaction.annotation.Transactional;
 
-@Configurable
-public class User implements Serializable {
-	private static final long serialVersionUID = 1584661762891063902L;
+@Transactional
+public interface User extends Serializable {
 
-	@Autowired
-	private UserMapper userMapper;
+	@Transactional(readOnly = true)
+	User findUser(String id, String password);
 
-	private String id;
-	private String password;
-	private String name;
-	private String introduce;
-	private String image = "DefaultUserImage.jpg";
+	void setFollowerUser(Set<User> followerUser);
 
-	private Set<User> followingUser = new HashSet<>();
-	private Set<User> followerUser = new HashSet<>();
+	Set<User> getFallowerUser();
 
-	public String getId() {
-		return id;
-	}
+	void setFallowingUser(Set<User> followingUser);
 
-	public void setId(String id) {
-		this.id = id;
-	}
+	Set<User> getFollowingUser();
 
-	public String getPassword() {
-		return password;
-	}
+	void setImage(String image);
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	String getImage();
 
-	public String getName() {
-		return name;
-	}
+	void setIntroduce(String introduce);
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	String getIntroduce();
 
-	public String getIntroduce() {
-		return introduce;
-	}
+	void setName(String name);
 
-	public void setIntroduce(String introduce) {
-		this.introduce = introduce;
-	}
+	String getName();
 
-	public String getImage() {
-		return image;
-	}
+	void setPassword(String password);
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+	String getPassword();
 
-	public Set<User> getFollowingUser() {
-		return followingUser;
-	}
+	void setId(String id);
 
-	public void setFallowingUser(Set<User> followingUser) {
-		this.followingUser = followingUser;
-	}
+	String getId();
 
-	public Set<User> getFallowerUser() {
-		return followerUser;
-	}
+	public void setUserMapper(UserMapper userMapper);
 
-	public void setFollowerUser(Set<User> followerUser) {
-		this.followerUser = followerUser;
-	}
+	public UserMapper getUserMapper();
 
-	public User findUserById(String id) {
-		return userMapper.selectUserById(id);
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + "]";
-	}
+	void save();
 }

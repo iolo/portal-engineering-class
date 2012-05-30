@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.jejuuniv.mapper.UserMapper;
+import kr.ac.jejuuniv.model.NotFoundUserException;
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.model.UserImpl;
 import kr.ac.jejuuniv.service.UserService;
 import kr.ac.jejuuniv.service.impl.UserServiceImpl;
-import kr.ac.jejuuniv.service.user.NotFoundUserException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class UserServiceBasicTest {
 	// User find 성공 테스트
 	@Test
 	public void testFindUserSucess() {
-		User user = new User();
+		UserImpl user = new UserImpl();
 		user.setId("sens");
 
 		when(repository.selectUserById("sens")).thenReturn(user);
@@ -56,14 +57,14 @@ public class UserServiceBasicTest {
 	// 존재하지 않은 User를 save요청으로 넘긴 경우
 	@Test
 	public void testSaveUserForInsert() {
-		final List<User> userList = new ArrayList<>();
-		User user = new User();
+		final List<UserImpl> userList = new ArrayList<>();
+		User user = new UserImpl();
 		user.setId("sens");
 
 		doAnswer(new Answer<Void>() {
 			@Override
 			public Void answer(InvocationOnMock invocation) throws Throwable {
-				userList.add((User) invocation.getArguments()[0]);
+				userList.add((UserImpl) invocation.getArguments()[0]);
 				return null;
 			}
 		}).when(repository).insertUser(user);
@@ -78,11 +79,11 @@ public class UserServiceBasicTest {
 	// 존재하고 있는 User를 save하려고 하면 이전에 있던 정보를 갱신한다.
 	@Test
 	public void testSaveUSerForUpdate() {
-		final User user = new User();
+		final UserImpl user = new UserImpl();
 		user.setId("sens");
 		user.setName("양진원");
 
-		User newUser = new User();
+		User newUser = new UserImpl();
 		newUser.setId("sens");
 		newUser.setName("아무거나");
 
@@ -106,11 +107,11 @@ public class UserServiceBasicTest {
 	public void testUserList() {
 		List<User> value = new ArrayList<>();
 
-		User user1 = new User();
+		User user1 = new UserImpl();
 		user1.setId("abc");
-		User user2 = new User();
+		User user2 = new UserImpl();
 		user2.setId("def");
-		User user3 = new User();
+		User user3 = new UserImpl();
 		user3.setId("ghi");
 
 		value.add(user1);

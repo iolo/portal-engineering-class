@@ -6,6 +6,7 @@ import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.model.UserImpl;
 import kr.ac.jejuuniv.service.UserService;
 import kr.ac.jejuuniv.service.impl.UnFollowingUserNotFoundException;
 import kr.ac.jejuuniv.service.impl.UserServiceImpl;
@@ -27,38 +28,38 @@ public class UserServiceFollowingTest {
 	@Mock
 	private UserMapper repository;
 
-	private User userOne;
-	private User userTwo;
-	private User userThree;
+	private UserImpl userOne;
+	private UserImpl userTwo;
+	private UserImpl userThree;
 
 	@Before
 	public void beforeTest() {
 		userService = new UserServiceImpl();
 		userService.setMapper(repository);
 
-		userOne = new User();
-		userTwo = new User();
-		userThree = new User();
+		userOne = new UserImpl();
+		userTwo = new UserImpl();
+		userThree = new UserImpl();
 
 		userOne.setId("aaa");
 		userTwo.setId("bbb");
 		userThree.setId("ccc");
 
-		when(repository.selectUserById("aaa")).thenAnswer(new Answer<User>() {
+		when(repository.selectUserById("aaa")).thenAnswer(new Answer<UserImpl>() {
 			@Override
-			public User answer(InvocationOnMock invocation) throws Throwable {
+			public UserImpl answer(InvocationOnMock invocation) throws Throwable {
 				return userOne;
 			}
 		});
-		when(repository.selectUserById("bbb")).thenAnswer(new Answer<User>() {
+		when(repository.selectUserById("bbb")).thenAnswer(new Answer<UserImpl>() {
 			@Override
-			public User answer(InvocationOnMock invocation) throws Throwable {
+			public UserImpl answer(InvocationOnMock invocation) throws Throwable {
 				return userTwo;
 			}
 		});
-		when(repository.selectUserById("ccc")).thenAnswer(new Answer<User>() {
+		when(repository.selectUserById("ccc")).thenAnswer(new Answer<UserImpl>() {
 			@Override
-			public User answer(InvocationOnMock invocation) throws Throwable {
+			public UserImpl answer(InvocationOnMock invocation) throws Throwable {
 				return userThree;
 			}
 		});
@@ -83,8 +84,8 @@ public class UserServiceFollowingTest {
 	//팔로잉 실패 테스트, 존재하지 않은 유저를 팔로잉 하려고 함
 	@Test(expected = FollowingUserNotFoundException.class)
 	public void testFollowFail() {
-		User user = new User();
-		User targetUser = new User();
+		User user = new UserImpl();
+		UserImpl targetUser = new UserImpl();
 
 		user.setId("sens");
 		targetUser.setId("aaa");
@@ -95,8 +96,8 @@ public class UserServiceFollowingTest {
 	//팔로잉 성공 테스트
 	@Test
 	public void testFollowSuccses() {
-		User user = new User();
-		User targetUser = new User();
+		UserImpl user = new UserImpl();
+		UserImpl targetUser = new UserImpl();
 
 		user.setId("sens");
 		targetUser.setId("aaa");
@@ -124,9 +125,9 @@ public class UserServiceFollowingTest {
 	//테스트가 필요하면 작성하기로 함.
 	@Test(expected = UnFollowingUserNotFoundException.class)
 	public void testUnfollowFail() {
-		User userOne = new User();
+		User userOne = new UserImpl();
 		userOne.setId("eeee");
-		User userTwo = new User();
+		User userTwo = new UserImpl();
 		userOne.setId("dddd");
 
 		userService.unFollowingUser(userOne, userTwo);
@@ -159,7 +160,7 @@ public class UserServiceFollowingTest {
 	}
 
 	private void saveUser(InvocationOnMock invocation) {
-		User u = (User) invocation.getArguments()[0];
+		UserImpl u = (UserImpl) invocation.getArguments()[0];
 
 		switch (u.getId()) {
 		case "aaa":

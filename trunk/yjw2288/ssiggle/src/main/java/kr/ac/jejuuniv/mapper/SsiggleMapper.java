@@ -9,7 +9,7 @@ public interface SsiggleMapper {
 
 	void deleteSsiggleById(long id);
 
-	void insertSslggle(Ssiggle s);
+	void insertSsiggle(Ssiggle s);
 
 	void updateSsiggle(Ssiggle s);
 

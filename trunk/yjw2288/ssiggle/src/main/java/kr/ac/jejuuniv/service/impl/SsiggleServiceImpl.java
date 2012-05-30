@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
-import kr.ac.jejuuniv.model.Ssiggle;
+import kr.ac.jejuuniv.model.NotFoundUserException;
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.model.Ssiggle;
 import kr.ac.jejuuniv.service.SsiggleService;
 import kr.ac.jejuuniv.service.ssiggle.NotExistSsiggleException;
 import kr.ac.jejuuniv.service.ssiggle.NotRemoveSsiggleException;
-import kr.ac.jejuuniv.service.user.NotFoundUserException;
 
 @Service
 public class SsiggleServiceImpl implements SsiggleService {
@@ -59,7 +59,7 @@ public class SsiggleServiceImpl implements SsiggleService {
 	public void saveSsiggle(Ssiggle s) {
 		Ssiggle item = ssiggleMapper.selectSsiggleById(s.getId());
 		if (item == null) {
-			ssiggleMapper.insertSslggle(s);
+			ssiggleMapper.insertSsiggle(s);
 		} else {
 			ssiggleMapper.updateSsiggle(s);
 		}
