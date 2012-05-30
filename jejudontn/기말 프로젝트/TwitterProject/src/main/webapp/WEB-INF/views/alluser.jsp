@@ -41,7 +41,7 @@
 			<tbody>
 			<c:forEach items="${allUsersList}"var="Allusers" >
 				<tr>
-					<td> ${Allusers.id}	</td>
+					<td><img src ="/resources/ProfileImage/${Allusers.imageURI}"/></td>
 					<td>${Allusers.name} </td>
 					<td>${Allusers.information} </td>
 					<td><a href="changefollow?follow=${Allusers.follow}&followId=${Allusers.id}">${Allusers.follow}</a></td>

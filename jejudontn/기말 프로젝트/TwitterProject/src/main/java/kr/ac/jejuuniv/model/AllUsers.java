@@ -5,7 +5,7 @@ import org.apache.ibatis.type.Alias;
 @Alias("AllUsers")
 public class AllUsers {
 	
-	private String ImageURI ;
+	private String imageURI;
 	private String name;
 	private String information;
 	private String follow;
@@ -31,17 +31,18 @@ public class AllUsers {
 	public void setFollow(String follow) {
 		this.follow = follow;
 	}
-	public String getImageURI() {
-		return ImageURI;
-	}
-	public void setImageURI(String imageURI) {
-		ImageURI = imageURI;
-	}
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	public String getImageURI() {
+		return imageURI;
+	}
+	public void setImageURI(String imageURI) {
+		this.imageURI = imageURI;
+	}
+	
 }

@@ -35,12 +35,12 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${userList}" var="user" >
+			<c:forEach items="${twittListList}" var="twitt" >
 				<tr>
-					<td>${user.profilImage} </td>
-					<td>${user.twitt} </td>
-					<td><a href="remove?id=${user.id}">삭제</a></td>
-					<td>${user.date} </td>
+					<td><img src ="/resources/ProfileImage/${user.profileImageUri}"/> </td>
+					<td>${twitt.twiitText} </td>
+					<td><a href="removetwitt?twittId=${twitt.twiitNumber}">삭제</a></td>
+					<td>${twitt.writeDate} </td>
 				</tr>
 			</c:forEach>
 			</tbody>	

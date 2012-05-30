@@ -27,12 +27,9 @@ public class UserServiceImplement implements UserService {
 	public void createUser(String id, String password, String name,
 			String information, MultipartFile profileImage) {
 
-		String fileURI = "C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\ProfileImageFolder\\"
-				+ System.currentTimeMillis()
-				+ profileImage.getOriginalFilename();
-
+		String fileURI = System.currentTimeMillis() + profileImage.getOriginalFilename();
 		if (validationImageExt(profileImage.getOriginalFilename())) {
-			File f = new File(fileURI); // File : java.io.file
+			File f = new File("C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\src\\main\\webapp\\resources\\ProfileImage\\" + fileURI); // File : java.io.file
 			try {
 				profileImage.transferTo(f); // transferTo() 메소드를 사용하면 지정한 경로에
 											// 저장이 완료
@@ -67,11 +64,9 @@ public class UserServiceImplement implements UserService {
 	public void modifyUser(String id, String password, String name,
 			String information, MultipartFile profileImage) {
 
-		String fileURI = "C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\ProfileImageFolder\\"
-				+ System.currentTimeMillis()
-				+ profileImage.getOriginalFilename();
+		String fileURI = System.currentTimeMillis() + profileImage.getOriginalFilename();
 		if (validationImageExt(profileImage.getOriginalFilename())) {
-			File f = new File(fileURI); // File : java.io.file
+			File f = new File("C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\src\\main\\webapp\\resources\\ProfileImage\\" + fileURI); // File : java.io.file
 			try {
 				profileImage.transferTo(f); // transferTo() 메소드를 사용하면 지정한 경로에
 											// 저장이 완료
@@ -89,7 +84,6 @@ public class UserServiceImplement implements UserService {
 	public List<AllUsers> findAlluser(String id) {
 		allUsers = userMapper.findAlluser();
 		allFollows = userMapper.findAllFollow(id);
-
 		for (AllUsers alluser : allUsers) {
 			if (!allFollows.isEmpty()) {
 				for (AllFollow allFollower : allFollows) {
