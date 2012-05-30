@@ -1,32 +1,37 @@
 package kr.ac.jejuuniv.Service;
 
 import java.util.List;
-
 import kr.ac.jejuuniv.Model.Tweet;
 import kr.ac.jejuuniv.Model.User;
-import kr.ac.jejuuniv.Repository.PersonalSnsRepository;
+import kr.ac.jejuuniv.Repository.TweetRepository;
+import kr.ac.jejuuniv.Repository.UserRepository;
 
 public class PersonalSnsServiceImpl implements PersonalSnsService {
 
-	private PersonalSnsRepository personalSnsRepository;
+	private UserRepository userRepository;
+	private TweetRepository tweetRepository;
 
 	public PersonalSnsServiceImpl() {
 	}
 	
-	public PersonalSnsServiceImpl(PersonalSnsRepository personalSnsRepository) {
-		this.personalSnsRepository = personalSnsRepository;
+	public PersonalSnsServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	public PersonalSnsServiceImpl(TweetRepository tweetRepository) {
+		this.tweetRepository = tweetRepository;
 	}
 
 	public User getUser(int userNum) {
-		return personalSnsRepository.findByUserNum(userNum);
+		return userRepository.findByUserNum(userNum);
 	}
 
 	public List<Tweet> getTweet(int userNum) {
-		return personalSnsRepository.findTweetByUserNum(userNum);
+		return tweetRepository.findTweetByUserNum(userNum);
 	}
 
 	public void deleteTweet(int tweetSeq) {
-		personalSnsRepository.deleteTweet(tweetSeq);
+		tweetRepository.deleteTweet(tweetSeq);
 	}
 
 }

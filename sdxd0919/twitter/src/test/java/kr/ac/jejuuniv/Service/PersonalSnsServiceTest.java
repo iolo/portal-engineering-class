@@ -1,8 +1,9 @@
 package kr.ac.jejuuniv.Service;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -10,9 +11,9 @@ import java.util.List;
 
 import kr.ac.jejuuniv.Model.Tweet;
 import kr.ac.jejuuniv.Model.User;
-import kr.ac.jejuuniv.Repository.PersonalSnsRepository;
+import kr.ac.jejuuniv.Repository.TweetRepository;
+import kr.ac.jejuuniv.Repository.UserRepository;
 
-import org.aspectj.weaver.ArrayAnnotationValue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -23,14 +24,17 @@ import org.mockito.stubbing.Answer;
 @RunWith(MockitoJUnitRunner.class)
 public class PersonalSnsServiceTest {
 	@Mock
-	PersonalSnsRepository personalSnsRepository;
+	TweetRepository tweetRepository;
+
+	@Mock
+	UserRepository userRepository;
 	
 	//userNum 받아서, name과 user의 tweet 정보 가져오기.
 	@Test
-	public void action(){
-		PersonalSnsService personalSnsSerivce = new PersonalSnsServiceImpl(personalSnsRepository);
+	public void findUser(){
+		PersonalSnsService personalSnsSerivce = new PersonalSnsServiceImpl(userRepository);
 		
-		when(personalSnsRepository.findByUserNum(1)).thenAnswer(new Answer<User>() {
+		when(userRepository.findByUserNum(1)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				User user = new User();
 				user.setUserNum(Integer.parseInt(invocation.getArguments()[0].toString()));
@@ -39,7 +43,6 @@ public class PersonalSnsServiceTest {
 			}
 		});
 		
-		
 		User user = personalSnsSerivce.getUser(1);
 		
 		assertThat(user.getUserNum(), is(1));
@@ -47,10 +50,10 @@ public class PersonalSnsServiceTest {
 	}
 	
 	@Test
-	public void tweet(){
-		PersonalSnsService personalSnsUserService = new PersonalSnsServiceImpl(personalSnsRepository);
+	public void findAllTweet(){
+		PersonalSnsService personalSnsService = new PersonalSnsServiceImpl(tweetRepository);
 		
-		when(personalSnsRepository.findTweetByUserNum(1)).thenAnswer(new Answer<List<Tweet>>() {
+		when(tweetRepository.findTweetByUserNum(1)).thenAnswer(new Answer<List<Tweet>>() {
 			public List<Tweet> answer(InvocationOnMock invocation)
 					throws Throwable {
 				List<Tweet> tweets = new ArrayList<Tweet>();
@@ -63,7 +66,7 @@ public class PersonalSnsServiceTest {
 			}
 		});
 		
-		List<Tweet> tweets = personalSnsUserService.getTweet(1);
+		List<Tweet> tweets = personalSnsService.getTweet(1);
 		
 		assertTrue(tweets.size() == 3);
 		assertThat(tweets.get(1).getUserNum(), is(1));
@@ -71,10 +74,10 @@ public class PersonalSnsServiceTest {
 	
 	}
 	
+	//tweet 삭제.
 	@Test
 	public void deleteTweet(){
-		PersonalSnsService personalSnsService = new PersonalSnsServiceImpl(personalSnsRepository);
+		PersonalSnsService personalSnsService = new PersonalSnsServiceImpl(tweetRepository);
 		personalSnsService.deleteTweet(1);
 	}
-	
 }
