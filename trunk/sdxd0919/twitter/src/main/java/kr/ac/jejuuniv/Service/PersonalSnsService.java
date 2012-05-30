@@ -11,4 +11,6 @@ public interface PersonalSnsService {
 
 	List<Tweet> getTweet(int userNum);
 
+	void deleteTweet(int tweetSeq);
+
 }

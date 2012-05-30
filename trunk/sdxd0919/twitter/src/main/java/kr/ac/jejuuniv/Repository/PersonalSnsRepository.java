@@ -11,4 +11,6 @@ public interface PersonalSnsRepository {
 
 	List<Tweet> findTweetByUserNum(int userNum);
 
+	void deleteTweet(int tweetSeq);
+
 }
