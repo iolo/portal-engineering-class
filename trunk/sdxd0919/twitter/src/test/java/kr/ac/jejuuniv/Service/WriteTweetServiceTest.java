@@ -1,11 +1,20 @@
 package kr.ac.jejuuniv.Service;
 
-import java.text.SimpleDateFormat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import kr.ac.jejuuniv.Model.Tweet;
+import kr.ac.jejuuniv.Repository.TweetRepository;
 
 import org.junit.Test;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 public class WriteTweetServiceTest {
 	
