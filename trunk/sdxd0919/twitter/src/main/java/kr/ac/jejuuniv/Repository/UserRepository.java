@@ -8,4 +8,7 @@ public interface UserRepository {
 	User findByUserNum(int userNum);
 
 	void insert(Tweet tweet);
+
+	User getUserById(String id);
+
 }
