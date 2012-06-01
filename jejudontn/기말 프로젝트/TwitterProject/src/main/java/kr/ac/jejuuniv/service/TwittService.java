@@ -11,4 +11,6 @@ public interface TwittService {
 	List<TwittList> getPersonalTwiit(String id);
 
 	void removeTwitt(String twittId);
+
+	List<TwittList> getFollowingTwitt(String id);
 }
