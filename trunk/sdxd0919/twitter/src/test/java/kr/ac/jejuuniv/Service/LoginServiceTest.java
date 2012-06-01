@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
+import kr.ac.jejuuniv.Service.Exception.IdNotExistException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,7 @@ public class LoginServiceTest {
 	UserRepository userRepository;
 
 	@Test
-	public void action(){
+	public void action() throws IdNotExistException{
 		LoginService loginService = new LoginServiceImpl(userRepository);
 
 		when(userRepository.getUserById("hsy")).thenAnswer(new Answer<User>() {
@@ -35,5 +36,13 @@ public class LoginServiceTest {
 		
 		assertThat(user.getUserNum(), is(1));
 		assertThat(user.getName(), is("현소영"));
+	}
+	
+	@Test(expected=IdNotExistException.class)
+	public void fail(){
+		LoginService loginService = new LoginServiceImpl(userRepository);
+		when(userRepository.getUserById("")).thenThrow(new IdNotExistException());
+
+		User user = loginService.checkUser("", "");
 	}
 }
