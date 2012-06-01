@@ -50,6 +50,25 @@ public class UserServiceTest {
 	}
 	
 	@Test
+	public void updateUser(){
+		UserService userService = new UserServiceImpl(userRepository);
+		
+		when(userRepository.findByUserNum(1)).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return new User(1,"hsy","aaa","현소영");
+			}
+			
+		});
+		
+		User user = new User(1, "hsy", "abc", "현소영");
+		userService.update(user);
+		
+		assertNotNull(userRepository.findByUserNum(1));
+		verify(userRepository).update(user);
+		
+	}
+	
+	@Test
 	public void login(){
 		UserService userService = new UserServiceImpl(userRepository);
 

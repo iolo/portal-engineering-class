@@ -26,4 +26,8 @@ public class UserServiceImpl implements UserService {
 		userRepository.insert(user);
 	}
 
+	public void update(User user) {
+		userRepository.update(user);
+	}
+
 }
