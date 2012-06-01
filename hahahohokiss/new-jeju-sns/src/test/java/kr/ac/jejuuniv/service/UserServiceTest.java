@@ -1,7 +1,7 @@
 package kr.ac.jejuuniv.service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -20,6 +20,8 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
+import org.springframework.ui.ModelMap;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
@@ -204,13 +206,54 @@ public class UserServiceTest {
 		userService.setUserRepository(userRepository);
 		userService.setFollowRepository(followRepository);
 		
+		when(followRepository.getFollowingUserId("hahahohokiss")).thenAnswer(new Answer<List<String>>() {
+			public List<String> answer(InvocationOnMock invocation)	throws Throwable {
+				List<String> followingUserId = new ArrayList<String>();
+				followingUserId.add("followingUser_1");
+				followingUserId.add("followingUser_2");
+				return followingUserId;
+			}
+		});
+		when(userRepository.findUserByUserId("followingUser_1")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId((String)invocation.getArguments()[0]);
+				return user;
+			}
+		});
+		when(userRepository.findUserByUserId("followingUser_2")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId((String)invocation.getArguments()[0]);
+				return user;
+			}
+		});
+		
 		List<User> followingUser = userService.getFollowingUser("hahahohokiss");
+
 		assertThat(followingUser.get(0).getId(), is("followingUser_1"));
 		assertThat(followingUser.get(1).getId(), is("followingUser_2"));
 	}
 	
 	@Test
 	public void testGetAllUser() {
+		UserService userService = new UserServiceImpl();
+		userService.setUserRepository(userRepository);
 		
+		when(userRepository.findAllUser()).thenAnswer(new Answer<List<User>>() {
+			public List<User> answer(InvocationOnMock invocation) throws Throwable {
+				List<User> userList = new ArrayList<User>();
+				User user = new User();
+				user.setId("hahahohokiss");
+				userList.add(user);
+				return userList;
+			}
+			
+		});
+		
+		List<User> userList = userService.getAllUser();
+		
+		assertTrue(userList.size() > 0);
+		assertThat(userList.get(0).getId(), is("hahahohokiss"));
 	}
 }

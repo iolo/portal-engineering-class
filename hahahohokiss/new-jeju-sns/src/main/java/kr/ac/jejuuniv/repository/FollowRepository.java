@@ -11,4 +11,6 @@ public interface FollowRepository {
 	Follow addFollower(String followingId, String followerId);
 
 	List<String> getFollowerId(String id);
+
+	List<String> getFollowingUserId(String id);
 }

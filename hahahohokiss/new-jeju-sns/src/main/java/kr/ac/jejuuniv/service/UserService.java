@@ -28,4 +28,6 @@ public interface UserService {
 
 	List<String> getFollowingUserId(String string);
 
+	List<User> getAllUser();
+
 }

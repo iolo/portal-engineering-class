@@ -65,10 +65,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> getFollowingUser(String id) {
-		return null;
+		List<String> followingUserId = getFollowingUserId(id);
+		List<User> followingUser = new ArrayList<User>();
+		for(int i=0; i<followingUserId.size(); i++) {
+			followingUser.add(userRepository.findUserByUserId(followingUserId.get(i)));
+		}
+		return followingUser;
 	}
 
-	public List<String> getFollowingUserId(String string) {
-		return null;
+	public List<String> getFollowingUserId(String id) {
+		return followRepository.getFollowingUserId(id);
+	}
+
+	public List<User> getAllUser() {
+		return userRepository.findAllUser();
 	}
 }
