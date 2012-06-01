@@ -27,9 +27,12 @@ public class UserServiceImplement implements UserService {
 	public void createUser(String id, String password, String name,
 			String information, MultipartFile profileImage) {
 
-		String fileURI = System.currentTimeMillis() + profileImage.getOriginalFilename();
+		String fileURI = System.currentTimeMillis()
+				+ profileImage.getOriginalFilename();
 		if (validationImageExt(profileImage.getOriginalFilename())) {
-			File f = new File("C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\src\\main\\webapp\\resources\\ProfileImage\\" + fileURI); // File : java.io.file
+			File f = new File(
+					"C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\src\\main\\webapp\\resources\\ProfileImage\\"
+							+ fileURI); // File : java.io.file
 			try {
 				profileImage.transferTo(f); // transferTo() 메소드를 사용하면 지정한 경로에
 											// 저장이 완료
@@ -64,9 +67,12 @@ public class UserServiceImplement implements UserService {
 	public void modifyUser(String id, String password, String name,
 			String information, MultipartFile profileImage) {
 
-		String fileURI = System.currentTimeMillis() + profileImage.getOriginalFilename();
+		String fileURI = System.currentTimeMillis()
+				+ profileImage.getOriginalFilename();
 		if (validationImageExt(profileImage.getOriginalFilename())) {
-			File f = new File("C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\src\\main\\webapp\\resources\\ProfileImage\\" + fileURI); // File : java.io.file
+			File f = new File(
+					"C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\src\\main\\webapp\\resources\\ProfileImage\\"
+							+ fileURI); // File : java.io.file
 			try {
 				profileImage.transferTo(f); // transferTo() 메소드를 사용하면 지정한 경로에
 											// 저장이 완료
@@ -85,35 +91,35 @@ public class UserServiceImplement implements UserService {
 		allUsers = userMapper.findAlluser();
 		allFollows = userMapper.findAllFollow(id);
 		for (AllUsers alluser : allUsers) {
-			if (!allFollows.isEmpty()) {
+			alluser.setFollow("Follow");
+		}
+		if (!allFollows.isEmpty()) {
+			for (AllUsers alluser : allUsers) {
 				for (AllFollow allFollower : allFollows) {
 					if (alluser.getId().equals(allFollower.getFollowing())) {
 						alluser.setFollow("UnFollow");
-					} else {
-						alluser.setFollow("Follow");
 					}
 				}
-			} else {
-				alluser.setFollow("Follow");
 			}
 		}
 
 		return allUsers;
 	}
 
-
 	@Override
 	public void Followluser(String id, String follow, String followid) {
 		FollowIdTemp followTemp = new FollowIdTemp();
 		followTemp.setUserId(id);
 		followTemp.setFollowId(followid);
-		if(follow.equals("Follow")){
+		if (follow.equals("Follow")) {
 			userMapper.createFollow(followTemp);
 		} else {
 			userMapper.deleteFollow(followTemp);
-			
+
 		}
-		
+		allUsers = userMapper.findAlluser();
+		allFollows = userMapper.findAllFollow(id);
+
 	}
 
 }

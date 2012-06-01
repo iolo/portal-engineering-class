@@ -7,6 +7,9 @@ public class TwittList {
 	private String writeDate;
 	private String twiitNumber;
 	private String twiitText;
+	
+	
+	
 	public String getWriteDate() {
 		return writeDate;
 	}

@@ -24,4 +24,6 @@ public interface UserMapper {
 
 	void createFollow(FollowIdTemp followTemp);
 
+	List<AllUsers> getFollower(String id);
+
 }
