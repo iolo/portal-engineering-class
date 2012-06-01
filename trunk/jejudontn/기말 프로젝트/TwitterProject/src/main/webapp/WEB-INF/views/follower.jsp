@@ -14,17 +14,16 @@
 	</div>
 	<div>
 <p>
-		<input type="button" value="${user.name}"
-							onclick="location.href='/personal'"; />
-		<input type="button" value="글쓰기"
-		onclick="window.open('/write','win','width=400,height=480,toolbar=0,scrollbars=0,resizable=0')"; />
-		<input type="button" value="Following"
-							onclick="location.href='/following'"; />
-		<input type="button" value="Follower"
-							onclick="location.href='/follower'"; />
-		<input type="button" value="전체사용자"
-							onclick="location.href='/alluser'"; />
-	</p>
+			<input type="button" value="${user.name}"
+				onclick="location.href='/personal'" ; /> <input type="button"
+				value="글쓰기"
+				onclick="window.open('/write','win','width=400,height=380,toolbar=0,scrollbars=0,resizable=0')" ; />
+			<input type="button" value="Following"
+				onclick="location.href='/following'" ; /> <input type="button"
+				value="Follower" onclick="location.href='/follower'" ; /> <input
+				type="button" value="전체사용자" onclick="location.href='/alluser'" ; />
+			<input type="button" value="메인화면" onclick="location.href='/main'" ; />
+		</p>
 	</div>
 	
 	<div>

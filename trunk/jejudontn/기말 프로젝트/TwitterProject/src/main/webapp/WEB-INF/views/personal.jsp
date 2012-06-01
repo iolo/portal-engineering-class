@@ -20,6 +20,7 @@
 							onclick="location.href='/modify'"; />
 		<input type="button" value="글쓰기"
 		onclick="window.open('/write','win','width=350,height=250,toolbar=0,scrollbars=0,resizable=0')"; />
+		<input type="button" value="메인화면" onclick="location.href='/main'" ; />
 	</p>
 	</div>
 	

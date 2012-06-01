@@ -41,14 +41,19 @@ public class TwittServiceImplement implements TwittService {
 		
 		allTwiit = twiitMapper.getPersonalTwiit(id);
 		
-		
-		
 		return allTwiit;
 	}
 
 	@Override
 	public void removeTwitt(String twittId) {
 		twiitMapper.removeTwitt(twittId);
+		
+	}
+
+	@Override
+	public List<TwittList> getFollowingTwitt(String id) {
+		allTwiit = twiitMapper.getFollowingTwitt(id);
+		return allTwiit;
 		
 	}
 

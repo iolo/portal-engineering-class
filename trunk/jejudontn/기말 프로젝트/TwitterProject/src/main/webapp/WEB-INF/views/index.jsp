@@ -22,7 +22,7 @@
 			</p>
 			<p>
 				<label>Password</label>
-				<input type="text" name="password" />
+				<input type="password" name="password" />
 			</p>
 			<p>
 				<input type="submit" value="로그인" />

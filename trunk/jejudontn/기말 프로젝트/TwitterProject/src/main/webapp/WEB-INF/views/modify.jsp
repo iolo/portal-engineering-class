@@ -41,6 +41,7 @@
 				</p>
 				<p>
 					<input type="submit" value="수정" />
+					<input type="button" value="취소"  onclick="location.href='/personal'" ; />
 				</p>
 			</fieldset>
 		</form:form>

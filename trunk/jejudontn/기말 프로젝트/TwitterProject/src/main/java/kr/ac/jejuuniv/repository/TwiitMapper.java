@@ -16,4 +16,6 @@ public interface TwiitMapper {
 
 	void removeTwitt(String twittId);
 
+	List<TwittList> getFollowingTwitt(String id);
+
 }
