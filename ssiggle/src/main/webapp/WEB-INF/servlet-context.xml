@@ -17,6 +17,12 @@
 	<context:component-scan base-package="kr.ac.jejuuniv" />
 
 	<annotation-driven />
+	<interceptors>
+		<interceptor>
+			<mapping path="/service/**/*" />
+			<beans:bean class="kr.ac.jejuuniv.controller.interceptor.LoginInterceptor" />
+		</interceptor>
+	</interceptors>
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<context:annotation-config />

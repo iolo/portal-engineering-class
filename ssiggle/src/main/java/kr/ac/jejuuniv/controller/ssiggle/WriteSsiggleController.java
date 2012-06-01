@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/writeSsiggle")
+@RequestMapping("/service/writeSsiggle")
 public class WriteSsiggleController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String action(@RequestParam("userId") String userId, ModelMap model) {

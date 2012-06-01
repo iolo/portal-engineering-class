@@ -14,7 +14,7 @@
 <br />
 ${user.id } (${user.introduce })
 <a href="/ssiggle/modifyUser?id=${user.id}">프로필 수정</a>
-<a href='javascript:openNewWindow("/ssiggle/writeSsiggle?userId=${user.id}")'>글쓰기</a>
+<a href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
 <br />
 <table id="usertable" border='1'>
 	<tbody>
@@ -23,7 +23,7 @@ ${user.id } (${user.introduce })
 				<td><img src="/ssiggle/resources/userimage/${user.image}"
 					width="50" height="50"></td>
 				<td>${ssiggle.text}</td>
-				<td><a href="/ssiggle/deleteSsiggle?userId=${user.id}&ssiggleId=${ssiggle.id}">삭제</a></td>
+				<td><a href="/ssiggle/service/deleteSsiggle?userId=${user.id}&ssiggleId=${ssiggle.id}">삭제</a></td>
 				<td>${ssiggle.time}</td>
 			</tr>
 		</c:forEach>

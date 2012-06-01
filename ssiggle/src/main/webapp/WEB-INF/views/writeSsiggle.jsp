@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form modelAttribute="ssiggle" action="saveSsiggle"
+	<form:form modelAttribute="ssiggle" action="/ssiggle/service/saveSsiggle"
 		method="post">
 		<fieldset>
 			<legend>요즘 어떠신가요?</legend>

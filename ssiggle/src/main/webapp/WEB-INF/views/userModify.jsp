@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<form:form modelAttribute="user" action="saveUser" method="post"
+<form:form modelAttribute="user" action="/ssiggle/service/saveUser" method="post"
 	enctype="multipart/form-data">
 	<fieldset>
 		<legend>사용자 수정</legend>

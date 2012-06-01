@@ -7,11 +7,13 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 public class LoginInterceptor implements HandlerInterceptor {
+	
 	@Override
 	public void afterCompletion(HttpServletRequest request,
 			HttpServletResponse responce, Object controller, Exception exc)
 			throws Exception {
 		// TODO Auto-generated method stub
+		
 		
 	}
 

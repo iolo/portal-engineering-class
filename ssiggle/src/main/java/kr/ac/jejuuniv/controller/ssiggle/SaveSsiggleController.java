@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/saveSsiggle")
+@RequestMapping("/service/saveSsiggle")
 public class SaveSsiggleController {
 	@RequestMapping
 	public String action(@ModelAttribute Ssiggle ssiggle) {

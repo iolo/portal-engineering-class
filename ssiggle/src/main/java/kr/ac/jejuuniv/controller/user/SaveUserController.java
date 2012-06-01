@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/saveUser")
+@RequestMapping("/service/saveUser")
 public class SaveUserController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String action(

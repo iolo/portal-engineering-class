@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/deleteSsiggle")
+@RequestMapping("/service/deleteSsiggle")
 public class DeleteSsiggleController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String action(@RequestParam("userId") String userId,

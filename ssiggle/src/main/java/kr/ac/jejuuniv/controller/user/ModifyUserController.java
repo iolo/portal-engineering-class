@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/modifyUser")
+@RequestMapping("/service/modifyUser")
 public class ModifyUserController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String action(@RequestParam String id, ModelMap modelMap) {

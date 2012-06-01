@@ -7,7 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/allUser")
+@RequestMapping("/service/allUser")
 public class AllUserController {
 	@RequestMapping
 	public String action(ModelMap model) {

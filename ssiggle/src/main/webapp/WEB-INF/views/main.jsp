@@ -13,10 +13,10 @@
 
 <a href="/ssiggle/user/${user.id}">${user.name}</a>
 <a
-	href='javascript:openNewWindow("/ssiggle/writeSsiggle?userId=${user.id}")'>글쓰기</a>
-<a href="/ssiggle/user/${user.id}/following">following</a>
-<a href="/ssiggle/user/${user.id}/follower">follower</a>
-<a href="/ssiggle/allUser">전체사용자</a>
+	href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
+<a href="/ssiggle/service/user/${user.id}/following">following</a>
+<a href="/ssiggle/service/user/${user.id}/follower">follower</a>
+<a href="/ssiggle/service/allUser">전체사용자</a>
 <br />
 
 <a href="/ssiggle/logout">로그아웃</a>

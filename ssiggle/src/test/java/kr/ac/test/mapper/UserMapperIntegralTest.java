@@ -35,13 +35,13 @@ public class UserMapperIntegralTest {
 	// System.out.println(user);
 	// }
 
-//	@Test
+	// @Test
 	public void testSelectFail() {
 		UserTransaction user = userMapper.selectUserById("wwwEQWERQWR");
 		assertNull(user);
 	}
 
-//	@Test
+	// @Test
 	public void testAllUser() {
 		List<User> list = userMapper.selectAllUser();
 		assertThat(list.isEmpty(), is(false));
@@ -82,12 +82,12 @@ public class UserMapperIntegralTest {
 		userMapper.deleteUser("test");
 		assertNull(userMapper.selectUserById("test"));
 	}
-	
+
 	@Test
 	public void testFollowing() {
 		List<User> userList = userMapper.selectAllFollowingUser("sens");
-		
-		for(User user:userList) {
+
+		for (User user : userList) {
 			System.out.println(user);
 		}
 	}
