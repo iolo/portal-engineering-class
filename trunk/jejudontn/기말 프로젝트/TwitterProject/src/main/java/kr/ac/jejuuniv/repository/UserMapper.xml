@@ -5,36 +5,49 @@
 <mapper namespace="kr.ac.jejuuniv.repository.UserMapper">
 
 	<insert id="createUser" parameterType="kr.ac.jejuuniv.model.User">
-                insert into user (id, password, name, information, imageURI)
-                values (#{id},#{password},#{name},#{information},#{profileImageUri})
-     </insert>
-     
-     <update id="modifyUser" parameterType="kr.ac.jejuuniv.model.User">
-     			UPDATE  user 
-     			SET password = #{password}, name = #{name}, information = #{information},  imageURI = #{profileImageUri}
-     			WHERE id = #{id}
-     </update>
-     
-     <select id="findAlluser"  resultType="kr.ac.jejuuniv.model.AllUsers">
-                SELECT  id, ImageURI, NAME, information FROM USER
-     </select>
-     
-     <select id="findAllFollow"  parameterType ="String" resultType="kr.ac.jejuuniv.model.AllFollow">
-                SELECT following
-                FROM follow
-                Where id = #{id}
-     </select>          
+		insert into user (id, password, name, information, imageURI)
+		values (#{id},#{password},#{name},#{information},#{profileImageUri})
+	</insert>
+
+	<update id="modifyUser" parameterType="kr.ac.jejuuniv.model.User">
+		UPDATE user
+		SET password = #{password}, name = #{name}, information = #{information},
+		imageURI = #{profileImageUri}
+		WHERE id = #{id}
+	</update>
+
+	<select id="findAlluser" resultType="kr.ac.jejuuniv.model.AllUsers">
+		SELECT id, ImageURI, NAME, information FROM USER
+	</select>
+
+	<select id="findAllFollow" parameterType="String"
+		resultType="kr.ac.jejuuniv.model.AllFollow">
+		SELECT following
+		FROM follow
+		Where id = #{id}
+	</select>
 	<insert id="createFollow" parameterType="kr.ac.jejuuniv.model.FollowIdTemp">
-                insert into follow (id, following)
-                values (#{userId}, #{followId})
-     </insert>
-     
-      <delete id="deleteFollow" parameterType="kr.ac.jejuuniv.model.FollowIdTemp">
-                delete from follow 
-                where id=#{userId} AND  following = #{followId}
-        </delete>
-     
-	
-	
-	
+		insert into follow (id, following)
+		values (#{userId}, #{followId})
+	</insert>
+
+	<delete id="deleteFollow" parameterType="kr.ac.jejuuniv.model.FollowIdTemp">
+		delete from follow
+		where id=#{userId} AND following = #{followId}
+	</delete>
+
+	<select id="getFollower" parameterType="String"
+		resultType="kr.ac.jejuuniv.model.AllUsers">
+		SELECT USER.id, ImageURI, NAME, Information
+		FROM USER
+		LEFT OUTER JOIN
+		follow
+		ON
+		user.id = follow.following
+		WHERE follow.id = #{id};
+	</select>
+
+
+
+
 </mapper>

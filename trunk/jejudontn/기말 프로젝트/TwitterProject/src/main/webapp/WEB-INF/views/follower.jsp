@@ -29,7 +29,7 @@
 	
 	<div>
 		<table>
-			<caption>following</caption>
+			<caption>follower</caption>
 			<thead>
 				<tr>
 					<th>사용자</th>
@@ -39,12 +39,12 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${followingUserList}" var="user" >
+			<c:forEach items="${allUsersList}"var="Allusers" >
 				<tr>
-					<td>${user.profilImage} </td>
-					<td>${user.name} </td>
-					<td>${user.information} </td>
-					<td><a href="remove?id=${user.id}">Unfollow</a></td>
+					<td><img src ="/resources/ProfileImage/${Allusers.imageURI}"/></td>
+					<td>${Allusers.name} </td>
+					<td>${Allusers.information} </td>
+					<td><a href="follower/changefollow?follow=${Allusers.follow}&followId=${Allusers.id}">${Allusers.follow}</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>	
