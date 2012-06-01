@@ -88,7 +88,7 @@ public class UserServiceImplement implements UserService {
 
 	@Override
 	public List<AllUsers> findAlluser(String id) {
-		allUsers = userMapper.findAlluser();
+		allUsers = userMapper.findAlluser(id);
 		allFollows = userMapper.findAllFollow(id);
 		for (AllUsers alluser : allUsers) {
 			alluser.setFollow("Follow");
@@ -117,7 +117,7 @@ public class UserServiceImplement implements UserService {
 			userMapper.deleteFollow(followTemp);
 
 		}
-		allUsers = userMapper.findAlluser();
+		allUsers = userMapper.findAlluser(id);
 		allFollows = userMapper.findAllFollow(id);
 
 	}

@@ -24,9 +24,8 @@ public class AllUserController {
 	
 	@RequestMapping()
 	public List<AllUsers> findalluser(@ModelAttribute("user") User user){
-		 
-	
-		return userService.findAlluser(user.getId());
+		List<AllUsers> alluser = userService.findAlluser(user.getId()); 
+		return alluser;
 	}
 	
 	

@@ -8,4 +8,6 @@ public interface FollowService {
 
 	List<AllUsers> getFollower(String id);
 
+	List<AllUsers> getFollowing(String id);
+
 }
