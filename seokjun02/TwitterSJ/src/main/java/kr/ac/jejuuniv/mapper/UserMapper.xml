@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.mapper.UserMapper">
+
+	<!-- <select id="checkUser" parameterType="String" resultType="int">
+		Select
+		count(userid) From twituser Where userid=#{id} and password = #{password}
+	</select> -->
+	 <select id="checkUser" parameterType="String" resultType="kr.ac.jejuuniv.model.User">
+		Select
+		* From twituser Where userid=#{id}
+	</select>
+	<select id="findAll" resultType="kr.ac.jejuuniv.model.User">
+		SELECT * FROM twituser
+	</select>
+
+	<select id="findAllOrderByIdDesc" resultType="kr.ac.jejuuniv.model.User">
+		SELECT * FROM twituser
+		ORDER BY userid DESC
+	</select>
+
+	<insert id="userInsert" parameterType="kr.ac.jejuuniv.model.User">
+		insert into twituser (userid,
+		password, name, introduce, photo)
+		values (#{id}, #{password}, #{name},
+		#{introduce}, #{photo})
+	</insert>
+
+	<delete id="userDelete" parameterType="String">
+		delete from twituser where
+		userid=#{id}
+	</delete>
+
+</mapper>
