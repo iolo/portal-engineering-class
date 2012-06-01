@@ -129,15 +129,40 @@ public class UserServiceTest {
 		assertThat(followingUserID, is("followingUserId"));
 	}
 	
-//	@Test
+	@Test
 	public void testGetFollower() {
 		UserService userService = new UserServiceImpl();
 		userService.setFollowRepository(followRepository);
+		userService.setUserRepository(userRepository);
+		
+		when(userService.getFollowersId("hahahohokiss")).thenAnswer(new Answer<List<String>>() {
+			public List<String> answer(InvocationOnMock invocation) throws Throwable {
+				List<String> followersId = new ArrayList<String>();
+				followersId.add("follower_1");
+				followersId.add("follower_2");
+				return followersId;
+			}
+		});
+		
+		when(userRepository.findUserByUserId("follower_1")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId((String)invocation.getArguments()[0]);
+				return user;
+			}
+		});
+		when(userRepository.findUserByUserId("follower_2")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId((String)invocation.getArguments()[0]);
+				return user;
+			}
+		});
 		List<User> followers =  userService.getFollower("hahahohokiss");
-		//  followRepository 에서 follower_Id를 가져옴
-		//  가져온 아이디를 getUserByUserId(id)로 User를 가져옴
 		assertThat(followers.get(0).getId(), is("follower_1"));
+		assertThat(followers.get(1).getId(), is("follower_2"));
 	}
+	
 	
 	@Test
 	public void testGetFollowersId() {
@@ -152,6 +177,22 @@ public class UserServiceTest {
 				return followersId;
 			}
 		});
+		when(userRepository.findUserByUserId("follower_1")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId((String)invocation.getArguments()[0]);
+				return user;
+			}
+			
+		});
+		when(userRepository.findUserByUserId("follower_2")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId((String)invocation.getArguments()[0]);
+				return user;
+			}
+			
+		});
 		List<String> followersId = userService.getFollowersId("hahahohokiss");
 		assertThat(followersId.get(0), is("follower_1"));
 		assertThat(followersId.get(1), is("follower_2"));
@@ -159,7 +200,13 @@ public class UserServiceTest {
 	
 	@Test
 	public void testGetFollowingUser() {
+		UserService userService = new UserServiceImpl();
+		userService.setUserRepository(userRepository);
+		userService.setFollowRepository(followRepository);
 		
+		List<User> followingUser = userService.getFollowingUser("hahahohokiss");
+		assertThat(followingUser.get(0).getId(), is("followingUser_1"));
+		assertThat(followingUser.get(1).getId(), is("followingUser_2"));
 	}
 	
 	@Test
