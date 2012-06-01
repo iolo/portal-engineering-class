@@ -26,8 +26,8 @@
 				<input type="password" name="password" />
 			</p>
 			<p>
-				<a href="/twitter/personalSNS"><input type="button" value="로그인"></a>
-				<a href="/twitter/join"><input type="button" value="회원가입" /></a>
+				<a href="/login"><input type="button" value="로그인"></a>
+				<a href="/join"><input type="button" value="회원가입" /></a>
 			</p>
 		</fieldset>
 	</div>

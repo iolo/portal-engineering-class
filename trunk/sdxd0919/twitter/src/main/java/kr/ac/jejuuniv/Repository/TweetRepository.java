@@ -10,4 +10,6 @@ public interface TweetRepository {
 
 	void deleteTweet(int tweetSeq);
 
+	Tweet getTweetBySeq(int seq);
+
 }
