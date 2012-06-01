@@ -40,7 +40,7 @@
 				<tr>
 					<td><img src ="/resources/ProfileImage/${user.profileImageUri}"/> </td>
 					<td>${twitt.twiitText} </td>
-					<td><a href="removetwitt?twittId=${twitt.twiitNumber}">삭제</a></td>
+					<td><a href="personal/remove?twittId=${twitt.twiitNumber}">삭제</a></td>
 					<td>${twitt.writeDate} </td>
 				</tr>
 			</c:forEach>

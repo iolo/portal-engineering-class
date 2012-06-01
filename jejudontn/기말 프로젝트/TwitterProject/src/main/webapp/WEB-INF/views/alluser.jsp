@@ -43,7 +43,7 @@
 					<td><img src ="/resources/ProfileImage/${Allusers.imageURI}"/></td>
 					<td>${Allusers.name} </td>
 					<td>${Allusers.information} </td>
-					<td><a href="changefollow?follow=${Allusers.follow}&followId=${Allusers.id}">${Allusers.follow}</a></td>
+					<td><a href="alluser/changefollow?follow=${Allusers.follow}&followId=${Allusers.id}">${Allusers.follow}</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>	

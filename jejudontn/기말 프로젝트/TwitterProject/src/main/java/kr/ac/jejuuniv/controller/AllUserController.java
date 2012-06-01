@@ -28,6 +28,13 @@ public class AllUserController {
 		return alluser;
 	}
 	
+	@RequestMapping(value ="/changefollow",method = RequestMethod.GET)
+	public String followuser(@ModelAttribute("user") User user, @RequestParam("follow") String follow, @RequestParam("followId") String followid) {
+		userService.Followluser(user.getId() , follow, followid);
+		
+		return "redirect:/alluser";
+		
+	}
 	
 	
 

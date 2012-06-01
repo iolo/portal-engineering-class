@@ -35,7 +35,7 @@ public class ModifyController {
 		userService.modifyUser(id,password, name, information, profileImage);
 		
 		
-		return "redirect:/main";
+		return "redirect:/personal";
 	}
 
 }

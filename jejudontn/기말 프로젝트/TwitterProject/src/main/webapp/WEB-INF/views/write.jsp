@@ -12,7 +12,7 @@
 	글쓰기
 	</div>
 	<div>
-		<form action="savetwitt" method="post">
+		<form action="write/save" method="post">
 			<fieldset>
 				<legend>글쓰기</legend>
 				<p>
@@ -20,7 +20,7 @@
 					<textarea rows="10" cols="40" name="twitt"></textarea>
 				</p>
 				<p>
-					<input type="submit" value="저장"  onclick="window.close()"/>
+					<input type="submit" value="저장"   onclick="window.close()"/>
 				</p>
 			</fieldset>
 		</form>
