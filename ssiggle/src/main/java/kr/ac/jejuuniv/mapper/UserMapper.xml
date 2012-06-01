@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.mapper.UserMapper">
+	<!-- <select id="selectUserByIdAndPassword" parameterType="java.lang.String" 
+		resultType="kr.ac.jejuuniv.model.User"> select * from user where id=#{id} 
+		and password=password(#{password}) </select> -->
+
+	<select id="selectUserById" parameterType="java.lang.String"
+		resultType="kr.ac.jejuuniv.model.user.User">
+		select * from user where id=#{id}
+	</select>
+
+	<select id="selectAllUser" resultType="kr.ac.jejuuniv.model.user.User">
+		select * from user;
+	</select>
+
+	<update id="updateUser" parameterType="kr.ac.jejuuniv.model.user.User">
+		update user set password =
+		#{password}, name = #{name}, introduce = #{introduce}, image =
+		#{image} where id = #{id}
+	</update>
+
+	<insert id="insertUser" parameterType="kr.ac.jejuuniv.model.user.User">
+		insert user(id, password,
+		name, introduce, image) values (#{id}, #{password}, #{name},
+		#{introduce}, #{image})
+	</insert>
+
+	<delete id="deleteUser" parameterType="java.lang.String">
+		delete from user where
+		id=#{id}
+	</delete>
+
+	<!-- <select id="followUserList" parameterType="java.lang.String" resultType="kr.ac.jejuuniv.model.user.User"> 
+		select a.id as id, a.name as name, a.introduce as introduce, a.image as image 
+		from user a left outer join following b on a.id = b.following where b.user 
+		= #{id} </select> -->
+	<select id="followUserList" parameterType="java.lang.String"
+		resultType="kr.ac.jejuuniv.model.user.User">
+		select a.* from user a left
+		outer join following b on
+		a.id = b.following where b.user = #{id}
+	</select>
+</mapper>
