@@ -14,7 +14,7 @@
 		<img src="" />
 	</div>
 	<div>
-	<form action="login" method="post">
+	<form action="index/login" method="post">
 		<fieldset>
 			<p>
 				<label>ID</label>

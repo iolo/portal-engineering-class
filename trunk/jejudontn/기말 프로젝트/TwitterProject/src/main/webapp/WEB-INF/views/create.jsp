@@ -12,7 +12,7 @@
 		사용자 등록
 	</div>
 	<div>
-		<form action="register"  method="post"  enctype="multipart/form-data">
+		<form action="create/register"  method="post"  enctype="multipart/form-data">
 			<fieldset>
 				<legend>회원가입</legend>
 				<p>

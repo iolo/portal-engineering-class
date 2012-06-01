@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -19,13 +21,20 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class PersonalController {
 	
 	@Autowired
-	TwittService twiitService;
+	TwittService twittService;
 	
 	@RequestMapping()
 	public List<TwittList> personal(@ModelAttribute("user") User user){
 		
-		return twiitService.getPersonalTwiit(user.getId());
+		return twittService.getPersonalTwiit(user.getId());
 		
+	}
+	
+	@RequestMapping(value="/remove", method = RequestMethod.GET)
+	public String removeTwitt(@RequestParam("twittId") String twittId){
+		twittService.removeTwitt(twittId);
+		
+		return "redirect:/personal";
 	}
 
 }
