@@ -39,7 +39,6 @@ public class UserServiceTest {
 		assertThat(user.getName(), is("현소영"));
 	}
 	
-	
 	@Test
 	public void login(){
 		UserService userService = new UserServiceImpl(userRepository);
