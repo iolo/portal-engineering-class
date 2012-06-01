@@ -2,6 +2,7 @@ package kr.ac.jejuuniv.Service;
 
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
+import kr.ac.jejuuniv.Service.Exception.IdNotExistException;
 
 public class LoginServiceImpl implements LoginService {
 	
