@@ -5,14 +5,12 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.jejuuniv.Model.Tweet;
-import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.TweetRepository;
-import kr.ac.jejuuniv.Repository.UserRepository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,36 +20,13 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PersonalSnsServiceTest {
+public class TweetServiceTest {
 	@Mock
 	TweetRepository tweetRepository;
 
-	@Mock
-	UserRepository userRepository;
-	
-	//userNum 받아서, name과 user의 tweet 정보 가져오기.
-	@Test
-	public void findUser(){
-		PersonalSnsService personalSnsSerivce = new PersonalSnsServiceImpl(userRepository);
-		
-		when(userRepository.findByUserNum(1)).thenAnswer(new Answer<User>() {
-			public User answer(InvocationOnMock invocation) throws Throwable {
-				User user = new User();
-				user.setUserNum(Integer.parseInt(invocation.getArguments()[0].toString()));
-				user.setName("현소영");
-				return user;
-			}
-		});
-		
-		User user = personalSnsSerivce.getUser(1);
-		
-		assertThat(user.getUserNum(), is(1));
-		assertThat(user.getName(), is("현소영"));
-	}
-	
 	@Test
 	public void findAllTweet(){
-		PersonalSnsService personalSnsService = new PersonalSnsServiceImpl(tweetRepository);
+		TweetService tweetService = new TweetServiceImpl(tweetRepository);
 		
 		when(tweetRepository.findTweetByUserNum(1)).thenAnswer(new Answer<List<Tweet>>() {
 			public List<Tweet> answer(InvocationOnMock invocation)
@@ -66,7 +41,7 @@ public class PersonalSnsServiceTest {
 			}
 		});
 		
-		List<Tweet> tweets = personalSnsService.getTweet(1);
+		List<Tweet> tweets = tweetService.getAllTweet(1);
 		
 		assertTrue(tweets.size() == 3);
 		assertThat(tweets.get(1).getUserNum(), is(1));
@@ -74,11 +49,25 @@ public class PersonalSnsServiceTest {
 	
 	}
 	
+	@Test
+	public void write(){
+		TweetService tweetService = new TweetServiceImpl();
+		
+		Tweet tweet = new Tweet();
+		tweet.setSeq(2);
+		tweet.setUserNum(1);
+		tweet.setMessage("우와와-축제!");
+		tweet.setDate(new Date());
+		
+		tweetService.addTweet(tweet);
+	}
+	
 	//tweet 삭제
 	@Test
 	public void deleteTweet(){
-		PersonalSnsService personalSnsService = new PersonalSnsServiceImpl(tweetRepository);
-		personalSnsService.deleteTweet(1);
+		TweetService tweetService = new TweetServiceImpl(tweetRepository);
+		tweetService.deleteTweet(1);
 	}
+	
 	
 }
