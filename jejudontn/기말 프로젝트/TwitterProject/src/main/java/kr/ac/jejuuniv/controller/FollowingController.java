@@ -30,7 +30,7 @@ public class FollowingController {
 	@RequestMapping()
 	public List<AllUsers> follower(@ModelAttribute("user") User user){
 		
-		return followService.getFollower(user.getId());
+		return followService.getFollowing(user.getId());
 		
 	}
 	@RequestMapping("/changefollow")

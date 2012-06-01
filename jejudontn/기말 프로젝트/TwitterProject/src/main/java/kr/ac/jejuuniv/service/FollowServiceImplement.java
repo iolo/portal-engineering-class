@@ -37,4 +37,26 @@ public class FollowServiceImplement implements FollowService {
 		return allUsers;
 	}
 
+	@Override
+	public List<AllUsers> getFollowing(String id) {
+		List<AllUsers> allUsers = userMapper.getFollowing(id);
+		List<AllFollow> allFollows;
+		
+		allFollows = userMapper.findAllFollow(id);
+		for (AllUsers alluser : allUsers) {
+			alluser.setFollow("Follow");
+		}
+		if (!allFollows.isEmpty()) {
+			for (AllUsers alluser : allUsers) {
+				for (AllFollow allFollower : allFollows) {
+					if (alluser.getId().equals(allFollower.getFollowing())) {
+						alluser.setFollow("UnFollow");
+					}
+				}
+			}
+		}
+		
+		return allUsers;		
+	}
+
 }

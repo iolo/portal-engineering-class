@@ -16,13 +16,15 @@ public interface UserMapper {
 
 	void modifyUser(User user);
 
-	List<AllUsers> findAlluser();
+	List<AllUsers> findAlluser(String id);
 
 	List<AllFollow> findAllFollow(String id);
 
 	void deleteFollow(FollowIdTemp followTemp);
 
 	void createFollow(FollowIdTemp followTemp);
+
+	List<AllUsers> getFollowing(String id);
 
 	List<AllUsers> getFollower(String id);
 
