@@ -22,4 +22,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByUserNum(userNum);
 	}
 
+	public void addUser(User user) {
+		userRepository.insert(user);
+	}
+
 }

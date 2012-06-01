@@ -8,4 +8,7 @@ public interface UserService {
 
 	User getUser(int userNum);
 
+	void addUser(User user);
+
+
 }

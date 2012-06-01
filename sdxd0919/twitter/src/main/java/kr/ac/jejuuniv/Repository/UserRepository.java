@@ -11,4 +11,6 @@ public interface UserRepository {
 
 	User getUserById(String id);
 
+	void insert(User user);
+
 }

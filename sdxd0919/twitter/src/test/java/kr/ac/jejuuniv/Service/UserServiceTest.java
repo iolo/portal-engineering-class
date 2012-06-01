@@ -1,8 +1,8 @@
 package kr.ac.jejuuniv.Service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
 import kr.ac.jejuuniv.Service.Exception.IdNotExistException;
@@ -37,6 +37,16 @@ public class UserServiceTest {
 		
 		assertThat(user.getUserNum(), is(1));
 		assertThat(user.getName(), is("현소영"));
+	}
+	
+	@Test
+	public void addUser(){
+		UserService userService = new UserServiceImpl(userRepository);
+		
+		User user = new User(1,"hsy","aaa", "현소영");
+		userService.addUser(user);
+		
+		verify(userRepository).insert(user);
 	}
 	
 	@Test
