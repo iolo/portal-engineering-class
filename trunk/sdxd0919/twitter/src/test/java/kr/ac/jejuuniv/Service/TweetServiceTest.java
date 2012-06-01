@@ -1,9 +1,8 @@
 package kr.ac.jejuuniv.Service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import java.util.Date;
 import java.util.ArrayList;
@@ -51,7 +50,7 @@ public class TweetServiceTest {
 	
 	@Test
 	public void write(){
-		TweetService tweetService = new TweetServiceImpl();
+		TweetService tweetService = new TweetServiceImpl(tweetRepository);
 		
 		Tweet tweet = new Tweet();
 		tweet.setSeq(2);
@@ -60,14 +59,18 @@ public class TweetServiceTest {
 		tweet.setDate(new Date());
 		
 		tweetService.addTweet(tweet);
+
+		verify(tweetRepository).insert(tweet);
 	}
+
 	
-	//tweet 삭제
+	
 	@Test
 	public void deleteTweet(){
 		TweetService tweetService = new TweetServiceImpl(tweetRepository);
 		tweetService.deleteTweet(1);
+		
+		verify(tweetRepository).delete(1);
 	}
-	
 	
 }

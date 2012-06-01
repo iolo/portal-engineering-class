@@ -8,8 +8,10 @@ public interface TweetRepository {
 
 	List<Tweet> findTweetByUserNum(int userNum);
 
-	void deleteTweet(int tweetSeq);
-
 	Tweet getTweetBySeq(int seq);
+
+	void insert(Tweet tweet);
+
+	void delete(int seq);
 
 }
