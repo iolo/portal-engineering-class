@@ -64,7 +64,6 @@ public class TweetServiceTest {
 	}
 
 	
-	
 	@Test
 	public void deleteTweet(){
 		TweetService tweetService = new TweetServiceImpl(tweetRepository);
