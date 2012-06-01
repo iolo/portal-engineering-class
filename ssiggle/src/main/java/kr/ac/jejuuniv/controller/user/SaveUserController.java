@@ -27,10 +27,9 @@ public class SaveUserController {
 		if (file != null && !file.isEmpty()) {
 			user.saveImage(file);
 		}
-
 		user.save();
-		//TODO : 쿠키처리 삭제 안하고 그냥 add.이런 식으로 해도 괜찮을지....
+
 		response.addCookie(new Cookie(ControllerConstant.LOGIN_COOKIE_NAME, user.getId()));
-		return "redirect:/user/" + user.getId();
+		return "redirect:/service/user/" + user.getId();
 	}
 }

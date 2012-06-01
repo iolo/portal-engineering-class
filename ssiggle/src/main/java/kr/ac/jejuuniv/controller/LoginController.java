@@ -16,7 +16,7 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String loginPage(@RequestParam String id,
 			@RequestParam String password, HttpServletResponse response) {
-		if (!(new User().loginVaid(id, password))) {
+		if (!(new User().loginValid(id, password))) {
 			return "login";
 		}
 

@@ -7,7 +7,6 @@ import java.util.List;
 
 import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.user.User;
-import kr.ac.jejuuniv.model.user.UserTransaction;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +22,7 @@ public class UserMapperIntegralTest {
 
 	@Test
 	public void testSelect() {
-		UserTransaction user = userMapper.selectUserById("sens");
+		User user = userMapper.selectUserById("sens");
 		assertNotNull(user);
 		System.out.println(user);
 	}
@@ -37,7 +36,7 @@ public class UserMapperIntegralTest {
 
 	// @Test
 	public void testSelectFail() {
-		UserTransaction user = userMapper.selectUserById("wwwEQWERQWR");
+		User user = userMapper.selectUserById("wwwEQWERQWR");
 		assertNull(user);
 	}
 

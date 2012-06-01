@@ -11,7 +11,6 @@ import java.util.List;
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
 import kr.ac.jejuuniv.model.ssiggle.NotFoundSsiggleException;
 import kr.ac.jejuuniv.model.ssiggle.Ssiggle;
-import kr.ac.jejuuniv.model.ssiggle.SsiggleTransaction;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -83,7 +82,7 @@ public class SsiggleTest {
 
 				return null;
 			}
-		}).when(ssiggleMapper).insertSsiggle((SsiggleTransaction) anyObject());
+		}).when(ssiggleMapper).insertSsiggle((Ssiggle) anyObject());
 
 		Ssiggle ssiggle = new Ssiggle(ssiggleMapper);
 		ssiggle.setText("가나다라");

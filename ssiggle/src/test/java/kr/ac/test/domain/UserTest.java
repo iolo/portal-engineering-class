@@ -11,7 +11,6 @@ import java.util.List;
 import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.user.NotFoundUserException;
 import kr.ac.jejuuniv.model.user.User;
-import kr.ac.jejuuniv.model.user.UserTransaction;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,9 +33,9 @@ public class UserTest {
 		repoUser.setName("양진원");
 
 		when(userMapper.selectUserById("sens")).thenAnswer(
-				new Answer<UserTransaction>() {
+				new Answer<User>() {
 					@Override
-					public UserTransaction answer(InvocationOnMock invocation)
+					public User answer(InvocationOnMock invocation)
 							throws Throwable {
 						User user = new User(userMapper);
 
@@ -51,8 +50,8 @@ public class UserTest {
 
 	@Test
 	public void userLogin() {
-		assertThat(new User(userMapper).loginVaid("sens", "sens"), is(true));
-		assertThat(new User(userMapper).loginVaid("sens", "senseeee"),
+		assertThat(new User(userMapper).loginValid("sens", "sens"), is(true));
+		assertThat(new User(userMapper).loginValid("sens", "senseeee"),
 				is(false));
 	}
 

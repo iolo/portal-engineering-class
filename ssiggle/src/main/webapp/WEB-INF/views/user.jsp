@@ -13,7 +13,7 @@
 개인페이지
 <br />
 ${user.id } (${user.introduce })
-<a href="/ssiggle/modifyUser?id=${user.id}">프로필 수정</a>
+<a href="/ssiggle/service/modifyUser?id=${user.id}">프로필 수정</a>
 <a href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
 <br />
 <table id="usertable" border='1'>

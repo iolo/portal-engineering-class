@@ -7,7 +7,6 @@ import java.util.List;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
 import kr.ac.jejuuniv.model.ssiggle.Ssiggle;
-import kr.ac.jejuuniv.model.ssiggle.SsiggleTransaction;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,7 +54,7 @@ public class SsiggleMapperIntegralTest {
 		List<Ssiggle> list = ssiggleMapper
 				.selectSsiggleListByUserIdDescTime("sens");
 
-		for (SsiggleTransaction s : list) {
+		for (Ssiggle s : list) {
 			System.out.println(s);
 		}
 	}

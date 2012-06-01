@@ -11,7 +11,7 @@
 	}
 </script>
 
-<a href="/ssiggle/user/${user.id}">${user.name}</a>
+<a href="/ssiggle/service/user/${user.id}">${user.name}</a>
 <a
 	href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
 <a href="/ssiggle/service/user/${user.id}/following">following</a>

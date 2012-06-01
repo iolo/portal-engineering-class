@@ -1,5 +1,6 @@
 package kr.ac.jejuuniv.model.ssiggle;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 @Configurable
-public class Ssiggle implements SsiggleTransaction {
+public class Ssiggle implements Serializable {
 	private static final long serialVersionUID = -2443787233787448441L;
 
 	private long id;
@@ -59,7 +60,6 @@ public class Ssiggle implements SsiggleTransaction {
 		this.user = id;
 	}
 
-	@Override
 	public Ssiggle findSsiggleById(long id) {
 		Ssiggle ssiggle = ssiggleMapper.selectSsiggleById(id);
 		if (ssiggle == null) {
@@ -70,41 +70,16 @@ public class Ssiggle implements SsiggleTransaction {
 		return ssiggle;
 	}
 
-	@Override
 	public List<Ssiggle> ssiggleListByUserIdDesTime(String loginId) {
 		return ssiggleMapper.selectSsiggleListByUserIdDescTime(loginId);
 	}
 
-	@Override
 	public void save() {
 		ssiggleMapper.insertSsiggle(this);
 	}
 
-	@Override
 	public void delete() {
 		ssiggleMapper.deleteSsiggleById(this.getId());
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Ssiggle other = (Ssiggle) obj;
-		if (id != other.id)
-			return false;
-		return true;
 	}
 
 	@Override
