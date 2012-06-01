@@ -14,4 +14,6 @@ public interface UserRepository {
 
 	public List<User> findFollowersByUserId(String string);
 
+	public List<User> findAllUser();
+
 }
