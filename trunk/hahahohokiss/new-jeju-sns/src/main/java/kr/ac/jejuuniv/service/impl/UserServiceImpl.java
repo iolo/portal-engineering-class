@@ -1,5 +1,6 @@
 package kr.ac.jejuuniv.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.jejuuniv.exception.UserNotFoundException;
@@ -51,11 +52,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> getFollower(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> followersId = getFollowersId(id);
+		List<User> followers = new ArrayList<User>();
+		for(int i=0; i<followersId.size(); i++) {
+			followers.add(userRepository.findUserByUserId(followersId.get(i)));
+		}
+		return followers;
 	}
 
 	public List<String> getFollowersId(String id) {
 		return followRepository.getFollowerId(id);
+	}
+
+	public List<User> getFollowingUser(String id) {
+		return null;
+	}
+
+	public List<String> getFollowingUserId(String string) {
+		return null;
 	}
 }

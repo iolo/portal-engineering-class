@@ -24,4 +24,8 @@ public interface UserService {
 
 	List<String> getFollowersId(String id);
 
+	List<User> getFollowingUser(String id);
+
+	List<String> getFollowingUserId(String string);
+
 }
