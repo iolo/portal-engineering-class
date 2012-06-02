@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.Repository.UserRepository">
+
+	<select id="findByUserNum" resultType="kr.ac.jejuuniv.model.User">
+		SELECT * FROM user WHERE userNum = #{userNum}
+	</select>
+
+	<select id="getUserById" resultType="kr.ac.jejuuniv.model.User">
+		SELECT * FROM
+		user WHERE id = #{id}
+	</select>
+
+	<insert id="insert" parameterType="kr.ac.jejuuniv.model.User">
+		insert into user
+		values (#{userNum}, #{id}, #{password}, #{name}, #description, #{profileImg})
+	</insert>
+	
+	<update id="update" parameterType="kr.ac.jejuuniv.model.User">
+		UPDATE user 
+		SET id=#{id}, password=#{password}, name=#{name},
+			description=#{description}, profileImg=#{profileImg}				
+	</update>
+
+</mapper>

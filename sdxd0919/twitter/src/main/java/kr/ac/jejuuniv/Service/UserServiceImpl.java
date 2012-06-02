@@ -1,5 +1,10 @@
 package kr.ac.jejuuniv.Service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
 import kr.ac.jejuuniv.Service.Exception.UserNotFoundException;
@@ -33,6 +38,10 @@ public class UserServiceImpl implements UserService {
 		}else{
 			userRepository.update(user);
 		}
+	}
+
+	public List<User> getAllUser() {
+		return userRepository.getAll();
 	}
 
 }
