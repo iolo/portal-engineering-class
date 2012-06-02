@@ -2,6 +2,7 @@ package kr.ac.jejuuniv.Service;
 
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
+import kr.ac.jejuuniv.Service.Exception.UserNotFoundException;
 
 public class UserServiceImpl implements UserService {
 
@@ -27,7 +28,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void update(User user) {
-		userRepository.update(user);
+		if(userRepository.findByUserNum(user.getUserNum()) == null){
+			throw new UserNotFoundException();
+		}else{
+			userRepository.update(user);
+		}
 	}
 
 }
