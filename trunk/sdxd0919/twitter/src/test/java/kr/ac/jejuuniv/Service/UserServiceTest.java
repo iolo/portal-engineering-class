@@ -1,13 +1,20 @@
 package kr.ac.jejuuniv.Service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
-import kr.ac.jejuuniv.Service.Exception.IdNotExistException;
 import kr.ac.jejuuniv.Service.Exception.UserNotFoundException;
 
+import org.aspectj.weaver.ArrayAnnotationValue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -20,6 +27,28 @@ public class UserServiceTest {
 	
 	@Mock
 	UserRepository userRepository;
+
+	@Test
+	public void getAllUser(){
+		UserService userService = new UserServiceImpl(userRepository);
+		
+		when(userRepository.getAll()).thenAnswer(new Answer<List<User>>() {
+			public List<User> answer(InvocationOnMock invocation)
+					throws Throwable {
+				List<User> users = new ArrayList<User>();
+				users.add(new User(1,"hsy","aaa","현소영"));
+				users.add(new User(2,"hsy2","aaa2","한소영"));
+				users.add(new User(3,"hsy3","aaa3","김소영"));
+				return users;
+			}
+		});
+		
+		List<User> users = userService.getAllUser();
+		
+		assertTrue(users.size() == 3);
+		assertThat(users.get(0).getUserNum(), is(1));
+	}
+	
 	
 	@Test
 	public void findUser(){

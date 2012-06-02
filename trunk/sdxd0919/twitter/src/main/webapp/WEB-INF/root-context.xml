@@ -14,5 +14,26 @@
        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
        
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:component-scan base-package="kr.ac.jejuuniv" />
 
+	<!-- enable autowire -->
+	<context:annotation-config />
+
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+		p:driverClass="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://220.149.42.108:3306/twitter?unicode=true&amp;characterEncoding=utf-8"
+		p:username="root" p:password="apmsetup" />
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="userRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="kr.ac.jejuuniv.Repository.UserRepository" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	
+	
 </beans>

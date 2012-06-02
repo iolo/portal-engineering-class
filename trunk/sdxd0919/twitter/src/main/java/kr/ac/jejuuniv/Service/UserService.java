@@ -1,5 +1,7 @@
 package kr.ac.jejuuniv.Service;
 
+import java.util.List;
+
 import kr.ac.jejuuniv.Model.User;
 
 public interface UserService {
@@ -11,5 +13,7 @@ public interface UserService {
 	void addUser(User user);
 
 	void update(User user);
+
+	List<User> getAllUser();
 
 }
