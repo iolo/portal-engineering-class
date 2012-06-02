@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
 import kr.ac.jejuuniv.Service.Exception.IdNotExistException;
+import kr.ac.jejuuniv.Service.Exception.UserNotFoundException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -68,8 +69,20 @@ public class UserServiceTest {
 		
 	}
 	
+	@Test(expected=UserNotFoundException.class)
+	public void updateFail(){
+		UserService userService = new UserServiceImpl(userRepository);
+		
+		when(userRepository.findByUserNum(1) == null).thenThrow(new UserNotFoundException());
+		
+		User user = new User(1, "hsy", "abc", "현소영");
+		userService.update(user);
+		
+		verify(userRepository).update(user);
+	}
+	
 	@Test
-	public void login(){
+	public void checkUser(){
 		UserService userService = new UserServiceImpl(userRepository);
 
 		when(userRepository.getUserById("hsy")).thenAnswer(new Answer<User>() {
@@ -85,11 +98,4 @@ public class UserServiceTest {
 		assertThat(user.getName(), is("현소영"));
 	}
 	
-	@Test(expected=IdNotExistException.class)
-	public void loginFail(){
-		UserService userService = new UserServiceImpl(userRepository);
-		when(userRepository.getUserById("")).thenThrow(new IdNotExistException());
-
-		User user = userService.checkUser("", "");
-	}
 }
