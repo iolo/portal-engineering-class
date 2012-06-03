@@ -7,9 +7,9 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.ac.jejuuniv.controller.user.NotFollowException;
 import kr.ac.jejuuniv.mapper.FollowingMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
+import kr.ac.jejuuniv.model.user.NotFollowingException;
 import kr.ac.jejuuniv.model.user.NotFoundUserException;
 import kr.ac.jejuuniv.model.user.User;
 
@@ -44,17 +44,26 @@ public class UserTest4Follow {
 	@Test(expected = NotFoundUserException.class)
 	public void testFollowFail() {
 		User user = new User(userMapper).findUserById("sens");
-		user.followUserById("abcd");
+		user.followingUserById("abcd");
 
 		User user2 = createUser("dddd");
-		user2.followUserById("aaaa");
+		user2.followingUserById("aaaa");
 	}
 
 	@Test(expected = NotFoundUserException.class)
 	public void testFollowFail2() {
 		User user = createUser("dddd");
 		user.setUserMapper(userMapper);
-		user.followUserById("sens");
+		user.followingUserById("sens");
+	}
+
+	@Test(expected = NotFollowingException.class)
+	public void testFollowFail3() {
+		when(followingMapper.countFollowing("sens", "kgb")).thenReturn(1);
+		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kbg"));
+
+		User user = createUser("sens");
+		user.followingUserById("kgb");
 	}
 
 	@Test
@@ -73,10 +82,9 @@ public class UserTest4Follow {
 
 		User user = new User(userMapper).findUserById("sens");
 		user.setFollowMapper(followingMapper);
-		user.followUserById("kgb");
+		user.followingUserById("kgb");
 
-		List<User> followingIdList = userMapper
-				.selectAllFollowingUser("sens");
+		List<User> followingIdList = userMapper.selectAllFollowingUser("sens");
 
 		assertThat(followingIdList.size(), is(1));
 		assertThat(followingIdList.get(0).getId(), is("kgb"));
@@ -96,7 +104,7 @@ public class UserTest4Follow {
 	}
 
 	// TODO : 굳이 만들 필요가 있었는가? 또한 이렇게 만드는 것이 맞았을꺄....
-	@Test(expected = NotFollowException.class)
+	@Test(expected = NotFollowingException.class)
 	public void testUnFollowFailBecauseNotFollow() {
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kgb"));
 		when(followingMapper.countFollowing("sens", "ksb")).thenReturn(0);

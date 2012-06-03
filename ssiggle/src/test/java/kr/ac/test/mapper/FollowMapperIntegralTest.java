@@ -2,23 +2,33 @@ package kr.ac.test.mapper;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-
-import java.util.List;
-
 import kr.ac.jejuuniv.mapper.FollowingMapper;
-import kr.ac.jejuuniv.model.user.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 //TODO : 여기에 대한 테스트 작성
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("servlet-context.xml")
 public class FollowMapperIntegralTest {
 	@Autowired
 	private FollowingMapper followingMapper;
 
 	@Test
-	public void testName() {
-		assertNotNull(followingMapper);
+	public void testInsert() {
+		followingMapper.insertFollowing("ksb", "hmj");
+	}
+
+	@Test
+	public void testSelect() {
+		assertThat(followingMapper.countFollowing("ksb", "hmj"), is(1));
+	}
+
+	@Test
+	public void testDelete() {
+		followingMapper.deleteFollowing("ksb", "hmj");
 	}
 }

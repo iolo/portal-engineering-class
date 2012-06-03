@@ -2,9 +2,7 @@ package kr.ac.jejuuniv.model.user;
 
 import java.io.*;
 import java.util.List;
-import java.util.Set;
 
-import kr.ac.jejuuniv.controller.user.NotFollowException;
 import kr.ac.jejuuniv.mapper.FollowingMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 
@@ -40,6 +38,10 @@ public class User implements Serializable {
 
 	public void setUserMapper(UserMapper userMapper) {
 		this.userMapper = userMapper;
+	}
+
+	public void setFollowMapper(FollowingMapper followMapper) {
+		this.followingMapper = followMapper;
 	}
 
 	public String getId() {
@@ -82,13 +84,6 @@ public class User implements Serializable {
 		this.image = image;
 	}
 
-	public Set<User> getFallowerUser() {
-		return null;
-	}
-
-	public void setFollowerUser(Set<User> followerUser) {
-	}
-
 	public boolean loginValid(String id, String password) {
 		User user = userMapper.selectUserById(id);
 
@@ -123,12 +118,15 @@ public class User implements Serializable {
 
 	// TODO : 이 아래 4개의 메소드에 대해 테스트 작성하기.실패테스트, 현재 User의 id 값이 null 일때 시도 , 등록되지
 	// 않은 User 임에도 시도. 잠만,.. 이거 둘이 엮을 수 있지 않나?
-	public void followUserById(String targetId) {
+	public void followingUserById(String targetId) {
 		if (userMapper.selectUserById(targetId) == null
 				|| userMapper.selectUserById(getId()) == null) {
 			throw new NotFoundUserException("Follow 하려는 User " + targetId
 					+ " (이)가 존재하지 않습니다");
 		}
+
+		checkFollowUser(targetId, true, getId() + " 와 " + targetId
+				+ " (은)는 Follow 이미 Following 관계 입니다.");
 
 		followingMapper.insertFollowing(getId(), targetId);
 	}
@@ -139,13 +137,19 @@ public class User implements Serializable {
 			throw new NotFoundUserException("Follow 하려는 User " + targetId
 					+ " (이)가 존재하지 않습니다");
 		}
-		
-		//TODO :성능을 핑계로 이렇게 짬..... 이렇게 하는게 과연 맞을까?????
-		if(followingMapper.countFollowing(getId(), targetId) == 0) {
-			throw new NotFollowException("getId() 와 targetId (은)는 Follow 관계가 아닙니다."); 
-		}
-		
+
+		checkFollowUser(targetId, false, getId() + " 와 " + targetId
+				+ " (은)는 Follow 관계가 아닙니다.");
+
 		followingMapper.deleteFollowing(getId(), targetId);
+	}
+
+	private void checkFollowUser(String targetId, boolean flag, String s) {
+		int checkValue = (flag) ? 1 : 0;
+
+		if (followingMapper.countFollowing(getId(), targetId) == checkValue) {
+			throw new NotFollowingException(s);
+		}
 	}
 
 	public List<User> followingUserList() {
@@ -192,10 +196,6 @@ public class User implements Serializable {
 		}
 
 		return "";
-	}
-
-	public void setFollowMapper(FollowingMapper followMapper) {
-		this.followingMapper = followMapper;
 	}
 
 	public List<User> followerUserList() {
