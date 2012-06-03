@@ -8,25 +8,25 @@
 		SELECT * FROM user
 	</select>
 	
-	<!-- 
-	<select id="findByUserNum" resultType="kr.ac.jejuuniv.model.User">
+	<select id="findByUserNum" parameterType="int" resultType="kr.ac.jejuuniv.Model.User">
 		SELECT * FROM user WHERE userNum = #{userNum}
 	</select>
 
-	<select id="getUserById" resultType="kr.ac.jejuuniv.model.User">
+	<select id="getUserById" parameterType="String" resultType="kr.ac.jejuuniv.Model.User">
 		SELECT * FROM
 		user WHERE id = #{id}
 	</select>
 
-	<insert id="insert" parameterType="kr.ac.jejuuniv.model.User">
+	<insert id="insert" parameterType="kr.ac.jejuuniv.Model.User">
 		insert into user
-		values (#{userNum}, #{id}, #{password}, #{name}, #description, #{profileImg})
+		values (#{userNum}, #{id}, #{password}, #{name}, #{description}, #{profileImg})
 	</insert>
 	
-	<update id="update" parameterType="kr.ac.jejuuniv.model.User">
+	<update id="update" parameterType="kr.ac.jejuuniv.Model.User">
 		UPDATE user 
 		SET id=#{id}, password=#{password}, name=#{name},
-			description=#{description}, profileImg=#{profileImg}				
+			description=#{description}, profileImg=#{profileImg}
+			WHERE id=#{id}			
 	</update>
- 	-->
+
 </mapper>

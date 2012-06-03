@@ -49,6 +49,23 @@ public class UserServiceTest {
 		assertThat(users.get(0).getUserNum(), is(1));
 	}
 	
+	@Test
+	public void getUserById(){
+		UserService userService = new UserServiceImpl(userRepository);
+		
+		when(userRepository.getUserById("hsy")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User(1,"hsy", "abc", "현소영");
+				return user;
+			}
+		});
+		
+		User user = userService.getUserById("hsy");
+		
+		assertThat(user.getUserNum(), is(1));
+		assertThat(user.getName(), is("현소영"));
+	}
+	
 	
 	@Test
 	public void findUser(){
