@@ -153,7 +153,7 @@ public class User implements Serializable {
 	}
 
 	public List<User> followUserList() {
-		return null;
+		return followMapper.selelcAllFollower(getId());
 	}
 
 	public String toString() {

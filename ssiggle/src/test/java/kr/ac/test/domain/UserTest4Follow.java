@@ -87,6 +87,7 @@ public class UserTest4Follow {
 		user.unFollowUserById("abcd");
 	}
 
+	// TODO : 이런 테스트 할 필요가 있었을까????
 	@Test(expected = NotFoundUserException.class)
 	public void testUnFollowFail2() {
 		User user = createUser("abcd");
@@ -125,6 +126,31 @@ public class UserTest4Follow {
 		sens.unFollowUserById("kgb");
 
 		assertThat(item.size(), is(0));
+	}
+
+	@Test
+	public void testFollowList() {
+		User user = createUser("sens");
+
+		when(followMapper.selelcAllFollower("sens")).thenAnswer(
+				new Answer<List<User>>() {
+					@Override
+					public List<User> answer(InvocationOnMock invocation)
+							throws Throwable {
+						List<User> list = new ArrayList<>();
+
+						list.add(createUser("kgb"));
+						list.add(createUser("lsj"));
+
+						return list;
+					}
+				});
+
+		List<User> list = user.followUserList();
+
+		assertThat(list.size(), is(2));
+		assertThat(list.get(0).getId(), is("kgb"));
+		assertThat(list.get(1).getId(), is("lsj"));
 	}
 
 	private User createUser(String id) {
