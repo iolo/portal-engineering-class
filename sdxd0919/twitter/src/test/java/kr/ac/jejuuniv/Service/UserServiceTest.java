@@ -36,9 +36,9 @@ public class UserServiceTest {
 			public List<User> answer(InvocationOnMock invocation)
 					throws Throwable {
 				List<User> users = new ArrayList<User>();
-				users.add(new User(1,"hsy","aaa","현소영"));
-				users.add(new User(2,"hsy2","aaa2","한소영"));
-				users.add(new User(3,"hsy3","aaa3","김소영"));
+				users.add(new User("hsy","aaa","현소영"));
+				users.add(new User("hsy2","aaa2","한소영"));
+				users.add(new User("hsy3","aaa3","김소영"));
 				return users;
 			}
 		});
@@ -46,7 +46,7 @@ public class UserServiceTest {
 		List<User> users = userService.getAllUser();
 		
 		assertTrue(users.size() == 3);
-		assertThat(users.get(0).getUserNum(), is(1));
+		assertThat(users.get(0).getName(), is("현소영"));
 	}
 	
 	@Test
@@ -55,14 +55,13 @@ public class UserServiceTest {
 		
 		when(userRepository.getUserById("hsy")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
-				User user = new User(1,"hsy", "abc", "현소영");
+				User user = new User("hsy", "abc", "현소영");
 				return user;
 			}
 		});
 		
 		User user = userService.getUserById("hsy");
 		
-		assertThat(user.getUserNum(), is(1));
 		assertThat(user.getName(), is("현소영"));
 	}
 	
@@ -90,7 +89,7 @@ public class UserServiceTest {
 	public void addUser(){
 		UserService userService = new UserServiceImpl(userRepository);
 		
-		User user = new User(1,"hsy","aaa", "현소영");
+		User user = new User("hsy","aaa", "현소영");
 		userService.addUser(user);
 		
 		verify(userRepository).insert(user);
@@ -102,7 +101,7 @@ public class UserServiceTest {
 		
 		when(userRepository.findByUserNum(1)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
-				return new User(1,"hsy","aaa","현소영");
+				return new User(1, "hsy","aaa","현소영");
 			}
 			
 		});
@@ -121,7 +120,7 @@ public class UserServiceTest {
 		
 		when(userRepository.findByUserNum(1) == null).thenThrow(new UserNotFoundException());
 		
-		User user = new User(1, "hsy", "abc", "현소영");
+		User user = new User("hsy", "abc", "현소영");
 		userService.update(user);
 		
 		verify(userRepository).update(user);
@@ -133,14 +132,13 @@ public class UserServiceTest {
 
 		when(userRepository.getUserById("hsy")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
-				User user = new User(1,"hsy", "abc", "현소영");
+				User user = new User("hsy", "abc", "현소영");
 				return user;
 			}
 		});
 		
 		User user = userService.checkUser("hsy", "abc");
 		
-		assertThat(user.getUserNum(), is(1));
 		assertThat(user.getName(), is("현소영"));
 	}
 	

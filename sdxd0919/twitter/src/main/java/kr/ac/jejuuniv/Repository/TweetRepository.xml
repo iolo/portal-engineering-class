@@ -8,4 +8,17 @@
 		select * from tweet where userNum = #{userNum}
 	</select>
 
+	<select id="getAllTweet" resultType="kr.ac.jejuuniv.Model.Tweet">
+		select * from tweet
+	</select>
+
+	<insert id="insert" parameterType="kr.ac.jejuuniv.Model.Tweet">
+		insert into tweet(userNum, message, date)
+		values(#{userNum}, #{message}, #{date})
+	</insert>
+
+	<delete id="delete">
+		delete from tweet
+		where seq = #{seq}
+	</delete>
 </mapper>

@@ -6,10 +6,12 @@ import kr.ac.jejuuniv.Model.Tweet;
 
 public interface TweetService {
 
-	List<Tweet> getAllTweet(int seq);
+	List<Tweet> getAllTweetByUserNum(int userNum);
 
 	void deleteTweet(int seq);
 
 	void addTweet(Tweet tweet);
+
+	List<Tweet> getAllTweet();
 
 }

@@ -11,12 +11,12 @@ public class Tweet {
 	public Tweet() {
 	}
 	
-	public Tweet(int seq, int userNum, String message, Date date) {
-		this.seq = seq;
+	public Tweet(int userNum, String message, Date date) {
 		this.userNum = userNum;
 		this.message = message;
 		this.date = date;
 	}
+
 	public int getSeq() {
 		return seq;
 	}
