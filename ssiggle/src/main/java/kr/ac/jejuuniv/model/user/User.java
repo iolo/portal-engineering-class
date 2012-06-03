@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.List;
 import java.util.Set;
 
+import kr.ac.jejuuniv.mapper.FolloMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class User implements Serializable {
 
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private FolloMapper followMapper;
 
 	private String id;
 	private String password;
@@ -120,8 +123,13 @@ public class User implements Serializable {
 	// TODO : 이 아래 4개의 메소드에 대해 테스트 작성하기.실패테스트, 현재 User의 id 값이 null 일때 시도 , 등록되지
 	// 않은 User 임에도 시도. 잠만,.. 이거 둘이 엮을 수 있지 않나?
 	public void followUserById(String targetId) {
-		throw new NotFoundUserException("Follow 하려는 User " + targetId
-				+ " (이)가 존재하지 않습니다");
+		if (userMapper.selectUserById(targetId) == null
+				|| userMapper.selectUserById(getId()) == null) {
+			throw new NotFoundUserException("Follow 하려는 User " + targetId
+					+ " (이)가 존재하지 않습니다");
+		}
+		
+		followMapper.insertFollow(getId(), targetId);
 	}
 
 	public void unFollowUserById(String targetId) {
@@ -144,7 +152,6 @@ public class User implements Serializable {
 			FileNotFoundException {
 		String fileType = getFileType(file);
 
-		byte[] byteFile = file.getBytes();
 		File uploadedFile = new File(
 				"/home/sens/stsWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/ssiggle/resources/userimage/"
 						+ getId() + fileType);
@@ -152,12 +159,10 @@ public class User implements Serializable {
 		if (uploadedFile.exists()) {
 			uploadedFile.delete();
 		}
-
 		uploadedFile.createNewFile();
 
-		FileOutputStream fos;
-		fos = new FileOutputStream(uploadedFile);
-		fos.write(byteFile);
+		FileOutputStream fos = new FileOutputStream(uploadedFile);
+		fos.write(file.getBytes());
 		fos.close();
 
 		setImage(getId() + fileType);
@@ -175,5 +180,9 @@ public class User implements Serializable {
 		}
 
 		return "";
+	}
+
+	public void setFollowMapper(FolloMapper followMapper) {
+		this.followMapper = followMapper;
 	}
 }

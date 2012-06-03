@@ -13,9 +13,8 @@ public interface UserMapper {
 	void insertUser(User user);
 
 	List<User> selectAllUser();
-	
+
 	void deleteUser(String id);
-	
-	//TODO : 쿼리문은 맞는다.. 왜 안되는지 물어복;
+
 	List<User> selectAllFollowingUser(String id);
 }
