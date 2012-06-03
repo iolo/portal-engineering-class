@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.jejuuniv.controller.user.NotFollowException;
-import kr.ac.jejuuniv.mapper.FolloMapper;
+import kr.ac.jejuuniv.mapper.FollowingMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.user.NotFoundUserException;
 import kr.ac.jejuuniv.model.user.User;
@@ -26,7 +26,7 @@ public class UserTest4Follow {
 	@Mock
 	private UserMapper userMapper;
 	@Mock
-	private FolloMapper followMapper;
+	private FollowingMapper followingMapper;
 
 	@Before
 	public void beforeTest() {
@@ -68,14 +68,15 @@ public class UserTest4Follow {
 				item.add((String) invocation.getArguments()[1]);
 				return null;
 			}
-		}).when(followMapper).insertFollow("sens", "kgb");
-		when(followMapper.selectFollowById("sens")).thenReturn(item);
+		}).when(followingMapper).insertFollowing("sens", "kgb");
+		when(followingMapper.selectFollowingById("sens")).thenReturn(item);
 
 		User user = new User(userMapper).findUserById("sens");
-		user.setFollowMapper(followMapper);
+		user.setFollowMapper(followingMapper);
 		user.followUserById("kgb");
 
-		List<String> followingIdList = followMapper.selectFollowById("sens");
+		List<String> followingIdList = followingMapper
+				.selectFollowingById("sens");
 
 		assertThat(followingIdList.size(), is(1));
 		assertThat(followingIdList.get(0), is("kgb"));
@@ -98,7 +99,7 @@ public class UserTest4Follow {
 	@Test(expected = NotFollowException.class)
 	public void testUnFollowFailBecauseNotFollow() {
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kgb"));
-		when(followMapper.countFollowing("sens", "ksb")).thenReturn(0);
+		when(followingMapper.countFollowing("sens", "ksb")).thenReturn(0);
 
 		User user = createUser("sens");
 		user.unFollowUserById("kgb");
@@ -114,10 +115,10 @@ public class UserTest4Follow {
 				item.remove(0);
 				return null;
 			}
-		}).when(followMapper).deleteFollowing("sens", "kgb");
+		}).when(followingMapper).deleteFollowing("sens", "kgb");
 
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kgb"));
-		when(followMapper.countFollowing("sens", "kgb")).thenReturn(1);
+		when(followingMapper.countFollowing("sens", "kgb")).thenReturn(1);
 
 		assertThat(item.size(), is(1));
 		assertThat(item.get(0), is("kgb"));
@@ -132,7 +133,7 @@ public class UserTest4Follow {
 	public void testFollowList() {
 		User user = createUser("sens");
 
-		when(followMapper.selelcAllFollower("sens")).thenAnswer(
+		when(followingMapper.selelcAllFollowing("sens")).thenAnswer(
 				new Answer<List<User>>() {
 					@Override
 					public List<User> answer(InvocationOnMock invocation)
@@ -153,9 +154,33 @@ public class UserTest4Follow {
 		assertThat(list.get(1).getId(), is("lsj"));
 	}
 
+	@Test
+	public void testFollowerList() {
+		User user = createUser("sens");
+
+		when(followingMapper.selectAllFollowerById("sens")).thenAnswer(
+				new Answer<List<User>>() {
+					@Override
+					public List<User> answer(InvocationOnMock invocation)
+							throws Throwable {
+						List<User> list = new ArrayList<>();
+						list.add(createUser("aaa"));
+						list.add(createUser("bbb"));
+
+						return list;
+					}
+				});
+
+		List<User> followerList = user.followerUserList();
+
+		assertThat(followerList.size(), is(2));
+		assertThat(followerList.get(0).getId(), is("aaa"));
+		assertThat(followerList.get(1).getId(), is("bbb"));
+	}
+
 	private User createUser(String id) {
 		User user = new User(userMapper);
-		user.setFollowMapper(followMapper);
+		user.setFollowMapper(followingMapper);
 		user.setId(id);
 		return user;
 	}

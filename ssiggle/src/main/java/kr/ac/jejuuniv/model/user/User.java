@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import kr.ac.jejuuniv.controller.user.NotFollowException;
-import kr.ac.jejuuniv.mapper.FolloMapper;
+import kr.ac.jejuuniv.mapper.FollowingMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class User implements Serializable {
 	@Autowired
 	private UserMapper userMapper;
 	@Autowired
-	private FolloMapper followMapper;
+	private FollowingMapper followMapper;
 
 	private String id;
 	private String password;
@@ -130,7 +130,7 @@ public class User implements Serializable {
 					+ " (이)가 존재하지 않습니다");
 		}
 
-		followMapper.insertFollow(getId(), targetId);
+		followMapper.insertFollowing(getId(), targetId);
 	}
 
 	public void unFollowUserById(String targetId) {
@@ -153,7 +153,7 @@ public class User implements Serializable {
 	}
 
 	public List<User> followUserList() {
-		return followMapper.selelcAllFollower(getId());
+		return followMapper.selelcAllFollowing(getId());
 	}
 
 	public String toString() {
@@ -194,7 +194,11 @@ public class User implements Serializable {
 		return "";
 	}
 
-	public void setFollowMapper(FolloMapper followMapper) {
+	public void setFollowMapper(FollowingMapper followMapper) {
 		this.followMapper = followMapper;
+	}
+
+	public List<User> followerUserList() {
+		return followMapper.selectAllFollowerById(getId());
 	}
 }
