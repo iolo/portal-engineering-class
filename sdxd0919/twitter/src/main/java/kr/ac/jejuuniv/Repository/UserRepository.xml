@@ -4,6 +4,11 @@
 
 <mapper namespace="kr.ac.jejuuniv.Repository.UserRepository">
 
+	<select id="getAllUser" resultType="kr.ac.jejuuniv.Model.User">
+		SELECT * FROM user
+	</select>
+	
+	<!-- 
 	<select id="findByUserNum" resultType="kr.ac.jejuuniv.model.User">
 		SELECT * FROM user WHERE userNum = #{userNum}
 	</select>
@@ -23,5 +28,5 @@
 		SET id=#{id}, password=#{password}, name=#{name},
 			description=#{description}, profileImg=#{profileImg}				
 	</update>
-
+ 	-->
 </mapper>

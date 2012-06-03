@@ -2,8 +2,11 @@ package kr.ac.jejuuniv.Repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import kr.ac.jejuuniv.Model.User;
 
+@Repository
 public interface UserRepository {
 	
 	User findByUserNum(int userNum);
@@ -14,6 +17,6 @@ public interface UserRepository {
 
 	void update(User user);
 
-	List<User> getAll();
+	List<User> getAllUser();
 
 }

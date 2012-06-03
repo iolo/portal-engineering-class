@@ -32,7 +32,7 @@ public class UserServiceTest {
 	public void getAllUser(){
 		UserService userService = new UserServiceImpl(userRepository);
 		
-		when(userRepository.getAll()).thenAnswer(new Answer<List<User>>() {
+		when(userRepository.getAllUser()).thenAnswer(new Answer<List<User>>() {
 			public List<User> answer(InvocationOnMock invocation)
 					throws Throwable {
 				List<User> users = new ArrayList<User>();

@@ -9,9 +9,11 @@ import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
 import kr.ac.jejuuniv.Service.Exception.UserNotFoundException;
 
+@Service
 public class UserServiceImpl implements UserService {
 
-	private UserRepository userRepository;
+	@Autowired
+	UserRepository userRepository;
 
 	public UserServiceImpl() {
 	}
@@ -41,7 +43,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> getAllUser() {
-		return userRepository.getAll();
+		return userRepository.getAllUser();
 	}
 
 }
