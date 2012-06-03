@@ -22,7 +22,6 @@ public class SsiggleServiceImpl implements SsiggleService {
 		for (User u : followingList) {
 			item.addAll(ssiggle.ssiggleListByUserIdDesTime(u.getId()));
 		}
-		System.out.println(item.size());
 
 		Collections.sort(item, new Comparator<Ssiggle>() {
 			@Override

@@ -38,10 +38,7 @@ public class SsiggleServiceTest {
 					@Override
 					public User answer(InvocationOnMock invocation)
 							throws Throwable {
-						User user = new User(userMapper);
-						user.setId((String) invocation.getArguments()[0]);
-
-						return user;
+						return createUser((String) invocation.getArguments()[0]);
 					}
 				});
 
@@ -51,11 +48,8 @@ public class SsiggleServiceTest {
 					public List<User> answer(InvocationOnMock invocation)
 							throws Throwable {
 						List<User> item = new ArrayList<>();
-
-						User user = new User(userMapper);
-						user.setId("kbg");
-						item.add(user);
-
+						item.add(createUser("kbg"));
+						
 						return item;
 					}
 				});
@@ -69,17 +63,9 @@ public class SsiggleServiceTest {
 
 						Ssiggle ssiggle1, ssiggle2, ssiggle3;
 
-						ssiggle1 = new Ssiggle(ssiggleMapper);
-						ssiggle1.setId(1);
-						ssiggle1.setTime(new Timestamp(50000));
-
-						ssiggle2 = new Ssiggle(ssiggleMapper);
-						ssiggle2.setId(3);
-						ssiggle2.setTime(new Timestamp(50003));
-
-						ssiggle3 = new Ssiggle(ssiggleMapper);
-						ssiggle3.setId(5);
-						ssiggle3.setTime(new Timestamp(50005));
+						ssiggle3 = createSsiggle(5, 50005);
+						ssiggle2 = createSsiggle(3, 50003);
+						ssiggle1 = createSsiggle(1, 50001);
 
 						item.add(ssiggle3);
 						item.add(ssiggle2);
@@ -98,13 +84,8 @@ public class SsiggleServiceTest {
 
 						Ssiggle ssiggle1, ssiggle2;
 
-						ssiggle1 = new Ssiggle(ssiggleMapper);
-						ssiggle1.setId(2);
-						ssiggle1.setTime(new Timestamp(50002));
-
-						ssiggle2 = new Ssiggle(ssiggleMapper);
-						ssiggle2.setId(4);
-						ssiggle2.setTime(new Timestamp(50004));
+						ssiggle2 = createSsiggle(4, 50004);
+						ssiggle1 = createSsiggle(2, 50002);
 
 						item.add(ssiggle2);
 						item.add(ssiggle1);
@@ -129,5 +110,19 @@ public class SsiggleServiceTest {
 					list.get(i).getTime().compareTo(list.get(i + 1).getTime()) > 0,
 					is(true));
 		}
+	}
+
+	private User createUser(String id) {
+		User user = new User(userMapper);
+		user.setId(id);
+		return user;
+	}
+
+	private Ssiggle createSsiggle(long id, long time) {
+		Ssiggle ssiggle1;
+		ssiggle1 = new Ssiggle(ssiggleMapper);
+		ssiggle1.setId(id);
+		ssiggle1.setTime(new Timestamp(time));
+		return ssiggle1;
 	}
 }
