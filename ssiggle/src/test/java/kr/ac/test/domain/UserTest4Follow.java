@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.controller.user.NotFollowException;
 import kr.ac.jejuuniv.mapper.FolloMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.user.NotFoundUserException;
@@ -80,8 +81,55 @@ public class UserTest4Follow {
 		assertThat(followingIdList.get(0), is("kgb"));
 	}
 
+	@Test(expected = NotFoundUserException.class)
+	public void testUnFollowFail() {
+		User user = createUser("sens");
+		user.unFollowUserById("abcd");
+	}
+
+	@Test(expected = NotFoundUserException.class)
+	public void testUnFollowFail2() {
+		User user = createUser("abcd");
+		user.unFollowUserById("sens");
+	}
+
+	// TODO : 굳이 만들 필요가 있었는가? 또한 이렇게 만드는 것이 맞았을꺄....
+	@Test(expected = NotFollowException.class)
+	public void testUnFollowFailBecauseNotFollow() {
+		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kgb"));
+		when(followMapper.countFollowing("sens", "ksb")).thenReturn(0);
+
+		User user = createUser("sens");
+		user.unFollowUserById("kgb");
+	}
+
+	@Test
+	public void testUnFollowSucess() {
+		final List<String> item = new ArrayList<>();
+		item.add("kgb");
+		doAnswer(new Answer<Void>() {
+			@Override
+			public Void answer(InvocationOnMock invocation) throws Throwable {
+				item.remove(0);
+				return null;
+			}
+		}).when(followMapper).deleteFollowing("sens", "kgb");
+
+		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kgb"));
+		when(followMapper.countFollowing("sens", "kgb")).thenReturn(1);
+
+		assertThat(item.size(), is(1));
+		assertThat(item.get(0), is("kgb"));
+
+		User sens = createUser("sens");
+		sens.unFollowUserById("kgb");
+
+		assertThat(item.size(), is(0));
+	}
+
 	private User createUser(String id) {
-		User user = new User();
+		User user = new User(userMapper);
+		user.setFollowMapper(followMapper);
 		user.setId(id);
 		return user;
 	}
