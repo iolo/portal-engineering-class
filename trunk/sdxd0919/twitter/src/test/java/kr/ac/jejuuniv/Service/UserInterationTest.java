@@ -54,7 +54,7 @@ public class UserInterationTest {
 	
 	@Test
 	public void insert(){
-		User user = new User(3,"kim", "kim", "abccc", "","");
+		User user = new User("kim","aabbc","kim","","");
 		
 		userService.addUser(user);
 		
@@ -72,7 +72,6 @@ public class UserInterationTest {
 		user = userService.getUser(3);
 		assertThat(user.getName(), is("KimSY"));
 		assertThat(user.getPassword(), is("kkk"));
-		
 	}
 	
 	public void printUsers(List<User> users) {

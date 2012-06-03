@@ -22,7 +22,7 @@ public class TweetServiceImpl implements TweetService {
 		this.tweetRepository = tweetRepository;
 	}
 
-	public List<Tweet> getAllTweet(int userNum) {
+	public List<Tweet> getAllTweetByUserNum(int userNum) {
 		return tweetRepository.findTweetByUserNum(userNum);
 	}
 
@@ -32,6 +32,10 @@ public class TweetServiceImpl implements TweetService {
 
 	public void addTweet(Tweet tweet) {
 		tweetRepository.insert(tweet);
+	}
+
+	public List<Tweet> getAllTweet() {
+		return tweetRepository.getAllTweet();
 	}
 	
 

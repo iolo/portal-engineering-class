@@ -14,4 +14,6 @@ public interface TweetRepository {
 
 	void delete(int seq);
 
+	List<Tweet> getAllTweet();
+
 }

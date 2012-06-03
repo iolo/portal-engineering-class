@@ -26,52 +26,80 @@ public class TweetServiceTest {
 	TweetRepository tweetRepository;
 
 	@Test
-	public void findAllTweet(){
+	public void getAllTweet() {
 		TweetService tweetService = new TweetServiceImpl(tweetRepository);
-		
-		when(tweetRepository.findTweetByUserNum(1)).thenAnswer(new Answer<List<Tweet>>() {
-			public List<Tweet> answer(InvocationOnMock invocation)
-					throws Throwable {
-				List<Tweet> tweets = new ArrayList<Tweet>();
-				int userNum = Integer.parseInt(invocation.getArguments()[0].toString());
-				tweets.add(new Tweet(1, userNum, "1번임", new Date(20120528)));
-				tweets.add(new Tweet(2, userNum, "2번임",new Date(20120528)));
-				tweets.add(new Tweet(3, userNum, "3번임",new Date(2012529)));
-				
-				return tweets;
-			}
-		});
-		
-		List<Tweet> tweets = tweetService.getAllTweet(1);
-		
+
+		when(tweetRepository.getAllTweet()).thenAnswer(
+				new Answer<List<Tweet>>() {
+					public List<Tweet> answer(InvocationOnMock invocation)
+							throws Throwable {
+						List<Tweet> tweets = new ArrayList<Tweet>();
+						tweets.add(new Tweet(1, "1번임", new Date(
+								20120528)));
+						tweets.add(new Tweet(2, "2번임", new Date(
+								20120528)));
+						tweets.add(new Tweet(1, "3번임", new Date(
+								2012529)));
+
+						return tweets;
+					}
+				});
+
+		List<Tweet> tweets = tweetService.getAllTweet();
+
+		assertTrue(tweets.size() == 3);
+	}
+
+	@Test
+	public void findAllTweetByUserNum() {
+		TweetService tweetService = new TweetServiceImpl(tweetRepository);
+
+		when(tweetRepository.findTweetByUserNum(1)).thenAnswer(
+				new Answer<List<Tweet>>() {
+					public List<Tweet> answer(InvocationOnMock invocation)
+							throws Throwable {
+						List<Tweet> tweets = new ArrayList<Tweet>();
+						int userNum = Integer.parseInt(invocation
+								.getArguments()[0].toString());
+						tweets.add(new Tweet(userNum, "1번임", new Date(
+								20120528)));
+						tweets.add(new Tweet(userNum, "2번임", new Date(
+								20120528)));
+						tweets.add(new Tweet(userNum, "3번임", new Date(
+								2012529)));
+
+						return tweets;
+					}
+				});
+
+		List<Tweet> tweets = tweetService.getAllTweetByUserNum(1);
+
 		assertTrue(tweets.size() == 3);
 		assertThat(tweets.get(1).getUserNum(), is(1));
 		assertThat(tweets.get(0).getMessage(), is("1번임"));
-	
+
 	}
-	
+
 	@Test
-	public void write(){
+	public void write() {
 		TweetService tweetService = new TweetServiceImpl(tweetRepository);
-		
+
 		Tweet tweet = new Tweet();
-		tweet.setSeq(2);
 		tweet.setUserNum(1);
 		tweet.setMessage("우와와-축제!");
 		tweet.setDate(new Date());
-		
+
 		tweetService.addTweet(tweet);
 
 		verify(tweetRepository).insert(tweet);
 	}
 
-	
 	@Test
-	public void deleteTweet(){
+	public void deleteTweet() {
 		TweetService tweetService = new TweetServiceImpl(tweetRepository);
 		tweetService.deleteTweet(1);
-		
+
 		verify(tweetRepository).delete(1);
 	}
-	
+
 }

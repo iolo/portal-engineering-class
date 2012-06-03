@@ -18,15 +18,15 @@
 	</select>
 
 	<insert id="insert" parameterType="kr.ac.jejuuniv.Model.User">
-		insert into user
-		values (#{userNum}, #{id}, #{password}, #{name}, #{description}, #{profileImg})
+		insert into user(id, password, name, description, profileImg)
+		values (#{id}, #{password}, #{name}, #{description}, #{profileImg})
 	</insert>
 	
 	<update id="update" parameterType="kr.ac.jejuuniv.Model.User">
 		UPDATE user 
 		SET id=#{id}, password=#{password}, name=#{name},
 			description=#{description}, profileImg=#{profileImg}
-			WHERE id=#{id}			
+			WHERE userNum = #{userNum}			
 	</update>
 
 </mapper>
