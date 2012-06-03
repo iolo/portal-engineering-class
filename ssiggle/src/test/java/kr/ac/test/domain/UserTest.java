@@ -32,20 +32,18 @@ public class UserTest {
 		repoUser.setPassword("sens");
 		repoUser.setName("양진원");
 
-		when(userMapper.selectUserById("sens")).thenAnswer(
-				new Answer<User>() {
-					@Override
-					public User answer(InvocationOnMock invocation)
-							throws Throwable {
-						User user = new User(userMapper);
+		when(userMapper.selectUserById("sens")).thenAnswer(new Answer<User>() {
+			@Override
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User(userMapper);
 
-						user.setId("sens");
-						user.setName(repoUser.getName());
-						user.setPassword(repoUser.getPassword());
+				user.setId("sens");
+				user.setName(repoUser.getName());
+				user.setPassword(repoUser.getPassword());
 
-						return user;
-					}
-				});
+				return user;
+			}
+		});
 	}
 
 	@Test
@@ -90,6 +88,7 @@ public class UserTest {
 				repoUser.setId(user.getId());
 				repoUser.setName(user.getName());
 				repoUser.setPassword(user.getPassword());
+
 				return null;
 			}
 		}).when(userMapper).insertUser((User) anyObject());
@@ -98,6 +97,7 @@ public class UserTest {
 		user.setId("sens");
 		user.setPassword("sens");
 		user.setName("가나다라");
+
 		user.save();
 
 		assertThat(repoUser.getId(), is(user.getId()));
@@ -107,6 +107,11 @@ public class UserTest {
 
 	@Test
 	public void testUser4Update() {
+		User user = new User(userMapper);
+		user.setId("sens");
+		user.setPassword("abcd");
+		user.setName("새이름");
+
 		doAnswer(new Answer<Void>() {
 			@Override
 			public Void answer(InvocationOnMock invocation) throws Throwable {
@@ -118,14 +123,11 @@ public class UserTest {
 
 				return null;
 			}
-		}).when(userMapper).updateUser((User) anyObject());
+		}).when(userMapper).updateUser(user);
 
-		User user = new User(userMapper).findUserById("sens");
-		user.setPassword("abcd");
-		user.setName("새이름");
 		user.save();
 
-		User newUser = new User(userMapper).findUserById("sens");
+		User newUser = repoUser;
 		assertNotNull(newUser);
 		assertThat(newUser.getName(), is("새이름"));
 	}
@@ -150,7 +152,8 @@ public class UserTest {
 			}
 		});
 
-		List<User> userlist = new User(userMapper).findAllUser();
+		User user = new User(userMapper);
+		List<User> userlist = user.findAllUser();
 
 		assertThat(userlist.size(), is(2));
 		assertThat(userlist.get(0).getId(), is("sens"));

@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.List;
 import java.util.Set;
 
+import kr.ac.jejuuniv.controller.user.NotFollowException;
 import kr.ac.jejuuniv.mapper.FolloMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 
@@ -128,12 +129,23 @@ public class User implements Serializable {
 			throw new NotFoundUserException("Follow 하려는 User " + targetId
 					+ " (이)가 존재하지 않습니다");
 		}
-		
+
 		followMapper.insertFollow(getId(), targetId);
 	}
 
 	public void unFollowUserById(String targetId) {
-
+		if (userMapper.selectUserById(targetId) == null
+				|| userMapper.selectUserById(getId()) == null) {
+			throw new NotFoundUserException("Follow 하려는 User " + targetId
+					+ " (이)가 존재하지 않습니다");
+		}
+		
+		//TODO :성능을 핑계로 이렇게 짬..... 이렇게 하는게 과연 맞을까?????
+		if(followMapper.countFollowing(getId(), targetId) == 0) {
+			throw new NotFollowException("getId() 와 targetId (은)는 Follow 관계가 아닙니다."); 
+		}
+		
+		followMapper.deleteFollowing(getId(), targetId);
 	}
 
 	public List<User> followingUserList() {
