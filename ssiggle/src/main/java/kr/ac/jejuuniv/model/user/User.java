@@ -19,7 +19,7 @@ public class User implements Serializable {
 	@Autowired
 	private UserMapper userMapper;
 	@Autowired
-	private FollowingMapper followMapper;
+	private FollowingMapper followingMapper;
 
 	private String id;
 	private String password;
@@ -130,7 +130,7 @@ public class User implements Serializable {
 					+ " (이)가 존재하지 않습니다");
 		}
 
-		followMapper.insertFollowing(getId(), targetId);
+		followingMapper.insertFollowing(getId(), targetId);
 	}
 
 	public void unFollowUserById(String targetId) {
@@ -141,11 +141,11 @@ public class User implements Serializable {
 		}
 		
 		//TODO :성능을 핑계로 이렇게 짬..... 이렇게 하는게 과연 맞을까?????
-		if(followMapper.countFollowing(getId(), targetId) == 0) {
+		if(followingMapper.countFollowing(getId(), targetId) == 0) {
 			throw new NotFollowException("getId() 와 targetId (은)는 Follow 관계가 아닙니다."); 
 		}
 		
-		followMapper.deleteFollowing(getId(), targetId);
+		followingMapper.deleteFollowing(getId(), targetId);
 	}
 
 	public List<User> followingUserList() {
@@ -153,7 +153,7 @@ public class User implements Serializable {
 	}
 
 	public List<User> followUserList() {
-		return followMapper.selelcAllFollowing(getId());
+		return userMapper.selectAllFollowingUser(getId());
 	}
 
 	public String toString() {
@@ -195,10 +195,10 @@ public class User implements Serializable {
 	}
 
 	public void setFollowMapper(FollowingMapper followMapper) {
-		this.followMapper = followMapper;
+		this.followingMapper = followMapper;
 	}
 
 	public List<User> followerUserList() {
-		return followMapper.selectAllFollowerById(getId());
+		return userMapper.selectAllFollowerUser(getId());
 	}
 }

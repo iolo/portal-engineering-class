@@ -13,6 +13,7 @@
                 http://www.springframework.org/schema/tx 
                 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
        		  ">
+       		  
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
@@ -25,6 +26,12 @@
 	<beans:bean id="ssiggleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="mapperInterface"
 			value="kr.ac.jejuuniv.mapper.SsiggleMapper" />
+		<beans:property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="followingMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="mapperInterface"
+			value="kr.ac.jejuuniv.mapper.FollowingMapper" />
 		<beans:property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</beans:bean>
 </beans:beans>

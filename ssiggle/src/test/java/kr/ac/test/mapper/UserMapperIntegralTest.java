@@ -86,8 +86,21 @@ public class UserMapperIntegralTest {
 	public void testFollowing() {
 		List<User> userList = userMapper.selectAllFollowingUser("sens");
 
+		System.out.println("-----------sens가 팔로잉 하는 사람들 --------------");
 		for (User user : userList) {
 			System.out.println(user);
 		}
+		System.out.println("----------------------------------------------");
+	}
+
+	@Test
+	public void testFollower() {
+		List<User> userList = userMapper.selectAllFollowerUser("hcj");
+
+		System.out.println("-----------hcj를 팔로잉 하는 사람들 -------------");
+		for (User user : userList) {
+			System.out.println(user);
+		}
+		System.out.println("----------------------------------------------");
 	}
 }

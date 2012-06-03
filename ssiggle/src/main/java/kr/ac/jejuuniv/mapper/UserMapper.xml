@@ -38,4 +38,14 @@
 		b.following where b.user
 		= #{id}
 	</select>
+
+	<select id="selectAllFollowerUser" parameterType="java.lang.String"
+		resultType="kr.ac.jejuuniv.model.user.User">
+		select a.id as id, a.name as name, a.introduce as
+		introduce, a.image as
+		image
+		from user a left join following b on a.id =
+		b.user where b.following
+		= #{id}
+	</select>
 </mapper>

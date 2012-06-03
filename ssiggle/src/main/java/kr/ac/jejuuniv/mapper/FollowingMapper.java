@@ -1,19 +1,14 @@
 package kr.ac.jejuuniv.mapper;
 
-import java.util.List;
-
-import kr.ac.jejuuniv.model.user.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface FollowingMapper {
-	List<String> selectFollowingById(String id);
+	void insertFollowing(@Param("id") String id,
+			@Param("targetId") String targetId);
 
-	void insertFollowing(String id, String targetId);
+	int countFollowing(@Param("id") String id,
+			@Param("targetId") String targetId);
 
-	int countFollowing(String id, String targetId);
-
-	void deleteFollowing(String id, String targetId);
-
-	List<User> selelcAllFollowing(String id);
-
-	List<User> selectAllFollowerById(String id);
+	void deleteFollowing(@Param("id") String id,
+			@Param("targetId") String targetId);
 }

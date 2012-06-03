@@ -59,27 +59,27 @@ public class UserTest4Follow {
 
 	@Test
 	public void testFollowSucess() {
-		final List<String> item = new ArrayList<>();
+		final List<User> item = new ArrayList<>();
 
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kbg"));
 		doAnswer(new Answer<Void>() {
 			@Override
 			public Void answer(InvocationOnMock invocation) throws Throwable {
-				item.add((String) invocation.getArguments()[1]);
+				item.add(createUser((String) invocation.getArguments()[1]));
 				return null;
 			}
 		}).when(followingMapper).insertFollowing("sens", "kgb");
-		when(followingMapper.selectFollowingById("sens")).thenReturn(item);
+		when(userMapper.selectAllFollowingUser("sens")).thenReturn(item);
 
 		User user = new User(userMapper).findUserById("sens");
 		user.setFollowMapper(followingMapper);
 		user.followUserById("kgb");
 
-		List<String> followingIdList = followingMapper
-				.selectFollowingById("sens");
+		List<User> followingIdList = userMapper
+				.selectAllFollowingUser("sens");
 
 		assertThat(followingIdList.size(), is(1));
-		assertThat(followingIdList.get(0), is("kgb"));
+		assertThat(followingIdList.get(0).getId(), is("kgb"));
 	}
 
 	@Test(expected = NotFoundUserException.class)
@@ -133,7 +133,7 @@ public class UserTest4Follow {
 	public void testFollowList() {
 		User user = createUser("sens");
 
-		when(followingMapper.selelcAllFollowing("sens")).thenAnswer(
+		when(userMapper.selectAllFollowingUser("sens")).thenAnswer(
 				new Answer<List<User>>() {
 					@Override
 					public List<User> answer(InvocationOnMock invocation)
@@ -158,7 +158,7 @@ public class UserTest4Follow {
 	public void testFollowerList() {
 		User user = createUser("sens");
 
-		when(followingMapper.selectAllFollowerById("sens")).thenAnswer(
+		when(userMapper.selectAllFollowerUser("sens")).thenAnswer(
 				new Answer<List<User>>() {
 					@Override
 					public List<User> answer(InvocationOnMock invocation)
