@@ -53,5 +53,9 @@ public class User {
 	public void setProfileImg(String profileImg) {
 		this.profileImg = profileImg;
 	}
+	
+	public String toString() {
+		return "User [num= "+ userNum + ", id=" + id + ", name=" + name + ", password=" + password + "]";
+	}
 
 }
