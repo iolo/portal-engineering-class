@@ -42,5 +42,8 @@ public class Tweet {
 		this.date = date;
 	}
 	
+	public String toString() {
+		return "Tweet [seq= "+ seq + ", userNum=" + userNum + ", message=" + message + ", date=" + date + "]";
+	}
 	
 }
