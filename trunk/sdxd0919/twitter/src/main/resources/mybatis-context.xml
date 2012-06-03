@@ -18,7 +18,7 @@
 
 	<!-- enable autowire -->
 	<context:annotation-config />
-	
+
 	<beans:bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
 		p:driverClass="com.mysql.jdbc.Driver"
@@ -31,6 +31,11 @@
 
 	<bean id="userRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="kr.ac.jejuuniv.Repository.UserRepository" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="tweetRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="kr.ac.jejuuniv.Repository.TweetRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
