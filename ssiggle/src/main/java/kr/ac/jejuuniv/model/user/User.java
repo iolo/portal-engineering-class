@@ -116,15 +116,9 @@ public class User implements Serializable {
 		return userMapper.selectAllUser();
 	}
 
-	// TODO : 이 아래 4개의 메소드에 대해 테스트 작성하기.실패테스트, 현재 User의 id 값이 null 일때 시도 , 등록되지
-	// 않은 User 임에도 시도. 잠만,.. 이거 둘이 엮을 수 있지 않나?
 	public void followingUserById(String targetId) {
-		if (userMapper.selectUserById(targetId) == null
-				|| userMapper.selectUserById(getId()) == null) {
-			throw new NotFoundUserException("Follow 하려는 User " + targetId
-					+ " (이)가 존재하지 않습니다");
-		}
-
+		checkUserExsist(targetId, "Follow 하려는 User " + targetId
+				+ " (이)가 존재하지 않습니다");
 		checkFollowUser(targetId, true, getId() + " 와 " + targetId
 				+ " (은)는 Follow 이미 Following 관계 입니다.");
 
@@ -132,16 +126,19 @@ public class User implements Serializable {
 	}
 
 	public void unFollowUserById(String targetId) {
-		if (userMapper.selectUserById(targetId) == null
-				|| userMapper.selectUserById(getId()) == null) {
-			throw new NotFoundUserException("Follow 하려는 User " + targetId
-					+ " (이)가 존재하지 않습니다");
-		}
-
+		checkUserExsist(targetId, "UnFollow 하려는 User " + targetId
+				+ " (이)가 존재하지 않습니다");
 		checkFollowUser(targetId, false, getId() + " 와 " + targetId
 				+ " (은)는 Follow 관계가 아닙니다.");
 
 		followingMapper.deleteFollowing(getId(), targetId);
+	}
+
+	private void checkUserExsist(String targetId, String message) {
+		if (userMapper.selectUserById(targetId) == null
+				|| userMapper.selectUserById(getId()) == null) {
+			throw new NotFoundUserException(message);
+		}
 	}
 
 	private void checkFollowUser(String targetId, boolean flag, String s) {
@@ -153,15 +150,7 @@ public class User implements Serializable {
 	}
 
 	public List<User> followingUserList() {
-		return null;
-	}
-
-	public List<User> followUserList() {
 		return userMapper.selectAllFollowingUser(getId());
-	}
-
-	public String toString() {
-		return "User [id=" + id + "]";
 	}
 
 	public void saveImage(MultipartFile file) throws IOException,
@@ -200,5 +189,9 @@ public class User implements Serializable {
 
 	public List<User> followerUserList() {
 		return userMapper.selectAllFollowerUser(getId());
+	}
+
+	public String toString() {
+		return "User [id=" + id + "]";
 	}
 }

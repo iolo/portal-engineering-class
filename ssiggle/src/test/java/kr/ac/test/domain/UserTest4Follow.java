@@ -155,7 +155,7 @@ public class UserTest4Follow {
 					}
 				});
 
-		List<User> list = user.followUserList();
+		List<User> list = user.followingUserList();
 
 		assertThat(list.size(), is(2));
 		assertThat(list.get(0).getId(), is("kgb"));
