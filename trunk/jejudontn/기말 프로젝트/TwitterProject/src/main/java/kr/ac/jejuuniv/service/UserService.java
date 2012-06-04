@@ -17,6 +17,6 @@ public interface UserService {
 	List<AllUsers> findAlluser(String id);
 
 
-	void Followluser(String id, String follow, String followid);
+	void FollowUser(String id, String follow, String followid);
 
 }
