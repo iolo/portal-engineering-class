@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.jejuuniv.twitter.repository.TwitterRepository">
+
+	<!-- 트위터 글쓰기 -->
+	<insert id="writeArticle" parameterType="kr.ac.jejuuniv.twitter.model.ArticleModel">
+		Insert into article(id, content, writedate) values(#{id},#{content},#{writedate})
+	</insert>
+	
+	<!-- 트위터 글삭제 -->
+	<delete id="deleteArticle" parameterType="String">
+		Delete from article where artid=#{artid}
+	</delete>
+	
+	<!-- Follower 등록 -->
+	<insert id="FollowingById" parameterType="String">
+		Insert into follow(id, follower) values(#{id},#{follow})	
+	</insert>
+	<!-- Follower 글 목록-->
+</mapper>

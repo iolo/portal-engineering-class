@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<!-- Scans within the base package of the application for @Components to configure as beans -->
-	<context:component-scan base-package="kr.ac.jejuuniv" />
+	<context:component-scan base-package="kr.ac.jejuuniv.twitter" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -24,6 +24,5 @@
 	<!-- <view-controller path="/**/*.jeju" /> -->
 	
 	<!-- Imports user-defined @Controller beans that process client requests -->
-	<!-- <beans:import resource="repository.xml" /> -->
-
+  	<!-- <beans:import resource="/repository.xml" /> -->
 </beans:beans>
