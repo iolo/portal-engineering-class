@@ -13,6 +13,15 @@ public class Twitt {
 	private String twiitt;
 	
 	
+	public Twitt(String id, String twiit, String mTime, String twiitId) {
+		this.setId(id);
+		this.setTwiitt(twiit);
+		this.setWritrDate(mTime);
+		this.setTwiitID(twiitId);
+		
+	}
+	
+	public Twitt(){}
 	public String getTwiitID() {
 		return twiitID;
 	}

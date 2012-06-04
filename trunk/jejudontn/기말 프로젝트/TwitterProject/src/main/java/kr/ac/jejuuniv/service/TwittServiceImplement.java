@@ -1,9 +1,6 @@
 package kr.ac.jejuuniv.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import kr.ac.jejuuniv.model.Twitt;
 import kr.ac.jejuuniv.model.TwittList;
@@ -14,22 +11,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TwittServiceImplement implements TwittService {
-	List<TwittList> allTwiit;
 	@Autowired
 	TwiitMapper twiitMapper;
+	@Autowired
+	ServiceUtility serviceUtility = new ServiceUtilityImplement();
 	
 	
 	@Override
 	public void createTwiit(String id, String twiit) {
-		String twiitId = "id" + System.currentTimeMillis();
-		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy.MM.dd", Locale.KOREA );
-		Date currentTime = new Date ( );
-		String mTime = mSimpleDateFormat.format ( currentTime );
-		Twitt maketwiit = new Twitt();
-		maketwiit.setId(id);
-		maketwiit.setTwiitt(twiit);
-		maketwiit.setWritrDate(mTime);
-		maketwiit.setTwiitID(twiitId);
+		
+		
+		String twiitId = id + System.currentTimeMillis();
+		String mTime = serviceUtility.getTime();
+		Twitt maketwiit = new Twitt(id, twiit, mTime, twiitId);
+		
 		
 		twiitMapper.createTwiit(maketwiit);
 		
@@ -39,9 +34,7 @@ public class TwittServiceImplement implements TwittService {
 	@Override
 	public List<TwittList> getPersonalTwiit(String id) {
 		
-		allTwiit = twiitMapper.getPersonalTwiit(id);
-		
-		return allTwiit;
+		return twiitMapper.getPersonalTwiit(id);
 	}
 
 	@Override
@@ -52,8 +45,7 @@ public class TwittServiceImplement implements TwittService {
 
 	@Override
 	public List<TwittList> getFollowingTwitt(String id) {
-		allTwiit = twiitMapper.getFollowingTwitt(id);
-		return allTwiit;
+		return twiitMapper.getFollowingTwitt(id);
 		
 	}
 
