@@ -9,14 +9,14 @@ public class User {
 	private String name;
 	private String id;
 	private String information;
-	private String profileImageUri;
+	private String imageURI;
 
-	public User(String id, String password, String name, String infomation, String profileImageUri) {
+	public User(String id, String password, String name, String infomation, String imageURI) {
 
 		this.setId(id);
 		this.setName(name);
 		this.setPassword(password);
-		this.setProfileImageUri(profileImageUri);
+		this.setimageURI(imageURI);
 		this.setInformation(infomation);
 
 	}
@@ -49,20 +49,20 @@ public class User {
 		this.id = id;
 	}
 
-	public String getProfileImageUri() {
-		return profileImageUri;
-	}
-
-	public void setProfileImageUri(String profileImageUri) {
-		this.profileImageUri = profileImageUri;
-	}
-
 	public String getInformation() {
 		return information;
 	}
 
 	public void setInformation(String information) {
 		this.information = information;
+	}
+
+	public String getimageURI() {
+		return imageURI;
+	}
+
+	public void setimageURI(String imageURI) {
+		this.imageURI = imageURI;
 	}
 
 }

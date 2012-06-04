@@ -26,13 +26,12 @@ public class FollowerController {
 	
 	@RequestMapping()
 	public List<AllUsers> follower(@ModelAttribute User user){
-		
+			
 		return followService.getFollower(user.getId());
 	}
 	@RequestMapping("/changefollow")
 	public String followuser(@ModelAttribute("user") User user, @RequestParam("follow") String follow, @RequestParam("followId") String followid) {
 		userService.FollowUser(user.getId() , follow, followid);
-		
 		return "redirect:/follower";
 		
 	}

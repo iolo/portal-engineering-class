@@ -28,6 +28,7 @@ public class UserServiceImplement implements UserService {
 	public void createUser(String id, String password, String name,
 			String information, MultipartFile profileImage) {
 
+
 		
 		if (serviceUtility.validationImageExt(profileImage.getOriginalFilename())) {
 			String fileURI = serviceUtility.inputFile(profileImage);

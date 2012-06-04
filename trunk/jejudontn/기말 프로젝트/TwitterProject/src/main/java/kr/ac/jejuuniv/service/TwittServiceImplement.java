@@ -11,10 +11,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TwittServiceImplement implements TwittService {
+
+
+
 	@Autowired
 	TwiitMapper twiitMapper;
 	@Autowired
-	ServiceUtility serviceUtility = new ServiceUtilityImplement();
+	ServiceUtility serviceUtility;
 	
 	
 	@Override
@@ -34,7 +37,10 @@ public class TwittServiceImplement implements TwittService {
 	@Override
 	public List<TwittList> getPersonalTwiit(String id) {
 		
+
 		return twiitMapper.getPersonalTwiit(id);
+
+
 	}
 
 	@Override
@@ -45,7 +51,10 @@ public class TwittServiceImplement implements TwittService {
 
 	@Override
 	public List<TwittList> getFollowingTwitt(String id) {
+
 		return twiitMapper.getFollowingTwitt(id);
+
+
 		
 	}
 
