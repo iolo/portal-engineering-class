@@ -1,6 +1,8 @@
 package kr.ac.jejuuniv.Model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Tweet {
 	private int seq;
@@ -26,8 +28,10 @@ public class Tweet {
 	public String getMessage() {
 		return message;
 	}
-	public Date getDate() {
-		return date;
+	public String getDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy.MM.dd", Locale.KOREA );
+		String dTime = formatter.format (date);
+		return dTime;
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;

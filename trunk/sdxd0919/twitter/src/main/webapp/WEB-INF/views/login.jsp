@@ -12,24 +12,29 @@
 <body>
 	<div id="Header">
 		<label>제주 SNS 오신것을 환영합니다.</label>
-		<!--  <img src="/mainImg" />	-->
+		<p>
+		<img src="/resources/cat.png" />
+		</p>
 	</div>
+	
 	<div id="LoginContent">
-		<fieldset>
-			<legend>Login</legend>
-			<p>
-				<label>ID</label>
-				<input type="text" name="id" />
-			</p>
-			<p>
-				<label>Password</label>
-				<input type="password" name="password" />
-			</p>
-			<p>
-				<a href="/login"><input type="button" value="로그인"></a>
-				<a href="/join"><input type="button" value="회원가입" /></a>
-			</p>
-		</fieldset>
+		<form action="/twitter/login" method="post">
+			<fieldset>
+				<legend>Login</legend>
+				<p>
+					<label>ID</label>
+					<input type="text" name="id" />
+				</p>
+				<p>
+					<label>Password</label>
+					<input type="password" name="password" />
+				</p>
+				<p>
+					<input type="submit" value="로그인" />
+					<a href="/twitter/join"><input type="button" value="회원가입" /></a>
+				</p>
+			</fieldset>
+		</form>
 	</div>
 </body>
 </html>
