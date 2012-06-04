@@ -38,7 +38,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${allUsersList}"var="Allusers" >
+			<c:forEach items="${allUsersList}" var="Allusers" >
 				<tr>
 					<td><img src ="/resources/ProfileImage/${Allusers.imageURI}"/></td>
 					<td>${Allusers.name} </td>

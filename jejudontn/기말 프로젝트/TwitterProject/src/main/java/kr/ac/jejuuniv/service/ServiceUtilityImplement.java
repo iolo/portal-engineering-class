@@ -34,8 +34,15 @@ public class ServiceUtilityImplement implements ServiceUtility {
 	}
 	
 	public String inputFile(MultipartFile profileImage){
-		String fileURI = System.currentTimeMillis()
+		
+		String fileURI;
+		
+		if(profileImage.getOriginalFilename().isEmpty()){
+			fileURI = "default.png";
+		} else {
+		fileURI= System.currentTimeMillis()
 				+ profileImage.getOriginalFilename();
+		}
 		
 		File f = new File(
 				"C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\src\\main\\webapp\\resources\\ProfileImage\\"

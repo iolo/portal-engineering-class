@@ -19,10 +19,10 @@ public class FollowServiceImplement implements FollowService {
 	public List<AllUsers> getFollower(String id) {
 		List<AllUsers> allUsers = userMapper.getFollower(id);
 		List<AllFollow> allFollows;
-		
 		allFollows = userMapper.findAllFollow(id);
+		
 		for (AllUsers alluser : allUsers) {
-			alluser.setFollow("Follow");
+			alluser.setFollow("Follow");	
 		}
 		if (!allFollows.isEmpty()) {
 			for (AllUsers alluser : allUsers) {

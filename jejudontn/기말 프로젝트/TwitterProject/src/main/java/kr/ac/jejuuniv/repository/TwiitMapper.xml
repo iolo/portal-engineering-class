@@ -16,6 +16,7 @@
 		SELECT twiitText , twiitNumber, writeDate FROM twitt
 		WHERE
 		id = #{id}
+		ORDER BY writedate DESC
 	</select>
 
 	<delete id="removeTwitt" parameterType="String">
