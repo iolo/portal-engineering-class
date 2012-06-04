@@ -8,7 +8,7 @@ import kr.ac.jejuuniv.model.TwittList;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TwiitMapper {
+public interface TwittMapper {
 
 	List<TwittList> getPersonalTwiit(String id);
 	
