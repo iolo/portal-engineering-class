@@ -25,7 +25,7 @@ public class HomeController {
 		}
 
 		User user = new User().findUserById(loginId);
-
+		
 		model.addAttribute("user", user);
 		model.addAttribute("ssiggleList", ssiggleService
 				.readAllSsiggleByFollowingUser(user, new Ssiggle()));

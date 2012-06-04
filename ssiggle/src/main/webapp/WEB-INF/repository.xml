@@ -13,7 +13,12 @@
                 http://www.springframework.org/schema/tx 
                 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
        		  ">
-       		  
+
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://127.0.0.1:3306/ssiggle?unicode=true&amp;characterEncoding=utf-8"
+		p:username="sens" p:password="sens" />
+
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
@@ -28,7 +33,7 @@
 			value="kr.ac.jejuuniv.mapper.SsiggleMapper" />
 		<beans:property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</beans:bean>
-	
+
 	<beans:bean id="followingMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<beans:property name="mapperInterface"
 			value="kr.ac.jejuuniv.mapper.FollowingMapper" />

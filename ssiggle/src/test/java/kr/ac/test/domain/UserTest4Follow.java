@@ -44,17 +44,17 @@ public class UserTest4Follow {
 	@Test(expected = NotFoundUserException.class)
 	public void testFollowFail() {
 		User user = new User(userMapper).findUserById("sens");
-		user.followingUserById("abcd");
+		user.followUserById("abcd");
 
 		User user2 = createUser("dddd");
-		user2.followingUserById("aaaa");
+		user2.followUserById("aaaa");
 	}
 
 	@Test(expected = NotFoundUserException.class)
 	public void testFollowFail2() {
 		User user = createUser("dddd");
 		user.setUserMapper(userMapper);
-		user.followingUserById("sens");
+		user.followUserById("sens");
 	}
 
 	@Test(expected = NotFollowingException.class)
@@ -63,7 +63,7 @@ public class UserTest4Follow {
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kbg"));
 
 		User user = createUser("sens");
-		user.followingUserById("kgb");
+		user.followUserById("kgb");
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class UserTest4Follow {
 
 		User user = new User(userMapper).findUserById("sens");
 		user.setFollowMapper(followingMapper);
-		user.followingUserById("kgb");
+		user.followUserById("kgb");
 
 		List<User> followingIdList = userMapper.selectAllFollowingUser("sens");
 

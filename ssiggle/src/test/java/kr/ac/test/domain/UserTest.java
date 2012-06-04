@@ -134,7 +134,7 @@ public class UserTest {
 
 	@Test
 	public void testAllUser() {
-		when(userMapper.selectAllUser()).thenAnswer(new Answer<List<User>>() {
+		when(userMapper.selectAllUserNotExistId("aaa")).thenAnswer(new Answer<List<User>>() {
 			@Override
 			public List<User> answer(InvocationOnMock invocation)
 					throws Throwable {
@@ -153,7 +153,8 @@ public class UserTest {
 		});
 
 		User user = new User(userMapper);
-		List<User> userlist = user.findAllUser();
+		user.setId("aaa");
+		List<User> userlist = user.findAllUserNotExistMe();
 
 		assertThat(userlist.size(), is(2));
 		assertThat(userlist.get(0).getId(), is("sens"));

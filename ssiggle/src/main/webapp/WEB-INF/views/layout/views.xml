@@ -21,16 +21,4 @@
 	<definition name="user" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/user.jsp" />
 	</definition>
-	<definition name="main" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/main.jsp" />
-	</definition>
-	<definition name="userModify" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/userModify.jsp" />
-	</definition>
-	<definition name="joinUser" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/joinUser.jsp" />
-	</definition>
-	<definition name="allUser" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/allUser.jsp" />
-	</definition>
 </tiles-definitions>	

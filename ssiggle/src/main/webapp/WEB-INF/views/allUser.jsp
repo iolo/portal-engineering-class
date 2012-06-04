@@ -3,13 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <table>
-	<c:forEach items="${allUser}" var="user">
+	<c:forEach items="${allUser}" var="target">
 		<tr>
-			<td><img src="/ssiggle/resources/userimage/${user.image}"
+			<td><img src="/ssiggle/resources/userimage/${target.image}"
 				width="50" height="50"></td>
-			<td>${user.name }</td>
-			<td>${user.introduce }</td>
-			<td><a href="/ssiggle/follow?userId=${user.id}">follow</a></td>
+			<td>${target.name }</td>
+			<td>${target.introduce }</td>
+			<td><a href="/ssiggle/service/follow/allUser?userId=${user.id}&targetId=${target.id}">follow</a></td>
 		</tr>
 	</c:forEach>
 </table>

@@ -82,7 +82,7 @@ public class SsiggleTest {
 		}).when(ssiggleMapper).insertSsiggle((Ssiggle) anyObject());
 
 		Ssiggle ssiggle = new Ssiggle(ssiggleMapper);
-		ssiggle.setId(0);
+		ssiggle.setId(1);
 		ssiggle.setText("가나다라");
 
 		ssiggle.save();

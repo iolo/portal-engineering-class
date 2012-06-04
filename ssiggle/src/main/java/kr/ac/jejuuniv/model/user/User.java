@@ -112,11 +112,11 @@ public class User implements Serializable {
 		return userMapper.selectUserById(loginId);
 	}
 
-	public List<User> findAllUser() {
-		return userMapper.selectAllUser();
+	public List<User> findAllUserNotExistMe() {
+		return userMapper.selectAllUserNotExistId(getId());
 	}
 
-	public void followingUserById(String targetId) {
+	public void followUserById(String targetId) {
 		checkUserExsist(targetId, "Follow 하려는 User " + targetId
 				+ " (이)가 존재하지 않습니다");
 		checkFollowUser(targetId, true, getId() + " 와 " + targetId

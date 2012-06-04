@@ -84,10 +84,10 @@ public class Ssiggle implements Serializable {
 	}
 
 	public void save() {
-		if (findSsiggleById(getId()) == null) {
-			ssiggleMapper.updateSsiggle(this);
-		} else {
+		if (ssiggleMapper.selectSsiggleById(getId()) == null) {
 			ssiggleMapper.insertSsiggle(this);
+		} else {
+			ssiggleMapper.updateSsiggle(this);
 		}
 	}
 

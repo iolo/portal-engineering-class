@@ -15,7 +15,7 @@ public class WriteSsiggleController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String action(@RequestParam("userId") String userId, ModelMap model) {
 		Ssiggle ssiggle = new Ssiggle();
-		ssiggle.setUser(new User().findUserById("userId"));
+		ssiggle.setUser(new User().findUserById(userId));
 		model.addAttribute("ssiggle", ssiggle);
 
 		return "writeSsiggle";

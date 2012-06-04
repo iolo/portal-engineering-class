@@ -16,12 +16,15 @@
 	href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
 <a href="/ssiggle/service/user/${user.id}/following">following</a>
 <a href="/ssiggle/service/user/${user.id}/follower">follower</a>
-<a href="/ssiggle/service/allUser">전체사용자</a>
+<a href="/ssiggle/service/user/${user.id}/allUser">전체사용자</a>
 <br />
 <table>
 <c:forEach items="${ssiggleList}" var="ssiggle">
 	<tr>
-		<td>${ssiggle. }
+		<td><img src = /ssiggle/resources/userimage/${ssiggle.user.image} width="50" height ="50"></td>
+		<td>${ssiggle.user.name }</td>
+		<td>${ssiggle.text }</td>
+		<td>${ssiggle.time }</td>
 	</tr>
 </c:forEach>
 </table>

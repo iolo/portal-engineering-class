@@ -15,7 +15,7 @@
 			<p>
 				<form:textarea path="text" />
 				<form:errors path="text" />
-				<form:hidden path="user"/>
+				<form:hidden path="user.id"/>
 			</p>
 		</fieldset>
 		<p>

@@ -42,7 +42,7 @@ public class UserMapperIntegralTest {
 
 	// @Test
 	public void testAllUser() {
-		List<User> list = userMapper.selectAllUser();
+		List<User> list = userMapper.selectAllUserNotExistId("sens");
 		assertThat(list.isEmpty(), is(false));
 	}
 

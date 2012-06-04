@@ -12,7 +12,7 @@ public interface UserMapper {
 
 	void insertUser(User user);
 
-	List<User> selectAllUser();
+	List<User> selectAllUserNotExistId(String userId);
 
 	void deleteUser(String id);
 

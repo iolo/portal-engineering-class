@@ -24,14 +24,38 @@ public class UserController {
 
 		return "user";
 	}
+
 	
-	//TODO : 팔로잉, 팔로워 리스트 처리할 컨트롤러
-	@RequestMapping("/{userId}/following")
-	public String actionFollowing(@PathVariable String userId) {
-		return "main";
+	@RequestMapping("/{userId}/allUser")
+	public String actionAllUser(@PathVariable String userId, ModelMap model) {
+		User user = new User().findUserById(userId);
+
+		model.addAttribute("user", user);
+		model.addAttribute("allUser", user.findAllUserNotExistMe());
+
+		return "allUser";
 	}
+
+	@RequestMapping("/{userId}/following")
+	public String actionFollowing(@PathVariable String userId, ModelMap model) {
+		User user = new User().findUserById(userId);
+
+		List<User> userList = user.followingUserList();
+
+		model.addAttribute("user", user);
+		model.addAttribute("followingUser", userList);
+		return "followingUser";
+	}
+
 	@RequestMapping("/{userId}/follower")
-	public String actionFollower(@PathVariable String userId) {
-		return "main";
+	public String actionFollower(@PathVariable String userId, ModelMap model) {
+		User user = new User().findUserById(userId);
+
+		List<User> userList = user.followerUserList();
+
+		model.addAttribute("user", user);
+		model.addAttribute("followerUser", userList);
+
+		return "followerUser";
 	}
 }
