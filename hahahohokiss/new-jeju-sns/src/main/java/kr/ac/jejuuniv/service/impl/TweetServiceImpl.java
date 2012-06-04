@@ -4,12 +4,14 @@ import java.util.List;
 
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.repository.TweetRepository;
+import kr.ac.jejuuniv.repository.UserRepository;
 import kr.ac.jejuuniv.service.TweetService;
 
 public class TweetServiceImpl implements TweetService {
 	
 	TweetRepository tweetRepository;
-		
+	UserRepository userRepository;
+	
 	public TweetServiceImpl() {
 		
 	}
@@ -19,6 +21,7 @@ public class TweetServiceImpl implements TweetService {
 	}
 
 	public List<Tweet> getTweetByUserId(String id) {
+		
 		return tweetRepository.findByUserId(id);
 	}
 
