@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page session="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,23 +14,35 @@
 <body>
 	<div id="Header">
 		<p>
-			<label id="${user.userName}"></label>
+			<label>${user.name}</label>
 			<a href="/twitter/join"><input type="button" value="프로필수정" /></a>
 			<a href="/twitter/write"><input type="button" value="글쓰기" /></a>
 			<a href="/twitter/sns"><input type="button" value="메인페이지" /></a>
 		</p>
 	</div>
-		
+	
 	<div id="PersonalListContent">
-		<c:forEach items="${tweetList}" var="tweet" >
-			<form action="tweetDelete" method="post">
-				<input type="hidden" value="${tweet.num}">
- 				<img src = "${user.profileImg}" />
-				<label>${tweet.message}</label>
-				<input type="submit" value="삭제" />
-				<label>${tweet.date}</label>
-			</form>
-		</c:forEach>
+		<table>
+			<c:forEach items="${tweetList}" var="tweets" >
+				<tr>
+					<form action="tweetDelete" method="post">
+						<td>
+							<input type="hidden" value="${tweets.seq}">
+		 					<img src = "${user.profileImg}" />
+		 				</td>
+		 				<td>
+							<label>${tweets.message}</label>
+						</td>
+						<td>
+							<input type="submit" value="삭제" />
+						</td>
+						<td>
+							<label>${tweets.date}</label>
+						</td>
+					</form>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>
