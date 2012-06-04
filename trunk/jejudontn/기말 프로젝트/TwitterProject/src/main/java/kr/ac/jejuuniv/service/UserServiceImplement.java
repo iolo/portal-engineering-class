@@ -17,7 +17,6 @@ public class UserServiceImplement implements UserService {
 
 	List<AllUsers> allUsers;
 	List<AllFollow> allFollows;
-	User user;
 
 	@Autowired
 	UserMapper userMapper;

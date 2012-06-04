@@ -27,7 +27,7 @@ public class WriteController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public void saveTwitt(@RequestParam("twitt") String twitt, @ModelAttribute("user") User user){
 
-		twittService.createTwiit(user.getId(), twitt);
+		twittService.createTwitt(user.getId(), twitt);
 	}
 
 }

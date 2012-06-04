@@ -6,7 +6,7 @@ import kr.ac.jejuuniv.model.TwittList;
 
 public interface TwittService {
 
-	void createTwiit(String id, String twiit);
+	void createTwitt(String id, String twiit);
 
 	List<TwittList> getPersonalTwiit(String id);
 

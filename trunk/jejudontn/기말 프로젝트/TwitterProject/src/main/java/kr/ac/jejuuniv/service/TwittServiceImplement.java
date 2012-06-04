@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.ac.jejuuniv.model.Twitt;
 import kr.ac.jejuuniv.model.TwittList;
-import kr.ac.jejuuniv.repository.TwiitMapper;
+import kr.ac.jejuuniv.repository.TwittMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +15,13 @@ public class TwittServiceImplement implements TwittService {
 
 
 	@Autowired
-	TwiitMapper twiitMapper;
+	TwittMapper twittMapper;
 	@Autowired
 	ServiceUtility serviceUtility;
 	
 	
 	@Override
-	public void createTwiit(String id, String twiit) {
+	public void createTwitt(String id, String twiit) {
 		
 		
 		String twiitId = id + System.currentTimeMillis();
@@ -29,7 +29,7 @@ public class TwittServiceImplement implements TwittService {
 		Twitt maketwiit = new Twitt(id, twiit, mTime, twiitId);
 		
 		
-		twiitMapper.createTwiit(maketwiit);
+		twittMapper.createTwiit(maketwiit);
 		
 		
 	}
@@ -38,21 +38,21 @@ public class TwittServiceImplement implements TwittService {
 	public List<TwittList> getPersonalTwiit(String id) {
 		
 
-		return twiitMapper.getPersonalTwiit(id);
+		return twittMapper.getPersonalTwiit(id);
 
 
 	}
 
 	@Override
 	public void removeTwitt(String twittId) {
-		twiitMapper.removeTwitt(twittId);
+		twittMapper.removeTwitt(twittId);
 		
 	}
 
 	@Override
 	public List<TwittList> getFollowingTwitt(String id) {
 
-		return twiitMapper.getFollowingTwitt(id);
+		return twittMapper.getFollowingTwitt(id);
 
 
 		
