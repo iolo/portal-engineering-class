@@ -3,9 +3,28 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.ac.jejuuniv.mapper.SsiggleMapper">
+	<resultMap type="kr.ac.jejuuniv.model.ssiggle.Ssiggle" id="ssiggleResult">
+		<id property="id" column="id" />
+		<result property="text" column="text" />
+		<result property="time" column="time" />
+		<association property="user" column="user"
+			javaType="kr.ac.jejuuniv.model.user.User">
+			<id property="id" column="userId" />
+			<result property="name" column="userName" />
+			<result property="image" column="userImage" />
+		</association>
+	</resultMap>
+
+	<select id="selectUser" parameterType="java.lang.String"
+		resultType="kr.ac.jejuuniv.model.user.User">
+		select id, name, image from user where id=#{user}
+	</select>
+
 	<select id="selectSsiggleById" parameterType="java.lang.String"
 		resultType="kr.ac.jejuuniv.model.ssiggle.Ssiggle">
-		select * from ssiggle where id=#{id}
+		select a.id as id, a.text as text, a.time as time , b.id as
+		userId from ssiggle a left join user b on a.user = b.id where a.id =
+		#{id}
 	</select>
 
 	<delete id="deleteSsiggleById" parameterType="java.lang.String">
@@ -15,7 +34,7 @@
 
 	<insert id="insertSsiggle" parameterType="kr.ac.jejuuniv.model.ssiggle.Ssiggle">
 		insert ssiggle(text,
-		user) values (#{text}, #{user})
+		user) values (#{text}, #{user.id})
 	</insert>
 
 	<update id="updateSsiggle" parameterType="kr.ac.jejuuniv.model.ssiggle.Ssiggle">
@@ -24,7 +43,9 @@
 	</update>
 
 	<select id="selectSsiggleListByUserIdDescTime" parameterType="java.lang.String"
-		resultType="kr.ac.jejuuniv.model.ssiggle.Ssiggle">
-		select * from ssiggle where user = #{id} order by time desc
+		resultMap="ssiggleResult">
+		select s.id as id, s.text as text, s.time as time, u.id as
+		userId, u.name as userName, u.image as userImage from ssiggle s left
+		join user u on s.user = u.id where s.user = #{id} order by time desc
 	</select>
 </mapper>

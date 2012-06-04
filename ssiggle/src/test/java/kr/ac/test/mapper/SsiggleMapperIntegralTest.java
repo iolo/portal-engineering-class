@@ -7,6 +7,7 @@ import java.util.List;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
 import kr.ac.jejuuniv.model.ssiggle.Ssiggle;
+import kr.ac.jejuuniv.model.user.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,18 +25,20 @@ public class SsiggleMapperIntegralTest {
 	public void testSelectSsiggle() {
 		Ssiggle ssiggle = ssiggleMapper.selectSsiggleById(1);
 		assertThat(ssiggle.getId(), is(1L));
+		assertThat(ssiggle.getUser() != null, is(true));
+		System.out.println(ssiggle.getUser());
+	}
+
+	@Test
+	public void testSsiggleInsert() {
+		Ssiggle ssiggle = new Ssiggle();
+		ssiggle.setText("Jnit 테스트 입니다.");
+		ssiggle.setUser(new User().findUserById("sens"));
+
+		ssiggleMapper.insertSsiggle(ssiggle);
 	}
 
 	// @Test
-	// public void testSsiggleInsert() {
-	// Ssiggle ssiggle = new Ssiggle();
-	// ssiggle.setText("안녕하세요?");
-	// ssiggle.setUser("sens");
-	//
-	// ssiggleMapper.insertSsiggle(ssiggle);
-	// }
-
-	@Test
 	public void testUpdateSsiggle() {
 		Ssiggle ssiggle = new Ssiggle();
 		ssiggle.setId(9);
@@ -44,7 +47,7 @@ public class SsiggleMapperIntegralTest {
 		ssiggleMapper.updateSsiggle(ssiggle);
 	}
 
-	@Test
+	// @Test
 	public void testDeleteSsiggle() {
 		ssiggleMapper.deleteSsiggleById(10);
 	}
@@ -56,6 +59,7 @@ public class SsiggleMapperIntegralTest {
 
 		for (Ssiggle s : list) {
 			System.out.println(s);
+			System.out.println(s.getUser().getImage());
 		}
 	}
 }

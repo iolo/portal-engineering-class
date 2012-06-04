@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
+import kr.ac.jejuuniv.model.user.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -16,7 +17,7 @@ public class Ssiggle implements Serializable {
 	private long id;
 	private String text;
 	private Timestamp time;
-	private String user;
+	private User user;
 
 	@Autowired
 	private SsiggleMapper ssiggleMapper;
@@ -52,12 +53,20 @@ public class Ssiggle implements Serializable {
 		this.time = time;
 	}
 
-	public String getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(String id) {
-		this.user = id;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public void setUserId(String user) {
+		this.user = new User().findUserById(user);
+	}
+
+	public String getUserId() {
+		return user.getId();
 	}
 
 	public Ssiggle findSsiggleById(long id) {
@@ -77,7 +86,7 @@ public class Ssiggle implements Serializable {
 	public void save() {
 		if (findSsiggleById(getId()) == null) {
 			ssiggleMapper.updateSsiggle(this);
-		}else {
+		} else {
 			ssiggleMapper.insertSsiggle(this);
 		}
 	}

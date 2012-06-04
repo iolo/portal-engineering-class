@@ -1,6 +1,7 @@
 package kr.ac.jejuuniv.controller.ssiggle;
 
 import kr.ac.jejuuniv.model.ssiggle.Ssiggle;
+import kr.ac.jejuuniv.model.user.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +15,7 @@ public class WriteSsiggleController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String action(@RequestParam("userId") String userId, ModelMap model) {
 		Ssiggle ssiggle = new Ssiggle();
-		ssiggle.setUser(userId);
+		ssiggle.setUser(new User().findUserById("userId"));
 		model.addAttribute("ssiggle", ssiggle);
 
 		return "writeSsiggle";

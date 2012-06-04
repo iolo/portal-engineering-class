@@ -18,6 +18,13 @@
 <a href="/ssiggle/service/user/${user.id}/follower">follower</a>
 <a href="/ssiggle/service/allUser">전체사용자</a>
 <br />
+<table>
+<c:forEach items="${ssiggleList}" var="ssiggle">
+	<tr>
+		<td>${ssiggle. }
+	</tr>
+</c:forEach>
+</table>
 
 <a href="/ssiggle/logout">로그아웃</a>
 

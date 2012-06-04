@@ -46,7 +46,7 @@ public class UserMapperIntegralTest {
 		assertThat(list.isEmpty(), is(false));
 	}
 
-	// @Test
+//	@Test
 	public void testInsert() {
 		User user = new User();
 		user.setId("test");
