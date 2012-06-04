@@ -31,7 +31,7 @@ public class FollowerController {
 	}
 	@RequestMapping("/changefollow")
 	public String followuser(@ModelAttribute("user") User user, @RequestParam("follow") String follow, @RequestParam("followId") String followid) {
-		userService.Followluser(user.getId() , follow, followid);
+		userService.FollowUser(user.getId() , follow, followid);
 		
 		return "redirect:/follower";
 		
