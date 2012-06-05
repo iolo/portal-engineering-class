@@ -186,6 +186,14 @@ public class UserTest4Follow {
 		assertThat(followerList.get(1).getId(), is("bbb"));
 	}
 
+	@Test(expected = NotFoundUserException.class)
+	public void testUserListMarkFollowFail() {
+		List<User> userList = new ArrayList<>();
+
+		User user = createUser("sens");
+		user.markFollowUser(userList);
+	}
+
 	private User createUser(String id) {
 		User user = new User(userMapper);
 		user.setFollowMapper(followingMapper);

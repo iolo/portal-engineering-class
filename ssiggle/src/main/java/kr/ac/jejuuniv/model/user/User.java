@@ -189,6 +189,10 @@ public class User implements Serializable {
 		return "";
 	}
 
+	public List<UserRow> markFollowUser(List<User> userList) {
+		throw new NotFoundUserException("User " + getId() + " (을)를 찾을 수 없습니다.");
+	}
+
 	public List<User> followerUserList() {
 		return userMapper.selectAllFollowerUser(getId());
 	}
