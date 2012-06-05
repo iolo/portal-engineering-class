@@ -9,6 +9,12 @@ public class FollowIdTemp {
 	
 	
 
+	public FollowIdTemp(String id, String followid) {
+		this.setFollowId(followid);
+		this.setUserId(id);
+	}
+	
+	public FollowIdTemp(){}
 	public String getFollowId() {
 		return followId;
 	}

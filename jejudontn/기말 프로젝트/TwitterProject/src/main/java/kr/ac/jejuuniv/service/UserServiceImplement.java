@@ -15,8 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class UserServiceImplement implements UserService {
 
-	List<AllUsers> allUsers;
-	List<AllFollow> allFollows;
 
 	@Autowired
 	UserMapper userMapper;
@@ -26,8 +24,6 @@ public class UserServiceImplement implements UserService {
 	@Override
 	public void createUser(String id, String password, String name,
 			String information, MultipartFile profileImage) {
-
-
 		
 		if (serviceUtility.validationImageExt(profileImage.getOriginalFilename())) {
 			String fileURI = serviceUtility.inputFile(profileImage);
@@ -39,9 +35,7 @@ public class UserServiceImplement implements UserService {
 
 	}
 	
-	
 
-	
 	@Override
 	public void modifyUser(String id, String password, String name,
 			String information, MultipartFile profileImage) {
@@ -58,37 +52,24 @@ public class UserServiceImplement implements UserService {
 
 	@Override
 	public List<AllUsers> findAlluser(String id) {
-		allUsers = userMapper.findAlluser(id);
-		allFollows = userMapper.findAllFollow(id);
-		for (AllUsers alluser : allUsers) {
-			alluser.setFollow("Follow");
-		}
-		if (!allFollows.isEmpty()) {
-			for (AllUsers alluser : allUsers) {
-				for (AllFollow allFollower : allFollows) {
-					if (alluser.getId().equals(allFollower.getFollowing())) {
-						alluser.setFollow("UnFollow");
-					}
-				}
-			}
-		}
+		List<AllUsers> allUsers = userMapper.findAlluser(id);
+		List<AllFollow> allFollows = userMapper.findAllFollow(id);
+			
+		serviceUtility.setFollow(allUsers, allFollows);
 
 		return allUsers;
 	}
 
 	@Override
 	public void FollowUser(String id, String follow, String followid) {
-		FollowIdTemp followTemp = new FollowIdTemp();
-		followTemp.setUserId(id);
-		followTemp.setFollowId(followid);
+		FollowIdTemp followTemp = new FollowIdTemp(id, followid);
+		
 		if (follow.equals("Follow")) {
 			userMapper.createFollow(followTemp);
 		} else {
 			userMapper.deleteFollow(followTemp);
 
 		}
-		allUsers = userMapper.findAlluser(id);
-		allFollows = userMapper.findAllFollow(id);
 
 	}
 

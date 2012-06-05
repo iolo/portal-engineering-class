@@ -28,7 +28,6 @@ public class TwittServiceImplement implements TwittService {
 		String mTime = serviceUtility.getTime();
 		Twitt maketwiit = new Twitt(id, twiit, mTime, twiitId);
 		
-		
 		twittMapper.createTwiit(maketwiit);
 		
 		
