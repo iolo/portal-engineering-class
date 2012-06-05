@@ -10,11 +10,11 @@ import kr.ac.jejuuniv.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/personalSNS")
 public class PersonalSnsController {
 
 	@Autowired
@@ -23,7 +23,7 @@ public class PersonalSnsController {
 	@Autowired
 	private TweetService tweetService;
 
-	@RequestMapping
+	@RequestMapping("/personalSNS")
 	public ModelAndView action(HttpSession session, HttpServletRequest request){
 		User user = (User) session.getAttribute("user");
 		
@@ -34,5 +34,12 @@ public class PersonalSnsController {
 		mav.addObject("tweetList", tweetService.getAllTweetByUserNum(userNum));
 		
 		return mav;
+	}
+	
+	@RequestMapping("/deleteTweet")
+	public String delete(int seq){
+		tweetService.deleteTweet(seq);
+		
+		return "redirect:/personalSNS";
 	}
 }
