@@ -11,7 +11,7 @@
 		<h2>제주 SNS에 오신것을 환영합니다.</h2>
 	</div>
 	<div>
-		<img src="" />
+		<img src="/resources/Image/index.jpg" />
 	</div>
 	<div>
 	<form action="index/login" method="post">

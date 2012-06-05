@@ -28,8 +28,7 @@ public class UserServiceImplement implements UserService {
 		if (serviceUtility.validationImageExt(profileImage.getOriginalFilename())) {
 			String fileURI = serviceUtility.inputFile(profileImage);
 
-			User user = new User(id, password, name, information, fileURI);
-			userMapper.createUser(user);
+			userMapper.createUser(new User(id, password, name, information, fileURI));
 
 		}
 
@@ -43,8 +42,7 @@ public class UserServiceImplement implements UserService {
 		if (serviceUtility.validationImageExt(profileImage.getOriginalFilename())) {
 			
 			String fileURI = serviceUtility.inputFile(profileImage);
-			User user = new User(id, password, name, information, fileURI);
-			userMapper.modifyUser(user);
+			userMapper.modifyUser( new User(id, password, name, information, fileURI));
 
 		}
 
@@ -62,12 +60,12 @@ public class UserServiceImplement implements UserService {
 
 	@Override
 	public void FollowUser(String id, String follow, String followid) {
-		FollowIdTemp followTemp = new FollowIdTemp(id, followid);
+		FollowIdTemp followObject = new FollowIdTemp(id, followid);
 		
 		if (follow.equals("Follow")) {
-			userMapper.createFollow(followTemp);
+			userMapper.createFollow(followObject);
 		} else {
-			userMapper.deleteFollow(followTemp);
+			userMapper.deleteFollow(followObject);
 
 		}
 
