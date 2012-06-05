@@ -19,21 +19,21 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/personal")
 @SessionAttributes("user")
 public class PersonalController {
-	
+
 	@Autowired
 	TwittService twittService;
-	
+
 	@RequestMapping()
-	public List<TwittList> personal(@ModelAttribute("user") User user){
-		
+	public List<TwittList> personal(@ModelAttribute("user") User user) {
+
 		return twittService.getPersonalTwiit(user.getId());
-		
+
 	}
-	
-	@RequestMapping(value="/remove", method = RequestMethod.GET)
-	public String removeTwitt(@RequestParam("twittId") String twittId){
+
+	@RequestMapping(value = "/remove", method = RequestMethod.GET)
+	public String removeTwitt(@RequestParam("twittId") String twittId) {
 		twittService.removeTwitt(twittId);
-		
+
 		return "redirect:/personal";
 	}
 

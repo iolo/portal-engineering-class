@@ -1,9 +1,12 @@
 package kr.ac.jejuuniv.model;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("LoginModel")
 public class LoginModel {
 	
-	private static String id;
-	private static String password;
+	private  String id;
+	private  String password;
 
 	public LoginModel(String id, String password) {
 		this.setId(id);
@@ -12,20 +15,22 @@ public class LoginModel {
 	
 	public LoginModel(){}
 
-	public static String getId() {
+	public String getId() {
 		return id;
 	}
 
-	public static void setId(String id) {
-		LoginModel.id = id;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public static String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public static void setPassword(String password) {
-		LoginModel.password = password;
+	public void setPassword(String password) {
+		this.password = password;
 	}
+
+
 
 }

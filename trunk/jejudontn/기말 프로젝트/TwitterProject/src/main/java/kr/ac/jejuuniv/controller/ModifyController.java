@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/modify")
 @SessionAttributes("user")
 public class ModifyController {
-	
+
 	@Autowired
 	UserService userService;
 
@@ -32,9 +32,8 @@ public class ModifyController {
 			@RequestParam("information") String information,
 			@RequestParam("profileImage") MultipartFile profileImage) {
 		String id = user.getId();
-		userService.modifyUser(id,password, name, information, profileImage);
-		
-		
+		userService.modifyUser(id, password, name, information, profileImage);
+
 		return "redirect:/personal";
 	}
 

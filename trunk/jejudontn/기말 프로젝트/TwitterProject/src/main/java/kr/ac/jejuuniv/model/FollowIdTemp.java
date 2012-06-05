@@ -1,7 +1,10 @@
 package kr.ac.jejuuniv.model;
 
+import org.apache.ibatis.type.Alias;
 
 
+
+@Alias("FollowIdTemp")
 public class FollowIdTemp {
 	
 	private String userId;
