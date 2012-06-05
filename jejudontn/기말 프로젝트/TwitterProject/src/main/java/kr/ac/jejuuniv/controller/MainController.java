@@ -19,11 +19,10 @@ public class MainController {
 	@Autowired
 	TwittService twittService;
 
-	
 	@RequestMapping
-	public List<TwittList> main(@ModelAttribute("user") User user){
+	public List<TwittList> main(@ModelAttribute("user") User user) {
 		return twittService.getFollowingTwitt(user.getId());
-		
+
 	}
 
 }

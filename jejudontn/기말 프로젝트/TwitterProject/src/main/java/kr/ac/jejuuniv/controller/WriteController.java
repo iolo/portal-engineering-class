@@ -15,17 +15,18 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/write")
 @SessionAttributes("user")
 public class WriteController {
-	
+
 	@Autowired
 	TwittService twittService;
-	
+
 	@RequestMapping
-	public void write(){
-		
+	public void write() {
+
 	}
-	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public void saveTwitt(@RequestParam("twitt") String twitt, @ModelAttribute("user") User user){
+	public void saveTwitt(@RequestParam("twitt") String twitt,
+			@ModelAttribute("user") User user) {
 
 		twittService.createTwitt(user.getId(), twitt);
 	}
