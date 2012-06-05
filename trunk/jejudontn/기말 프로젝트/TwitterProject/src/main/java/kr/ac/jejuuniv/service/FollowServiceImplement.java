@@ -11,50 +11,32 @@ import kr.ac.jejuuniv.repository.UserMapper;
 
 @Service
 public class FollowServiceImplement implements FollowService {
+		
 	
 	@Autowired
 	UserMapper userMapper;
+	
+	@Autowired
+	ServiceUtility serviceUtility;
 
 	@Override
 	public List<AllUsers> getFollower(String id) {
 		List<AllUsers> allUsers = userMapper.getFollower(id);
-		List<AllFollow> allFollows;
-		allFollows = userMapper.findAllFollow(id);
+		List<AllFollow> allFollows = userMapper.findAllFollow(id);
 		
-		for (AllUsers alluser : allUsers) {
-			alluser.setFollow("Follow");	
-		}
-		if (!allFollows.isEmpty()) {
-			for (AllUsers alluser : allUsers) {
-				for (AllFollow allFollower : allFollows) {
-					if (alluser.getId().equals(allFollower.getFollowing())) {
-						alluser.setFollow("UnFollow");
-					}
-				}
-			}
-		}
+		serviceUtility.setFollow(allUsers, allFollows);
 		
 		return allUsers;
 	}
+	
+	
 
 	@Override
 	public List<AllUsers> getFollowing(String id) {
 		List<AllUsers> allUsers = userMapper.getFollowing(id);
-		List<AllFollow> allFollows;
-		
-		allFollows = userMapper.findAllFollow(id);
-		for (AllUsers alluser : allUsers) {
-			alluser.setFollow("Follow");
-		}
-		if (!allFollows.isEmpty()) {
-			for (AllUsers alluser : allUsers) {
-				for (AllFollow allFollower : allFollows) {
-					if (alluser.getId().equals(allFollower.getFollowing())) {
-						alluser.setFollow("UnFollow");
-					}
-				}
-			}
-		}
+		List<AllFollow> allFollows = userMapper.findAllFollow(id);
+				
+		serviceUtility.setFollow(allUsers, allFollows);
 		
 		return allUsers;		
 	}

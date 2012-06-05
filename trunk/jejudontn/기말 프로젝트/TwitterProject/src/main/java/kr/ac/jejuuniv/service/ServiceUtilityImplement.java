@@ -3,7 +3,11 @@ package kr.ac.jejuuniv.service;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
+import kr.ac.jejuuniv.model.AllFollow;
+import kr.ac.jejuuniv.model.AllUsers;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,12 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class ServiceUtilityImplement implements ServiceUtility {
 
 	@Override
-	public String getTime() {		
-		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy.MM.dd", Locale.KOREA );
-		Date currentTime = new Date ( );
-		return mSimpleDateFormat.format ( currentTime );
+	public String getTime() {
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd",
+				Locale.KOREA);
+		Date currentTime = new Date();
+		return mSimpleDateFormat.format(currentTime);
 	}
 	
+	@Override
 	public boolean validationImageExt(String filename) {
 
 		String imgExt = filename.substring(filename.lastIndexOf(".") + 1,
@@ -33,17 +39,18 @@ public class ServiceUtilityImplement implements ServiceUtility {
 		}
 	}
 	
-	public String inputFile(MultipartFile profileImage){
-		
+	@Override
+	public String inputFile(MultipartFile profileImage) {
+
 		String fileURI;
-		
-		if(profileImage.getOriginalFilename().isEmpty()){
+
+		if (profileImage.getOriginalFilename().isEmpty()) {
 			fileURI = "default.png";
 		} else {
-		fileURI= System.currentTimeMillis()
-				+ profileImage.getOriginalFilename();
+			fileURI = System.currentTimeMillis()
+					+ profileImage.getOriginalFilename();
 		}
-		
+
 		File f = new File(
 				"C:\\Users\\daeheon\\Desktop\\4학년1학기\\포털서비스개발방법론\\source\\TwitterProject\\src\\main\\webapp\\resources\\ProfileImage\\"
 						+ fileURI); // File : java.io.file
@@ -53,9 +60,26 @@ public class ServiceUtilityImplement implements ServiceUtility {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-	return fileURI;	
-	}
 
+		return fileURI;
+	}
+	
+	@Override
+	public void setFollow(List<AllUsers> allUsers, List<AllFollow> allFollows) {
+
+		for (AllUsers alluser : allUsers) {
+			alluser.setFollow("Follow");
+		}
+		if (!allFollows.isEmpty()) {
+			for (AllUsers alluser : allUsers) {
+				for (AllFollow allFollower : allFollows) {
+					if (alluser.getId().equals(allFollower.getFollowing())) {
+						alluser.setFollow("UnFollow");
+					}
+				}
+			}
+		}
+
+	}
 
 }
