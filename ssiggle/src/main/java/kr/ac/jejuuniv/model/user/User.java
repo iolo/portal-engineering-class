@@ -190,7 +190,26 @@ public class User implements Serializable {
 	}
 
 	public List<UserRow> markFollowUser(List<User> userList) {
-		throw new NotFoundUserException("User " + getId() + " (을)를 찾을 수 없습니다.");
+		if (userMapper.selectUserById(getId()) == null) {
+			throw new NotFoundUserException("User " + getId()
+					+ " (을)를 찾을 수 없습니다.");
+		}
+
+		List<User> following = followingUserList();
+		List<UserRow> item = new ArrayList<>();
+		for (User user : userList) {
+			UserRow row = new UserRow(user, false);
+
+			for (User user2 : following) {
+				if (user.getId().equals(user2.getId())) {
+					row.setFollowing(true);
+				}
+			}
+
+			item.add(row);
+		}
+
+		return item;
 	}
 
 	public List<User> followerUserList() {

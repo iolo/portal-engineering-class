@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.controller.UserRow;
 import kr.ac.jejuuniv.mapper.FollowingMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.user.NotFollowingException;
@@ -190,8 +191,46 @@ public class UserTest4Follow {
 	public void testUserListMarkFollowFail() {
 		List<User> userList = new ArrayList<>();
 
-		User user = createUser("sens");
+		User user = createUser("abcd");
 		user.markFollowUser(userList);
+	}
+
+	@Test
+	public void testUserListMark() {
+		when(userMapper.selectUserById("sens")).thenAnswer(new Answer<User>() {
+			@Override
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return createUser("sens");
+			}
+		});
+
+		when(userMapper.selectAllFollowingUser("sens")).thenAnswer(
+				new Answer<List<User>>() {
+					@Override
+					public List<User> answer(InvocationOnMock invocation)
+							throws Throwable {
+						List<User> item = new ArrayList<>();
+						item.add(createUser("abcd"));
+						item.add(createUser("defg"));
+
+						return item;
+					}
+				});
+
+		List<User> userList = new ArrayList<>();
+		userList.add(createUser("abcd"));
+		userList.add(createUser("defg"));
+		userList.add(createUser("가나다"));
+		userList.add(createUser("라마바"));
+
+		User user = createUser("sens");
+		List<UserRow> testList = user.markFollowUser(userList);
+
+		assertThat(testList.size(), is(4));
+		assertThat(testList.get(0).isFollowing(), is(true));
+		assertThat(testList.get(1).isFollowing(), is(true));
+		assertThat(testList.get(2).isFollowing(), is(false));
+		assertThat(testList.get(3).isFollowing(), is(false));
 	}
 
 	private User createUser(String id) {
