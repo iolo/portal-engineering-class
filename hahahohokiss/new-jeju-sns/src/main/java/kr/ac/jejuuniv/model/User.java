@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
@@ -29,6 +28,7 @@ public class User {
 	private String imgUrl;
 	private List<User> following = new ArrayList<User>();
 	private List<User> follower = new ArrayList<User>();
+	private List<Tweet> tweets = new ArrayList<Tweet>();
 	
 	public User() {
 		
@@ -121,6 +121,15 @@ public class User {
 
 	public void setFollower(List<User> follower) {
 		this.follower = follower;
+	}
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy ="user")
+	public List<Tweet> getTweets() {
+		return tweets;
+	}
+
+	public void setTweets(List<Tweet> tweets) {
+		this.tweets = tweets;
 	}
 	
 	

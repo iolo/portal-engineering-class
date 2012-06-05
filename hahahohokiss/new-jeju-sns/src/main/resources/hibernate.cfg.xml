@@ -8,5 +8,6 @@
     <session-factory>
     	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <mapping class="kr.ac.jejuuniv.model.User"/>
+        <mapping class="kr.ac.jejuuniv.model.Tweet"/>
     </session-factory>
 </hibernate-configuration>
