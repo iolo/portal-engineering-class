@@ -13,7 +13,6 @@ public class UnFollowController {
 	@RequestMapping(value = "/followingPage", method = RequestMethod.GET)
 	public String action4FollowingPage(@RequestParam String userId,
 			@RequestParam String targetId) {
-
 		unFollow(userId, targetId);
 		return "redirect:/service/user/" + userId + "/following";
 	}
@@ -22,7 +21,13 @@ public class UnFollowController {
 	public String action4UnFollowPage(@RequestParam String userId,
 			@RequestParam String targetId) {
 		unFollow(userId, targetId);
-		return "followerUser";
+		return "redirect:/service/user/" + userId + "/following";
+	}
+	@RequestMapping(value = "/allUser", method = RequestMethod.GET)
+	public String action4AllUser(@RequestParam String userId,
+			@RequestParam String targetId) {
+		unFollow(userId, targetId);
+		return "redirect:/service/user/" + userId + "/allUser";
 	}
 
 	private void unFollow(String userId, String targetId) {

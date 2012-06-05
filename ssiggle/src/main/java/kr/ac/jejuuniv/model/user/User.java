@@ -1,8 +1,10 @@
 package kr.ac.jejuuniv.model.user;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.controller.UserRow;
 import kr.ac.jejuuniv.mapper.FollowingMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 

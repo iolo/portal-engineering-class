@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-//TODO : 여기에 대한 테스트 작성
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("servlet-context.xml")
 public class FollowMapperIntegralTest {

@@ -1,7 +1,9 @@
 package kr.ac.jejuuniv.controller.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.controller.UserRow;
 import kr.ac.jejuuniv.model.ssiggle.Ssiggle;
 import kr.ac.jejuuniv.model.user.User;
 
@@ -25,13 +27,28 @@ public class UserController {
 		return "user";
 	}
 
-	
 	@RequestMapping("/{userId}/allUser")
 	public String actionAllUser(@PathVariable String userId, ModelMap model) {
 		User user = new User().findUserById(userId);
 
+		List<User> userList = user.findAllUserNotExistMe();
+		List<User> followingList = user.followingUserList();
+		List<UserRow> rowList = new ArrayList<>();
+		
+		// TODO : 현재는 단순 탐색, 이진탐색??? 해싱??? 같은거 적용할까???
+		for (User u : userList) {
+			UserRow row = new UserRow(u, false);
+			for (User u2 : followingList) {
+				if (u2.getId().equals(u.getId())) {
+					row.setFollowing(true);
+				}
+			}
+
+			rowList.add(row);
+		}
+
 		model.addAttribute("user", user);
-		model.addAttribute("allUser", user.findAllUserNotExistMe());
+		model.addAttribute("allUser", rowList);
 
 		return "allUser";
 	}
