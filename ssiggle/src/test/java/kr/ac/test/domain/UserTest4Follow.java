@@ -97,14 +97,12 @@ public class UserTest4Follow {
 		user.unFollowUserById("abcd");
 	}
 
-	// TODO : 이런 테스트 할 필요가 있었을까????
 	@Test(expected = NotFoundUserException.class)
 	public void testUnFollowFail2() {
 		User user = createUser("abcd");
 		user.unFollowUserById("sens");
 	}
 
-	// TODO : 굳이 만들 필요가 있었는가? 또한 이렇게 만드는 것이 맞았을꺄....
 	@Test(expected = NotFollowingException.class)
 	public void testUnFollowFailBecauseNotFollow() {
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kgb"));

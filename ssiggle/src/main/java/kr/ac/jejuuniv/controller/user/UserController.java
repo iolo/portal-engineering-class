@@ -1,6 +1,5 @@
 package kr.ac.jejuuniv.controller.user;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.jejuuniv.controller.UserRow;
@@ -31,21 +30,8 @@ public class UserController {
 	public String actionAllUser(@PathVariable String userId, ModelMap model) {
 		User user = new User().findUserById(userId);
 
-		List<User> userList = user.findAllUserNotExistMe();
-		List<User> followingList = user.followingUserList();
-		List<UserRow> rowList = new ArrayList<>();
-		
-		// TODO : 현재는 단순 탐색, 이진탐색??? 해싱??? 같은거 적용할까???
-		for (User u : userList) {
-			UserRow row = new UserRow(u, false);
-			for (User u2 : followingList) {
-				if (u2.getId().equals(u.getId())) {
-					row.setFollowing(true);
-				}
-			}
-
-			rowList.add(row);
-		}
+		List<UserRow> rowList = user.markFollowUser(user
+				.findAllUserNotExistMe());
 
 		model.addAttribute("user", user);
 		model.addAttribute("allUser", rowList);
@@ -71,7 +57,7 @@ public class UserController {
 		List<User> userList = user.followerUserList();
 
 		model.addAttribute("user", user);
-		model.addAttribute("followerUser", userList);
+		model.addAttribute("followerUser", user.markFollowUser(userList));
 
 		return "followerUser";
 	}

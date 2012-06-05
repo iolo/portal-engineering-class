@@ -5,12 +5,21 @@
 <table>
 	<c:forEach items="${followerUser}" var="follower">
 		<tr>
-			<td><img src="/ssiggle/resources/userimage/${follower.image}"
-				width="50" height="50"></td>
-			<td>${follower.name }</td>
-			<td>${follower.introduce }</td>
-			<td><a
-				href="/ssiggle/service/user/follow/followerPage?userId=${user.id}&targetId=${follower.id}">팔로우</a></td>
+			<td><img
+				src="/ssiggle/resources/userimage/${follower.user.image}" width="50"
+				height="50"></td>
+			<td>${follower.user.name }</td>
+			<td>${follower.user.introduce }</td>
+			<c:choose>
+				<c:when test="${target.following}">
+					<td><a
+						href="/ssiggle/service/unFollow/allUser?userId=${user.id}&targetId=${target.user.id}">unfollow</a></td>
+				</c:when>
+				<c:otherwise>
+					<td><a
+						href="/ssiggle/service/follow/allUser?userId=${user.id}&targetId=${target.user.id}">follow</a></td>
+				</c:otherwise>
+			</c:choose>
 		</tr>
 	</c:forEach>
 </table>
