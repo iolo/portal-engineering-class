@@ -5,11 +5,11 @@
 <mapper namespace="kr.ac.jejuuniv.Repository.TweetRepository">
 
 	<select id="findTweetByUserNum" parameterType="int" resultType="kr.ac.jejuuniv.Model.Tweet">
-		select * from tweet where userNum = #{userNum}
+		select * from tweet where userNum = #{userNum} order by date desc
 	</select>
 
 	<select id="getAllTweet" resultType="kr.ac.jejuuniv.Model.Tweet">
-		select * from tweet
+		select * from tweet order by date desc
 	</select>
 
 	<insert id="insert" parameterType="kr.ac.jejuuniv.Model.Tweet">

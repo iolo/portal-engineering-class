@@ -25,21 +25,23 @@
 		<table>
 			<c:forEach items="${tweetList}" var="tweets" >
 				<tr>
-					<form action="tweetDelete" method="post">
-						<td>
-							<input type="hidden" value="${tweets.seq}">
-		 					<img src = "${user.profileImg}" />
-		 				</td>
-		 				<td>
-							<label>${tweets.message}</label>
-						</td>
-						<td>
-							<input type="submit" value="삭제" />
-						</td>
-						<td>
-							<label>${tweets.date}</label>
-						</td>
-					</form>
+	 				<td>
+						<label>${tweets.seq}</label>
+	 				</td>
+					<td>
+	 					<img src = "${usery.profileImg}" />
+	 				</td>
+	 				<td>
+						<label>${tweets.message}</label>
+					</td>
+					<td>
+						<a href="/twitter/deleteTweet?seq=${tweets.seq}">
+							<input type="button" value="삭제" />
+						</a>
+					</td>
+					<td>
+						<label>${tweets.date}</label>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
