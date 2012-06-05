@@ -1,56 +1,66 @@
 package kr.ac.jejuuniv.model;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="tweet")
+@Table(name="tweets")
 public class Tweet {
-	
-	private Long tweetId;
-	private User user = new User();
+	private int tweetId;
 	private String contents;
-	private Date date;
+	private String date;
+	private User user = new User();
 	
+	public Tweet() {
+		
+	}
+	
+	public Tweet(String contents, String date) {
+		this.contents = contents;
+		this.date = date;
+	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getTweetId() {
+	@GeneratedValue
+	@Column(name="tweet_id")
+	public int getTweetId() {
 		return tweetId;
 	}
 	
-	@Column
-	public User getUser() {
-		return user;
+	public void setTweetId(int tweetId) {
+		this.tweetId = tweetId;
 	}
 	
-	@Column
+	@Column(name="contents")
 	public String getContents() {
 		return contents;
 	}
 	
-	@Column
-	public Date getDate() {
-		return date;
-	}
-	
-	
-	public void setTweetId(Long tweetId) {
-		this.tweetId = tweetId;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public void setDate(Date date) {
+	
+	@Column(name="create_date") 
+	public String getDate() {
+		return date;
+	}
+	
+	public void setDate(String date) {
 		this.date = date;
 	}
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id")
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}	
 }
