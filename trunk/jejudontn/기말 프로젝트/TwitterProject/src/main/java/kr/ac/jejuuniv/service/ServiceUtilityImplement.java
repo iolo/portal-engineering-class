@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import kr.ac.jejuuniv.model.AllFollow;
 import kr.ac.jejuuniv.model.AllUsers;
+import kr.ac.jejuuniv.model.Twitt;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -80,6 +81,14 @@ public class ServiceUtilityImplement implements ServiceUtility {
 			}
 		}
 
+	}
+
+	@Override
+	public Twitt makeTwittObject(String id, String twitt) {
+		String twiitId = id + System.currentTimeMillis();
+		String mTime = this.getTime();
+		Twitt maketwiit = new Twitt(id, twitt, mTime, twiitId);
+		return maketwiit;
 	}
 
 }

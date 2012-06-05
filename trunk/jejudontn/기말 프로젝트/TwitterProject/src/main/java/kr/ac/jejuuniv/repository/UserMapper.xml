@@ -8,7 +8,7 @@
 		insert into user (id,
 		password, name, information, imageURI)
 		values
-		(#{id},#{password},#{name},#{information},#{profileImageUri})
+		(#{id},#{password},#{name},#{information},#{imageURI})
 	</insert>
 
 	<update id="modifyUser" parameterType="kr.ac.jejuuniv.model.User">
