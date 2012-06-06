@@ -1,5 +1,7 @@
 package kr.ac.jejuuniv.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import kr.ac.jejuuniv.model.UserModel;
 import kr.ac.jejuuniv.service.UserService;
 

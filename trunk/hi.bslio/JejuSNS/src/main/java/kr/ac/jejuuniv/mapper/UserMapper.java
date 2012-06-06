@@ -7,5 +7,5 @@ import kr.ac.jejuuniv.model.UserModel;
 public interface UserMapper {
 	void insertUser(UserModel user);
 	List<UserModel> findAll();
-	//List<UserModel> findAllOrderByIdDesc();
+	UserModel findById(String id);
 }

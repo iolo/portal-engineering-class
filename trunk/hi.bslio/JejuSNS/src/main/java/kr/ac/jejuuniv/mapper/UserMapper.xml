@@ -5,14 +5,11 @@
 	<select id="findAll" resultType="kr.ac.jejuuniv.model.UserModel">
 		SELECT * FROM member
 	</select>
-<!--
- 	<select id="findAllOrderByIdDesc" resultType="kr.ac.jejuuniv.model.UserModel">
-		SELECT * FROM
-		member ORDER BY id DESC
-	</select>
- -->	
 	<insert id="insertUser" parameterType="kr.ac.jejuuniv.model.UserModel">
 		insert into member (id, name, password, comment)
 		values (#{id},#{name},#{password},#{comment})
-	</insert>	
+	</insert>
+	<select id="findById" resultType="kr.ac.jejuuniv.model.UserModel">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
 </mapper>

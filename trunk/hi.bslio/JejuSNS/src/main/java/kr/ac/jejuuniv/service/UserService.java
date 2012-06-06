@@ -18,14 +18,13 @@ public class UserService {
 		List<UserModel> users = userMapper.findAll();
 		return users;
 	}
-	
-//	public List<UserModel> getListOrderByIdDesc() {
-//		List<UserModel> users = userMapper.findAllOrderByIdDesc();
-//		return users;
-//	}
 
 	public void insertUser(UserModel user) {
 		userMapper.insertUser(user);
 	}
 
+	public UserModel getUser(String id) {
+		UserModel user = userMapper.findById(id);
+		return user;
+	}
 }
