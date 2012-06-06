@@ -1,6 +1,5 @@
 package kr.ac.jejuuniv.Controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import kr.ac.jejuuniv.Model.User;
@@ -25,7 +24,7 @@ public class LoginController {
 
 	
 	@RequestMapping("/login")
-	public ModelAndView login(String id, String password, HttpSession session, HttpServletRequest request){
+	public ModelAndView login(String id, String password, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/personalSNS");
 

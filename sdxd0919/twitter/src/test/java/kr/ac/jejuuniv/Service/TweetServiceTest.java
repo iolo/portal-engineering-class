@@ -1,12 +1,16 @@
 package kr.ac.jejuuniv.Service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import kr.ac.jejuuniv.Model.Tweet;
 import kr.ac.jejuuniv.Repository.TweetRepository;
@@ -17,8 +21,6 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TweetServiceTest {
@@ -34,12 +36,9 @@ public class TweetServiceTest {
 					public List<Tweet> answer(InvocationOnMock invocation)
 							throws Throwable {
 						List<Tweet> tweets = new ArrayList<Tweet>();
-						tweets.add(new Tweet(1, "1번임", new Date(
-								20120528)));
-						tweets.add(new Tweet(2, "2번임", new Date(
-								20120528)));
-						tweets.add(new Tweet(1, "3번임", new Date(
-								2012529)));
+						tweets.add(new Tweet(1, "1번임"));
+						tweets.add(new Tweet(2, "2번임"));
+						tweets.add(new Tweet(1, "3번임"));
 
 						return tweets;
 					}
@@ -61,12 +60,9 @@ public class TweetServiceTest {
 						List<Tweet> tweets = new ArrayList<Tweet>();
 						int userNum = Integer.parseInt(invocation
 								.getArguments()[0].toString());
-						tweets.add(new Tweet(userNum, "1번임", new Date(
-								20120528)));
-						tweets.add(new Tweet(userNum, "2번임", new Date(
-								20120528)));
-						tweets.add(new Tweet(userNum, "3번임", new Date(
-								2012529)));
+						tweets.add(new Tweet(userNum, "1번임"));
+						tweets.add(new Tweet(userNum, "2번임"));
+						tweets.add(new Tweet(userNum, "3번임"));
 
 						return tweets;
 					}
@@ -83,15 +79,14 @@ public class TweetServiceTest {
 	@Test
 	public void write() {
 		TweetService tweetService = new TweetServiceImpl(tweetRepository);
-
-		Tweet tweet = new Tweet();
-		tweet.setUserNum(1);
-		tweet.setMessage("우와와-축제!");
-		tweet.setDate(new Date());
-
+		
+		Tweet tweet = new Tweet(1, "우와와-축제!");
 		tweetService.addTweet(tweet);
-
+		
+		
+		tweet.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 		verify(tweetRepository).insert(tweet);
+
 	}
 
 	@Test

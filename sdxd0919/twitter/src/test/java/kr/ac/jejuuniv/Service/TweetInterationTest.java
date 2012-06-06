@@ -1,10 +1,6 @@
 package kr.ac.jejuuniv.Service;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-import org.junit.Assert;
-
-import java.util.Date;
 import java.util.List;
 
 import kr.ac.jejuuniv.Model.Tweet;
@@ -31,29 +27,30 @@ public class TweetInterationTest {
 		
 		assertNotNull(tweets);
 		assertTrue(tweets.size() > 0);
+		assertTrue(tweets.size() == 2);
 	}
 
-//	@Test
-//	public void addTweet(){
-//		List<Tweet> tweets = tweetService.getAllTweet();
-//		assertTrue(tweets.size() == 3);
-//
-//		Tweet tweet = new Tweet(2, "oh-test!", new Date());
-//		tweetService.addTweet(tweet);
-//		
-//		tweets = tweetService.getAllTweet();
-//		assertTrue(tweets.size() == 4);
-//		
-//		System.out.println();
-//	}
-//	
-//	@Test
-//	public void deleteTweet(){
-//		tweetService.deleteTweet(3);
-//		
-//		List<Tweet> tweets = tweetService.getAllTweet();
-//		assertTrue(tweets.size() == 3);
-//	}
+	@Test
+	public void addTweet(){
+		Tweet tweet = new Tweet(2, "hi");
+		tweetService.addTweet(tweet);
+		
+		List<Tweet> tweets = tweetService.getAllTweet();
+		assertTrue(tweets.size() == 3);
+
+		System.out.println("---- addTweet -----");
+		printTweet(tweets);
+	}
+	
+	@Test
+	public void deleteTweet(){
+		tweetService.deleteTweet(3);
+		
+		List<Tweet> tweets = tweetService.getAllTweet();
+		assertTrue(tweets.size() == 2);
+		System.out.println("----- delete -----");
+		printTweet(tweets);
+	}
 	
 	public void printTweet(List<Tweet> tweets) {
 		System.out.println("------------------------------------------");

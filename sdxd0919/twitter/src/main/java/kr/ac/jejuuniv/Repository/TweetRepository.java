@@ -10,10 +10,10 @@ public interface TweetRepository {
 
 	Tweet getTweetBySeq(int seq);
 
-	void insert(Tweet tweet);
-
 	void delete(int seq);
 
 	List<Tweet> getAllTweet();
+
+	void insert(Tweet tweet);
 
 }
