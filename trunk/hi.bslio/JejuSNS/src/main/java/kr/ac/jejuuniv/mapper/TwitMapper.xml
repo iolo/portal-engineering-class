@@ -5,14 +5,21 @@
 	<select id="findAll" resultType="kr.ac.jejuuniv.model.TwitModel">
 		SELECT * FROM twit
 	</select>
-<!--
- 	<select id="findAllOrderByIdDesc" resultType="kr.ac.jejuuniv.model.TwitModel">
-		SELECT * FROM
-		member ORDER BY id DESC
+	
+	<select id="findByWriter" resultType="kr.ac.jejuuniv.model.TwitModel">
+		SELECT * FROM twit WHERE writer = #{writer}
 	</select>
- -->	
+	
+	<delete id="deleteTwit">
+		DELETE FROM twit WHERE id = #{id}
+	</delete>
+
 	<insert id="insertTwit" parameterType="kr.ac.jejuuniv.model.TwitModel">
 		insert into twit (writer, twit_text, date)
 		values (#{writer},#{twit_text},#{date})
 	</insert>	
+	
+		<select id="findById" resultType="kr.ac.jejuuniv.model.TwitModel">
+		SELECT * FROM twit WHERE id = #{id}
+	</select>
 </mapper>

@@ -19,7 +19,20 @@ public class TwitService {
 		return twits;
 	}
 	
+	public List<TwitModel> getListByWriter(String writer) {
+		List<TwitModel> twits = twitMapper.findByWriter(writer);
+		return twits;
+	}
+	
 	public void insertTwit(TwitModel twit) {
 		twitMapper.insertTwit(twit);
+	}
+	
+	public void deleteTwit(String id) {
+		twitMapper.deleteTwit(id);
+	}
+	
+	public TwitModel findById(String id) {
+		return twitMapper.findById(id);		
 	}
 }

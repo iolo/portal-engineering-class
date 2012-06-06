@@ -35,6 +35,16 @@ public class TwitController {
 		insertTwit.setDate(simpleDate.format(Calendar.getInstance().getTime()));
 		
 		twitService.insertTwit(insertTwit);
-
+	}
+	
+	@RequestMapping("deleteTwit")
+	public ModelAndView deleteTwit(String id, HttpServletRequest request){
+		// 로그인한 사람이 쓴 글일때 삭제
+		if(twitService.findById(id).getWriter().equals(request.getSession().getAttribute("LoginId"))){
+			twitService.deleteTwit(id);
+			
+		}
+		
+		return new ModelAndView("redirect:Individual");
 	}
 }

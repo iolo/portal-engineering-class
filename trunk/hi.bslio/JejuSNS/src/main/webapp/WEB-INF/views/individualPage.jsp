@@ -27,7 +27,7 @@
 				<tr>
 					<td>없듬 </td>
 					<td>${twit.writer} </td>
-					<td>${twit.twit_text} </td>
+					<td>${twit.twit_text} <a href="deleteTwit?id=${twit.id}">ㅁ삭제ㅁ</a></td>
 					<td>${twit.date} </td>
 					<!-- <td><a href="modify?id=${user.id}">수정</a></td> -->
 					<!-- <td><a href="remove?id=${user.id}">삭제</a></td> -->
