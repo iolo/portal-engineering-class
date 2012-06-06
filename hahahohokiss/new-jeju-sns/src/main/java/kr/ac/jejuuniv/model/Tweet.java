@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tweets")
-public class Tweet {
+public class Tweet implements Comparable<Tweet>{
 	private int tweetId;
 	private String contents;
 	private String date;
@@ -62,5 +62,9 @@ public class Tweet {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public int compareTo(Tweet o) {
+		return date.compareTo(o.getDate());
 	}	
 }
