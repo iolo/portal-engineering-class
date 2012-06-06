@@ -6,41 +6,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Siggle</title>
+<link href="/ssiggle/resources/css/common.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="/ssiggle/resources/css/joinUser.css" rel="stylesheet" type="text/css"
+	media="all" />
 </head>
 <body>
-	<form:form modelAttribute="user" action="/ssiggle/saveUser" method="post"
-	enctype="multipart/form-data">
-	<fieldset>
-		<legend>가입</legend>
-		<p>
-			<label>아이디</label>
-			<form:input path="id" />
-			<form:errors path="id" />
-		</p>
-		<p>
-			<label>암호</label>
-			<form:password path="password" />
-			<form:errors path="password" />
-		</p>
-		<p>
-			<label>이름</label>
-			<form:input path="name" />
-			<form:errors path="name" />
-		</p>
-		<p>
-			<label>소개</label>
-			<form:input path="introduce" />
-			<form:errors path="introduce" />
-		</p>
-		<p>
-			<label>이미지</label> <input name="imageFile" type="file">
-		</p>
-		<p>
-			<form:hidden path="image"/>
-			<input type="submit" value="가입" />
-		</p>
-	</fieldset>
-</form:form>
-	
+	<div id="container">
+		<div id="joinBox">
+		<form:form modelAttribute="user" action="/ssiggle/saveUser"
+			method="post" enctype="multipart/form-data">
+			<h2>회원가입</h2>
+			<p>
+				<span>아이디</span>
+				<form:input path="id" />
+				<form:errors path="id" />
+			</p>
+			<p>
+				<span>암호</span>
+				<form:password path="password" />
+				<form:errors path="password" />
+			</p>
+			<p>
+				<span>이름</span>
+				<form:input path="name" />
+				<form:errors path="name" />
+			</p>
+			<p>
+				<span>소개</span>
+				<form:input path="introduce" />
+				<form:errors path="introduce" />
+			</p>
+			<p>
+				<span>이미지</span> <input name="imageFile" type="file">
+			</p>
+			<p class="btnBox">
+				<input type="submit" value="가입" />
+				<input type="reset" value="취소" />
+			</p>
+			<form:hidden path="image" />
+		</form:form>
+		</div>
+	</div>
 </body>
 </html>
