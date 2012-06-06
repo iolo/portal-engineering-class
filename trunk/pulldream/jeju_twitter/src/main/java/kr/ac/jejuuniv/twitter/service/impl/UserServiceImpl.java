@@ -19,13 +19,14 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository userRepository;
 
+	//회원 가입
 	public void addUser(UserModel user) {
 		userRepository.addUser(user);
 	}
 
 	public void writeTwitt(TwittModel article) {
 		CheckToday today = new CheckToday();
-		article.setWritedate(today.Today());
+		article.setWrite_date(today.Today());
 		userRepository.writeTwitt(article);
 	}
 
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService{
 //		userRepository.delUser(id);
 	}
 
+	//로그인할려는 사용자 인증
 	public UserModel checkUser(UserModel user) {
 		try {
 			UserModel userResult = userRepository.checkUser(user);

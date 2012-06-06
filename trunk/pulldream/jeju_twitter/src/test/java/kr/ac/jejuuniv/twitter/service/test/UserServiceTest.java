@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.jejuuniv.twitter.model.UserModel;
+import kr.ac.jejuuniv.twitter.repository.UserRepository;
 import kr.ac.jejuuniv.twitter.service.UserService;
 
 import static org.junit.Assert.*;
@@ -22,20 +23,48 @@ public class UserServiceTest {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private UserRepository userRepository;
+	
+//	@Test
+//	public void checkUser(){
+//		UserModel user = new UserModel();
+//
+//		try {
+//			user.setId("juntheater");
+//			user.setPassword("asdf");
+//			userService.checkUser(user);
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		assertThat(userService.checkUser(user).getId(), is("juntheater"));
+//	}
+	
 	@Test
-	public void checkUser(){
-		UserModel user = new UserModel();
-
+	public void checkUserTest(){
 		try {
+			UserModel user = new UserModel();
 			user.setId("juntheater");
-			user.setPassword("asdf");
-			userService.checkUser(user);
+			user.setPassword(("asdf"));
+			
+			UserModel userReuslt = userRepository.checkUser(user);
+			
+			if(userReuslt==null){
+				System.out.println("Try again");
+			}
+			else {
+				System.out.println("Login!!!");
+			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("error");
 		}
-		
-		assertThat(userService.checkUser(user).getId(), is("juntheater"));
+	}
+	
+	@Test
+	public void getAllUser(){
 		
 	}
 }

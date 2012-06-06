@@ -24,7 +24,7 @@ public class LoginController {
 			
 			if(loginUser.equals(null))	System.out.println("asdfasdf");
 			else{
-				request.getSession().setAttribute("loginId", loginUser.getId());
+				request.getSession().setAttribute("loginID", loginUser.getId());
 				return new ModelAndView("main","user",loginUser);
 			}
 			
