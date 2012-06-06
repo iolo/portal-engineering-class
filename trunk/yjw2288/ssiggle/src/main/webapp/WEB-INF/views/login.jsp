@@ -5,15 +5,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Siggle</title>
+<title>SSiggle</title>
+<link href="/ssiggle/resources/css/common.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="/ssiggle/resources/css/login.css" rel="stylesheet" type="text/css"
+	media="all" />
 </head>
 <body>
-	<form action="/ssiggle/login" method="post">
-	아이디 : <input type="text" name="id"><br />
-	비밀번호 : <input
-		type="password" name="password"><br /> 
-	<input type="submit"	value="로그인" /> 
-</form>
-<a href="/ssiggle/joinUser">회원가입</a>
+	<div id="container">
+		<p class="title">시끌벅적 SNS에 오신것을 환영합니다!</p>
+		<img class="mainImg" src="http://cfile7.uf.tistory.com/image/195893494D11C43D288497" />
+		<form action="/ssiggle/login" method="post">
+		<div class="loginForm">
+			<table class="loginForm">
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id"></td>
+					<td rowspan="2"><input type="submit"	value="로그인" style="height: 50px; width: 60px; "/> </td>
+				</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="password"></td>
+				</tr>
+			</table>
+		</div>
+		</form>
+		<p>처음 방문하세요?<a href="/ssiggle/joinUser" class="joinBtn">가입하기</a></p>		
+	</div>
 </body>
 </html>

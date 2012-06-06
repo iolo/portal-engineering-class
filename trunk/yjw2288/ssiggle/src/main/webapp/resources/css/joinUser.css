@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+#joinBox
+{
+	width:370px;
+	margin:0 auto;	
+	text-align:left;
+}
+
+h2 {
+	text-size:120px;
+	color: #0077AA;
+	margin:100px auto 20px;
+	text-align:center;
+}
+
+span {
+	width: 50px;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block;
+}
+
+btnBox{
+	text-align:center;
+	background-color:red;
+	margin:0 auto;	
+}

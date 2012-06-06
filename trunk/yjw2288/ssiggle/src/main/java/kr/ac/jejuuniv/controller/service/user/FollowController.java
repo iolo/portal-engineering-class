@@ -17,12 +17,13 @@ public class FollowController {
 		return "redirect:/service/user/" + userId + "/allUser";
 	}
 
-	@RequestMapping(value="/follower", method = RequestMethod.GET)
-	public String action4Follower(@RequestParam String userId, @RequestParam String targetId) {
+	@RequestMapping(value = "/follower", method = RequestMethod.GET)
+	public String action4Follower(@RequestParam String userId,
+			@RequestParam String targetId) {
 		follow(userId, targetId);
 		return "redirect:/service/user/" + userId + "/follower";
 	}
-	
+
 	private void follow(String userId, String targetId) {
 		new User().findUserById(userId).followUserById(targetId);
 	}

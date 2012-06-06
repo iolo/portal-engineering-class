@@ -14,28 +14,35 @@
 				"left=0, top=0, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=200, height=200");
 	}
 </script>
+<link href="/ssiggle/resources/css/common.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="/ssiggle/resources/css/main.css" rel="stylesheet" type="text/css"
+	media="all" />
 <title>Siggle</title>
 </head>
 <body>
-	<a href="/ssiggle/service/user/${user.id}">${user.name}</a>
-	<a
-		href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
-	<a href="/ssiggle/service/user/${user.id}/following">following</a>
-	<a href="/ssiggle/service/user/${user.id}/follower">follower</a>
-	<a href="/ssiggle/service/user/${user.id}/allUser">전체사용자</a>
-	<br />
-	<table>
-		<c:forEach items="${ssiggleList}" var="ssiggle">
-			<tr>
-				<td><img src=/ssiggle/resources/userimage/${ssiggle.user.image}
-					width="50" height="50"></td>
-				<td>${ssiggle.user.name }</td>
-				<td>${ssiggle.text }</td>
-				<td>${ssiggle.time }</td>
-			</tr>
-		</c:forEach>
-	</table>
-
-	<a href="/ssiggle/logout">로그아웃</a>
+	<div id="container">
+		<div class="header">
+			<a class="profile" href="/ssiggle/service/user/${user.id}">${user.name}(${user.introduce })</a>
+			<a class="btn" href="/ssiggle/logout">로그아웃</a>
+			<a class="btn" href="/ssiggle/service/user/${user.id}/allUser">전체사용자</a>
+			<a class="btn" href="/ssiggle/service/user/${user.id}/follower">follower</a>
+			<a class="btn" href="/ssiggle/service/user/${user.id}/following">following</a>
+			<a class="btn"
+				href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
+		</div>
+		<hr/>
+		<table>
+			<c:forEach items="${ssiggleList}" var="ssiggle">
+				<tr>
+					<td class="prof"><img src=/ssiggle/resources/userimage/${ssiggle.user.image}
+						width="50px" height="50px"></td>
+					<td class="name">${ssiggle.user.name }</td>
+					<td class="text" align="left">${ssiggle.text }</td>
+					<td class="time">${ssiggle.time }</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

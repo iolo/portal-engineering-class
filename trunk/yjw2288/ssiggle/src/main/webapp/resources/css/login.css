@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+
+p.title{text-align:center; margin-top:100px;}
+img.mainImg { margin:0 auto; }
+div.loginForm{ width:300px;  margin: auto;}
+
+a.joinBtn:hover{ background-color:#aaaaff; }
