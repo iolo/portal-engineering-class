@@ -5,7 +5,7 @@
 <body>
 <h2>제주 SNS에 온것을 환영 ㅇㅇ</h2>
 <form action="login.do">
-<input  type="text" name="id"/>
+<input type="text" name="id"/>
 <input type="password" name="password"/>
 <input type="submit" value="로그인"/>
 <input type="button" value="회원가입" onClick="location.href='join'"/>

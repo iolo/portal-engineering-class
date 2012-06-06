@@ -1,25 +1,34 @@
 package kr.ac.jejuuniv.controller;
 
-import kr.ac.jejuuniv.model.UserModel;
 
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.ac.jejuuniv.model.TwitModel;
+import kr.ac.jejuuniv.service.TwitService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-
 public class IndividualController {
-	@RequestMapping("Individual")
-	public ModelAndView individual(UserModel user) {
-		ModelAndView modelView = new ModelAndView("individualPage");
-		modelView.addObject("id", user.getId());
-		System.out.println(user.getId());
-		return modelView;
-	}
+	@Autowired
+	TwitService twitService;
 	
-	@RequestMapping("writeSns")
-	public ModelAndView writeSns() {
+	@RequestMapping("Individual")
+	public ModelAndView individual(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView modelView = new ModelAndView("individualPage");
+		modelView.addObject("id", request.getSession().getAttribute("LoginId"));
 		
-		return new ModelAndView("writeSns");
+		List<TwitModel> twitList = twitService.getList();
+		
+		modelView.addObject("twitList", twitList);
+		
+		return modelView;
 	}
 }
