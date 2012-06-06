@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.jejuuniv.mapper.UserMapper">
+	<select id="findAll" resultType="kr.ac.jejuuniv.model.UserModel">
+		SELECT * FROM member
+	</select>
+<!--
+ 	<select id="findAllOrderByIdDesc" resultType="kr.ac.jejuuniv.model.UserModel">
+		SELECT * FROM
+		member ORDER BY id DESC
+	</select>
+ -->	
+	<insert id="insertUser" parameterType="kr.ac.jejuuniv.model.UserModel">
+		insert into member (id, name, password, comment)
+		values (#{id},#{name},#{password},#{comment})
+	</insert>	
+</mapper>
