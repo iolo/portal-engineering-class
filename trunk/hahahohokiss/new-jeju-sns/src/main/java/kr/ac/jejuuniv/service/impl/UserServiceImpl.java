@@ -43,4 +43,17 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAllUser();
 	}
 
+	public List<Tweet> getFollowingTweet(String userId) {
+		return userRepository.findFollowingUserTweetByFollowingUser(userId);
+		 
+	}
+
+	public User modifyUser(User user) {
+		return userRepository.updateUser(user);
+	}
+
+	public void addFollow(String followId, String followingId) {
+		
+	}
+
 }

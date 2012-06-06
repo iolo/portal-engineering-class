@@ -19,4 +19,10 @@ public interface UserService {
 
 	List<User> getAllUser();
 
+	List<Tweet> getFollowingTweet(String userId);
+
+	User modifyUser(User user);
+
+	void addFollow(String followId, String followingId);
+
 }

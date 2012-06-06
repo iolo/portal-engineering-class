@@ -19,4 +19,8 @@ public interface UserRepository {
 
 	List<User> findAllUser();
 
+	List<Tweet> findFollowingUserTweetByFollowingUser(String userId);
+
+	User updateUser(User user);
+
 }
