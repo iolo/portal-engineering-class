@@ -12,7 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class AuthController {
 	@RequestMapping
 	public ModelAndView Login(UserModel user) {
-		System.out.println("아아아아아");
+		System.out.println(user.getId());
+		
 		return null;
 	}
 }
