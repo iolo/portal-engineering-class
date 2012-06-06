@@ -24,7 +24,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<view-controller path="/**/*.jeju" />
+	<!-- <view-controller path="/**/*.jeju" /> -->
 
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

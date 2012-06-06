@@ -1,7 +1,6 @@
 package kr.ac.jejuuniv.service;
 
 import kr.ac.jejuuniv.mapper.UserMapper;
-import kr.ac.jejuuniv.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +19,13 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public boolean checkUser(String id, String password) {
-//		System.out.println(userMapper.checkUser(id, password));
-//		System.out.println(id + " : " + password);
-//		return (userMapper.checkUser(id, password) == 1)? true:false;
-		User user = userMapper.checkUser(id);
-		if(user != null && user.getPassword().equals(password)){
-			return true;
-		}
-		return false;
+		System.out.println(userMapper.checkUser(id, password));
+		System.out.println(id + " : " + password);
+		return (userMapper.checkUser(id, password) == 1)? true:false;
+//		User user = userMapper.checkUser(id);
+//		if(user != null && user.getPassword().equals(password)){
+//			return true;
+//		}
+//		return false;
 	}
 }

@@ -4,15 +4,11 @@
 
 <mapper namespace="kr.ac.jejuuniv.mapper.UserMapper">
 
-	<!-- <select id="checkUser" parameterType="String" resultType="int">
+	<select id="checkUser" parameterType="map" resultType="int">
 		Select
 		count(userid) From twituser Where userid=#{id} and password = #{password}
-	</select> -->
-	 <select id="checkUser" parameterType="String" resultType="kr.ac.jejuuniv.model.User">
-		Select
-		* From twituser Where userid=#{id}
 	</select>
-	<select id="findAll" resultType="kr.ac.jejuuniv.model.User">
+<!-- 	<select id="findAll" resultType="kr.ac.jejuuniv.model.User">
 		SELECT * FROM twituser
 	</select>
 
@@ -31,6 +27,6 @@
 	<delete id="userDelete" parameterType="String">
 		delete from twituser where
 		userid=#{id}
-	</delete>
+	</delete> -->
 
 </mapper>
