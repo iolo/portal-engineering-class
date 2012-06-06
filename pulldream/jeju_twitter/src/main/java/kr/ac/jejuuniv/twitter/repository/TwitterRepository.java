@@ -1,8 +1,14 @@
 package kr.ac.jejuuniv.twitter.repository;
 
-import kr.ac.jejuuniv.twitter.model.ArticleModel;
+import java.util.List;
+
+import kr.ac.jejuuniv.twitter.model.FollowModel;
+import kr.ac.jejuuniv.twitter.model.TwittModel;
 
 public interface TwitterRepository {
-	void deleteArticle(String artid);
-	void writeArticle(ArticleModel articleModel);
+	void deleteTwitt(String artid);
+	void writeTwitt(TwittModel articleModel);
+	void addFollowing(FollowModel followModel);
+	
+	List<FollowModel> getAllFollower(String followerId);
 }

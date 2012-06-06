@@ -1,16 +1,16 @@
 package kr.ac.jejuuniv.twitter.model;
 
-public class ArticleModel {
-	private int artid;
+public class TwittModel {
+	private int twittnum;
 	private String id;
 	private String content;
-	private String writedate;
+	private String write_date;
 	
 	public int getArtid() {
-		return artid;
+		return twittnum;
 	}
 	public void setArtid(int artid) {
-		this.artid = artid;
+		this.twittnum = artid;
 	}
 	public String getId() {
 		return id;
@@ -25,10 +25,10 @@ public class ArticleModel {
 		this.content = content;
 	}
 	public String getWritedate() {
-		return writedate;
+		return write_date;
 	}
 	public void setWritedate(String writedate) {
-		this.writedate = writedate;
+		this.write_date = writedate;
 	}
 	
 }

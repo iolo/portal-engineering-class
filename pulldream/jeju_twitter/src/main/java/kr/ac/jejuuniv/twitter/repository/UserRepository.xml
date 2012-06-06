@@ -8,6 +8,16 @@
 		Insert into user values(#{id},#{password},#{name},#{profile})
 	</insert>
 	
+	<!--로그인 처리  -->
+	<select id="checkUser" resultType="kr.ac.jejuuniv.twitter.model.UserModel">
+		Select id, name from user where id=#{id} and password=#{password}
+	</select>
+	
+	<!-- 모든 사용자 가지고 오기 -->
+	<select id="getAllUser" resultType="kr.ac.jejuuniv.twitter.model.UserModel">
+		Select id name from user 
+	</select>
+	
 	<!-- 탈퇴?? -->
 	<delete id="delUser" parameterType="String">
 		 delete from user where id=#{id}

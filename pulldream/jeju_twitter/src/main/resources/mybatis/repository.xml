@@ -21,7 +21,7 @@
 	<beans:bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
 		p:driverClass="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://117.17.102.63/jejusns?unicode=true&amp;characterEncoding=utf-8"
+		p:url="jdbc:mysql://117.17.102.63/jeju_twitt?unicode=true&amp;characterEncoding=utf-8"
 		p:username="root" p:password="dkssudgktpdy" />
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
