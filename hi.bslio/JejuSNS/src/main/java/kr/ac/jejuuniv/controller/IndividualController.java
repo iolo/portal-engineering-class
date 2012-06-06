@@ -25,7 +25,7 @@ public class IndividualController {
 		ModelAndView modelView = new ModelAndView("individualPage");
 		modelView.addObject("id", request.getSession().getAttribute("LoginId"));
 		
-		List<TwitModel> twitList = twitService.getList();
+		List<TwitModel> twitList = twitService.getListByWriter((String)request.getSession().getAttribute("LoginId"));
 		
 		modelView.addObject("twitList", twitList);
 		
