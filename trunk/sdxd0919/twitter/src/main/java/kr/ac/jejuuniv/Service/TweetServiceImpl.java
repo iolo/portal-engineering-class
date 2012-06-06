@@ -1,13 +1,15 @@
 package kr.ac.jejuuniv.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-
-import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.Locale;
 
 import kr.ac.jejuuniv.Model.Tweet;
 import kr.ac.jejuuniv.Repository.TweetRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TweetServiceImpl implements TweetService {
@@ -30,12 +32,15 @@ public class TweetServiceImpl implements TweetService {
 		tweetRepository.delete(seq);
 	}
 
-	public void addTweet(Tweet tweet) {
-		tweetRepository.insert(tweet);
-	}
-
 	public List<Tweet> getAllTweet() {
 		return tweetRepository.getAllTweet();
+	}
+
+	public void addTweet(Tweet tweet) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
+		tweet.setDate(format.format(new Date()));
+		
+		tweetRepository.insert(tweet);
 	}
 	
 

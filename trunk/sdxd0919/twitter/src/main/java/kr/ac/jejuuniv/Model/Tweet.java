@@ -1,22 +1,19 @@
 package kr.ac.jejuuniv.Model;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class Tweet {
 	private int seq;
 	private int userNum;
 	private String message;
-	private Date date;
-	
+	private String date;
+
 	public Tweet() {
 	}
 	
-	public Tweet(int userNum, String message, Date date) {
+	public Tweet(int userNum, String message) {
 		this.userNum = userNum;
 		this.message = message;
-		this.date = date;
 	}
 
 	public int getSeq() {
@@ -29,9 +26,7 @@ public class Tweet {
 		return message;
 	}
 	public String getDate() {
-		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy.MM.dd", Locale.KOREA );
-		String dTime = formatter.format (date);
-		return dTime;
+		return date.substring(0, 10);
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;
@@ -42,7 +37,7 @@ public class Tweet {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	
