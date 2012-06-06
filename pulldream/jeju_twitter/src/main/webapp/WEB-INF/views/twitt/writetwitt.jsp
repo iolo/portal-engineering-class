@@ -7,15 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원 가입</title>
+<title>트윗 글쓰기</title>
 </head>
 <body>
-<form:form method="post" action="join.do" commandName="join">
-	아이디 : <form:input path="id"/><br>
-	비밀번호 : <form:input path="password"/><br>
-	이름 : <form:input path="name"/><br>
-	설명 : <form:textarea path="profile"/><br>
-	<form:button>회원가입</form:button>
-</form:form>
+<form>
+	요즘 어떠신가요??
+	<input type="text" id="content"/>
+	<input type="submit"/>
+	<input type="button" value="취소"/>
+</form>
 </body>
 </html>

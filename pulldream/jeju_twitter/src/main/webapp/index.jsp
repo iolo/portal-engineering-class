@@ -11,7 +11,7 @@
 			<input type="text" placeholder="아이디 입력" name="id">	
 			<input type="password" placeholder="비밀번호 입력" name="password"><br>			
    			<input type="submit" value="로그인"/>s
-   			<input type="button" value="회원가입" onclick="window.open('join.do')"/>
+   			<input type="button" value="회원가입" onclick="window.open('joinform')"/>
 </form>
 </body>
 </html>
