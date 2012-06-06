@@ -1,6 +1,9 @@
 package kr.ac.jejuuniv.twitter.repository.test;
 
-import kr.ac.jejuuniv.twitter.model.ArticleModel;
+import java.util.ArrayList;
+import java.util.List;
+
+import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.UserRepository;
 
@@ -26,22 +29,31 @@ public class UserRepositoryTest {
 		user.setId("juntheater3");
 		user.setName("Young");
 		user.setPassword("asdf");
-		user.setProfile("xc");
+		user.setProfile("안녕하세요");
 	}
 	
 	@Test
 	public void addUserTest() {
 		//사용자 넣기 테스트
 		userRepository.addUser(user);
-		userRepository.delUser(user.getId());
+//		userRepository.deleteUser(user.getId());
 	}
 	
 	@Test
-	//글쓰기를 위한 테스트
-	public void wirteArticleTest(){
-		ArticleModel article = new ArticleModel();
-		article.setId("juntheater");
-		article.setContent("Hello World");
-		userRepository.writeArticle(article);
+	public void getAllUserTest(){
+		//모든 사용자를 보여주기 위한 테스트
+		List<UserModel> user = new ArrayList<UserModel>();
+		
+		user = userRepository.getAllUser();
+		
+		System.out.println("----------------------------------------");
+		for (int i = 0; i < user.size(); i++) {
+			System.out.println("getAllUserTest");
+			System.out.println("user Id : " + user.get(i).getId());
+			System.out.println("user Name : "+user.get(i).getName());
+			System.out.println("user Password : "+user.get(i).getPassword());
+			System.out.println();
+		}
+		System.out.println("----------------------------------------");
 	}
 }

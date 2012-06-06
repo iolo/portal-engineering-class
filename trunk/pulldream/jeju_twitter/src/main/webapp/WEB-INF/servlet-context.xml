@@ -24,5 +24,5 @@
 	<!-- <view-controller path="/**/*.jeju" /> -->
 	
 	<!-- Imports user-defined @Controller beans that process client requests -->
-  	<!-- <beans:import resource="/repository.xml" /> -->
+  	 <beans:import resource="classpath:/mybatis/repository.xml" />
 </beans:beans>

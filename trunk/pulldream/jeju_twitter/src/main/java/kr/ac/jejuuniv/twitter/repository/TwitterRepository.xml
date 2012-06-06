@@ -4,18 +4,23 @@
 <mapper namespace="kr.ac.jejuuniv.twitter.repository.TwitterRepository">
 
 	<!-- 트위터 글쓰기 -->
-	<insert id="writeArticle" parameterType="kr.ac.jejuuniv.twitter.model.ArticleModel">
-		Insert into article(id, content, writedate) values(#{id},#{content},#{writedate})
+	<insert id="writeTwitt" parameterType="kr.ac.jejuuniv.twitter.model.TwittModel">
+		Insert into twitt(id, content, write_date) values(#{id},#{content},#{write_date})
 	</insert>
 	
 	<!-- 트위터 글삭제 -->
-	<delete id="deleteArticle" parameterType="String">
-		Delete from article where artid=#{artid}
+	<delete id="deleteTwitt" parameterType="String">
+		Delete from article where artid=#{twit_num}
 	</delete>
 	
 	<!-- Follower 등록 -->
-	<insert id="FollowingById" parameterType="String">
-		Insert into follow(id, follower) values(#{id},#{follow})	
+	<insert id="addFollowing" parameterType="kr.ac.jejuuniv.twitter.model.FollowModel">
+		Insert into follow(id, following) values(#{id},#{following})	
 	</insert>
-	<!-- Follower 글 목록-->
+	
+	<!-- Follower 목록-->
+	<select id="getAllFollower" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
+		Select * from follow where following=#{following}
+	</select>
+	
 </mapper>
