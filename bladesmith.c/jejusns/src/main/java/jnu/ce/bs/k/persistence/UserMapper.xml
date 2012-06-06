@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jnu.ce.bs.k.persistence.UserMapper">
+
+	<insert id="addUser" parameterType="jnu.ce.bs.k.model.User">
+		INSERT INTO jejusns.member VALUES ('', '#{id}', '#{password}', '#{name}', '#{description}', '#{profile}', 2012-06-06)
+	</insert>
+
+</mapper>
