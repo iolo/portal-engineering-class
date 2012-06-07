@@ -18,4 +18,6 @@ public interface UserService {
 
 	User getUserById(String id);
 
+	int getUserNum(String id);
+
 }

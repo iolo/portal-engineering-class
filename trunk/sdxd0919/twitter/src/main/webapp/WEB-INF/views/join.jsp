@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+<%@ page session="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,36 +13,42 @@
 </head>
 <body>
 	<div id="JoinContent">
-		<form action="/twitter/userAdd" method="post">
+		<form:form modelAttribute="user" action="/twitter/join" method="post">
 			<fieldset>
 				<legend>사용자 등록</legend>
+				<form:hidden path="userNum"/>
 				<p>
-					<label>ID</label>
-					<input type="text" name="id" />
-				</p>
-				<p>
-					<label>Password</label>
-					<input type="password" name="password" />
+					<label>아이디</label>
+					<form:input path="id"/>
+					<form:errors path="id" />
 				</p>
 				<p>
 					<label>이름</label>
-					<input type="name" name="name" />
+					<form:input path="name"/>
+					<form:errors path="name" />
 				</p>
 				<p>
+					<label>암호</label>
+					<form:password path="password"/>
+					<form:errors path="password" />
+				</p>
+				<p>
+				<p>
 					<label>설명</label>
-					<input type="text" name="description" />
+					<form:input path="description"/>
 				</p>
 				<p>
 					<label>프로필이미지</label>
-					<input type="text" name="fropileImg" />
-					<a href="/img"><input type="button" value="찾아보기" /></a>
+					<form:input path="profileImg"/>
+					<!-- <input type="button" value="찾아보기" /> -->
 				</p>
 				<p>
-					<input type="submit" value="회원가입" />
-					<a href="/login"><input type="button" value="취소" /></a>
+					<input type="submit" value="등록" />
+					<input type="button" value="취소" onclick="javascript:history.back()">
+					<!-- <a href="/login"><input type="button" value="취소" /></a> -->
 				</p>
 			</fieldset>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

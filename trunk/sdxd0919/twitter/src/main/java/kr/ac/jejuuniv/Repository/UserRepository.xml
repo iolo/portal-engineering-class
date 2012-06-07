@@ -28,5 +28,10 @@
 			description=#{description}, profileImg=#{profileImg}
 			WHERE userNum = #{userNum}			
 	</update>
+	
+	<select id="getUserNumById" parameterType="String" resultType="int">
+		select userNum from user
+		where id=#{id}
+	</select>
 
 </mapper>
