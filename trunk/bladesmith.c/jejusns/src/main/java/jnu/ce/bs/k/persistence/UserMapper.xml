@@ -5,8 +5,13 @@
 <mapper namespace="jnu.ce.bs.k.persistence.UserMapper">
 
 	<insert id="addUser" parameterType="jnu.ce.bs.k.model.User">
-		insert into member (id, password, name, description, profile, sign_date )
-		values (#{id}, #{password}, #{name}, #{description}, #{profile}, DATE(NOW()))
+		insert into member (id,
+		password, name, description, profile, sign_date )
+		values (#{id},
+		#{password}, #{name}, #{description}, #{profile}, DATE(NOW()))
 	</insert>
 
+	<select id="login" parameterType="java.util.Map" resultType="jnu.ce.bs.k.model.User">
+		SELECT member_num, id, password, name, description, profile FROM member WHERE id=#{id} AND password=#{password}
+	</select>
 </mapper>

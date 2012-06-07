@@ -1,10 +1,12 @@
 package jnu.ce.bs.k.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.Map;
 
 import jnu.ce.bs.k.model.User;
 import jnu.ce.bs.k.persistence.UserMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -18,6 +20,12 @@ public class UserServiceImpl implements UserService {
 
 		User user = new User(id, password, name, description, profile);
 		userMapper.addUser(user);
+	}
+
+	@Override
+	public User login(Map<String, String> map) {
+
+		return userMapper.login(map);
 	}
 
 }
