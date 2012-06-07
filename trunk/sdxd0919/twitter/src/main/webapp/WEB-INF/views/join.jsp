@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div id="JoinContent">
-		<form:form modelAttribute="user" action="/twitter/join" method="post">
+		<form:form modelAttribute="user" action="/twitter/save" method="post">
 			<fieldset>
 				<legend>사용자 등록</legend>
 				<form:hidden path="userNum"/>

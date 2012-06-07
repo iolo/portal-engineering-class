@@ -28,7 +28,7 @@
 			<c:forEach items="${tweetList}" var="tweets" >
 				<tr>
 					<td>
-	 					<img src = "${usery.profileImg}" />
+	 					<img src = "${user.profileImg}" />
 	 				</td>
 	 				<td>
 						<label>${tweets.message}</label>
