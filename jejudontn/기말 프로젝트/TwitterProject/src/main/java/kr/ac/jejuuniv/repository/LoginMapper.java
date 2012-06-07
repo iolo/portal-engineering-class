@@ -2,7 +2,8 @@ package kr.ac.jejuuniv.repository;
 
 
 
-import kr.ac.jejuuniv.model.LoginModel;
+import java.util.Map;
+
 import kr.ac.jejuuniv.model.User;
 
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LoginMapper {
 
-	User findUserById(LoginModel loginModel);
+	User findUserById(Map<String, String> loginMap);
 	
 	
 

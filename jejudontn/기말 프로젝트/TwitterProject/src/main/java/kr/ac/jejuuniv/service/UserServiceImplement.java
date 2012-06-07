@@ -1,10 +1,11 @@
 package kr.ac.jejuuniv.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.jejuuniv.model.AllFollow;
 import kr.ac.jejuuniv.model.AllUsers;
-import kr.ac.jejuuniv.model.FollowIdTemp;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserMapper;
 
@@ -60,12 +61,14 @@ public class UserServiceImplement implements UserService {
 
 	@Override
 	public void FollowUser(String id, String follow, String followid) {
-		FollowIdTemp followObject = new FollowIdTemp(id, followid);
+		Map<String, String> addFollower = new HashMap<String, String>();
+		addFollower.put("userId", id);
+		addFollower.put("followId", followid);
 		
 		if (follow.equals("Follow")) {
-			userMapper.createFollow(followObject);
+			userMapper.createFollow(addFollower);
 		} else {
-			userMapper.deleteFollow(followObject);
+			userMapper.deleteFollow(addFollower);
 
 		}
 

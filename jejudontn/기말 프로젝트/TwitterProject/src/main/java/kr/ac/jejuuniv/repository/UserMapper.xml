@@ -33,13 +33,13 @@
 		FROM follow
 		Where id = #{id}
 	</select>
-	<insert id="createFollow" parameterType="kr.ac.jejuuniv.model.FollowIdTemp">
+	<insert id="createFollow" parameterType="java.util.Map">
 		insert into follow (id,
 		following)
 		values (#{userId}, #{followId})
 	</insert>
 
-	<delete id="deleteFollow" parameterType="kr.ac.jejuuniv.model.FollowIdTemp">
+	<delete id="deleteFollow" parameterType="java.util.Map">
 		delete from follow
 		where
 		id=#{userId} AND following = #{followId}
