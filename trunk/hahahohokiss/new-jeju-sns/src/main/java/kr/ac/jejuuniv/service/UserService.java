@@ -27,5 +27,9 @@ public interface UserService {
 
 	Tweet addTweet(String userId, Tweet tweet);
 
+	void removeTweet(String userId, int tweetId);
+
+	User addUser(User user);
+
 
 }

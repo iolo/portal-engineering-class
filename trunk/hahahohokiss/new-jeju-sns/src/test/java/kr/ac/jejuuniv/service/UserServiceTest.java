@@ -33,8 +33,8 @@ public class UserServiceTest {
 	 * Following User Tweet가져오기 - 성공
 	 * All User 가져오기 - 성공
 	 * Tweet 쓰기 - 성공 
-	 * Tweet 삭제 -
-	 * User 등록 - 
+	 * Tweet 삭제 - 성공
+	 * User 등록 - 성공
 	*/
 	
 	@Mock
@@ -219,5 +219,30 @@ public class UserServiceTest {
 		
 		tweet = userService.addTweet(userId, tweet);
 		assertThat(tweet.getUser().getLoginId(), is("hahahohokiss"));
+	}
+	
+	@Test
+	public void testRemoveTweet() {
+		UserService userService = new UserServiceImpl(userRepository);
+		User user = new User();
+		Tweet tweet = new Tweet();
+		String userId = user.getLoginId();
+		int tweetId = tweet.getTweetId();
+		userService.removeTweet(userId, tweetId);
+	}
+	
+	@Test
+	public void tsetAddUser() {
+		UserService userService = new UserServiceImpl(userRepository);
+		User user = new User();
+		user.setLoginId("hahahohokiss");
+		
+		when(userRepository.insertUser(user)).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return (User) invocation.getArguments()[0];
+			}
+		});
+		user = userService.addUser(user);
+		assertThat(user.getLoginId(), is("hahahohokiss"));
 	}
 }

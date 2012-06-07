@@ -53,11 +53,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void addFollow(String followId, String followingId) {
-		
+		userRepository.insertFollowing(followId, followingId);
 	}
 
 	public Tweet addTweet(String userId, Tweet tweet) {
 		return userRepository.insertTweet(userId, tweet);
+	}
+
+	public void removeTweet(String userId, int tweetId) {
+		userRepository.deleteTweet(userId, tweetId);
+	}
+
+	public User addUser(User user) {
+		return userRepository.insertUser(user);
 	}
 
 }

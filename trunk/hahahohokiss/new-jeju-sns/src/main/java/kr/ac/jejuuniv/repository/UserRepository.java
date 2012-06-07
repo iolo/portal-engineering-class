@@ -25,4 +25,10 @@ public interface UserRepository {
 
 	Tweet insertTweet(String userId, Tweet tweet);
 
+	User insertUser(User user);
+
+	void insertFollowing(String followId, String followingId);
+
+	void deleteTweet(String userId, int tweetId);
+
 }
