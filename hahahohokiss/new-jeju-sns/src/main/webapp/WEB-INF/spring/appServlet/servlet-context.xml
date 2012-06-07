@@ -23,6 +23,13 @@
 	
 	<context:component-scan base-package="kr.ac.jejuuniv" />
 	
+	<view-controller path="/" view-name="login"/>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/service/**"/>
+			<beans:bean id = "loginInterceptor" class="kr.ac.jejuuniv.interceptor.SingInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>
