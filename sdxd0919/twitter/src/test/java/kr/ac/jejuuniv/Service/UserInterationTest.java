@@ -73,6 +73,13 @@ public class UserInterationTest {
 		assertThat(user.getName(), is("KimSY"));
 		assertThat(user.getPassword(), is("kkk"));
 	}
+
+	@Test
+	public void getUserNum(){
+		int userNum = userService.getUserNum("hsy");
+		
+		assertThat(userNum, is(1));
+	}
 	
 	public void printUsers(List<User> users) {
 		System.out.println("------------------------------------------");

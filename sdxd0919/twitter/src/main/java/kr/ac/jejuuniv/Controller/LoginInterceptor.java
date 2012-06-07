@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.ac.jejuuniv.Model.User;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
@@ -14,7 +13,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		HttpSession session = request.getSession(false);
 		
-		User user = (User) request.getSession().getAttribute("user");
+		String userId = (String) request.getSession().getAttribute("userId");
 		
 		if("/twitter/login".equals(request.getRequestURI())) return true;
 		
@@ -23,7 +22,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			return false;
 		}
 		
-		if (user == null) {
+		if (userId == null) {
 			response.sendRedirect("/twitter/login");
 			return false;
 		}

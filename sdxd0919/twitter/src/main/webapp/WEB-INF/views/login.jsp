@@ -13,7 +13,7 @@
 	<div id="Header">
 		<label>제주 SNS 오신것을 환영합니다.</label>
 		<p>
-		<img src="/resources/cat.png" />
+		<img alt="제주 SNS" src="/twitter/resources/cat.png">
 		</p>
 	</div>
 	

@@ -19,6 +19,7 @@
 			<a href="javascript:void(window.open('/twitter/write', '글쓰기',
 						'width=500, height=300'))"><input type="button" value="글쓰기" /></a>
 			<a href="/twitter/sns"><input type="button" value="메인페이지" /></a>
+			<a href="/twitter/logout"><input type="button" value="로그아웃" /></a>
 		</p>
 	</div>
 	

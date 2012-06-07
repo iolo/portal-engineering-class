@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 	
 	@Autowired
@@ -27,7 +26,10 @@ public class LoginController {
 			User user = userService.checkUser(id, password);
 			
 			if(user != null){
-				session.setAttribute("user", user);
+				if(password.equals(user.getPassword())){
+					session.setAttribute("userNum", user.getUserNum());
+					session.setAttribute("userId", id);
+				}
 			}
 			
 			return mav;
@@ -39,8 +41,9 @@ public class LoginController {
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session){
-		session.setAttribute("user", null);
+		session.removeAttribute("userNum");
+		session.removeAttribute("userId");
 		session.invalidate();
-		return "/login";
+		return "redirect:/login";
 	}
 }

@@ -3,7 +3,9 @@ package kr.ac.jejuuniv.Controller;
 import javax.servlet.http.HttpSession;
 
 import kr.ac.jejuuniv.Model.User;
+import kr.ac.jejuuniv.Repository.UserRepository;
 import kr.ac.jejuuniv.Service.TweetService;
+import kr.ac.jejuuniv.Service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +20,10 @@ public class PersonalSnsController {
 
 	@RequestMapping("/personalSNS")
 	public ModelAndView list(HttpSession session){
-		User user = (User) session.getAttribute("user");
+		int userNum = (Integer) session.getAttribute("userNum");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/personalSNS");
-		
-		int userNum = user.getUserNum();
 		mav.addObject("tweetList", tweetService.getAllTweetByUserNum(userNum));
 		
 		return mav;

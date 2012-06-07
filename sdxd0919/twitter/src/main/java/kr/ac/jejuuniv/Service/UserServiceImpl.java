@@ -50,4 +50,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.getUserById(id);
 	}
 
+	public int getUserNum(String id) {
+		return userRepository.getUserNumById(id);
+	}
+
 }

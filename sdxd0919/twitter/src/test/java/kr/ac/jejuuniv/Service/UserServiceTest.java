@@ -1,9 +1,7 @@
 package kr.ac.jejuuniv.Service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -14,7 +12,6 @@ import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.UserRepository;
 import kr.ac.jejuuniv.Service.Exception.UserNotFoundException;
 
-import org.aspectj.weaver.ArrayAnnotationValue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -140,6 +137,23 @@ public class UserServiceTest {
 		User user = userService.checkUser("hsy", "abc");
 		
 		assertThat(user.getName(), is("현소영"));
+		assertThat(user.getId(), is("hsy"));
+		assertThat(user.getPassword(), is("abc"));
 	}
 	
+	@Test
+	public void getUserNum(){
+		UserService userService = new UserServiceImpl(userRepository);
+
+		when(userRepository.getUserNumById("hsy")).thenAnswer(new Answer<Integer>() {
+			public Integer answer(InvocationOnMock invocation) throws Throwable {
+				int userNum = 1;
+				return userNum;
+			}
+		});
+		
+		int userNum = userService.getUserNum("hsy"); 
+		
+		assertThat(userNum, is(1));
+	}
 }
