@@ -23,4 +23,6 @@ public interface UserRepository {
 
 	User updateUser(User user);
 
+	Tweet insertTweet(String userId, Tweet tweet);
+
 }

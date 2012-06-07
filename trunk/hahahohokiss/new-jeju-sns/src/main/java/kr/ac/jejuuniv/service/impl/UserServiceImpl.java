@@ -56,4 +56,8 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	public Tweet addTweet(String userId, Tweet tweet) {
+		return userRepository.insertTweet(userId, tweet);
+	}
+
 }
