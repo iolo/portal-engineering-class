@@ -5,7 +5,8 @@
 <mapper namespace="jnu.ce.bs.k.persistence.UserMapper">
 
 	<insert id="addUser" parameterType="jnu.ce.bs.k.model.User">
-		INSERT INTO jejusns.member VALUES ('', '#{id}', '#{password}', '#{name}', '#{description}', '#{profile}', 2012-06-06)
+		insert into member (id, password, name, description, profile, sign_date )
+		values (#{id}, #{password}, #{name}, #{description}, #{profile}, DATE(NOW()))
 	</insert>
 
 </mapper>
