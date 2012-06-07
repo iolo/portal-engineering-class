@@ -15,7 +15,6 @@ public class JoinController {
 	private UserService userService;
 
 	@RequestMapping("/join")
-//	@RequestMapping
 	public User action(HttpSession session, User user){
 		int userNum = (Integer) session.getAttribute("userNum");
 		
@@ -24,12 +23,7 @@ public class JoinController {
 	
 	@RequestMapping("/save")
 	public String save(HttpSession session, User user){
-		int userNum = (Integer) session.getAttribute("userNum");
-		String password = userService.getUser(userNum).getPassword();
-		
-		if(password.equals(user.getPassword())){
-			userService.update(user);
-		}
+		userService.update(user);
 		
 		return "redirect:/personalSNS";
 	}
