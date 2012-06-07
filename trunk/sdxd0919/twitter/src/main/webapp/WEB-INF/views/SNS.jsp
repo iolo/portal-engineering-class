@@ -14,11 +14,11 @@
 <body>
 	<div id="Header">
 		<p>
-			<a href="/personalSNS"><label id="${user.userName}"></label></a>
-			<a href="/write"><input type="button" value="글쓰기" /></a>
-			<a href="/userlist"><input type="button" value="Following" /></a>
-			<a href="/userlist"><input type="button" value="Follower" /></a>
-			<a href="/userlist"><input type="button" value="전체사용자" /></a>
+			<a href="/twitter/personalSNS"><label id="${user.userName}"></label></a>
+			<a href="/twitter/write"><input type="button" value="글쓰기" /></a>
+			<a href="/twitter/userlist"><input type="button" value="Following" /></a>
+			<a href="/twitter/userlist"><input type="button" value="Follower" /></a>
+			<a href="/twitter/userlist"><input type="button" value="전체사용자" /></a>
 		</p>
 	</div>
 		

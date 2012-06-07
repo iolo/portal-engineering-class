@@ -17,7 +17,7 @@ public class PersonalSnsController {
 	private TweetService tweetService;
 
 	@RequestMapping("/personalSNS")
-	public ModelAndView action(HttpSession session){
+	public ModelAndView list(HttpSession session){
 		User user = (User) session.getAttribute("user");
 		
 		ModelAndView mav = new ModelAndView();

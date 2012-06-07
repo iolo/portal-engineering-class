@@ -1,7 +1,5 @@
 package kr.ac.jejuuniv.Model;
 
-import java.text.SimpleDateFormat;
-
 public class Tweet {
 	private int seq;
 	private int userNum;
@@ -26,7 +24,7 @@ public class Tweet {
 		return message;
 	}
 	public String getDate() {
-		return date.substring(0, 10);
+		return date;
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;

@@ -18,7 +18,7 @@
 				<input type="text" name="message" />
 			</p>
 			<p>
-				<input type="submit" value="등록" onclick="javascript:window.opener.location.reload();window.close()"/>
+				<input type="submit" value="등록" onclick="javascript:window.close();window.opener.location.reload()"/>
 				<a href="javascript:self.close()"><input type="button" value="취소"></a> 				
 			</p>
 		</form>

@@ -12,29 +12,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/login")
 public class LoginController {
 	
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String home() {
-		return "/login";
-	}
-
-	
 	@RequestMapping("/login")
 	public ModelAndView login(String id, String password, HttpSession session){
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/personalSNS");
-
-		User user = userService.checkUser(id, password);
-		
-		if(user != null){
-			session.setAttribute("user", user);
+		if(id != null && password != null){
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/personalSNS");
+			
+			User user = userService.checkUser(id, password);
+			
+			if(user != null){
+				session.setAttribute("user", user);
+			}
+			
+			return mav;
+		}else{
+			return new ModelAndView("/login");
 		}
-		
-		return mav;
 	}
 	
 	
