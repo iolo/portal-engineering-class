@@ -111,6 +111,9 @@ public class UserServiceTest {
 		
 	}
 	
+	
+	
+	
 	@Test(expected=UserNotFoundException.class)
 	public void updateFail(){
 		UserService userService = new UserServiceImpl(userRepository);
@@ -122,6 +125,7 @@ public class UserServiceTest {
 		
 		verify(userRepository).update(user);
 	}
+	
 	
 	@Test
 	public void checkUser(){

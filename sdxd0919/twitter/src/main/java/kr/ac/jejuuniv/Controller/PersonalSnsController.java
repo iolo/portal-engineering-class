@@ -17,13 +17,17 @@ public class PersonalSnsController {
 
 	@Autowired
 	private TweetService tweetService;
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping("/personalSNS")
 	public ModelAndView list(HttpSession session){
 		int userNum = (Integer) session.getAttribute("userNum");
+		User user = userService.getUser(userNum);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/personalSNS");
+		mav.addObject("user", user);
 		mav.addObject("tweetList", tweetService.getAllTweetByUserNum(userNum));
 		
 		return mav;

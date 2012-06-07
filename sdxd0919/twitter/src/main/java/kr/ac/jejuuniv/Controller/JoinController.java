@@ -10,15 +10,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/join")
 public class JoinController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping
-	public User action(HttpSession session){
+	@RequestMapping("/join")
+//	@RequestMapping
+	public User action(HttpSession session, User user){
 		int userNum = (Integer) session.getAttribute("userNum");
 		
 		return userService.getUser(userNum);
+	}
+	
+	@RequestMapping("/save")
+	public String save(HttpSession session, User user){
+		int userNum = (Integer) session.getAttribute("userNum");
+		String password = userService.getUser(userNum).getPassword();
+		
+		if(password.equals(user.getPassword())){
+			userService.update(user);
+		}
+		
+		return "redirect:/personalSNS";
 	}
 }
