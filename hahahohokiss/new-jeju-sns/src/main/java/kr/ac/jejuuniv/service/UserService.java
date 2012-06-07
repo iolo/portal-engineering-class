@@ -25,4 +25,7 @@ public interface UserService {
 
 	void addFollow(String followId, String followingId);
 
+	Tweet addTweet(String userId, Tweet tweet);
+
+
 }

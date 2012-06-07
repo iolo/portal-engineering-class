@@ -32,8 +32,9 @@ public class UserServiceTest {
 	 * Following 하기 - 성공
 	 * Following User Tweet가져오기 - 성공
 	 * All User 가져오기 - 성공
-	 * Tweet 쓰기 - 
+	 * Tweet 쓰기 - 성공 
 	 * Tweet 삭제 -
+	 * User 등록 - 
 	*/
 	
 	@Mock
@@ -196,5 +197,27 @@ public class UserServiceTest {
 		List<User> users = userService.getAllUser();
 		assertTrue(users.size() > 0);
 		assertThat(users.get(0).getLoginId(), is("hahahohokiss"));
+	}
+	
+	@Test
+	public void testAddTweet() {
+		UserService userService = new UserServiceImpl(userRepository);
+		
+		Tweet tweet = new Tweet();
+		User user = new User();
+		user.setLoginId("hahahohokiss");
+		String userId = user.getLoginId();
+		tweet.setUser(user);
+		
+		when(userRepository.insertTweet(userId, tweet)).thenAnswer(new Answer<Tweet>() {
+			public Tweet answer(InvocationOnMock invocation) throws Throwable {
+				Tweet tweet = (Tweet) invocation.getArguments()[1];
+				tweet.getUser().setLoginId(invocation.getArguments()[0].toString());
+				return tweet;
+			}
+		});
+		
+		tweet = userService.addTweet(userId, tweet);
+		assertThat(tweet.getUser().getLoginId(), is("hahahohokiss"));
 	}
 }
