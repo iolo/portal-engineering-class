@@ -11,11 +11,13 @@ import java.util.Locale;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
 
+@Repository
 public class UserRepositoryImpl implements UserRepository {
 
 	private HibernateTemplate hibernateTemplate;

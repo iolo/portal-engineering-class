@@ -2,13 +2,17 @@ package kr.ac.jejuuniv.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
 import kr.ac.jejuuniv.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
-
+	@Autowired
 	UserRepository userRepository;
 	
 	public UserServiceImpl(UserRepository userRepository) {
