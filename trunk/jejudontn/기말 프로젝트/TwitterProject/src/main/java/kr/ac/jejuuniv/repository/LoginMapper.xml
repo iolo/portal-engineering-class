@@ -4,7 +4,7 @@
 
 <mapper namespace="kr.ac.jejuuniv.repository.LoginMapper">
 
-	<select id="findUserById" parameterType="kr.ac.jejuuniv.model.LoginModel"  resultType="kr.ac.jejuuniv.model.User">
+	<select id="findUserById" parameterType="java.util.Map"  resultType="kr.ac.jejuuniv.model.User">
 		SELECT * FROM user WHERE id = #{id} AND password = #{password}
 	</select>
 	

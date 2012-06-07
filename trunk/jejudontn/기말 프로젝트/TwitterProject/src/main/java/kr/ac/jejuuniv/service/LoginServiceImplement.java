@@ -1,6 +1,8 @@
 package kr.ac.jejuuniv.service;
 
-import kr.ac.jejuuniv.model.LoginModel;
+import java.util.HashMap;
+import java.util.Map;
+
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.LoginMapper;
 
@@ -17,8 +19,11 @@ public class LoginServiceImplement implements LoginService {
 	@Override
 	public boolean checkIdAndPassword(String id, String password) {
 		
-		LoginModel loginModel = new LoginModel(id,password);
-		user = loginmapper.findUserById(loginModel);
+		Map<String, String> LoginMap = new HashMap<String, String>();
+		LoginMap.put("id", id);
+		LoginMap.put("password", password);
+		
+		user = loginmapper.findUserById(LoginMap);
 
 		return true;
 	}
