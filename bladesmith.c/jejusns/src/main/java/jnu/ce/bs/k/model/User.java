@@ -1,6 +1,7 @@
 package jnu.ce.bs.k.model;
 
 public class User {
+	private String member_num;
 	private String id;
 	private String password;
 	private String name;
@@ -59,6 +60,14 @@ public class User {
 
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+
+	public String getUserNum() {
+		return member_num;
+	}
+
+	public void setUserNum(String userNum) {
+		this.member_num = userNum;
 	}
 
 }

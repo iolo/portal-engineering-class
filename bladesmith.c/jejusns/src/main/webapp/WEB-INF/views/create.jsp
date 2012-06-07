@@ -8,7 +8,6 @@
 	media="all" />
 </head>
 <body>
-	<div id="Header">회원가입</div>
 	<div id="login">
 		<form action="create" method="post">
 			<fieldset>
