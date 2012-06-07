@@ -26,9 +26,6 @@
 		<table>
 			<c:forEach items="${tweetList}" var="tweets" >
 				<tr>
-	 				<td>
-						<label>${tweets.seq}</label>
-	 				</td>
 					<td>
 	 					<img src = "${usery.profileImg}" />
 	 				</td>

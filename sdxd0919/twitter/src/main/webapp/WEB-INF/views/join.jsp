@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="JoinContent">
-		<form action="userAdd" method="post">
+		<form action="/twitter/userAdd" method="post">
 			<fieldset>
 				<legend>사용자 등록</legend>
 				<p>
