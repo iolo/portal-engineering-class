@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("User")
-public class UserLogin {
+public class UserLoginController {
 
 	@Autowired
 	private UserService userService;
