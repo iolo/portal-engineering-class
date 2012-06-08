@@ -21,19 +21,32 @@ public class UserviewController {
 	@Autowired
 	private FollowService followService;
 	
+	@RequestMapping("followTEST") 
+	public ModelAndView followTEST(String target, HttpServletRequest request){
+		followService.follow(target, (String)request.getSession().getAttribute("LoginId"));
+		return new ModelAndView("redirect:viewAll");
+	}
+	
+	@RequestMapping("unfollowTEST")
+	public ModelAndView unfollowTEST(String target, HttpServletRequest request) {
+		followService.unfollow(target, (String)request.getSession().getAttribute("LoginId"));
+		return new ModelAndView("redirect:viewAll");
+	}
+	
 	@RequestMapping("viewAll")
 	public ModelAndView viewAll(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("users_page");
 		mav.addObject("titleString", "모든 사용자");
-		mav.addObject("users", userService.getList());
-		
+				
 		List<UserModel> users = userService.getList();
 		List<String> followList = followService.getFollowing((String)request.getSession().getAttribute("LoginId"));
 		
 		for (UserModel user : users) {
-			
+			user.setFollow(followList.contains(user.getId()));
+			System.out.println(user.isFollow());
 		}
 		
+		mav.addObject("users", users);
 		
 		return mav;	
 	}
