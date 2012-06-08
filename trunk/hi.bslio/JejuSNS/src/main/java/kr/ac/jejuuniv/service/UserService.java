@@ -27,4 +27,8 @@ public class UserService {
 		UserModel user = userMapper.findById(id);
 		return user;
 	}
+	
+	public void updateUser(UserModel user) {
+		userMapper.updateUser(user);
+	}
 }

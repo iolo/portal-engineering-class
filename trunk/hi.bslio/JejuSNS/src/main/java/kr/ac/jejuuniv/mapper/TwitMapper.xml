@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="findByWriter" resultType="kr.ac.jejuuniv.model.TwitModel">
-		SELECT * FROM twit WHERE writer = #{writer}
+		SELECT * FROM twit WHERE writer = #{writer} ORDER BY id DESC
 	</select>
 	
 	<delete id="deleteTwit">

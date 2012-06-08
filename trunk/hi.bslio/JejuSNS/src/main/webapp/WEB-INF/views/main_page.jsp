@@ -5,13 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>개인 SNS 페이지</title>
+<title>SNS 페이지 메인</title>
 </head>
 <body>
 	${id}
-	<input type="button" value="프로필 수정" onClick="location.href='editProfile'"/>
 	<input type="button" value="글쓰기" onClick="javascript:window.open('writeSns', '', 'location=no, directories=no,resizable=no,status=no,toolbar=no,menubar=no, width=300,height=400,left=0, top=0, scrollbars=no')"/>
-	
+	<input type="button" value="Following" onClick="location.href='viewFollowing'"/>
+	<input type="button" value="Follower" onClick="location.href='viewFollower'"/>
+	<input type="button" value="전체사용자" onClick="location.href='viewAll'"/>
 	<table>
 			<caption>트윗's</caption>
 			<thead>
@@ -19,7 +20,6 @@
 					<th> </th>
 					<th>작성자</th>
 					<th>내용</th>
-					<th> </th>
 					<th>날짜</th>
 				</tr>
 			</thead>
@@ -29,10 +29,7 @@
 					<td>없듬 </td>
 					<td>${twit.writer} </td>
 					<td>${twit.twit_text} </td>
-					<td><a href="deleteTwit?id=${twit.id}">ㅁ삭제ㅁ</a></td>
 					<td>${twit.date} </td>
-					<!-- <td><a href="modify?id=${user.id}">수정</a></td> -->
-					<!-- <td><a href="remove?id=${user.id}">삭제</a></td> -->
 				</tr>
 			</c:forEach>
 			</tbody>	
