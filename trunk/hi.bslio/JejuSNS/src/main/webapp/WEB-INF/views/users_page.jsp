@@ -26,10 +26,13 @@
 			<c:forEach items="${users}" var="user" >
 				<tr>
 					<td>없듬 </td>
-					<td>${user.name}<c:if test="${user.name == 'parkjt' }">wowwowwow!!!</c:if> </td>
+					<td>${user.name} </td>
 					
 					<td>${user.comment} </td>
-					<td>팔로우/언팔로우버튼 </td>
+					<td>${user.follow}
+						<c:if test="${user.follow==true}"><a href="unfollowTEST?target=${user.id}">Unfollow 하기</a></c:if>
+						<c:if test="${user.follow==false}"><a href="followTEST?target=${user.id}">Follow 하기</a></c:if>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>	
