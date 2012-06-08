@@ -22,7 +22,7 @@ public class UserLogin {
 		boolean value = loginService.checkUser(user.getUserid(),
 				user.getPassword());
 		if (!value) {
-			return "login";
+			return "redirect:/";
 		}
 		request.getSession().setAttribute("loginId", user.getUserid());
 		model.addAttribute("userId", user.getUserid());

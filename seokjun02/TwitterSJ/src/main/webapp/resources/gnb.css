@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+
+body {
+	font-size: 12px;
+	font-family: "맑은 고딕", "malgun gothic";
+	margin: 0px auto;
+	color: #000000;
+}
+
+img {
+	border: 0px;
+	margin: 0px auto;
+}
+
+a {
+	text-decoration: none;
+	margin: 0px auto;
+	padding: 0px;
+	color: #000000;
+}
+
+div {
+	padding: 0px;
+	margin: 0px auto;
+}
+
+ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+}
+
+li {
+	margin: 0px auto;
+	padding: 0px;
+	display: inline;
+}
+
+p {
+	margin: 0px auto;
+}
+
+div#Warp {
+	position: relative;
+	width: 1024px;
+}
+
+div#Header {
+	width: 100%;
+}
+
+div#Content {
+	clear: both;
+	width: 100%;
+	padding-top: 20px;
+}
