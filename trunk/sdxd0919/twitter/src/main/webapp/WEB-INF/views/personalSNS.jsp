@@ -14,8 +14,8 @@
 <body>
 	<div id="Header">
 		<p>
-			<label>${user.name}</label>
-			<a href="/twitter/join"><input type="button" value="프로필수정" /></a>
+			<label>${user.name}(${user.description })</label>
+			<a href="/twitter/profile"><input type="button" value="프로필수정" /></a>
 			<a href="javascript:void(window.open('/twitter/write', '글쓰기',
 						'width=500, height=300'))"><input type="button" value="글쓰기" /></a>
 			<a href="/twitter/sns"><input type="button" value="메인페이지" /></a>

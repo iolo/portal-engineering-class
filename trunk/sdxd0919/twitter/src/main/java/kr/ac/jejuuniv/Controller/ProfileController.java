@@ -10,18 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class JoinController {
+public class ProfileController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/join")
-	public User action(HttpSession session, User user){
+	@RequestMapping("/profile")
+	public User action(HttpSession session, User newUser){
 		int userNum = (Integer) session.getAttribute("userNum");
-		
+
 		return userService.getUser(userNum);
 	}
 	
-	@RequestMapping("/save")
+	@RequestMapping("/profileSave")
 	public String save(HttpSession session, User user){
 		userService.update(user);
 		

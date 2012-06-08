@@ -127,6 +127,13 @@ public class UserServiceTest {
 	public void checkUser(){
 		UserService userService = new UserServiceImpl(userRepository);
 
+		when(userRepository.getPassword("hsy")).thenAnswer(new Answer<String>() {
+			public String answer(InvocationOnMock invocation) throws Throwable {
+				String password = "abc";
+				return password;
+			}
+		});
+		
 		when(userRepository.getUserById("hsy")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				User user = new User("hsy", "abc", "현소영");
@@ -136,7 +143,6 @@ public class UserServiceTest {
 		
 		User user = userService.checkUser("hsy", "abc");
 		
-		assertThat(user.getName(), is("현소영"));
 		assertThat(user.getId(), is("hsy"));
 		assertThat(user.getPassword(), is("abc"));
 	}

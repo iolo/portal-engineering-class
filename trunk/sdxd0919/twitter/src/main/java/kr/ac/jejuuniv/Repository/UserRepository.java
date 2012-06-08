@@ -21,4 +21,6 @@ public interface UserRepository {
 
 	int getUserNumById(String id);
 
+	String getPassword(String id);
+
 }
