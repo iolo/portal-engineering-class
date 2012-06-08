@@ -29,7 +29,7 @@
 					<input type="submit" value="로그인" />
 				</p>
 				<p>
-					<input type="button" value="회원가입" />
+					<input type="button" value="회원가입" onclick="javascript:location.href='/'" />
 				</p>
 			</form:form>
 		</div>

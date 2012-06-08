@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class Index {
 	@RequestMapping
-	public String action(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
+	public String action(HttpSession session, Model model) {
+//		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("loginId") == null) {
 			model.addAttribute("user", new User());

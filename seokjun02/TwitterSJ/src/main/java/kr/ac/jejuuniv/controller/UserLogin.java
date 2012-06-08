@@ -1,6 +1,6 @@
 package kr.ac.jejuuniv.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.LoginService;
@@ -18,13 +18,13 @@ public class UserLogin {
 	private LoginService loginService;
 
 	@RequestMapping
-	public String action(@ModelAttribute User user, HttpServletRequest request, Model model) {
+	public String action(@ModelAttribute User user, HttpSession session, Model model) {
 		boolean value = loginService.checkUser(user.getUserid(),
 				user.getPassword());
 		if (!value) {
 			return "redirect:/";
 		}
-		request.getSession().setAttribute("loginId", user.getUserid());
+		session.setAttribute("loginId", user.getUserid());
 		model.addAttribute("userId", user.getUserid());
 		return "main";
 	}
