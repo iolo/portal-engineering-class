@@ -8,6 +8,12 @@ public class AllFollow {
 	private String Following;
 	private String id;
 	
+	public AllFollow(){}
+	public AllFollow(String id, String following) {
+		this.setId(id);
+		this.setFollowing(following);
+		
+	}
 	
 
 	public String getFollowing() {
