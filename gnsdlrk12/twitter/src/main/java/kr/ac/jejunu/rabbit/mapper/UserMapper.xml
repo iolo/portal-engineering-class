@@ -39,4 +39,13 @@
 	<insert id="PostInsert" parameterType="kr.ac.jejunu.rabbit.model.Post" >
 		insert into userpost(userid, content) values (#{userid}, #{content})
 	</insert>
+	
+	<select id="Check" parameterType="kr.ac.jejunu.rabbit.model.User" resultType="kr.ac.jejunu.rabbit.model.Post" >
+		select *
+		from userinfo where userid = #{userid} and password = #{password}
+	</select>
+	
+	<update id="Follow" parameterType="kr.ac.jejunu.rabbit.model.User"> 
+		update follow set userid = #{userid}, followerid = #{followerid}, state=1 where userid = #{userid}
+	</update>
 </mapper>

@@ -2,14 +2,8 @@ package kr.ac.jejunu.rabbit.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.activation.DataSource;
 
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
@@ -26,10 +20,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestUserService {
 	
 	@Autowired
-	UserService userService;
+	UserService userService;    
 	
 	@Test
-	public void UserInsert(){	//User 등록 성공 테스트
+	public void UserInsert(){	//User 등록
 		User user = new User();
 		user.setUserid("white");
 		user.setName("rabbit");
@@ -40,17 +34,7 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void FailUserInsert(){	//기존에 있는 아이디를 입력할 경우 에러
-		User user = new User();
-		user.setUserid("white");
-		user.setName("cat");
-		user.setPassword("5678");
-		
-		userService.UserInsert(user);
-	}
-	
-	@Test
-	public void UserUpdate(){	//Userinfo 수정 성공 테스트
+	public void UserUpdate(){	//Userinfo 수정
 		User user = new User();
 		user.setUserid("white");
 		user.setName("bird");
@@ -60,22 +44,13 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void FailUserUpdate(){	//name 값이 없을 경우 에러
-		User user = new User();
-		user.setUserid("white");
-		user.setPassword("aaaa");
-		
-		userService.UserInsert(user);
-	}
-	
-	@Test
-	public void UserDelete(){	//User 삭제 성공 테스트
+	public void UserDelete(){	//User 삭제
 		String DeleteUserId = "white";
 		userService.UserDelete(DeleteUserId);
 	}
 	
 	@Test
-	public void TestList(){	//UserList 성공 테스트
+	public void TestList(){	//UserList
 		List<User> users = userService.UserList();
 		printUsers(users);
 	}
@@ -89,12 +64,14 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void Login(){	//Login 성공테스트
-		String userid = "snow";
-		String password = "5678";
+	public void Login(){	//Login
+		User user = new User();
+		user.setUserid("white");
+		user.setName("rabbit");
+		user.setPassword("1234");
 		
-		List<Post> posts = userService.Login(userid, password);
-		printPosts(posts);
+		userService.Login(user);
+		
 	}
 	
 	public void printPosts(List<Post> posts) {
@@ -106,10 +83,18 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void Postinsert(){	//post 등록 성공 테스트
+	public void Postinsert(){	//post 등록
 		String userid = "snow";
 		String content = "test";
 		
 		userService.PostInsert(userid, content);
+	}
+	
+	@Test
+	public void Testfollow(){
+		String userid = "white";
+		String followerid = "red";
+		
+		userService.following(userid, followerid);
 	}
 }
