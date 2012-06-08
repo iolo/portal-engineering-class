@@ -16,7 +16,7 @@
 		SET password =
 		#{password}, name = #{name}, information = #{information},
 		imageURI =
-		#{profileImageUri}
+		#{imageURI}
 		WHERE id = #{id}
 	</update>
 
