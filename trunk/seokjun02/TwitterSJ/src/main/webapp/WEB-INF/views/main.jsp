@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>TwitterSJ</title>
 </head>
-<body>Hello ${userId}!!!
- <a href="/TwitterSJ/logout">logout</a>
+<body>
+	Hello ${userId}!!!
+	<a href="/TwitterSJ/logout">logout</a>
 </body>
 </html>
