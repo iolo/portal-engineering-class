@@ -33,14 +33,20 @@ td.name{
 	border-bottom-style: solid;
 }
 
-td.text{
-	color:#444;
+td.introduce{
+	border-bottom-color: #777;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	
+}
+
+td.time{
 	border-bottom-color: #777;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 }
 
-td.time{
+td.following{
 	border-bottom-color: #777;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;

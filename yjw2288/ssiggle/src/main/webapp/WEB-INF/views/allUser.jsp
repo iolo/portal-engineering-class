@@ -7,27 +7,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SSiggle</title>
+	<link href="/ssiggle/resources/css/common.css" rel="stylesheet"
+		type="text/css" media="all" />
+	<link href="/ssiggle/resources/css/allUser.css" rel="stylesheet"
+		type="text/css" media="all" />
 </head>
 <body>
-<table>
-	<c:forEach items="${allUser}" var="target">
-		<tr>
-			<td><img src="/ssiggle/resources/userimage/${target.user.image}"
-				width="50" height="50"></td>
-			<td>${target.user.name }</td>
-			<td>${target.user.introduce }</td>
-			<c:choose>
-				<c:when test="${target.following}">
-					<td><a
-						href="/ssiggle/service/unFollow/allUser?userId=${user.id}&targetId=${target.user.id}">unfollow</a></td>
-				</c:when>
-				<c:otherwise>
-					<td><a
-						href="/ssiggle/service/follow/allUser?userId=${user.id}&targetId=${target.user.id}">follow</a></td>
-				</c:otherwise>
-			</c:choose>
-		</tr>
-	</c:forEach>
-</table>
+	<div id="container">
+		<div class="header">
+			<a class="profile" href="/ssiggle/service/user/${user.id}">${user.name}(${user.introduce})</a>
+			<a class="btn" href="/ssiggle/logout">로그아웃</a> 
+			<a class="btn"
+				href="/ssiggle/service/user/${user.id}/allUser">전체사용자</a> 
+			<a class="btn" href="/ssiggle/service/user/${user.id}/follower">follower</a>
+			<a class="btn" href="/ssiggle/service/user/${user.id}/following">following</a>
+		</div>
+		<hr />
+		<table>
+			<c:forEach items="${allUser}" var="target">
+				<tr>
+					<td class="prof"><img
+						src="/ssiggle/resources/userimage/${target.user.image}"
+						width="50px" height="50px"></td>
+					<td class="name">${target.user.name }</td>
+					<td class="introduce">${target.user.introduce }</td>
+					<td class="following">
+						<c:choose>
+							<c:when test="${target.following}">
+									<a class="btn"
+										href="/ssiggle/service/unFollow/allUser?userId=${user.id}&targetId=${target.user.id}">unfollow</a>
+								</c:when> <c:otherwise>
+									<a class="btn"
+										href="/ssiggle/service/follow/allUser?userId=${user.id}&targetId=${target.user.id}">follow</a>
+								</c:otherwise>
+						</c:choose>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>
