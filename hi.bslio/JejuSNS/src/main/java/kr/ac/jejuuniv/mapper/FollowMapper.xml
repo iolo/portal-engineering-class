@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.jejuuniv.mapper.FollowMapper">
+	<select id="getFollower" resultType="string">
+		SELECT * FROM follow WHERE target = #{target} ORDER BY follower DESC
+	</select>
+	
+	<select id="getFollowing" resultType="string">
+		SELECT * FROM follow WHERE follower = #{target} ORDER BY target DESC
+	</select>
+
+	<insert id="follow" parameterType="string">
+		insert into follow (target, follower)
+		values (#{target},#{follower})
+	</insert>
+	
+	<delete id="unfollow">
+		DELETE FROM follow WHERE target = #{target} AND follower = #{follower}
+	</delete>
+	
+</mapper>

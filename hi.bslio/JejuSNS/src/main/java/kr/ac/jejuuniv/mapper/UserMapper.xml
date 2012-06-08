@@ -12,4 +12,7 @@
 	<select id="findById" resultType="kr.ac.jejuuniv.model.UserModel">
 		SELECT * FROM member WHERE id = #{id}
 	</select>
+	<update id="updateUser" parameterType="kr.ac.jejuuniv.model.UserModel">
+		UPDATE member set name = #{name}, password = #{password}, comment = #{comment} WHERE id = #{id}
+	</update>
 </mapper>

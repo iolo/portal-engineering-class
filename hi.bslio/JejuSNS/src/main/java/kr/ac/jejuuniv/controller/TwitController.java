@@ -24,7 +24,7 @@ public class TwitController {
 	}
 	
 	@RequestMapping("writeTwit.submit")
-	public void writeTwit_submit(TwitModel twit, HttpServletRequest request)
+	public ModelAndView writeTwit_submit(TwitModel twit, HttpServletRequest request)
 	{
 		
 		TwitModel insertTwit = new TwitModel();
@@ -35,6 +35,8 @@ public class TwitController {
 		insertTwit.setDate(simpleDate.format(Calendar.getInstance().getTime()));
 		
 		twitService.insertTwit(insertTwit);
+		
+		return new ModelAndView("redirect:Individual");
 	}
 	
 	@RequestMapping("deleteTwit")

@@ -5,6 +5,7 @@ public class UserModel {
 	private String name;
 	private String password;
 	private String comment;
+	private boolean follow;
 
 	public String getId() {
 		return id;
@@ -29,5 +30,11 @@ public class UserModel {
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	public boolean isFollow() {
+		return follow;
+	}
+	public void setFollow(boolean follow) {
+		this.follow = follow;
 	}
 }

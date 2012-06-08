@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${id} 가입 완료
+${id} 가입 완료 <br>
+<input type="button" value="확인" onClick="location.href='index.jsp'"/>
 </body>
 </html>

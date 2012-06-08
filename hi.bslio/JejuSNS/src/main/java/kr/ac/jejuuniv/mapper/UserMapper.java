@@ -8,4 +8,5 @@ public interface UserMapper {
 	void insertUser(UserModel user);
 	List<UserModel> findAll();
 	UserModel findById(String id);
+	void updateUser(UserModel user);
 }
