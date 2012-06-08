@@ -23,7 +23,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User checkUser(String id, String password) {
-		return userRepository.getUserById(id);
+		String userPassword = userRepository.getPassword(id);
+		
+		if(userPassword.equals(password)){
+			return userRepository.getUserById(id);
+		}
+		return null;
 	}
 
 	public User getUser(int userNum) {

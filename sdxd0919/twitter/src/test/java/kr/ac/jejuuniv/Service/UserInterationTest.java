@@ -75,6 +75,15 @@ public class UserInterationTest {
 	}
 
 	@Test
+	public void getPassword(){
+		User user = userService.checkUser("hsy", "aaa");
+		
+		assertThat(user.getId(), is("hsy"));
+		assertThat(user.getPassword(), is("aaa"));
+	}
+	
+	
+	@Test
 	public void getUserNum(){
 		int userNum = userService.getUserNum("hsy");
 		

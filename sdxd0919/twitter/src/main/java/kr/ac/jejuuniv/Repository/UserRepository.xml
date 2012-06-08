@@ -33,5 +33,10 @@
 		select userNum from user
 		where id=#{id}
 	</select>
+	
+	<select id="getPassword" parameterType="String" resultType="String">
+		select password from user
+		where id=#{id}
+	</select>
 
 </mapper>

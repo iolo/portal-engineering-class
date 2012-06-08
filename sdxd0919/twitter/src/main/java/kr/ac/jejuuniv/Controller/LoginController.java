@@ -26,10 +26,8 @@ public class LoginController {
 			User user = userService.checkUser(id, password);
 			
 			if(user != null){
-				if(password.equals(user.getPassword())){
-					session.setAttribute("userNum", user.getUserNum());
-					session.setAttribute("userId", id);
-				}
+				session.setAttribute("userNum", user.getUserNum());
+				session.setAttribute("userId", id);
 			}
 			
 			return mav;

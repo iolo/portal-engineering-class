@@ -6,14 +6,14 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>회원 가입</title>
+	<title>회원 정보 수정</title>
 	<!-- 
 	<link href="/userㅁ/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 	 -->
 </head>
 <body>
-	<div id="JoinContent">
-		<form:form modelAttribute="user" action="/twitter/save" method="post">
+	<div id="ProfileContent">
+		<form:form modelAttribute="user" action="/twitter/profileSave" method="post">
 			<fieldset>
 				<legend>사용자 등록</legend>
 				<form:hidden path="userNum"/>
@@ -43,7 +43,7 @@
 					<!-- <input type="button" value="찾아보기" /> -->
 				</p>
 				<p>
-					<input type="submit" value="등록" />
+					<input type="submit" value="수정" />
 					<input type="button" value="취소" onclick="javascript:history.back()">
 				</p>
 			</fieldset>
