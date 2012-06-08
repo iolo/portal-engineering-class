@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>Hello ${userId}!!!
-
+ <a href="/TwitterSJ/logout">logout</a>
 </body>
 </html>
