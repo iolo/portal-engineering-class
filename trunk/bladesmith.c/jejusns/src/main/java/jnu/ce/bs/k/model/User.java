@@ -9,7 +9,6 @@ public class User {
 	private String profile;
 
 	public User(String id, String password, String name, String description, String profile) {
-
 		this.setId(id);
 		this.setName(name);
 		this.setPassword(password);

@@ -15,7 +15,6 @@ public class JejuSNSController {
 	
 	@RequestMapping()
 	public void action(@ModelAttribute("User") User user){
-		System.out.println(user.getId());
 		
 	}
 

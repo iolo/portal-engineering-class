@@ -10,7 +10,35 @@
 <body>
 	<div id="Header">제주SNS에 오신것을 환영합니다.</div>
 	<div id="main">
-	
+		<fieldset>
+			<p>
+				<label>${User.name}(${User.description})</label> 
+				<input type="button" value="글쓰기" onclick="window.open('write.bs')" />
+				<input type="button" value="Following" onclick=""> 
+				<input type="button" value="Follower" onclick=""> 
+				<input type="button" value="전체사용자" onclick="">
+			</p>
+		</fieldset>
+		<table>
+			<thead>
+				<tr>
+					<th>profile</th>
+					<th>writer</th>
+					<th>note</th>
+					<th>date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${notesList}" var="note">
+					<tr>
+						<td>${notes.writer}</td>
+						<td>${notes.writer}</td>
+						<td>${notes.note}</td>
+						<td>${notes.write_date}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

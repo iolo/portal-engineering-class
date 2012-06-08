@@ -14,4 +14,8 @@
 	<select id="login" parameterType="java.util.Map" resultType="jnu.ce.bs.k.model.User">
 		SELECT member_num, id, password, name, description, profile FROM member WHERE id=#{id} AND password=#{password}
 	</select>
+	
+	<insert id="writeNote" parameterType="jnu.ce.bs.k.model.Note">
+		insert into note (writer, note, write_date) values (#{writer}, #{note}, TIMESTAMP(NOW()))
+	</insert>
 </mapper>
