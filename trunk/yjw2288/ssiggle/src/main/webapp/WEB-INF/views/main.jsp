@@ -11,7 +11,7 @@
 		open(
 				window,
 				"NewWindow",
-				"left=0, top=0, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=200, height=200");
+				"left=300, top=300, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=280, height=200");
 	}
 </script>
 <link href="/ssiggle/resources/css/common.css" rel="stylesheet" type="text/css"

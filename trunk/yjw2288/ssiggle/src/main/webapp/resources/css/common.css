@@ -11,3 +11,18 @@ img, fieldset{border:none;}
 a{color:#333; }
 
 #container{ margin:0 auto; width:800px; text-align:center; overflow:auto;}
+
+.btn{
+	color:white;
+	text-decoration:none;
+	margin: 3px 3px;
+	padding: 3px;	
+	width:100px;
+	background-color:#666;
+	float: right;
+	display: block;
+}
+
+.btn:hover {
+	background-color:#333;
+}

@@ -40,6 +40,12 @@ td.text{
 	border-bottom-style: solid;
 }
 
+td.delete{
+	border-bottom-color: #777;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
 td.time{
 	border-bottom-color: #777;
 	border-bottom-width: 1px;
