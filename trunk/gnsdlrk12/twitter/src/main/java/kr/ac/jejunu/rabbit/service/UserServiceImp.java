@@ -52,17 +52,21 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public List<Post> Login(String userid, String password) {
-		List<Post> posts = null;
-		System.out.println(usermapper.Check(userid, password));
-		if(usermapper.Check(userid, password) != 0){
-			posts = GetUserPost(userid);
+	public boolean Login(User user) {
+		
+		if(usermapper.Check(user) != null){
+			return  true;
 			
 		}
 		else{
-			System.out.println(usermapper.Check(userid, password));
+			return false;
 		}
-		return posts;
+	}
+
+	@Override
+	public void following(String userid, String followerid) {
+		usermapper.Follow(userid, followerid);
+		
 	}
 
 

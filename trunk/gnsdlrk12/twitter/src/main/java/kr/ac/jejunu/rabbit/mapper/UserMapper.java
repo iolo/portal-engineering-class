@@ -24,6 +24,8 @@ public interface UserMapper {
 
 	void PostInsert(String userid, String content);
 
-	int Check(String userid, String password);
+	User Check(User user);
+
+	void Follow(String userid, String followerid);
 	
 }

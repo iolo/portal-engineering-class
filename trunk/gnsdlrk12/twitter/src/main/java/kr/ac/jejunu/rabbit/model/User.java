@@ -5,6 +5,7 @@ public class User {
 	private String userid;
 	private String name;
 	private String password;
+	private String loginUser;
 	public String getUserid() {
 		return userid;
 	}
@@ -27,6 +28,12 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + userid + ", name=" + name + ", password=" + password + "]";
+	}
+	public String getLoginUser() {
+		return loginUser;
+	}
+	public void setLoginUser(String loginUser) {
+		this.loginUser = loginUser;
 	}
 	
 }

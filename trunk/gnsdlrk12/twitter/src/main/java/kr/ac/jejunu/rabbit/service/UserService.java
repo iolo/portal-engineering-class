@@ -19,5 +19,7 @@ public interface UserService {
 
 	void PostInsert(String userid, String content);
 
-	List<Post> Login(String userid, String password);
+	boolean Login(User user);
+	
+	void following(String userid, String followerid);
 }
