@@ -28,7 +28,7 @@ public class SignController {
 		if(userService.getPassword(userId).equals(password)) {
 			User loginUser = userService.getUser(userId);
 			session.setAttribute("loginUser", loginUser);
-			return "redirect:/service/test";
+			return "redirect:/service/personalSns";
 		} else {
 			return "redirect:/";
 		}
