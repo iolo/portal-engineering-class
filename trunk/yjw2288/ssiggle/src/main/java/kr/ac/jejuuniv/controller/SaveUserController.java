@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/saveUser")
 public class SaveUserController {
+	//TODO : 나중에 password 에 값 체크는 @Valid 를 통하여 한다.
 	@RequestMapping(method = RequestMethod.POST)
 	public String action(
 			@ModelAttribute User user,
@@ -29,6 +30,6 @@ public class SaveUserController {
 		user.save();
 
 		response.addCookie(new Cookie(ControllerConstant.LOGIN_COOKIE_NAME, user.getId()));
-		return "redirect:/service/user/" + user.getId();
+		return "redirect:/service/user/";
 	}
 }

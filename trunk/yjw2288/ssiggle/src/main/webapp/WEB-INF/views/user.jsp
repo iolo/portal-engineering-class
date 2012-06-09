@@ -26,8 +26,8 @@
 			<a class="profile">${user.id }(${user.introduce })</a>
 			<a class="btn" href="/ssiggle/logout">로그아웃</a>
 			<a class="btn"
-				href="javascript:openNewWindow('/ssiggle/service/writeSsiggle?userId=${user.id}')">글쓰기</a>
-			<a class="btn" href="/ssiggle/service/modifyUser?id=${user.id}">프로필 수정</a>
+				href="javascript:openNewWindow('/ssiggle/service/writeSsiggle')">글쓰기</a>
+			<a class="btn" href="/ssiggle/service/modifyUser">프로필 수정</a>
 			<a class="btn" href="/ssiggle">메인 페이지</a>
 		</div>
 		<hr/>
@@ -38,7 +38,7 @@
 						width="50" height="50"></td>
 					<td class="text">${ssiggle.text}</td>
 					<td class="delete">
-						<a class="btn" href="/ssiggle/service/deleteSsiggle?userId=${user.id}&ssiggleId=${ssiggle.id}">삭제</a>
+						<a class="btn" href="/ssiggle/service/deleteSsiggle?&ssiggleId=${ssiggle.id}">삭제</a>
 					</td>
 					<td class="time">${ssiggle.time}</td>
 				</tr>

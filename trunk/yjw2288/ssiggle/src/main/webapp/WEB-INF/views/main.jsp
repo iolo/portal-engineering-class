@@ -29,7 +29,7 @@
 			<a class="btn" href="/ssiggle/service/user/follower">follower</a>
 			<a class="btn" href="/ssiggle/service/user/following">following</a>
 			<a class="btn"
-				href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
+				href='javascript:openNewWindow("/ssiggle/service/writeSsiggle")'>글쓰기</a>
 		</div>
 		<hr/>
 		<table>
