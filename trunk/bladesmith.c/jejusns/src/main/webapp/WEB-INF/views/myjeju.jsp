@@ -15,7 +15,7 @@
 			<p>
 
 				<label>${User.name}(${User.description})</label> <input
-					type="button" value="프로필 수정" onclick=""> <input
+					type="button" value="프로필 수정" onclick="location.href='modify.bs'"> <input
 					type="button" value="글쓰기" onclick="window.open('write.bs')" />
 			</p>
 		</fieldset>

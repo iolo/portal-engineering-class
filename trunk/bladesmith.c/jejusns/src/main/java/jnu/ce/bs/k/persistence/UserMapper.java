@@ -17,4 +17,6 @@ public interface UserMapper {
 	public List<Note> findAllNoteById(String id);
 
 	public void deleteNoteByWriteNum(String write_num);
+
+	public void modifyUser(User user);
 }

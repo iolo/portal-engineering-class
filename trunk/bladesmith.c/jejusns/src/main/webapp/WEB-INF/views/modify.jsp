@@ -10,12 +10,12 @@
 </head>
 <body>
 	<div id="login">
-		<form action="create" method="post">
+		<form action="modify" method="post">
 			<fieldset>
 				<legend>사용자 등록</legend>
 				<p>
 					<label>아이디</label>
-					<input type="text" name="id" />
+					<input type="text" name="id" value="${User.id}" readonly="readonly"/>
 				</p>
 				<p>
 					<label>암호</label>
@@ -34,7 +34,7 @@
 					<input type="text" name="profile" /><input type="button" value="찾아보기" />
 				</p>
 				<p>
-					<input type="submit" value="등록" /><input type="button" value="취소" onclick="self.history.go(-1)">
+					<input type="submit" value="수정" /><input type="button" value="취소" onclick="self.history.go(-1)">
 				</p>
 			</fieldset>
 		</form>
