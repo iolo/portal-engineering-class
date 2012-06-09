@@ -1,35 +1,38 @@
 package kr.ac.jejunu.rabbit.contoller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import kr.ac.jejunu.rabbit.mapper.UserMapper;
 import kr.ac.jejunu.rabbit.model.User;
+import kr.ac.jejunu.rabbit.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
- 
+import org.springframework.web.bind.annotation.RequestParam;
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-	
-    @Autowired
-	UserMapper usermapper;
-    
-    // 로그인 처리
-    @RequestMapping(value="loginProcess", method = RequestMethod.POST)
-    public ModelAndView loginProcess(User user, HttpSession session, HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("redirect:/");
- 
-        User loginUser = usermapper.Check(user);
- 
-        if (loginUser != null) {
-            session.setAttribute("userLoginInfo", loginUser);
-        }
-        return mav;
-    }
+
+	@Autowired
+	private UserService userService;
+
+	@RequestMapping
+	public String action(@RequestParam(value = "userid") String userid,
+			@RequestParam(value = "password") String password,
+			HttpServletRequest request, Model model) {
+		boolean value = userService.Login(userid, password);
+		if (value != true) {
+			return "main";
+		}
+		User user = userService.UserGet(userid);
+		
+		System.out.println(235235);
+		request.getSession().setAttribute("loginId", userid);
+		model.addAttribute("user", user);
+		model.addAttribute("post", userService.GetUserPost(userid));
+
+		return "userpage";
+	}
 }

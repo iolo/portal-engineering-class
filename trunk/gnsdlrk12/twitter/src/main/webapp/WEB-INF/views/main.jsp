@@ -11,23 +11,21 @@
 	<div id="Header">
 	</div>
 	<div id="Content">
-		<form:form modelAttribute="user" action="login" method="post">
-			<fieldset>
+		<form action="/login" method="post">
 				<h1 style="text-align:center">육식토끼의 twitter에 오신 것을 환영합니다.</h1>
 				<p style="text-align:center">
-					<label style="text-align:center">아이디 : </label>
-					<form:input path="userid"/>
+					<label>아이디 : </label>
+					<input type="text" name="userid"/>
 				</p>
 				<p style="text-align:center">
 					<label>패스워드 : </label>
-					<form:password path="password"/>
+					<input type="password" name="password"/>
 				</p>
 				<p style="text-align:center">
 					<input type="submit" value="로그인" />
 					<input type="button" value="회원가입" />
 				</p>
-			</fieldset>
-		</form:form>
+		</form>
 	</div>
 </body>
 </html>

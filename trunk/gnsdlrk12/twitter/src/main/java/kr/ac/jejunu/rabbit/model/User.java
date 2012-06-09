@@ -1,5 +1,8 @@
 package kr.ac.jejunu.rabbit.model;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("User")
 public class User {
 	
 	private String userid;

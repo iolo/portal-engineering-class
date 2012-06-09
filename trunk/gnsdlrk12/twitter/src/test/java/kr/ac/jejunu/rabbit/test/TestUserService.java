@@ -65,12 +65,10 @@ public class TestUserService {
 	
 	@Test
 	public void Login(){	//Login
-		User user = new User();
-		user.setUserid("white");
-		user.setName("rabbit");
-		user.setPassword("1234");
+		String userid = "white";
+		String password = "1234";
 		
-		userService.Login(user);
+		userService.Login(userid, password);
 		
 	}
 	
@@ -91,7 +89,7 @@ public class TestUserService {
 	}
 	
 	@Test
-	public void Testfollow(){
+	public void Testfollowinsert(){
 		String userid = "white";
 		String followerid = "red";
 		

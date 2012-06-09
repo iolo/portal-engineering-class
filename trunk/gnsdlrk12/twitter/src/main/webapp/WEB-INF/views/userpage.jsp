@@ -8,7 +8,8 @@
 </head>
 <body>
 	<div id="Header">
-	
+		${user.userid }
+		${user.password }
 	</div>
 	<div id="Content">
 	
