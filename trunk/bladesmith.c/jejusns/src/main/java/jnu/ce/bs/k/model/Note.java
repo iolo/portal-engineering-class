@@ -1,10 +1,10 @@
 package jnu.ce.bs.k.model;
 
 public class Note {
-	private String index;
+	private String write_num;
 	private String writer;
 	private String note;
-	private String writeDate;
+	private String write_date;
 
 	public Note() {
 
@@ -31,19 +31,19 @@ public class Note {
 		this.note = note;
 	}
 
-	public String getWriteDate() {
-		return writeDate;
+	public String getWrite_date() {
+		return write_date;
 	}
 
-	public void setWriteDate(String writeDate) {
-		this.writeDate = writeDate;
+	public void setWrite_date(String write_date) {
+		this.write_date = write_date;
 	}
 
-	public String getIndexNum() {
-		return index;
+	public String getWrite_num() {
+		return write_num;
 	}
 
-	public void setIndexNum(String indexNum) {
-		this.index = indexNum;
+	public void setWrite_num(String write_num) {
+		this.write_num = write_num;
 	}
 }

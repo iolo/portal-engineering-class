@@ -18,4 +18,12 @@
 	<insert id="writeNote" parameterType="jnu.ce.bs.k.model.Note">
 		insert into note (writer, note, write_date) values (#{writer}, #{note}, TIMESTAMP(NOW()))
 	</insert>
+	
+	<select id="findAllNoteById" parameterType="String" resultType="jnu.ce.bs.k.model.Note">
+		SELECT * FROM note WHERE writer=#{id} ORDER BY `write_num` DESC
+	</select>
+	
+	<delete id="deleteNoteByWriteNum" parameterType="String">
+		DELETE FROM Note WHERE write_num=#{write_num}
+	</delete>
 </mapper>

@@ -18,4 +18,9 @@ public class NoteServiceImpl implements NoteService{
 		userMapper.writeNote(note);
 	}
 
+	@Override
+	public void deleteNoteByWriteNum(String write_num) {
+		userMapper.deleteNoteByWriteNum(write_num);
+	}
+
 }
