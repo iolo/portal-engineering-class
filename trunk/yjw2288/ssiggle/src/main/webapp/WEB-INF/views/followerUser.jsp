@@ -15,31 +15,31 @@
 <body>
 	<div id="container">
 		<div class="header">
-			<a class="profile" href="/ssiggle/service/user/${user.id}">${user.name}(${user.introduce})</a>
+			<a class="profile" href="/ssiggle/service/user">${user.name}(${user.introduce})</a>
 			<a class="btn" href="/ssiggle/logout">로그아웃</a> 
 			<a class="btn"
-				href="/ssiggle/service/user/${user.id}/allUser">전체사용자</a> 
-			<a class="btn" href="/ssiggle/service/user/${user.id}/follower">follower</a>
-			<a class="btn" href="/ssiggle/service/user/${user.id}/following">following</a>
+				href="/ssiggle/service/allUser">전체사용자</a> 
+			<a class="btn" href="/ssiggle/service/user/follower">follower</a>
+			<a class="btn" href="/ssiggle/service/user/following">following</a>
 		</div>
 		<hr/>
 		<table>
-		<c:forEach items="${followerUser}" var="follower">
+		<c:forEach items="${followerUser}" var="target">
 			<tr>
 				<td class="prof"><img
-					src="/ssiggle/resources/userimage/${follower.user.image}" width="50px"
+					src="/ssiggle/resources/userimage/${target.user.image}" width="50px"
 					height="50px"></td>
-				<td class="name">${follower.user.name }</td>
-				<td class="introduce">${follower.user.introduce }</td>
+				<td class="name">${target.user.name }</td>
+				<td class="introduce">${target.user.introduce }</td>
 				<td class="following">
 				<c:choose>
 					<c:when test="${target.following}">
 						<a class="btn"
-							href="/ssiggle/service/unFollow/allUser?userId=${user.id}&targetId=${target.user.id}">unfollow</a>
+							href="/ssiggle/service/unFollow?userId=${user.id}&targetId=${target.user.id}">unfollow</a>
 					</c:when>
 					<c:otherwise>
 						<a class="btn"
-							href="/ssiggle/service/follow/allUser?userId=${user.id}&targetId=${target.user.id}">follow</a>
+							href="/ssiggle/service/follow?userId=${user.id}&targetId=${target.user.id}">follow</a>
 					</c:otherwise>
 				</c:choose>
 				</td>

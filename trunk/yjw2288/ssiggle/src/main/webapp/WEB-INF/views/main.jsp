@@ -23,11 +23,11 @@
 <body>
 	<div id="container">
 		<div class="header">
-			<a class="profile" href="/ssiggle/service/user/${user.id}">${user.name}(${user.introduce })</a>
+			<a class="profile" href="/ssiggle/service/user/">${user.name}(${user.introduce })</a>
 			<a class="btn" href="/ssiggle/logout">로그아웃</a>
-			<a class="btn" href="/ssiggle/service/user/${user.id}/allUser">전체사용자</a>
-			<a class="btn" href="/ssiggle/service/user/${user.id}/follower">follower</a>
-			<a class="btn" href="/ssiggle/service/user/${user.id}/following">following</a>
+			<a class="btn" href="/ssiggle/service/user/allUser">전체사용자</a>
+			<a class="btn" href="/ssiggle/service/user/follower">follower</a>
+			<a class="btn" href="/ssiggle/service/user/following">following</a>
 			<a class="btn"
 				href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
 		</div>

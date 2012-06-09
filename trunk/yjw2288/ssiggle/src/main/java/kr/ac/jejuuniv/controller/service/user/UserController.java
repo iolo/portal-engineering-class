@@ -2,20 +2,21 @@ package kr.ac.jejuuniv.controller.service.user;
 
 import java.util.List;
 
-import kr.ac.jejuuniv.controller.UserRow;
 import kr.ac.jejuuniv.model.ssiggle.Ssiggle;
 import kr.ac.jejuuniv.model.user.User;
+import kr.ac.jejuuniv.model.user.UserRow;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/service/user")
 public class UserController {
-	@RequestMapping("/{userId}")
-	public String action(@PathVariable String userId, ModelMap model) {
+	@RequestMapping
+	public String action(@CookieValue(value = "loginId") String userId,
+			ModelMap model) {
 		User user = new User().findUserById(userId);
 		List<Ssiggle> ssiggleList = new Ssiggle()
 				.ssiggleListByUserIdDesTime(userId);
@@ -26,8 +27,9 @@ public class UserController {
 		return "user";
 	}
 
-	@RequestMapping("/{userId}/allUser")
-	public String actionAllUser(@PathVariable String userId, ModelMap model) {
+	@RequestMapping("/allUser")
+	public String actionAllUser(@CookieValue(value = "loginId") String userId,
+			ModelMap model) {
 		User user = new User().findUserById(userId);
 
 		List<UserRow> rowList = user.markFollowUser(user
@@ -39,8 +41,9 @@ public class UserController {
 		return "allUser";
 	}
 
-	@RequestMapping("/{userId}/following")
-	public String actionFollowing(@PathVariable String userId, ModelMap model) {
+	@RequestMapping("/following")
+	public String actionFollowing(
+			@CookieValue(value = "loginId") String userId, ModelMap model) {
 		User user = new User().findUserById(userId);
 
 		List<User> userList = user.followingUserList();
@@ -50,8 +53,9 @@ public class UserController {
 		return "followingUser";
 	}
 
-	@RequestMapping("/{userId}/follower")
-	public String actionFollower(@PathVariable String userId, ModelMap model) {
+	@RequestMapping("/follower")
+	public String actionFollower(@CookieValue(value = "loginId") String userId,
+			ModelMap model) {
 		User user = new User().findUserById(userId);
 
 		List<User> userList = user.followerUserList();
@@ -61,4 +65,5 @@ public class UserController {
 
 		return "followerUser";
 	}
+
 }

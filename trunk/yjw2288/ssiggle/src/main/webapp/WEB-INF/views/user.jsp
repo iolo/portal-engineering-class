@@ -26,7 +26,7 @@
 			<a class="profile">${user.id }(${user.introduce })</a>
 			<a class="btn" href="/ssiggle/logout">로그아웃</a>
 			<a class="btn"
-				href='javascript:openNewWindow("/ssiggle/service/writeSsiggle?userId=${user.id}")'>글쓰기</a>
+				href="javascript:openNewWindow('/ssiggle/service/writeSsiggle?userId=${user.id}')">글쓰기</a>
 			<a class="btn" href="/ssiggle/service/modifyUser?id=${user.id}">프로필 수정</a>
 			<a class="btn" href="/ssiggle">메인 페이지</a>
 		</div>

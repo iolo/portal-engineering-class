@@ -15,12 +15,12 @@
 <body>
 	<div id="container">
 		<div class="header">
-			<a class="profile" href="/ssiggle/service/user/${user.id}">${user.name}(${user.introduce})</a>
+			<a class="profile" href="/ssiggle/service/user">${user.name}(${user.introduce})</a>
 			<a class="btn" href="/ssiggle/logout">로그아웃</a> 
 			<a class="btn"
-				href="/ssiggle/service/user/${user.id}/allUser">전체사용자</a> 
-			<a class="btn" href="/ssiggle/service/user/${user.id}/follower">follower</a>
-			<a class="btn" href="/ssiggle/service/user/${user.id}/following">following</a>
+				href="/ssiggle/service/user/allUser">전체사용자</a> 
+			<a class="btn" href="/ssiggle/service/user/follower">follower</a>
+			<a class="btn" href="/ssiggle/service/user/following">following</a>
 		</div>
 		<hr />
 		<table>
@@ -35,10 +35,10 @@
 						<c:choose>
 							<c:when test="${target.following}">
 									<a class="btn"
-										href="/ssiggle/service/unFollow/allUser?userId=${user.id}&targetId=${target.user.id}">unfollow</a>
+										href="/ssiggle/service/unFollow/?userId=${user.id}&targetId=${target.user.id}">unfollow</a>
 								</c:when> <c:otherwise>
 									<a class="btn"
-										href="/ssiggle/service/follow/allUser?userId=${user.id}&targetId=${target.user.id}">follow</a>
+										href="/ssiggle/service/follow/?userId=${user.id}&targetId=${target.user.id}">follow</a>
 								</c:otherwise>
 						</c:choose>
 					</td>

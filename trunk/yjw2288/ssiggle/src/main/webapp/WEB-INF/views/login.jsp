@@ -14,7 +14,6 @@
 <body>
 	<div id="container">
 		<p class="title">시끌벅적 SNS에 오신것을 환영합니다!</p>
-		<!--<img class="mainImg" src="http://cfile7.uf.tistory.com/image/195893494D11C43D288497" />-->
 		<img class="mainImg" src="/ssiggle/resources/DukeWithHelmet.png" />
 		<form action="/ssiggle/login" method="post">
 		<div class="loginForm">
