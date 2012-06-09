@@ -31,5 +31,7 @@ public interface UserService {
 
 	User addUser(User user);
 
+	void removeFollow(String followId, String followingId);
+
 
 }

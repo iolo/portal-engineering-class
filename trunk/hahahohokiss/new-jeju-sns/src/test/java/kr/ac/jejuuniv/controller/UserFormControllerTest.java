@@ -31,7 +31,7 @@ public class UserFormControllerTest {
 		
 		ModelAndView returnModelAndView = userFormController.userFormAction(session);
 		user = (User) returnModelAndView.getModel().get("loginUser");
-		assertThat(returnModelAndView.getViewName(), is("/service/userform"));
+		assertThat(returnModelAndView.getViewName(), is("redirect:/service/userform"));
 		assertThat(user.getLoginId(), is("userId"));
 	}
 }

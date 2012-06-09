@@ -72,4 +72,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.insertUser(user);
 	}
 
+	public void removeFollow(String followId, String followingId) {
+		userRepository.deleteFollow(followId, followingId);
+		
+	}
+
 }

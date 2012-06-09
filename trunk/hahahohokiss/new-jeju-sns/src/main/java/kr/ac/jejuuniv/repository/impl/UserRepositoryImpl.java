@@ -75,7 +75,8 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	public User updateUser(User user) {
-		User getUser = hibernateTemplate.get(User.class, user.getId());
+		List<User> users = hibernateTemplate.find("from User where login_id = ?", user.getLoginId());
+		User getUser = users.get(0);
 		getUser.setLoginId(user.getLoginId());
 		getUser.setPassword(user.getPassword());
 		getUser.setUsername(user.getUsername());
@@ -125,6 +126,23 @@ public class UserRepositoryImpl implements UserRepository {
 				hibernateTemplate.delete(tweet);
 			}
 		}
+	}
+
+	public void deleteFollow(String followId, String followingId) {
+		List<User> followUsers = hibernateTemplate.find("from User where login_id = ?", followId);
+		User followerUser = followUsers.get(0);
+		List<User> users = followerUser.getFollowing();
+		
+		List<User> followingUsers = hibernateTemplate.find("from User where login_id = ?", followId);
+		User followingUser = followingUsers.get(0);
+		
+		for(Iterator i = users.iterator(); i.hasNext();) {
+			User user = (User) i.next();
+			if(user.getId() == followingUser.getId()) {
+				i.remove();
+			}
+		}
+		hibernateTemplate.merge(followerUser);
 	}
 
 }
