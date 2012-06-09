@@ -3,6 +3,7 @@ package kr.ac.jejuuniv.twitter.model;
 public class TwittModel {
 	private int twinum;
 	private String id;
+	private String name;
 	private String content;
 	private String write_date;
 	
@@ -29,6 +30,12 @@ public class TwittModel {
 	}
 	public void setWrite_date(String write_date) {
 		this.write_date = write_date;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

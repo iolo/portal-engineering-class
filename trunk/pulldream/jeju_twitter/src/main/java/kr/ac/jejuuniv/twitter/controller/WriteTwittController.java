@@ -19,14 +19,15 @@ public class WriteTwittController {
 	
 	@RequestMapping("writeform")
 	public ModelAndView writeForm(TwittModel twittModel){
-		return new ModelAndView("twitt/twitt");
+		return new ModelAndView("twitt/writetwitt");
 	}
 	
 	@RequestMapping("write.do")
 	public ModelAndView writeTwitt(TwittModel twittModel,HttpServletRequest request){
 		String twittID = (String)request.getSession().getAttribute("loginID");
-		System.out.println(twittID);
+		String twittName = (String)request.getSession().getAttribute("loginName");
 		twittModel.setId(twittID);
+		twittModel.setName(twittName);
 		twitterService.writeTwitt(twittModel);
 		return null;
 	}

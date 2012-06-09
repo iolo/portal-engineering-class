@@ -3,16 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="f" %>  
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>트윗 글쓰기</title>
 </head>
 <body>
-<form>
-	요즘 어떠신가요??
-	<input type="text" id="content"/>
+<form action="write.do">
+	요즘 어떠신가요??<br>
+	<input type="text" name="content"/>
 	<input type="submit"/>
 	<input type="button" value="취소"/>
 </form>

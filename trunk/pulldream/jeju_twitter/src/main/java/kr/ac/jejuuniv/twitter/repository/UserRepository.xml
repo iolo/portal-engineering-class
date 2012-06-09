@@ -10,7 +10,7 @@
 	
 	<!--로그인 처리  -->
 	<select id="checkUser" resultType="kr.ac.jejuuniv.twitter.model.UserModel">
-		Select id, name from user where id=#{id} and password=#{password}
+		Select * from user where id=#{id} and password=#{password}
 	</select>
 	
 	<!-- 모든 사용자 가지고 오기 -->

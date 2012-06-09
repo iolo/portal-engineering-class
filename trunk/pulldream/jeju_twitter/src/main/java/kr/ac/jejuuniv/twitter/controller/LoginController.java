@@ -21,15 +21,16 @@ public class LoginController {
 	public ModelAndView Login(UserModel user,HttpServletRequest request){
 		try {
 			UserModel loginUser = userService.checkUser(user);
-			
 			if(loginUser.equals(null))	System.out.println("asdfasdf");
 			else{
 				request.getSession().setAttribute("loginID", loginUser.getId());
-				return new ModelAndView("main","user",loginUser);
+				request.getSession().setAttribute("loginName", loginUser.getName());
+				return new ModelAndView("main","pageType","/twittlist");
 			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return new ModelAndView("/");
 	}
