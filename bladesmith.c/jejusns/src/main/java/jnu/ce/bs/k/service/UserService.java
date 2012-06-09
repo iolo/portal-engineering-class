@@ -15,4 +15,6 @@ public interface UserService {
 
 	List<Note> findAllNoteByID(String id);
 
+	void modifyUser(User user);
+
 }
