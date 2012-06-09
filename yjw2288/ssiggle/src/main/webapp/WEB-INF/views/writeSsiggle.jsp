@@ -19,7 +19,7 @@
 			</p>
 		</fieldset>
 		<p>
-			<input type="submit" value="수정" />
+			<input type="submit" value="등록" />
 			<button onclick="window.close();">취소</button>
 		</p>
 	</form:form>
