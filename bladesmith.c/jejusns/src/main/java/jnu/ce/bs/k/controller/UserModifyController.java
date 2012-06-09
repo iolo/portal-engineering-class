@@ -24,18 +24,14 @@ public class UserModifyController {
 		return null;
 	}
 
-	@RequestMapping(method=RequestMethod.POST)
-	public String modify(@ModelAttribute("User") User user, @RequestParam("password") String password,
+	@RequestMapping(method = RequestMethod.POST)
+	public String modify(@ModelAttribute("User") User user,
+			@RequestParam("password") String password,
 			@RequestParam("name") String name,
 			@RequestParam("description") String description,
 			@RequestParam("profile") String profile) {
-		System.out.println("넌 왜 안타니?");
-		user.setName(name);
-		user.setPassword(password);
-		user.setDescription(description);
-		user.setProfile(profile);
-		
-		userService.modifyUser(user);
+
+		userService.modifyUser(name, password, description, profile, user);
 		return "redirect:/myjeju.bs";
 	}
 }

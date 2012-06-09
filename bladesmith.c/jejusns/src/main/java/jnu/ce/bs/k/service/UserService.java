@@ -11,10 +11,13 @@ public interface UserService {
 	void createUser(String id, String password, String name,
 			String description, String profile);
 
-	 User login(Map<String, String> map);
+	User login(Map<String, String> map);
 
 	List<Note> findAllNoteByID(String id);
 
-	void modifyUser(User user);
+	List<User> findAllUser(User user);
+
+	void modifyUser(String name, String password, String description,
+			String profile, User user);
 
 }

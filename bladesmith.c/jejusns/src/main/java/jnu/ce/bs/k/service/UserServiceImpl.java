@@ -1,5 +1,6 @@
 package jnu.ce.bs.k.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -37,9 +38,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void modifyUser(User user) {
-		userMapper.modifyUser(user);
+	public List<User> findAllUser(User user) {
+		List<User> users = new ArrayList();
+		users = userMapper.findAllUser();
+		
+		for(int count=0; count<users.size(); count++){
+			if(users.get(count).getName().equals(user.getName())){
+				users.remove(count);
+			}
+		}
+		
+		return users;
 	}
 
+	@Override
+	public void modifyUser(String name, String password, String description,
+			String profile, User user) {
+		user.setName(name);
+		user.setPassword(password);
+		user.setDescription(description);
+		user.setProfile(profile);
+		
+		userMapper.modifyUser(user);
+	}
 
 }

@@ -13,29 +13,25 @@
 	<div id="main">
 		<fieldset>
 			<p>
-
 				<label>${User.name}(${User.description})</label> 
-				<input type="button" value="프로필 수정" onclick="location.href='modify.bs'">
-				<input type="button" value="글쓰기" onclick="window.open('write.bs')" />
 			</p>
 		</fieldset>
 		<table>
 			<thead>
 				<tr>
 					<th>profile</th>
-					<th>note</th>
-					<th>check</th>
-					<th>date</th>
+					<th>name</th>
+					<th>description</th>
+					<th>follow</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${noteList}" var="note">
+				<c:forEach items="${userList}" var="user">
 					<tr>
-						<td>${note.writer}</td>
-						<td>${note.note}</td>
-						<td>
-						<button id="delete" value="삭제" onclick="location.href='remove?write_num=${note.write_num}'"></button></td>
-						<td>${note.write_date}</td>
+						<td>${user.profile}</td>
+						<td>${user.name}</td>
+						<td>${user.description}</td>
+						<td></td>
 					</tr>
 				</c:forEach>
 			</tbody>

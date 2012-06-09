@@ -17,7 +17,7 @@
 				<input type="button" value="글쓰기" onclick="window.open('write.bs')" />
 				<input type="button" value="Following" onclick=""> 
 				<input type="button" value="Follower" onclick=""> 
-				<input type="button" value="전체사용자" onclick="location.href()">
+				<input type="button" value="전체사용자" onclick="location.href='users.bs'">
 			</p>
 		</fieldset>
 		<table>

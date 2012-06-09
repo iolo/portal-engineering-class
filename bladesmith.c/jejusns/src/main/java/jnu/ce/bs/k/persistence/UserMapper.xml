@@ -14,6 +14,10 @@
 	<update id="modifyUser" parameterType="jnu.ce.bs.k.model.User">
 		UPDATE member set password=#{password}, name=#{name}, description=#{description}, profile=#{profile} WHERE id=#{id}
 	</update>
+	
+	<select id="findAllUser" resultType="jnu.ce.bs.k.model.User">
+		SELECT * FROM member ORDER BY `name` ASC
+	</select>
 
 	<select id="login" parameterType="java.util.Map" resultType="jnu.ce.bs.k.model.User">
 		SELECT member_num, id, password, name, description, profile FROM member WHERE id=#{id} AND password=#{password}
