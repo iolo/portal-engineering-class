@@ -11,7 +11,8 @@ import kr.ac.jejunu.rabbit.model.User;
 
 @Service
 public class UserServiceImp implements UserService{
-
+	User user;
+	
 	@Autowired
 	UserMapper usermapper;
 	
@@ -52,22 +53,21 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public boolean Login(User user) {
+	public void following(String userid, String followerid) {
+		usermapper.followInsert(userid, followerid);
 		
-		if(usermapper.Check(user) != null){
-			return  true;
+	}
+
+	@Override
+	public boolean Login(String userid, String password) {
+		if(usermapper.Check(userid, password) != null){
+			user = usermapper.Check(userid, password);
+			return true;
 			
 		}
 		else{
 			return false;
 		}
 	}
-
-	@Override
-	public void following(String userid, String followerid) {
-		usermapper.Follow(userid, followerid);
-		
-	}
-
 
 }

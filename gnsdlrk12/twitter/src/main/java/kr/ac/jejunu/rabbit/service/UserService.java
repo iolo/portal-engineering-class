@@ -18,8 +18,8 @@ public interface UserService {
 	List<Post> GetUserPost(String loginid);
 
 	void PostInsert(String userid, String content);
-
-	boolean Login(User user);
 	
 	void following(String userid, String followerid);
+
+	boolean Login(String userid, String password);
 }
