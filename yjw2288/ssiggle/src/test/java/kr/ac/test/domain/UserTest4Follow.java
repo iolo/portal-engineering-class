@@ -7,12 +7,12 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.ac.jejuuniv.controller.UserRow;
 import kr.ac.jejuuniv.mapper.FollowingMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.user.NotFollowingException;
 import kr.ac.jejuuniv.model.user.NotFoundUserException;
 import kr.ac.jejuuniv.model.user.User;
+import kr.ac.jejuuniv.model.user.UserRow;
 
 import org.junit.Before;
 import org.junit.Test;

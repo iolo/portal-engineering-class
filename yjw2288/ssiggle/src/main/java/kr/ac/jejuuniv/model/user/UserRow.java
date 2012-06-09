@@ -1,6 +1,4 @@
-package kr.ac.jejuuniv.controller;
-
-import kr.ac.jejuuniv.model.user.User;
+package kr.ac.jejuuniv.model.user;
 
 public class UserRow {
 	private User user;

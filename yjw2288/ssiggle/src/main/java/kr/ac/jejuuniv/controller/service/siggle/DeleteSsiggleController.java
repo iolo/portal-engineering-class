@@ -17,6 +17,6 @@ public class DeleteSsiggleController {
 		Ssiggle ssiggle = new Ssiggle().findSsiggleById(ssiggleId);
 		ssiggle.delete();
 
-		return "redirect:/service/user/" + userId;
+		return "redirect:/service/user/";
 	}
 }
