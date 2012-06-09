@@ -54,7 +54,7 @@ public class UserInterationTest {
 	
 	@Test
 	public void insert(){
-		User user = new User("kim","aabbc","kim","","");
+		User user = new User("kim","aabbc","kim","", "");
 		
 		userService.addUser(user);
 		

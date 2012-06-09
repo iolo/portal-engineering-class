@@ -15,7 +15,7 @@
 	<div id="ProfileContent">
 		<form:form modelAttribute="user" action="/twitter/profileSave" method="post">
 			<fieldset>
-				<legend>사용자 등록</legend>
+				<legend>사용자 정보 수정</legend>
 				<form:hidden path="userNum"/>
 				<p>
 					<label>아이디</label>

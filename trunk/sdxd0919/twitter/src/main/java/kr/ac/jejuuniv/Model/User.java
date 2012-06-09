@@ -6,7 +6,7 @@ public class User {
 	private String password;
 	private String name;
 	private String description;
-	private String profileImg;
+	private String profileFile;
 	
 	public User(){
 	}
@@ -17,12 +17,12 @@ public class User {
 		this.name = name;
 	}
 	public User(String id, String password, String name,
-			String description, String profileImg) {
+			String description, String file) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.description = description;
-		this.profileImg = profileImg;
+		this.profileFile = file;
 	}
 
 	public User(int userNum, String id, String password, String name) {
@@ -49,7 +49,7 @@ public class User {
 		return description;
 	}
 	public String getProfileImg() {
-		return profileImg;
+		return profileFile;
 	}
 	public void setUserNum(int userNum) {
 		this.userNum = userNum;
@@ -66,8 +66,8 @@ public class User {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public void setProfileImg(String profileImg) {
-		this.profileImg = profileImg;
+	public void setProfileImg(String profileFile) {
+		this.profileFile = profileFile;
 	}
 	
 	public String toString() {
