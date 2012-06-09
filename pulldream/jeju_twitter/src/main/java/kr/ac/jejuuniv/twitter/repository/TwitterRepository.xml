@@ -5,8 +5,14 @@
 
 	<!-- 트위터 글쓰기 -->
 	<insert id="writeTwitt" parameterType="kr.ac.jejuuniv.twitter.model.TwittModel">
-		Insert into twitt(id, content, write_date) values(#{id},#{content},#{write_date})
+		Insert into twitt(id, name, content, write_date) values(#{id},#{name},#{content},#{write_date})
 	</insert>
+	
+	<!-- 트위터 글 보기  -->
+	<select id="getTwittListOderByDate" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.TwittModel">
+		select twitt.twinum, twitt.name, twitt.id, twitt.content, twitt.write_date from twitt left outer join follow on twitt.id=follow.following 
+		where follow.id=#{id} or twitt.id=#{id} order by write_date desc 
+	</select>
 	
 	<!-- 트위터 글삭제 -->
 	<delete id="deleteTwitt" parameterType="String">
@@ -20,7 +26,11 @@
 	
 	<!-- Follower 목록-->
 	<select id="getAllFollower" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
-		Select * from follow where following=#{following}
+			Select * from follow where id=#{id}
 	</select>
 	
+	<!--Following 목록  -->
+	<select id="getFollowingById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowingModel">
+		Select follow.following, user.name from follow inner join user on follow.following=user.id where follow.id=#{id}
+	</select>
 </mapper>

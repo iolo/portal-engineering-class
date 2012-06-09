@@ -1,8 +1,10 @@
 package kr.ac.jejuuniv.twitter.service.test;
 
+import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.twitter.model.FollowModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.UserRepository;
 import kr.ac.jejuuniv.twitter.service.UserService;
@@ -49,6 +51,7 @@ public class UserServiceTest {
 			user.setPassword(("asdf"));
 			
 			UserModel userReuslt = userRepository.checkUser(user);
+			assertThat(userReuslt.getName(), is("Young Jun Moon"));
 			
 			if(userReuslt==null){
 				System.out.println("Try again");
@@ -61,10 +64,5 @@ public class UserServiceTest {
 			// TODO: handle exception
 			System.out.println("error");
 		}
-	}
-	
-	@Test
-	public void getAllUser(){
-		
 	}
 }

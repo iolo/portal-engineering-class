@@ -53,9 +53,15 @@ public class TwitterRepositoryTest {
 	
 	@Test//팔로워 가지고 오기
 	public void getAllFollower(){
-		String id = "juntheater2";
+		String id = "juntheater";
 		List<FollowModel> getFollower = new ArrayList<FollowModel>();
 		System.out.println(getFollower.size());
 		getFollower = twitterRepository.getAllFollower(id);
+	}
+	
+	@Test
+	public void getTwittList(){
+		List<TwittModel> twittList = new ArrayList<TwittModel>();
+		twittList = twitterRepository.getTwittListOderByDate("juntheater");
 	}
 }

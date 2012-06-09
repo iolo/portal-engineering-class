@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.UserRepository;
-import kr.ac.jejuuniv.twitter.service.CheckToday;
 import kr.ac.jejuuniv.twitter.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,6 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public void writeTwitt(TwittModel article) {
-		CheckToday today = new CheckToday();
-		article.setWrite_date(today.Today());
 		userRepository.writeTwitt(article);
 	}
 
