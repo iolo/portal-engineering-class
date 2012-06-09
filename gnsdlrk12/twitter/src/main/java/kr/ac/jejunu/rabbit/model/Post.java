@@ -36,6 +36,12 @@ public class Post {
 	
 	@Override
 	public String toString() {
-		return "User [image=" + image + ", name=" + name + ", content=" + content + ", regdate=" + regdate + "]";
+		return "User [image=" + image + ", name=" + getName() + ", content=" + content + ", regdate=" + regdate + "]";
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

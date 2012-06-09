@@ -27,12 +27,10 @@ public class LoginController {
 			return "main";
 		}
 		User user = userService.UserGet(userid);
-		
-		System.out.println(235235);
 		request.getSession().setAttribute("loginId", userid);
 		model.addAttribute("user", user);
-		model.addAttribute("post", userService.GetUserPost(userid));
+		model.addAttribute("posts", userService.GetUserPost(userid));
 
-		return "userpage";
+		return "redirect:/";
 	}
 }
