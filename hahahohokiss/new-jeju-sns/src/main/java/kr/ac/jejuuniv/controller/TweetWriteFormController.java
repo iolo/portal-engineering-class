@@ -4,12 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/service/tweetWriteForm")
+public class TweetWriteFormController {
 
 	@RequestMapping
 	public String action() {
-		return "/login";
+		return "/service/tweetWriteForm";
 	}
 
 }

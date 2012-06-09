@@ -25,6 +25,8 @@
 	
 <!-- 	<view-controller path="/" view-name="login"/> -->
 	
+	<resources mapping="/resources/**" location="/resources/" />
+	
 	<interceptors>
 		<interceptor>
 			<mapping path="/service/**"/>

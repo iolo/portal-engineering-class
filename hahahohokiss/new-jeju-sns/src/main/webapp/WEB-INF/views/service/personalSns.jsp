@@ -7,16 +7,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>개인 SNS</title>
-	<!-- 
-	<link href="/user/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
-	-->
 </head>
 <body>
 	<div id="Header">
 		<p>
 			<label id="${loginUser.username}"></label>
-			<a href="/join"><input type="button" value="프로필수정" /></a>
-			<a href="/write"><input type="button" value="글쓰기" /></a>
+			<a href="/service/userform"><input type="button" value="프로필수정" /></a>
+			<a href="javascript:window.open('/service/tweetWriteForm', 'test','width=300, height=70')"><input type="button" value="글쓰기" /></a>
 			<a href="/sns"><input type="button" value="메인페이지" /></a>
 		</p>
 	</div>

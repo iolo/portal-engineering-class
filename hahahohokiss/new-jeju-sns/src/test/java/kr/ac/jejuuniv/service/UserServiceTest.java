@@ -35,6 +35,7 @@ public class UserServiceTest {
 	 * Tweet 쓰기 - 성공 
 	 * Tweet 삭제 - 성공
 	 * User 등록 - 성공
+	 * unfollowing
 	*/
 	
 	@Mock
@@ -244,5 +245,13 @@ public class UserServiceTest {
 		});
 		user = userService.addUser(user);
 		assertThat(user.getLoginId(), is("hahahohokiss"));
+	}
+	
+	@Test
+	public void testUnFollow() {
+		UserService userService = new UserServiceImpl(userRepository);
+		User user = new User();
+		User followingUser = new User();
+		userService.removeFollow(user.getLoginId(), followingUser.getLoginId());
 	}
 }

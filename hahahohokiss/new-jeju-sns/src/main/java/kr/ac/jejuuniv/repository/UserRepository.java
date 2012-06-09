@@ -31,4 +31,6 @@ public interface UserRepository {
 
 	void deleteTweet(String userId, int tweetId);
 
+	void deleteFollow(String followId, String followingId);
+
 }
