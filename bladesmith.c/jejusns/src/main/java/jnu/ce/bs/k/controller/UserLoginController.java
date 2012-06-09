@@ -37,7 +37,7 @@ public class UserLoginController {
 		if (user != null) {
 			model.addAttribute("User", user);
 
-			return "redirect:/jeju.bs";
+			return "redirect:/myjeju.bs";
 		} else {
 			return "redirect:/";
 		}

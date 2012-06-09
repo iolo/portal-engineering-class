@@ -1,7 +1,9 @@
 package jnu.ce.bs.k.service;
 
+import java.util.List;
 import java.util.Map;
 
+import jnu.ce.bs.k.model.Note;
 import jnu.ce.bs.k.model.User;
 import jnu.ce.bs.k.persistence.UserMapper;
 
@@ -26,6 +28,12 @@ public class UserServiceImpl implements UserService {
 	public User login(Map<String, String> map) {
 
 		return userMapper.login(map);
+	}
+
+	@Override
+	public List<Note> findAllNoteByID(String id) {
+		
+		return userMapper.findAllNoteById(id);
 	}
 
 }
