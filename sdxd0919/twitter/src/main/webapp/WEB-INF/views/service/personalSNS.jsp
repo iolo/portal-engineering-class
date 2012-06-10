@@ -20,7 +20,7 @@
 						'width=500, height=300'))"><input type="button" value="글쓰기" /></a>
 			<a href="/twitter/service/sns"><input type="button" value="메인페이지" /></a>
 			<a href="/twitter/logout"><input type="button" value="로그아웃" /></a>
-		</p>
+		</p>ㅡ
 	</div>
 	
 	<div id="PersonalListContent">

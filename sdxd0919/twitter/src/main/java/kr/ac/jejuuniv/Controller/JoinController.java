@@ -33,6 +33,7 @@ public class JoinController {
 			String imagePath = uploadFile(file, user.getId(), name);
 			user.setProfileImg(imagePath);
 		}
+		System.out.println(user.toString());
 		userService.addUser(user);
 		
 		return "redirect:/";
