@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
@@ -136,9 +138,9 @@ public class UserServiceTest {
 			}
 		});
 		
-		List<User> followerUser = userService.getFollowerUser("hahahohokiss");
+		List<UserDto> followerUser = userService.getFollowerUser("hahahohokiss");
 		assertTrue(followerUser.size() > 0);
-		assertThat(followerUser.get(0).getLoginId(), is("followerUser"));
+		assertThat(followerUser.get(0).getUser().getLoginId(), is("followerUser"));
 	}
 
 	@Test
@@ -195,9 +197,10 @@ public class UserServiceTest {
 			}
 			
 		});
-		List<User> users = userService.getAllUser();
+		String userId = "hahahohokiss";
+		List<UserDto> users = userService.getAllUser(userId);
 		assertTrue(users.size() > 0);
-		assertThat(users.get(0).getLoginId(), is("hahahohokiss"));
+		assertThat(users.get(0).getUser().getLoginId(), is("hahahohokiss"));
 	}
 	
 	@Test
@@ -233,17 +236,17 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void tsetAddUser() {
+	public void tsetAddUser() throws IOException {
 		UserService userService = new UserServiceImpl(userRepository);
 		User user = new User();
 		user.setLoginId("hahahohokiss");
-		
-		when(userRepository.insertUser(user)).thenAnswer(new Answer<User>() {
+		MultipartFile file = null;
+		when(userRepository.insertUser(user, file)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				return (User) invocation.getArguments()[0];
 			}
 		});
-		user = userService.addUser(user);
+		user = userService.addUser(user, file);
 		assertThat(user.getLoginId(), is("hahahohokiss"));
 	}
 	

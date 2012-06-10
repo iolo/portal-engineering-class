@@ -32,6 +32,11 @@
 					<form:errors path="password" />
 				</p>
 				<p>
+					<label>설명</label>
+					<form:input path="explanation"/>
+					<form:errors path="explanation" />
+				</p>
+				<p>
 					<input type="submit" value="수정" />
 				</p>
 			</fieldset>

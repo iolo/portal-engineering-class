@@ -1,6 +1,9 @@
 package kr.ac.jejuuniv.repository;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
@@ -25,7 +28,7 @@ public interface UserRepository {
 
 	Tweet insertTweet(String userId, Tweet tweet);
 
-	User insertUser(User user);
+	User insertUser(User user, MultipartFile file) throws IOException;
 
 	void insertFollowing(String followId, String followingId);
 

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>
@@ -22,7 +24,7 @@
 				</p>
 				<p>
 					<input type="submit" value="로그인" />
-					<a href="/twitter/join"><input type="button" value="회원가입" /></a>
+					<a href="/signupform"><input type="button" value="회원가입" /></a>
 				</p>
 			</fieldset>
 		</form>

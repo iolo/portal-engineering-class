@@ -10,7 +10,7 @@
        default-lazy-init="true">
     <bean id="DataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://117.17.100.142/hibernate"/>
+		<property name="url" value="jdbc:mysql://117.17.100.142/hibernate?useUnicode=true&amp;characterEncoding=utf8"/>
 		<property name="username" value="root"/>
 		<property name="password" value="respect8799"/>
 	</bean>

@@ -29,7 +29,7 @@ public class TweetAddControllerTest {
 		
 		String tweet = "tweet_text";
 		
-		String url = "localhost:8080/url";
+		String url = "http://localhost:8080/service/url";
 		
 		User user = new User();
 		user.setLoginId("userId");
@@ -37,7 +37,7 @@ public class TweetAddControllerTest {
 		
 		
 		String returnViewName= tweetAddController.addTweetAction(tweet, url, session);
-		assertThat(returnViewName, is("redirect:/url"));
+		assertThat(returnViewName, is("redirect:/service/url"));
 		
 	
 	}

@@ -1,6 +1,9 @@
 package kr.ac.jejuuniv.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
@@ -15,9 +18,9 @@ public interface UserService {
 
 	List<User> getFollowingUser(String userId);
 
-	List<User> getFollowerUser(String userId);
+	List<UserDto> getFollowerUser(String userId);
 
-	List<User> getAllUser();
+	List<UserDto> getAllUser(String userId);
 
 	List<Tweet> getFollowingTweet(String userId);
 
@@ -29,7 +32,7 @@ public interface UserService {
 
 	void removeTweet(String userId, int tweetId);
 
-	User addUser(User user);
+	User addUser(User user, MultipartFile file) throws IOException;
 
 	void removeFollow(String followId, String followingId);
 

@@ -6,43 +6,44 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>개인 SNS</title>
+	<title>Follow 페이지</title>
 </head>
 <body>
 	<div id="Header">
 		<p>
 			<label id="${loginUser.username}">${loginUser.username}( ${loginUser.explanation} )</label>
 			<a href="/service/userform"><input type="button" value="프로필수정" /></a>
-			<a href="javascript:window.open('/service/tweetWriteForm', 'test','width=300, height=70')"><input type="button" value="글쓰기" /></a>
 			<a href="/service/mainSns"><input type="button" value="메인페이지" /></a>
 		</p>
 	</div>
 		
-	<div id="PersonalListContent">
-		<c:forEach items="${tweets}" var="tweet" >
+	<div id="AllUserListContent">
+		<c:forEach items="${userDtos}" var="userDto" >
 			<table boarder="1">
 				<tr>
 					<td width="100">
-						<img src = "${loginUser.imgUrl}" width="100" height="70"/>
+						<img src= "${userDto.user.imgUrl}" width="100" height="70" />
 					</td>
 					<td width="200">
-						<label>${tweet.contents}</label>
-					</td>
-					<td withd="100">
-						<a href="/service/delete?tweetId=${tweet.tweetId }"><input type=button style="height: 35px; width: 90px"  value=삭제></a>
+						<label>${userDto.user.username}</label>
 					</td>
 					<td width="150">
-						<label>${tweet.date}</label>
+						<label>${userDto.user.explanation}</label>
+					</td>
+					<td withd="100">
+						<c:choose>
+							<c:when test="${userDto.follow}">
+								<a href="/service/unfollow?followingId=${userDto.user.loginId }"><input type=button style="height: 35px; width: 90px" value="Unfollow"></a>
+							</c:when> <c:otherwise>
+								<a href="/service/follow?followingId=${userDto.user.loginId }"><input type=button style="height: 35px; width: 90px" value="Follow"></a>
+							</c:otherwise>
+						</c:choose>
 					</td>
 					<td height="90">
 					
 					</td>
 				</tr>
 			</table>
- 				<%-- <img src = "${loginUser.imgUrl}" width="100" height="70"	/>
-				<label>${tweet.contents}</label>
-				<a href="/service/delete?tweetId=${tweet.tweetId }">삭제</a>
-				<label>${tweet.date}</label><p> --%>
 		</c:forEach>
 	</div>
 </body>

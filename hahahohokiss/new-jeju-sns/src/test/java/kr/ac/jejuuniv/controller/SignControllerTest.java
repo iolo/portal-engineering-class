@@ -35,7 +35,7 @@ public class SignControllerTest {
 			}
 		});
 		String  returnViewName  = signController.singAction(userId, password, session);
-		assertThat(returnViewName, is("redirect:/service/personalSns"));
+		assertThat(returnViewName, is("redirect:/service/mainSns"));
 	}
 	
 	@Test
