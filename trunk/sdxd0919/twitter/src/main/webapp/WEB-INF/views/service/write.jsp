@@ -13,7 +13,7 @@
 		function MovePage() {
 			var url = opener.document.URL;
 			var message = document.writeForm.message.value;
-			opener.document.location.href = "/twitter/addTweet?message="+message+"&url="+url;
+			opener.document.location.href = "/twitter/service/addTweet?message="+message+"&url="+url;
 			window.close();
 		}
 	</script>	

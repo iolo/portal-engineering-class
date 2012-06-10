@@ -12,6 +12,9 @@
 <body>
 	<div id="Header">
 		<label>제주 SNS 오신것을 환영합니다.</label>
+		<p>
+			<img src="/twitter/resources/main.png" />
+		</p>
 	</div>
 	
 	<div id="LoginContent">

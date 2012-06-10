@@ -17,28 +17,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class ProfileController {
+public class JoinController {
+
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/service/profile")
-	public User action(HttpSession session, User newUser){
-		int userNum = (Integer) session.getAttribute("userNum");
-
-		return userService.getUser(userNum);
+	@RequestMapping("/join")
+	public void action(){
 	}
 	
-	@RequestMapping(value = "/service/profileSave", method=RequestMethod.POST)
-	public String save(HttpSession session, User user, @RequestParam("file") MultipartFile file) throws IOException{
+	@RequestMapping(value = "/userSave", method=RequestMethod.POST)
+	public String save(User user, @RequestParam("file") MultipartFile file) throws IOException{
 		String name = file.getOriginalFilename(); 
 		if(!name.equals("")){
 			String imagePath = uploadFile(file, user.getId(), name);
 			user.setProfileImg(imagePath);
 		}
-		System.out.println(user.toString() +" d = " + user.getDescription() + " i  = " + user.getProfileImg());
-		userService.update(user);
+		userService.addUser(user);
 		
-		return "redirect:/service/personalSNS";
+		return "redirect:/";
 	}
 
 	private String uploadFile(MultipartFile file, String userId, String name) throws IOException{
@@ -61,4 +58,6 @@ public class ProfileController {
 		String imagePath = "/twitter/resources/" + userId + "/" + name;
 		return imagePath;
 	}
+	
+	
 }

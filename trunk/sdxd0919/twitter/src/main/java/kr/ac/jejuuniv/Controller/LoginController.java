@@ -8,7 +8,6 @@ import kr.ac.jejuuniv.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -21,7 +20,7 @@ public class LoginController {
 	public ModelAndView login(String id, String password, HttpSession session){
 		if(id != null && password != null){
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/personalSNS");
+			mav.setViewName("redirect:/service/personalSNS");
 			
 			User user = userService.checkUser(id, password);
 			
@@ -44,4 +43,5 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:/login";
 	}
+
 }

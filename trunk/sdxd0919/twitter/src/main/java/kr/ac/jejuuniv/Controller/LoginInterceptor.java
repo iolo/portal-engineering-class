@@ -15,8 +15,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		String userId = (String) request.getSession().getAttribute("userId");
 		
-		if("/twitter/login".equals(request.getRequestURI())) return true;
-		
 		if(session == null){
 			response.sendRedirect("/twitter/login");
 			return false;
