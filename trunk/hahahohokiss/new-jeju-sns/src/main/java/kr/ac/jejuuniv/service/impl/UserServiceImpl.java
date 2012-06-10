@@ -1,13 +1,19 @@
 package kr.ac.jejuuniv.service.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
+import kr.ac.jejuuniv.service.UserDto;
 import kr.ac.jejuuniv.service.UserService;
 
 @Service
@@ -39,12 +45,50 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findFollowingUserByUserId(userId);
 	}
 
-	public List<User> getFollowerUser(String userId) {
-		return userRepository.findFollowerUserByUserId(userId);
+	public List<UserDto> getFollowerUser(String userId) {
+		List<UserDto> resultUsers = new ArrayList<UserDto>();
+		List<User> followers = userRepository.findFollowerUserByUserId(userId);
+		List<User> followingUsers = userRepository.findFollowingUserByUserId(userId);
+		
+		for(int i=0; i<followers.size(); i++) {
+			boolean flag = false;
+			for(int j=0; j<followingUsers.size(); j++) {
+				if(followers.get(i).getId() == followingUsers.get(j).getId()) {
+					flag = true;
+					break;
+				}
+			}
+			if(flag==true) {
+				resultUsers.add(new UserDto(followers.get(i), true));
+			} else {
+				resultUsers.add(new UserDto(followers.get(i), false));
+			}
+		}
+		
+		return resultUsers;
 	}
 
-	public List<User> getAllUser() {
-		return userRepository.findAllUser();
+	public List<UserDto> getAllUser(String userId) {
+		List<UserDto> resultUsers = new ArrayList<UserDto>();
+		List<User> followingUsers = userRepository.findFollowingUserByUserId(userId);
+		List<User> allUser = userRepository.findAllUser();
+		
+		for(int i=0; i<allUser.size(); i++) {
+			boolean flag = false;
+			for(int j=0; j<followingUsers.size(); j++) {
+				if(allUser.get(i).getId() == followingUsers.get(j).getId()) {
+					flag =true;
+					break;
+				}
+			}
+			if(flag==true) {
+				resultUsers.add(new UserDto(allUser.get(i), true));
+			} else {
+				resultUsers.add(new UserDto(allUser.get(i), false));
+			}
+		}
+		
+		return resultUsers;
 	}
 
 	public List<Tweet> getFollowingTweet(String userId) {
@@ -68,8 +112,8 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteTweet(userId, tweetId);
 	}
 
-	public User addUser(User user) {
-		return userRepository.insertUser(user);
+	public User addUser(User user, MultipartFile file) throws IOException {
+		return userRepository.insertUser(user, file);
 	}
 
 	public void removeFollow(String followId, String followingId) {

@@ -12,9 +12,11 @@
 	<div id="Header">
 		<p>
 			<label id="${loginUser.username}">${loginUser.username}( ${loginUser.explanation} )</label>
-			<a href="/service/userform"><input type="button" value="프로필수정" /></a>
 			<a href="javascript:window.open('/service/tweetWriteForm', 'test','width=300, height=70')"><input type="button" value="글쓰기" /></a>
-			<a href="/service/mainSns"><input type="button" value="메인페이지" /></a>
+			<a href="/service/followingList"><input type="button" value="Following" /></a>
+			<a href="/service/followerList"><input type="button" value="Follower" /></a>
+			<a href="/service/allUserList"><input type="button" value="전체사용자" /></a>
+			<a href="/service/personalSns"><input type="button" value="개인 페이지" /></a>
 		</p>
 	</div>
 		
@@ -26,11 +28,12 @@
 						<img src = "${loginUser.imgUrl}" width="100" height="70"/>
 					</td>
 					<td width="200">
+						<label>${tweet.user.loginId}</label>
+					</td>
+					<td width="200">
 						<label>${tweet.contents}</label>
 					</td>
-					<td withd="100">
-						<a href="/service/delete?tweetId=${tweet.tweetId }"><input type=button style="height: 35px; width: 90px"  value=삭제></a>
-					</td>
+				
 					<td width="150">
 						<label>${tweet.date}</label>
 					</td>

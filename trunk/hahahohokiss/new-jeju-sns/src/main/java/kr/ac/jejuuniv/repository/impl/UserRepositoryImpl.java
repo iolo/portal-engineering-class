@@ -1,5 +1,8 @@
 package kr.ac.jejuuniv.repository.impl;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,6 +15,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
@@ -39,7 +43,10 @@ public class UserRepositoryImpl implements UserRepository {
 
 	public List<Tweet> findTweetByUserId(String userId) {
 		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		return users.get(0).getTweets();
+		List<Tweet> tweets = users.get(0).getTweets();
+		Collections.sort(tweets);
+		Collections.reverse(tweets);
+		return tweets;
 	}
 
 	public List<User> findFollowingUserByUserId(String userId) {
@@ -81,8 +88,8 @@ public class UserRepositoryImpl implements UserRepository {
 		getUser.setPassword(user.getPassword());
 		getUser.setUsername(user.getUsername());
 		getUser.setExplanation(user.getExplanation());
-		getUser.setImgUrl(user.getImgUrl());
-		
+		getUser.setImgUrl(getUser.getImgUrl());
+		   
 		hibernateTemplate.merge(getUser);
 		return getUser;
 	}
@@ -99,7 +106,13 @@ public class UserRepositoryImpl implements UserRepository {
 		return tweet;
 	}
 
-	public User insertUser(User user) {
+	public User insertUser(User user, MultipartFile file) throws IOException {
+		byte[] byteFile = file.getBytes();
+		File imgFile = new File("/Users/jinsoohan/Documents/Projects/new-jeju-sns/src/main/webapp/resources/"+file.getOriginalFilename());
+		FileOutputStream fos;
+		fos = new FileOutputStream(imgFile);
+		fos.write(byteFile);
+		fos.close();
 		hibernateTemplate.save(user);
 		return user;
 	}
@@ -108,7 +121,7 @@ public class UserRepositoryImpl implements UserRepository {
 		List<User> followUsers = hibernateTemplate.find("from User where login_id = ?", followId);
 		User followerUser = followUsers.get(0);
 		
-		List<User> followingUsers = hibernateTemplate.find("from User where login_id = ?", followId);
+		List<User> followingUsers = hibernateTemplate.find("from User where login_id = ?", followingId);
 		User followingUser = followingUsers.get(0);
 		
 		followerUser.getFollowing().add(followingUser);
@@ -133,7 +146,7 @@ public class UserRepositoryImpl implements UserRepository {
 		User followerUser = followUsers.get(0);
 		List<User> users = followerUser.getFollowing();
 		
-		List<User> followingUsers = hibernateTemplate.find("from User where login_id = ?", followId);
+		List<User> followingUsers = hibernateTemplate.find("from User where login_id = ?", followingId);
 		User followingUser = followingUsers.get(0);
 		
 		for(Iterator i = users.iterator(); i.hasNext();) {

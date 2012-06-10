@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.service.UserDto;
 import kr.ac.jejuuniv.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,27 +14,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/service/personalSns")
-public class PersonalController {
+@RequestMapping("/service/allUserList")
+public class AllUserListController {
+	
 	@Autowired
 	UserService userService;
 	
-	public PersonalController(UserService userService) {
-		this.userService = userService;
-	}
-	public PersonalController() {
-		
-	}
 	@RequestMapping
 	public ModelAndView action(HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 		User user = (User) session.getAttribute("loginUser");
-		List<Tweet> tweets = userService.getTweets(user.getLoginId());
-		user = userService.getUser(user.getLoginId());
-		session.setAttribute("loginUser", user);
-		modelAndView.addObject("tweets", tweets);
-		modelAndView.setViewName("/service/personalSns");
+		
+		List<UserDto> userDtos =userService.getAllUser(user.getLoginId());
+		modelAndView.setViewName("/service/allUserList");
+		modelAndView.addObject("userDtos", userDtos);
+		
 		return modelAndView;
+		
 	}
-
 }
