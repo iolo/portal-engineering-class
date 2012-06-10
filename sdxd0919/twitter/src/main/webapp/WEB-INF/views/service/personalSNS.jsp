@@ -15,10 +15,10 @@
 	<div id="Header">
 		<p>
 			<label>${user.name}(${user.description })</label>
-			<a href="/twitter/profile"><input type="button" value="프로필수정" /></a>
-			<a href="javascript:void(window.open('/twitter/write', '글쓰기',
+			<a href="/twitter/service/profile"><input type="button" value="프로필수정" /></a>
+			<a href="javascript:void(window.open('/twitter/service/write', '글쓰기',
 						'width=500, height=300'))"><input type="button" value="글쓰기" /></a>
-			<a href="/twitter/sns"><input type="button" value="메인페이지" /></a>
+			<a href="/twitter/service/sns"><input type="button" value="메인페이지" /></a>
 			<a href="/twitter/logout"><input type="button" value="로그아웃" /></a>
 		</p>
 	</div>
@@ -34,7 +34,7 @@
 						<label>${tweets.message}</label>
 					</td>
 					<td>
-						<a href="/twitter/deleteTweet?seq=${tweets.seq}">
+						<a href="/twitter/service/deleteTweet?seq=${tweets.seq}">
 							<input type="button" value="삭제" />
 						</a>
 					</td>

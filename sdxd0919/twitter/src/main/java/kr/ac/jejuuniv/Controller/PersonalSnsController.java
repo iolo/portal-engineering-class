@@ -20,23 +20,23 @@ public class PersonalSnsController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/personalSNS")
+	@RequestMapping("/service/personalSNS")
 	public ModelAndView list(HttpSession session){
 		int userNum = (Integer) session.getAttribute("userNum");
 		User user = userService.getUser(userNum);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/personalSNS");
+		mav.setViewName("/service/personalSNS");
 		mav.addObject("user", user);
 		mav.addObject("tweetList", tweetService.getAllTweetByUserNum(userNum));
 		
 		return mav;
 	}
 	
-	@RequestMapping("/deleteTweet")
+	@RequestMapping("/service/deleteTweet")
 	public String delete(int seq){
 		tweetService.deleteTweet(seq);
 		
-		return "redirect:/personalSNS";
+		return "redirect:/service/personalSNS";
 	}
 }

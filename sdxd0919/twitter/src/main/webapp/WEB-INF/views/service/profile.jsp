@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<% 
+	request.setCharacterEncoding("UTF-8");
+	response.setCharacterEncoding("UTF-8");
+%>   
 <%@ page session="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,14 +17,14 @@
 </head>
 <body>
 	<div id="ProfileContent">
-		<form:form modelAttribute="user" action="/twitter/profileSave" method="post">
+		<form:form name="profileForm" modelAttribute="user" action="/twitter/service/profileSave" 
+								method="post"  enctype="multipart/form-data" > 
 			<fieldset>
 				<legend>사용자 정보 수정</legend>
 				<form:hidden path="userNum"/>
 				<p>
 					<label>아이디</label>
-					<form:input path="id"/>
-					<form:errors path="id" />
+					<form:input path="id" readonly="true" />
 				</p>
 				<p>
 					<label>이름</label>
@@ -39,8 +43,10 @@
 				</p>
 				<p>
 					<label>프로필이미지</label>
-					<form:input path="profileImg"/>
-					<!-- <input type="button" value="찾아보기" /> -->
+					<form:hidden path="profileImg"/>
+					<p>
+						<input type="file" name="file"/>
+					</p>
 				</p>
 				<p>
 					<input type="submit" value="수정" />

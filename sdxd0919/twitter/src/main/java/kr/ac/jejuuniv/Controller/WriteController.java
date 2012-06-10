@@ -15,16 +15,17 @@ public class WriteController {
 	@Autowired
 	private TweetService tweetService;
 
-	@RequestMapping("/write") 
+	@RequestMapping("/service/write") 
 	public void loginpopup(){ 
 	}
 
 
-	@RequestMapping("/addTweet")
+	@RequestMapping("/service/addTweet")
 	public String action(HttpSession session, String message, String url) {
 		int userNum = (Integer) session.getAttribute("userNum");
 		
-		url = url.substring(30, url.length());
+		int start = url.indexOf("twitter");
+		url = url.substring(start + 8 , url.length());
 		Tweet tweet = new Tweet(userNum, message);
 		tweetService.addTweet(tweet);
 		
