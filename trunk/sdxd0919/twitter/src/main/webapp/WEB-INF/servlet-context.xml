@@ -33,6 +33,7 @@
 	</interceptors>
 
 	<view-controller path="/" view-name="login" />
+	<view-controller path="/service" view-name="/service/personSNS" />
 
 
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    

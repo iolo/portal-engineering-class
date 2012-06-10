@@ -11,7 +11,8 @@
 </head>
 <body>
 	<div id="JoinContent">
-		<form action="/twitter/userSave" method="post" enctype="multipart/form-data">
+		<form action="/twitter/userSave" method="post" 
+					enctype="multipart/form-data" >
 			<fieldset>
 				<legend>사용자 등록</legend>
 				<p>

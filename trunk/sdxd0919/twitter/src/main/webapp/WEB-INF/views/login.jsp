@@ -18,7 +18,7 @@
 	</div>
 	
 	<div id="LoginContent">
-		<form action="/twitter/login" method="post">
+		<form action="/twitter/login" method="post" accept-charset="UTF-8">
 			<fieldset>
 				<legend>Login</legend>
 				<p>

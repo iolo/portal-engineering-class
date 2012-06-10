@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div id="WriteContent">
-		<form name="writeForm" onsubmit="javascript:MovePage()">
+		<form name="writeForm" onsubmit="javascript:MovePage()" accept-charset="UTF-8">
 			<legend>요즘 어떠신가요?</legend>
 			<p>
 				<input type="text" name="message" />

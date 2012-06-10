@@ -21,7 +21,7 @@
 	<beans:bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
 		p:driverClass="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://localhost:3306/twitter?unicode=true&amp;characterEncoding=utf-8"
+		p:url="jdbc:mysql://localhost:3306/twitter?unicode=true2&amp;characterEncoding=utf-8"
 		p:username="root" p:password="apmsetup" />
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
