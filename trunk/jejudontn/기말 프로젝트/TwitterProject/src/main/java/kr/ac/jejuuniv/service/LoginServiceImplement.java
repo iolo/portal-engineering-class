@@ -18,14 +18,17 @@ public class LoginServiceImplement implements LoginService {
 
 	@Override
 	public boolean checkIdAndPassword(String id, String password) {
-		
+
 		Map<String, String> LoginMap = new HashMap<String, String>();
 		LoginMap.put("id", id);
 		LoginMap.put("password", password);
-		
-		user = loginmapper.findUserById(LoginMap);
 
-		return true;
+		user = loginmapper.findUserById(LoginMap);
+		if (user == null) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	@Override
