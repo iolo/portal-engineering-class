@@ -35,4 +35,9 @@ public class TwitterServiceImpl implements TwitterService{
 	public List<TwittModel> getTwittList(String id) {
 		return twitterRepoistory.getTwittListOderByDate(id);
 	}
+
+
+	public List<TwittModel> getMyTwittList(String id) {
+		return twitterRepoistory.getMyTwittOrderByDate(id);
+	}
 }

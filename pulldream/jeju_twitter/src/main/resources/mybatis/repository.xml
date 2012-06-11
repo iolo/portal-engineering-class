@@ -17,7 +17,6 @@
 
 	<!-- enable autowire -->
 	<context:annotation-config />
-
 	<beans:bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
 		p:driverClass="com.mysql.jdbc.Driver"

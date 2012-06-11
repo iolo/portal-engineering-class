@@ -18,4 +18,5 @@ public interface TwitterRepository {
 	List<FollowingModel> getFollowingById(String id);
 	List<FollowModel> getAllFollower(String id);
 	List<TwittModel> getTwittListOderByDate(@Param("id")String id);
+	List<TwittModel> getMyTwittOrderByDate(String id);
 }

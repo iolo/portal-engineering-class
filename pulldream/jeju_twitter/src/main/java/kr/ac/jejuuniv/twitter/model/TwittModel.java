@@ -1,5 +1,8 @@
 package kr.ac.jejuuniv.twitter.model;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("Twitt")
 public class TwittModel {
 	private int twinum;
 	private String id;

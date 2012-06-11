@@ -46,7 +46,8 @@ public class UserServiceImpl implements UserService{
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("error");
+			e.printStackTrace();
+			System.out.println("Login error");
 		}
 		return null;
 	}

@@ -12,7 +12,6 @@
 <title>Welcome To Jeju Twitt</title>
 </head>
 <body>
-<div>
-</div>
+
 </body>
 </html>

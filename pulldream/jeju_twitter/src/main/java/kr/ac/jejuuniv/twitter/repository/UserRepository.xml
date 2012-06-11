@@ -19,7 +19,7 @@
 	</select>
 	
 	<!-- 탈퇴?? -->
-	<delete id="delUser" parameterType="String">
+	<delete id="delUser" parameterType="kr.ac.jejuuniv.twitter.model.UserModel">
 		 delete from user where id=#{id}
 	</delete>
 </mapper>
