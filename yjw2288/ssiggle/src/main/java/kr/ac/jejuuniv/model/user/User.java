@@ -118,35 +118,44 @@ public class User implements Serializable {
 	}
 
 	public void followUserById(String targetId) {
+		if (targetId.equals(getId())) {
+			throw new NotFollowingException("같은 아이디 끼리는 Follow가 되지 않습니다.");
+		}
+
 		checkUserExsist(targetId, "Follow 하려는 User " + targetId
 				+ " (이)가 존재하지 않습니다");
-		checkFollowUser(targetId, true, getId() + " 와 " + targetId
-				+ " (은)는 Follow 이미 Following 관계 입니다.");
+
+		if(followingMapper.countFollowing(getId(), targetId) == 1) {
+			throw new NotFollowingException(getId() + " 와 " + targetId
+					+ " (은)는 Follow 이미 Following 관계 입니다.");
+		}
 
 		followingMapper.insertFollowing(getId(), targetId);
 	}
 
 	public void unFollowUserById(String targetId) {
+		if (targetId.equals(getId())) {
+			throw new NotUnFollowingException("같은 아이디 끼리는 Unfollow가 되지 않습니다.");
+		}
+
 		checkUserExsist(targetId, "UnFollow 하려는 User " + targetId
 				+ " (이)가 존재하지 않습니다");
-		checkFollowUser(targetId, false, getId() + " 와 " + targetId
-				+ " (은)는 Follow 관계가 아닙니다.");
+
+		if(followingMapper.countFollowing(getId(), targetId) == 0) {
+			throw new NotUnFollowingException(getId() + " 와 " + targetId
+					+ " (은)는 Following 관계가 아닙니다.");
+		}
+		
 
 		followingMapper.deleteFollowing(getId(), targetId);
 	}
 
 	private void checkUserExsist(String targetId, String message) {
-		if (userMapper.selectUserById(targetId) == null
-				|| userMapper.selectUserById(getId()) == null) {
+		if (userMapper.selectUserById(targetId) == null) {
 			throw new NotFoundUserException(message);
 		}
-	}
-
-	private void checkFollowUser(String targetId, boolean flag, String s) {
-		int checkValue = (flag) ? 1 : 0;
-
-		if (followingMapper.countFollowing(getId(), targetId) == checkValue) {
-			throw new NotFollowingException(s);
+		if(userMapper.selectUserById(getId()) == null) {
+			throw new NotFoundUserException("User " + getId() + "(이)가 존재하지 않습니다.");
 		}
 	}
 
