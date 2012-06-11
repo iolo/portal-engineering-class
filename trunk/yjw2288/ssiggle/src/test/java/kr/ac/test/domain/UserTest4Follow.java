@@ -9,12 +9,8 @@ import java.util.List;
 
 import kr.ac.jejuuniv.mapper.FollowingMapper;
 import kr.ac.jejuuniv.mapper.UserMapper;
-import kr.ac.jejuuniv.model.user.NotFollowingException;
-import kr.ac.jejuuniv.model.user.NotFoundUserException;
-import kr.ac.jejuuniv.model.user.User;
-import kr.ac.jejuuniv.model.user.UserRow;
+import kr.ac.jejuuniv.model.user.*;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -28,19 +24,6 @@ public class UserTest4Follow {
 	private UserMapper userMapper;
 	@Mock
 	private FollowingMapper followingMapper;
-
-	@Before
-	public void beforeTest() {
-		when(userMapper.selectUserById("sens")).thenAnswer(new Answer<User>() {
-			@Override
-			public User answer(InvocationOnMock invocation) throws Throwable {
-				User user = new User(userMapper);
-				user.setId("sens");
-
-				return user;
-			}
-		});
-	}
 
 	@Test(expected = NotFoundUserException.class)
 	public void testFollowFail() {
@@ -62,15 +45,30 @@ public class UserTest4Follow {
 	public void testFollowFail3() {
 		when(followingMapper.countFollowing("sens", "kgb")).thenReturn(1);
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kbg"));
+		when(userMapper.selectUserById("sens")).thenReturn(createUser("sens"));
 
 		User user = createUser("sens");
 		user.followUserById("kgb");
+	}
+
+	@Test(expected = NotFollowingException.class)
+	public void testFollowFail4() {
+		when(userMapper.selectUserById("sens")).thenAnswer(new Answer<User>() {
+			@Override
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return createUser("sens");
+			}
+		});
+
+		User user = createUser("sens");
+		user.followUserById(user.getId());
 	}
 
 	@Test
 	public void testFollowSucess() {
 		final List<User> item = new ArrayList<>();
 
+		when(userMapper.selectUserById("sens")).thenReturn(createUser("sens"));
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kbg"));
 		doAnswer(new Answer<Void>() {
 			@Override
@@ -103,13 +101,22 @@ public class UserTest4Follow {
 		user.unFollowUserById("sens");
 	}
 
-	@Test(expected = NotFollowingException.class)
-	public void testUnFollowFailBecauseNotFollow() {
+	@Test(expected = NotUnFollowingException.class)
+	public void testUnFollowFail3() {
+		when(userMapper.selectUserById("sens")).thenReturn(createUser("sens"));
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kgb"));
 		when(followingMapper.countFollowing("sens", "ksb")).thenReturn(0);
 
 		User user = createUser("sens");
 		user.unFollowUserById("kgb");
+	}
+
+	@Test(expected = NotUnFollowingException.class)
+	public void testUnFollowFail4() {
+		when(userMapper.selectUserById("sens")).thenReturn(createUser("sens"));
+
+		User user = createUser("sens");
+		user.unFollowUserById("sens");
 	}
 
 	@Test
@@ -124,6 +131,7 @@ public class UserTest4Follow {
 			}
 		}).when(followingMapper).deleteFollowing("sens", "kgb");
 
+		when(userMapper.selectUserById("sens")).thenReturn(createUser("sens"));
 		when(userMapper.selectUserById("kgb")).thenReturn(createUser("kgb"));
 		when(followingMapper.countFollowing("sens", "kgb")).thenReturn(1);
 
