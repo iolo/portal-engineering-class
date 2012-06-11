@@ -10,4 +10,5 @@ public interface TwitterService {
 	void writeTwitt(TwittModel twittModel);
 	List<FollowingModel> getFollowingList(String id);
 	List<TwittModel> getTwittList(String id);
+	List<TwittModel> getMyTwittList(String id);
 }

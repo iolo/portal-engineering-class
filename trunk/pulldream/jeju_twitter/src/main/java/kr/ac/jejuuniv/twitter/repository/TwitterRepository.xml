@@ -8,6 +8,11 @@
 		Insert into twitt(id, name, content, write_date) values(#{id},#{name},#{content},#{write_date})
 	</insert>
 	
+	<!--내가 쓴 트위터 글 보기  -->		
+	<select id="getMyTwittOrderByDate" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.TwittModel">
+		Select * from twitt where id=#{id} order by write_date desc	
+	</select>
+	
 	<!-- 트위터 글 보기  -->
 	<select id="getTwittListOderByDate" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.TwittModel">
 		select twitt.twinum, twitt.name, twitt.id, twitt.content, twitt.write_date from twitt left outer join follow on twitt.id=follow.following 
