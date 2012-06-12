@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/service/deleteSsiggle")
 public class DeleteSsiggleController {
-	
-	//TODO : 자신의 아이디가 아닐 경우에는 딜리트가 되지 않도록 하는 로직을 구현한다.
 	@RequestMapping(method=RequestMethod.GET)
 	public String action(@CookieValue("userId") String userId,
 			@RequestParam("ssiggleId") long ssiggleId) {
