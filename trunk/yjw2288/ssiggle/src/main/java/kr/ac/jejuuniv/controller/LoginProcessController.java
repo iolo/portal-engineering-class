@@ -20,7 +20,7 @@ public class LoginProcessController {
 			return "redirect:/login";
 		}
 
-		response.addCookie(new Cookie(ControllerConstant.LOGIN_COOKIE_NAME, id));
+		response.addCookie(new Cookie("loginId", id));
 		return "redirect:/service/main";
 	}
 }

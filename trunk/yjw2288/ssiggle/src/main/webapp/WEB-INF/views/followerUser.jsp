@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Siggle</title>
+<title>SSiggle</title>
 <link href="/ssiggle/resources/css/common.css" rel="stylesheet"
 	type="text/css" media="all" />
 <link href="/ssiggle/resources/css/following.css" rel="stylesheet"
@@ -18,7 +18,7 @@
 			<a class="profile" href="/ssiggle/service/user">${user.name}(${user.introduce})</a>
 			<a class="btn" href="/ssiggle/logout">로그아웃</a> 
 			<a class="btn"
-				href="/ssiggle/service/allUser">전체사용자</a> 
+				href="/ssiggle/service/user/allUser">전체사용자</a> 
 			<a class="btn" href="/ssiggle/service/user/follower">follower</a>
 			<a class="btn" href="/ssiggle/service/user/following">following</a>
 			<a class="btn" href="/ssiggle">메인 페이지</a>

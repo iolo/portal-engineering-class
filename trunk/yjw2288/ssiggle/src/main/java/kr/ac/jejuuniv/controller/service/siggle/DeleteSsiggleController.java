@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/service/deleteSsiggle")
 public class DeleteSsiggleController {
 	@RequestMapping(method=RequestMethod.GET)
-	public String action(@CookieValue("userId") String userId,
+	public String action(@CookieValue("loginId") String userId,
 			@RequestParam("ssiggleId") long ssiggleId) {
 
 		Ssiggle ssiggle = new Ssiggle().findSsiggleById(ssiggleId);

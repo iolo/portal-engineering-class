@@ -28,7 +28,7 @@ public class SaveUserController {
 		}
 		user.save();
 
-		response.addCookie(new Cookie(ControllerConstant.LOGIN_COOKIE_NAME, user.getId()));
+		response.addCookie(new Cookie("loginId", user.getId()));
 		return "redirect:/service/user/";
 	}
 }

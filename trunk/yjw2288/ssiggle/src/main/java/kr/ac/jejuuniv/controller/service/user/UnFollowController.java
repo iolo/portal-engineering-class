@@ -17,11 +17,8 @@ public class UnFollowController {
 	public String action(@CookieValue("loginId") String userId,
 			@RequestParam("targetId") String targetId,
 			HttpServletRequest request) {
-		unFollow(userId, targetId);
-		return "redirect:" + request.getHeader("Referer");
-	}
 
-	private void unFollow(String userId, String targetId) {
 		new User().findUserById(userId).unFollowUserById(targetId);
+		return "redirect:" + request.getHeader("Referer");
 	}
 }

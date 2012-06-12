@@ -17,11 +17,8 @@ public class FollowController {
 	public String action(@CookieValue("loginId") String userId,
 			@RequestParam("targetId") String targetId,
 			HttpServletRequest request) {
-		follow(userId, targetId);
-		return "redirect:" + request.getHeader("Referer");
-	}
 
-	private void follow(String userId, String targetId) {
 		new User().findUserById(userId).followUserById(targetId);
+		return "redirect:" + request.getHeader("Referer");
 	}
 }

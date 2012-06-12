@@ -16,9 +16,8 @@ public class LogoutController {
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie c : cookies) {
-				if (c.getName().equals(ControllerConstant.LOGIN_COOKIE_NAME)) {
-					response.addCookie(new Cookie(
-							ControllerConstant.LOGIN_COOKIE_NAME, null));
+				if (c.getName().equals("loginId")) {
+					response.addCookie(new Cookie("loginId", null));
 				}
 			}
 		}
