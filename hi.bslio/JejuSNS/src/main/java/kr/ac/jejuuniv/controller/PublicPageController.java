@@ -22,31 +22,33 @@ public class PublicPageController {
 	@Autowired
 	UserService userSerivce;
 	
-	@RequestMapping("publicPage")
-	public ModelAndView individual(HttpServletRequest request) {
-		ModelAndView modelView = new ModelAndView("publicPage");
-		modelView.addObject("id", request.getSession().getAttribute("LoginId"));
+	@RequestMapping("public_page")
+	public ModelAndView public_page(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("public_page");
+		mav.addObject("id", request.getSession().getAttribute("LoginId"));
+		
+		request.getSession().setAttribute("TwitPage", "public_page");
 		
 		List<TwitModel> twitList = twitService.getFollowingTwitList((String)request.getSession().getAttribute("LoginId"));
 			
-		UserModel im = userSerivce.getUser((String)request.getSession().getAttribute("LoginId"));
+		UserModel my = userSerivce.getUser((String)request.getSession().getAttribute("LoginId"));
 
 		List<String> imageHavingUser = userSerivce.getFollowingHaveImageList((String)request.getSession().getAttribute("LoginId"));
 		
 		for (TwitModel twit : twitList) {
-			if(imageHavingUser.contains(twit.getId()))
-				twit.setImage(twit.getId());
+			if(imageHavingUser.contains(twit.getWriter()))
+				twit.setImage(twit.getWriter());
 			else{
-				if(twit.getWriter().equals(im.getId())) {
-					twit.setImage(im.getImage());
+				if(twit.getWriter().equals(my.getId())) {
+					twit.setImage(my.getImage());
 				}else{
 					twit.setImage("default");
 				}
 			}
 		}		
 		
-		modelView.addObject("twitList", twitList);
+		mav.addObject("twitList", twitList);
 		
-		return modelView;
+		return mav;
 	}
 }

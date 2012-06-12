@@ -22,6 +22,6 @@
 		select * from member where member.id in (select follow.follower from follow where target = #{id})
 	</select>
 	<select id="getFollowingHaveImageList" resultType="string">
-		select * from member where member.image in (select follow.target from follow where follower = #{id}) AND member.image NOT LIKE 'default'
+		select member.id from member where member.image in (select follow.target from follow where follower = #{id}) AND member.image NOT LIKE 'default'
 	</select>
 </mapper>

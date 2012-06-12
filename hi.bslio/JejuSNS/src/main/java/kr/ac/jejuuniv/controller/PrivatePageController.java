@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.ac.jejuuniv.model.TwitModel;
 import kr.ac.jejuuniv.service.TwitService;
+import kr.ac.jejuuniv.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,19 +17,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class IndividualController {
+public class PrivatePageController {
 	@Autowired
 	TwitService twitService;
 	
-	@RequestMapping("Individual")
-	public ModelAndView individual(HttpServletRequest request) {
-		ModelAndView modelView = new ModelAndView("individualPage");
-		modelView.addObject("id", request.getSession().getAttribute("LoginId"));
+	@Autowired
+	UserService userService;
+	
+	@RequestMapping("private_page")
+	public ModelAndView private_page(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("private_page");
+		
+		request.getSession().setAttribute("TwitPage", "private_page");
 		
 		List<TwitModel> twitList = twitService.getListByWriter((String)request.getSession().getAttribute("LoginId"));
 		
-		modelView.addObject("twitList", twitList);
+		mav.addObject("twitList", twitList);		
+		mav.addObject("user", userService.getUser((String)request.getSession().getAttribute("LoginId")));
 		
-		return modelView;
+		return mav;
 	}
 }

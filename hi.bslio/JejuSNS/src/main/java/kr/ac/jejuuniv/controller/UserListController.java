@@ -14,31 +14,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class UserviewController {
+public class UserListController {
 	@Autowired
 	private UserService userService;
 	
 	@Autowired
 	private FollowService followService;
 	
-	@RequestMapping("followTEST") 
+	@RequestMapping("follow.do") 
 	public ModelAndView followTEST(String target, HttpServletRequest request){
 		followService.follow(target, (String)request.getSession().getAttribute("LoginId"));
-		return new ModelAndView("redirect:" + request.getSession().getAttribute("userViewHistory"));
+		return new ModelAndView("redirect:" + request.getSession().getAttribute("ListPage"));
 	}
 	
-	@RequestMapping("unfollowTEST")
+	@RequestMapping("unfollow.do")
 	public ModelAndView unfollowTEST(String target, HttpServletRequest request) {
 		followService.unfollow(target, (String)request.getSession().getAttribute("LoginId"));
-		return new ModelAndView("redirect:" + request.getSession().getAttribute("userViewHistory"));
+		return new ModelAndView("redirect:" + request.getSession().getAttribute("ListPage"));
 	}
 	
-	@RequestMapping("viewAll")
+	@RequestMapping("userlist_all")
 	public ModelAndView viewAll(HttpServletRequest request) {
-		request.getSession().setAttribute("userViewHistory", "viewAll");
+		request.getSession().setAttribute("ListPage", "userlist_all");
 		
-		ModelAndView mav = new ModelAndView("users_page");
-		mav.addObject("titleString", "모든 사용자");
+		ModelAndView mav = new ModelAndView("userlist_page");
+		mav.addObject("ListTitle", "모든 사용자");
 				
 		List<UserModel> users = userService.getList((String)request.getSession().getAttribute("LoginId"));
 		List<String> followList = followService.getFollowing((String)request.getSession().getAttribute("LoginId"));
@@ -53,12 +53,12 @@ public class UserviewController {
 		return mav;	
 	}
 	
-	@RequestMapping("viewFollowing")
+	@RequestMapping("userlist_following")
 	public ModelAndView viewFollowing(HttpServletRequest request) {
-		request.getSession().setAttribute("userViewHistory", "viewFollowing");
+		request.getSession().setAttribute("ListPage", "userlist_following");
 		
-		ModelAndView mav = new ModelAndView("users_page");
-		mav.addObject("titleString", "Following 사용자");
+		ModelAndView mav = new ModelAndView("userlist_page");
+		mav.addObject("ListTitle", "Following 사용자");
 		
 		List<UserModel> users = userService.getFollowingList((String)request.getSession().getAttribute("LoginId"));
 		for(UserModel user : users) {
@@ -69,12 +69,12 @@ public class UserviewController {
 		return mav;
 	}
 	
-	@RequestMapping("viewFollower")
+	@RequestMapping("userlist_follower")
 	public ModelAndView viewFollower(HttpServletRequest request) {
-		request.getSession().setAttribute("userViewHistory", "viewFollower");
+		request.getSession().setAttribute("ListPage", "userlist_follower");
 		
-		ModelAndView mav = new ModelAndView("users_page");
-		mav.addObject("titleString", "Follower 사용자");
+		ModelAndView mav = new ModelAndView("userlist_page");
+		mav.addObject("ListTitle", "Follower 사용자");
 				
 		List<UserModel> users = userService.getFollowerList((String)request.getSession().getAttribute("LoginId"));
 		List<String> followList = followService.getFollowing((String)request.getSession().getAttribute("LoginId"));

@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img src="/images/userprofile/${user.image}" width=48 height=48/>
 ${user.id} 가입 완료 <br>
-<input type="button" value="확인" onClick="location.href='index.jsp'"/>
+<input type="button" value="확인" onClick="location.href='login_page'"/>
 </body>
 </html>

@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>${titleString}</title>
+<title>${ListTitle}</title>
 </head>
 <body>
 	<table>
-			<caption>${titleString}</caption>
+			<caption>${ListTitle}</caption>
 			<thead>
 				<tr>
 					<th> </th>
@@ -29,8 +29,8 @@
 					
 					<td>${user.comment} </td>
 					<td>${user.follow}
-						<c:if test="${user.follow==true}"><a href="unfollowTEST?target=${user.id}">Unfollow 하기</a></c:if>
-						<c:if test="${user.follow==false}"><a href="followTEST?target=${user.id}">Follow 하기</a></c:if>
+						<c:if test="${user.follow==true}"><a href="unfollow.do?target=${user.id}">Unfollow 하기</a></c:if>
+						<c:if test="${user.follow==false}"><a href="follow.do?target=${user.id}">Follow 하기</a></c:if>
 					</td>
 				</tr>
 			</c:forEach>
