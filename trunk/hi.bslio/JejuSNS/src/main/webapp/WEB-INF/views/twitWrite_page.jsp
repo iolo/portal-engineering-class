@@ -17,7 +17,7 @@
 	<script language=javascript>
 	<!--
 	function save() {
-		var page = "writeTwit.submit?twit_text=" + document.twitForm.twit_text.value;
+		var page = "twitWrite.do?twit_text=" + document.twitForm.twit_text.value;
 		
 		var openerType = typeof opener.location.href;
 		if(openerType == 'string') {

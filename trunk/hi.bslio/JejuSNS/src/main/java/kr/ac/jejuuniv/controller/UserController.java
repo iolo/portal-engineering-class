@@ -18,21 +18,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class JoinController {
+public class UserController {
 
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("join")
+	@RequestMapping("join_page")
 	public ModelAndView tester(UserModel user){
-		return new ModelAndView("join");
+		return new ModelAndView("join_page");
 	}
 
-	@RequestMapping(value="join.submit",  method=RequestMethod.POST)
+	@RequestMapping(value="join.do",  method=RequestMethod.POST)
 	public ModelAndView test(UserModel user, @RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException{
-		System.out.println(user.getComment());
-				
-		ModelAndView modelView = new ModelAndView("joinComple");
+		ModelAndView modelView = new ModelAndView("joinComple_page");
 		
 		if(!file.isEmpty()) {
 			byte[] byteFile = file.getBytes();
@@ -53,15 +51,15 @@ public class JoinController {
 		return modelView;
 	}
 	
-	@RequestMapping("editProfile") 
+	@RequestMapping("profileEdit_page") 
 	public ModelAndView editProfile(UserModel user, HttpServletRequest request) {
 		
-		ModelAndView modelView = new ModelAndView("modifyUser");
-		modelView.addObject("User", userService.getUser((String)request.getSession().getAttribute("LoginId")));
+		ModelAndView modelView = new ModelAndView("profileEdit_page");
+		modelView.addObject("user", userService.getUser((String)request.getSession().getAttribute("LoginId")));
 		return modelView;
 	}
 	
-	@RequestMapping(value="userModify",  method=RequestMethod.POST)
+	@RequestMapping(value="profileEdit.do",  method=RequestMethod.POST)
 	public ModelAndView userModify(UserModel user, @RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
 		user.setId((String)request.getSession().getAttribute("LoginId"));
 		
@@ -76,12 +74,8 @@ public class JoinController {
 			user.setImage(user.getId());
 		}
 		
-			userService.updateUser(user);
+		userService.updateUser(user);			
 
-			
-		
-		ModelAndView modelView = new ModelAndView("redirect:Individual");
-		return modelView;
-		
+		return  new ModelAndView("redirect:profileEdit_page");		
 	}
 }

@@ -18,12 +18,12 @@ public class TwitController {
 	@Autowired
 	private TwitService twitService;
 	
-	@RequestMapping("writeSns")
+	@RequestMapping("twitWrite_page")
 	public ModelAndView writeSns() {
-		return new ModelAndView("writeSns");
+		return new ModelAndView("twitWrite_page");
 	}
 	
-	@RequestMapping("writeTwit.submit")
+	@RequestMapping("twitWrite.do")
 	public ModelAndView writeTwit_submit(TwitModel twit, HttpServletRequest request)
 	{
 		
@@ -36,10 +36,11 @@ public class TwitController {
 		
 		twitService.insertTwit(insertTwit);
 		
-		return new ModelAndView("redirect:Individual");
+		
+		return new ModelAndView("redirect:" + (String)request.getSession().getAttribute("TwitPage"));
 	}
 	
-	@RequestMapping("deleteTwit")
+	@RequestMapping("twitDelete.do")
 	public ModelAndView deleteTwit(String id, HttpServletRequest request){
 		// 로그인한 사람이 쓴 글일때 삭제
 		if(twitService.findById(id).getWriter().equals(request.getSession().getAttribute("LoginId"))){
@@ -47,6 +48,6 @@ public class TwitController {
 			
 		}
 		
-		return new ModelAndView("redirect:Individual");
+		return new ModelAndView("redirect:" + (String)request.getSession().getAttribute("TwitPage"));
 	}
 }

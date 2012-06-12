@@ -7,7 +7,7 @@
 <title>JejuSNS 가입</title>
 </head>
 <body>
-	<form method="post" action="join.submit"  enctype="multipart/form-data">
+	<form method="post" action="join.do"  enctype="multipart/form-data">
 		ID : <input type="text" name="id" placeholder="최대 20자 이내"/><br>
 		이름 : <input type="text" name="name" placeholder="최대 20자 이내"/><br>		
 		비밀번호 : <input type="password" name="password" placeholder="최대 38자 이내"/><br>
