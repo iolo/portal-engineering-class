@@ -1,5 +1,6 @@
 package kr.ac.jejuuniv.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import kr.ac.jejuuniv.model.User;
@@ -18,9 +19,11 @@ public class FollowController {
 	UserService userService;
 	
 	@RequestMapping
-	public String followAction(String followingId, HttpSession session) {
+	public String followAction(String followingId, HttpSession session, HttpServletRequest request) {
+		int subStringStart = request.getHeader("Referer").indexOf("/service");
+		String redirectViewName = request.getHeader("Referer").substring(subStringStart);
 		User user = (User) session.getAttribute("loginUser");
 		userService.addFollow(user.getLoginId(), followingId);
-		return "redirect:/service/mainSns";
+		return "redirect:/"+redirectViewName;
 	}
 }

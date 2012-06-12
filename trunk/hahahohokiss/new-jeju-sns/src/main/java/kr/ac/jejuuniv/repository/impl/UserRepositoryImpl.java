@@ -76,6 +76,8 @@ public class UserRepositoryImpl implements UserRepository {
 				resultTweets.add(getTweets.get(j));
 			}
 		}
+		
+		resultTweets.addAll(user.getTweets());
 		Collections.sort(resultTweets);
 		Collections.reverse(resultTweets);
 		return resultTweets;
@@ -108,7 +110,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 	public User insertUser(User user, MultipartFile file) throws IOException {
 		byte[] byteFile = file.getBytes();
-		File imgFile = new File("/Users/jinsoohan/Documents/Projects/new-jeju-sns/src/main/webapp/resources/"+file.getOriginalFilename());
+		File imgFile = new File("/Users/jinsoohan/Documents/Projects/new-jeju-sns/src/main/webapp/resources/images/"+file.getOriginalFilename());
 		FileOutputStream fos;
 		fos = new FileOutputStream(imgFile);
 		fos.write(byteFile);

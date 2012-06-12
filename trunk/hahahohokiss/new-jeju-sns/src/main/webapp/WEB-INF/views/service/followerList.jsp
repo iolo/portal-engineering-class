@@ -9,10 +9,17 @@
 	<title>Follow 페이지</title>
 </head>
 <body>
+	<div id="Title">
+		<h1>Follower</h1>
+	</div>
 	<div id="Header">
 		<p>
 			<label id="${loginUser.username}">${loginUser.username}( ${loginUser.explanation} )</label>
-			<a href="/service/userform"><input type="button" value="프로필수정" /></a>
+			<a href="javascript:window.open('/service/tweetWriteForm', 'test','width=300, height=70')"><input type="button" value="글쓰기" /></a>
+			<a href="/service/followingList"><input type="button" value="Following" /></a>
+			<a href="/service/followerList"><input type="button" value="Follower" /></a>
+			<a href="/service/allUserList"><input type="button" value="전체사용자" /></a>
+			<a href="/service/personalSns"><input type="button" value="개인 페이지" /></a>
 			<a href="/service/mainSns"><input type="button" value="메인페이지" /></a>
 		</p>
 	</div>
