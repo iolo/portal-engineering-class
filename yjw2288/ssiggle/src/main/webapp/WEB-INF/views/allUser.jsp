@@ -35,6 +35,7 @@
 		<hr />
 		<table>
 			<c:forEach items="${allUser}" var="target">
+				<c:if test="${target.user.id != user.id }">
 				<tr>
 					<td class="prof"><img
 						src="/ssiggle/resources/userimage/${target.user.image}"
@@ -53,6 +54,7 @@
 						</c:choose>
 					</td>
 				</tr>
+				</c:if>
 			</c:forEach>
 		</table>
 	</div>

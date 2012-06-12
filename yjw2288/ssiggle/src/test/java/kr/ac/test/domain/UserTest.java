@@ -20,6 +20,7 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
+//TODO : 의존성 제거
 @RunWith(MockitoJUnitRunner.class)
 public class UserTest {
 	@Mock
@@ -134,7 +135,7 @@ public class UserTest {
 
 	@Test
 	public void testAllUser() {
-		when(userMapper.selectAllUserNotExistId("aaa")).thenAnswer(new Answer<List<User>>() {
+		when(userMapper.selectAllUser()).thenAnswer(new Answer<List<User>>() {
 			@Override
 			public List<User> answer(InvocationOnMock invocation)
 					throws Throwable {
@@ -144,20 +145,25 @@ public class UserTest {
 				userOne.setId("sens");
 				User userTwo = new User();
 				userTwo.setId("yjw2288");
+				User userThree = new User();
+				userThree.setId("aaa");
 
+				
 				item.add(userOne);
 				item.add(userTwo);
-
+				item.add(userThree);
+				
 				return item;
 			}
 		});
 
 		User user = new User(userMapper);
 		user.setId("aaa");
-		List<User> userlist = user.findAllUserNotExistMe();
+		List<User> userlist = user.findAllUser();
 
-		assertThat(userlist.size(), is(2));
+		assertThat(userlist.size(), is(3));
 		assertThat(userlist.get(0).getId(), is("sens"));
 		assertThat(userlist.get(1).getId(), is("yjw2288"));
+		assertThat(userlist.get(2).getId(), is("aaa"));
 	}
 }

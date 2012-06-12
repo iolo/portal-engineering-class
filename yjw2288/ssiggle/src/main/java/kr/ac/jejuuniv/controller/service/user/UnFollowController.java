@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/service/unFollow")
 public class UnFollowController {
 	@RequestMapping(method = RequestMethod.GET)
-	public String action(@CookieValue("userId") String userId,
+	public String action(@CookieValue("loginId") String userId,
 			@RequestParam("targetId") String targetId,
 			HttpServletRequest request) {
 		unFollow(userId, targetId);
