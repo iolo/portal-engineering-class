@@ -28,7 +28,7 @@ public class FollowServiceTest {
 	public void getFollowingUser(){
 		FollowService followService = new FollowServiceImpl(followRepository);
 
-		when(followRepository.getFollowingUserNumList()).thenAnswer(new Answer<List<Integer>>() {
+		when(followRepository.getFollowingUserNumList(1)).thenAnswer(new Answer<List<Integer>>() {
 			public List<Integer> answer(InvocationOnMock invocation){
 				List<Integer> users = new ArrayList<Integer>();
 				users.add(2);
@@ -37,7 +37,7 @@ public class FollowServiceTest {
 			}
 		});
 		
-		List<User> followingUsers = followService.getFollowingUserNum(); 
+		List<User> followingUsers = followService.getFollowingUserNum(1); 
 		
 		assertThat(followingUsers.size(), is(2));
 	}
@@ -46,7 +46,7 @@ public class FollowServiceTest {
 	public void getFolowerUser(){
 		FollowService followService = new FollowServiceImpl(followRepository);
 
-		when(followRepository.getFollowerUsers()).thenAnswer(new Answer<List<Integer>>() {
+		when(followRepository.getFollowerUserNumList(1)).thenAnswer(new Answer<List<Integer>>() {
 			public List<Integer> answer(InvocationOnMock invocation){
 				List<Integer> users = new ArrayList<Integer>();
 				users.add(3);
@@ -54,7 +54,7 @@ public class FollowServiceTest {
 			}
 		});
 		
-		List<User> followerUsers = followService.getFollowerUserNum();
+		List<User> followerUsers = followService.getFollowerUserNum(1);
 		
 		assertThat(followerUsers.size(), is(1));
 	}
@@ -63,7 +63,7 @@ public class FollowServiceTest {
 	public void checkFollowerUser(){
 		FollowService followService = new FollowServiceImpl(followRepository);
 		
-		when(followRepository.getFollowingUserNumList()).thenAnswer(new Answer<List<Integer>>() {
+		when(followRepository.getFollowingUserNumList(1)).thenAnswer(new Answer<List<Integer>>() {
 			public List<Integer> answer(InvocationOnMock invocation){
 				List<Integer> users = new ArrayList<Integer>();
 				users.add(2);
@@ -72,7 +72,7 @@ public class FollowServiceTest {
 			}
 		});
 		
-		when(followRepository.getFollowerUsers()).thenAnswer(new Answer<List<Integer>>() {
+		when(followRepository.getFollowerUserNumList(1)).thenAnswer(new Answer<List<Integer>>() {
 			public List<Integer> answer(InvocationOnMock invocation){
 				List<Integer> users = new ArrayList<Integer>();
 				users.add(3);
@@ -80,7 +80,7 @@ public class FollowServiceTest {
 			}
 		});
 		
-		List<Follow> followerLists = followService.checkFollowerUsers();
+		List<Follow> followerLists = followService.checkFollowerUsers(1);
 		
 		assertTrue(followerLists.get(0).getState());
 		assertFalse(followerLists.get(1).getState());

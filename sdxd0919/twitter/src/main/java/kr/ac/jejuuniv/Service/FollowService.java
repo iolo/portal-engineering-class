@@ -7,11 +7,18 @@ import kr.ac.jejuuniv.Model.User;
 
 public interface FollowService {
 
-	List<User> getFollowingUserNum();
+	List<User> getFollowingUserNum(int userNum);
 
-	List<User> getFollowerUserNum();
+	List<User> getFollowerUserNum(int userNum);
 
-	List<Follow> checkFollowerUsers();
+	List<Follow> checkFollowerUsers(int userNum);
 
 	List<Follow> checkAllUsers();
+
+	void unfollowUser(int userNum, int followingUserNum);
+
+	void followUser(int userNum, int followingUserNum);
+
+	List<Follow> checkAllUsers(int userNum);
+
 }
