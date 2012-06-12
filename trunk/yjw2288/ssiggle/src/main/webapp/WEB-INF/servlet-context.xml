@@ -29,11 +29,6 @@
 	<context:load-time-weaver aspectj-weaving="on" />
 	<context:spring-configured />
 
-	<!-- <beans:bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"> 
-		<beans:property name="definitions"> <beans:list> <beans:value>/WEB-INF/views/**/views.xml</beans:value> 
-		<beans:value>/WEB-INF/views/**/views2.xml</beans:value> </beans:list> </beans:property> 
-		</beans:bean> <beans:bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver" 
-		/> -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -44,7 +39,4 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 	<beans:import resource="repository.xml" />
-
-	<view-controller path="/" view-name="home" />
-	<view-controller path="/**/*.jeju" />
 </beans:beans>

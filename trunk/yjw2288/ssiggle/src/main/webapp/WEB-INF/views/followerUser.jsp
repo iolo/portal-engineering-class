@@ -36,11 +36,11 @@
 				<c:choose>
 					<c:when test="${target.following}">
 						<a class="btn"
-							href="/ssiggle/service/unFollow?userId=${user.id}&targetId=${target.user.id}">unfollow</a>
+							href="/ssiggle/service/unFollow?targetId=${target.user.id}">unfollow</a>
 					</c:when>
 					<c:otherwise>
 						<a class="btn"
-							href="/ssiggle/service/follow?userId=${user.id}&targetId=${target.user.id}">follow</a>
+							href="/ssiggle/service/follow?targetId=${target.user.id}">follow</a>
 					</c:otherwise>
 				</c:choose>
 				</td>

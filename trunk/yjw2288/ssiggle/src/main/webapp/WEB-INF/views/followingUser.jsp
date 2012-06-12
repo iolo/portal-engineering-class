@@ -32,7 +32,7 @@
 				<td class="name">${following.name }</td>
 				<td class="introduce">${following.introduce }</td>
 				<td class="following"><a class="btn"
-					href="/ssiggle/service/unFollow?userId=${user.id}&targetId=${following.id}">unfollow</a></td>
+					href="/ssiggle/service/unFollow?targetId=${following.id}">unfollow</a></td>
 			</tr>
 		</c:forEach>
 	</table>

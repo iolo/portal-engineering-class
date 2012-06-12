@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import kr.ac.jejuuniv.model.user.User;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/service/follow")
 public class FollowController {
 	@RequestMapping(method = RequestMethod.GET)
-	public String action(@RequestParam(value = "userId") String userId,
-			@RequestParam(value = "targetId") String targetId,
+	public String action(@CookieValue("userId") String userId,
+			@RequestParam("targetId") String targetId,
 			HttpServletRequest request) {
 		follow(userId, targetId);
 		return "redirect:" + request.getHeader("Referer");

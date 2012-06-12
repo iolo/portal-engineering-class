@@ -11,6 +11,16 @@
 		type="text/css" media="all" />
 	<link href="/ssiggle/resources/css/allUser.css" rel="stylesheet"
 		type="text/css" media="all" />
+		
+<script type="text/javascript">
+	function openNewWindow(window) {
+		open(
+				window,
+				"NewWindow",
+				"left=0, top=0, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=280, height=200");
+	}
+</script>
+		
 </head>
 <body>
 	<div id="container">
@@ -29,16 +39,16 @@
 					<td class="prof"><img
 						src="/ssiggle/resources/userimage/${target.user.image}"
 						width="50px" height="50px"></td>
-					<td class="name">${target.user.name }</td>
+					<td class="name"><a href="javascript:openNewWindow('/ssiggle/service/userData/${target.user.id}')">${target.user.id}</a></td>
 					<td class="introduce">${target.user.introduce }</td>
 					<td class="following">
 						<c:choose>
 							<c:when test="${target.following}">
 									<a class="btn"
-										href="/ssiggle/service/unFollow/?userId=${user.id}&targetId=${target.user.id}">unfollow</a>
+										href="/ssiggle/service/unFollow/?targetId=${target.user.id}">unfollow</a>
 								</c:when> <c:otherwise>
 									<a class="btn"
-										href="/ssiggle/service/follow/?userId=${user.id}&targetId=${target.user.id}">follow</a>
+										href="/ssiggle/service/follow/?targetId=${target.user.id}">follow</a>
 								</c:otherwise>
 						</c:choose>
 					</td>
