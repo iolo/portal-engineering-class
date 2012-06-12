@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/save")
-public class SaveController {
+@RequestMapping("/delete")
+public class DeleteController {
 	@Autowired
 	UserService userService;
 	
 	@RequestMapping
-	public String action(@RequestParam("content") String content, @RequestParam("userId") String userid){
-		userService.PostInsert(userid, content);
-		return "finish";
+	public String deletePost(@RequestParam("postid") String postid, @RequestParam("post_num") int post_num){		
+		userService.postDelete(postid, post_num);
+		return "redirect:/";
 	}
 }
