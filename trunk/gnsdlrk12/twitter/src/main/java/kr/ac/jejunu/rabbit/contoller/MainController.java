@@ -29,16 +29,4 @@ public class MainController {
 		return "userpage";
 
 	}
-	
-//	@RequestMapping(method = RequestMethod.POST)
-//	public String login(@RequestParam("userid") String userid,
-//			@RequestParam("password") String password, Model model) {
-//
-//		if (userService.Login(userid, password)) {
-//			model.addAttribute("user", userService.UserGet(userid));
-//			return "redirect:/userpage";
-//		} else {
-//			return "redirect:/main";
-//		}
-//	}
 }

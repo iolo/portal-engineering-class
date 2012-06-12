@@ -19,6 +19,8 @@ public interface UserService {
 
 	void PostInsert(String userid, String content);
 	
+	void postDelete(String postid, int post_num);
+	
 	void following(String userid, String followerid);
 
 	boolean Login(String userid, String password);

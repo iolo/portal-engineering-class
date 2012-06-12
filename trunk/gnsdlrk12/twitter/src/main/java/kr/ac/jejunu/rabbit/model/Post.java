@@ -3,23 +3,23 @@ package kr.ac.jejunu.rabbit.model;
 public class Post {
 	
 	private String image;
-	private String post_num;
-	private String userid;
+	private int post_num;
+	private String postid;
 	private String name;
 	private String content;
 	private String regdate;
 	
-	public String getPost_num() {
+	public int getPost_num() {
 		return post_num;
 	}
-	public void setPost_num(String post_num) {
-		this.post_num = post_num;
+	public void setPost_num(int postnum) {
+		this.post_num = postnum;
 	}
-	public String getUserid() {
-		return userid;
+	public String getPostid() {
+		return postid;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setPostid(String postid) {
+		this.postid = postid;
 	}
 	public String getContent() {
 		return content;
