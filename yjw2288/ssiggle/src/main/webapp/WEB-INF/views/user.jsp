@@ -23,7 +23,7 @@
 <body>
 	<div id="container">
 		<div class="header">
-			<a class="profile">${user.id }(${user.introduce })</a>
+			<a class="profile"> ${user.id }(${user.introduce })</a>
 			<a class="btn" href="/ssiggle/logout">로그아웃</a>
 			<a class="btn"
 				href="javascript:openNewWindow('/ssiggle/service/writeSsiggle')">글쓰기</a>
