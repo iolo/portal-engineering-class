@@ -14,8 +14,8 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 	
-	public List<UserModel> getList() {
-		List<UserModel> users = userMapper.findAll();
+	public List<UserModel> getList(String notlikeId) {
+		List<UserModel> users = userMapper.findAll(notlikeId);
 		return users;
 	}
 
@@ -30,5 +30,13 @@ public class UserService {
 	
 	public void updateUser(UserModel user) {
 		userMapper.updateUser(user);
+	}
+	
+	public List<UserModel> getFollowingList(String id) {
+		return userMapper.findFollowing(id);
+	}
+	
+	public List<UserModel> getFollowerList(String id) {
+		return userMapper.findFollower(id);
 	}
 }

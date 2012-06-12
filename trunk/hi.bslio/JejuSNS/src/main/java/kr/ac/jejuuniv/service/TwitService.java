@@ -14,8 +14,8 @@ public class TwitService {
 	@Autowired
 	private TwitMapper twitMapper;
 	
-	public List<TwitModel> getList() {
-		List<TwitModel> twits = twitMapper.findAll();
+	public List<TwitModel> getFollowingTwitList(String id) {
+		List<TwitModel> twits = twitMapper.findFollowingTwit(id);
 		return twits;
 	}
 	

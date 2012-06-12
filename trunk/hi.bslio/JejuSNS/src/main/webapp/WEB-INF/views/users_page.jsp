@@ -10,7 +10,6 @@
 <title>${titleString}</title>
 </head>
 <body>
-	${id} ${f:length(users)}
 	<table>
 			<caption>${titleString}</caption>
 			<thead>

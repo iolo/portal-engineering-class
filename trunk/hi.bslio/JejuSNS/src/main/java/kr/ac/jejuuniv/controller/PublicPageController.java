@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class IndividualController {
+public class PublicPageController {
 	@Autowired
 	TwitService twitService;
 	
-	@RequestMapping("Individual")
+	@RequestMapping("publicPage")
 	public ModelAndView individual(HttpServletRequest request) {
-		ModelAndView modelView = new ModelAndView("individualPage");
+		ModelAndView modelView = new ModelAndView("publicPage");
 		modelView.addObject("id", request.getSession().getAttribute("LoginId"));
 		
-		List<TwitModel> twitList = twitService.getListByWriter((String)request.getSession().getAttribute("LoginId"));
+		List<TwitModel> twitList = twitService.getFollowingTwitList((String)request.getSession().getAttribute("LoginId"));
 		
 		modelView.addObject("twitList", twitList);
 		
