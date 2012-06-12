@@ -15,7 +15,7 @@
 	<div id="container">
 		<p class="title">시끌벅적 SNS에 오신것을 환영합니다!</p>
 		<img class="mainImg" src="/ssiggle/resources/DukeWithHelmet.png" />
-		<form action="/ssiggle/login" method="post">
+		<form action="/ssiggle/loginProcess" method="post">
 		<div class="loginForm">
 			<table class="loginForm">
 				<tr>

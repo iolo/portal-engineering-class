@@ -19,11 +19,10 @@ public class LogoutController {
 				if (c.getName().equals(ControllerConstant.LOGIN_COOKIE_NAME)) {
 					response.addCookie(new Cookie(
 							ControllerConstant.LOGIN_COOKIE_NAME, null));
-					c.setMaxAge(0);
 				}
 			}
 		}
 
-		return "redirect:/";
+		return "redirect:/login";
 	}
 }

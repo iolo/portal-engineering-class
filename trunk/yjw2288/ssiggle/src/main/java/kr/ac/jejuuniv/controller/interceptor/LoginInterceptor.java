@@ -11,24 +11,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class LoginInterceptor implements HandlerInterceptor {
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
-			Object controller) throws Exception {
+	public boolean preHandle(HttpServletRequest request,
+			HttpServletResponse response, Object controller) throws Exception {
 		Cookie[] cookies = request.getCookies();
-		for(Cookie c:cookies) {
-			if(c.getName().equals(ControllerConstant.LOGIN_COOKIE_NAME)) {
-				if(c.getValue() != null && !c.getValue().equals("")) {
-					return true;
+		if (cookies != null) {
+			for (Cookie c : cookies) {
+				if (c.getName().equals(ControllerConstant.LOGIN_COOKIE_NAME)) {
+					if (c.getValue() != null && !c.getValue().equals("")) {
+						return true;
+					}
 				}
 			}
 		}
 
-		response.sendRedirect("/ssiggle");
+		response.sendRedirect("/ssiggle/login");
 		return false;
 	}
 
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse responce,
-			Object controller, ModelAndView mav) throws Exception {
+	public void postHandle(HttpServletRequest request,
+			HttpServletResponse responce, Object controller, ModelAndView mav)
+			throws Exception {
 	}
 
 	@Override
