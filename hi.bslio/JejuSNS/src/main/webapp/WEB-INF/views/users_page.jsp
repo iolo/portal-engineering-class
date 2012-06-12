@@ -24,7 +24,7 @@
 			
 			<c:forEach items="${users}" var="user" >
 				<tr>
-					<td>없듬 </td>
+					<td><img src="/images/userprofile/${user.image}" width=48 height=48/></td>
 					<td>${user.name} </td>
 					
 					<td>${user.comment} </td>

@@ -6,19 +6,22 @@
 		select * from member where id NOT LIKE #{id}
 	</select>
 	<insert id="insertUser" parameterType="kr.ac.jejuuniv.model.UserModel">
-		insert into member (id, name, password, comment)
-		values (#{id},#{name},#{password},#{comment})
+		insert into member (id, name, password, comment, image)
+		values (#{id},#{name},#{password},#{comment},#{image})
 	</insert>
 	<select id="findById" resultType="kr.ac.jejuuniv.model.UserModel">
 		SELECT * FROM member WHERE id = #{id}
 	</select>
 	<update id="updateUser" parameterType="kr.ac.jejuuniv.model.UserModel">
-		UPDATE member set name = #{name}, password = #{password}, comment = #{comment} WHERE id = #{id}
+		UPDATE member set name = #{name}, password = #{password}, comment = #{comment}, image = #{image} WHERE id = #{id}
 	</update>
 	<select id="findFollowing" resultType="kr.ac.jejuuniv.model.UserModel">
 		select * from member where member.id in (select follow.target from follow where follower = #{id})
 	</select>
 	<select id="findFollower" resultType="kr.ac.jejuuniv.model.UserModel">
 		select * from member where member.id in (select follow.follower from follow where target = #{id})
+	</select>
+	<select id="getFollowingHaveImageList" resultType="string">
+		select * from member where member.image in (select follow.target from follow where follower = #{id}) AND member.image NOT LIKE 'default'
 	</select>
 </mapper>

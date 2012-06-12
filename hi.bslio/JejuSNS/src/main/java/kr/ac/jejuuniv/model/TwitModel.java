@@ -5,7 +5,14 @@ public class TwitModel {
 	private String writer;
 	private String twit_text;
 	private String date;	
+	private String image;
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public String getId() {
 		return id;
 	}
