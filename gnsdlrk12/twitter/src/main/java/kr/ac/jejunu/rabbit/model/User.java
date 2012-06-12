@@ -9,6 +9,7 @@ public class User {
 	private String name;
 	private String password;
 	private String introduce;
+	private String image;
 	private String loginUser;
 	public String getUserid() {
 		return userid;
@@ -44,6 +45,12 @@ public class User {
 	}
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }

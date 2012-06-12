@@ -70,4 +70,9 @@ public class UserServiceImp implements UserService{
 		}
 	}
 
+	@Override
+	public void postDelete(String postid, int post_num) {
+		usermapper.postDelete(postid, post_num);
+	}
+
 }

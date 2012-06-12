@@ -28,5 +28,7 @@ public interface UserMapper {
 	void followInsert(@Param("userid") String userid, @Param("followerid") String followerid);
 
 	User Check(@Param("userid") String userid, @Param("password") String password);
+
+	void postDelete(@Param("postid") String postid, @Param("post_num") int post_num);
 	
 }
