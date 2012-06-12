@@ -6,7 +6,14 @@ public class UserModel {
 	private String password;
 	private String comment;
 	private boolean follow;
+	private String image;
 
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public String getId() {
 		return id;
 	}

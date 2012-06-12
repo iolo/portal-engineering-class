@@ -11,4 +11,5 @@ public interface UserMapper {
 	void updateUser(UserModel user);
 	List<UserModel> findFollowing(String id);
 	List<UserModel> findFollower(String id);
+	List<String> getFollowingHaveImageList(String id);
 }

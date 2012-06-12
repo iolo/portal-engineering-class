@@ -28,7 +28,7 @@
 			<tbody>
 			<c:forEach items="${twitList}" var="twit" >
 				<tr>
-					<td>없듬 </td>
+					<td><img src="/images/userprofile/${twit.image}" width=48 height=48/></td>
 					<td>${twit.writer} </td>
 					<td>${twit.twit_text} </td>
 					

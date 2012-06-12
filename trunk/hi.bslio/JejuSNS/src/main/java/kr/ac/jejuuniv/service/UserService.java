@@ -39,4 +39,8 @@ public class UserService {
 	public List<UserModel> getFollowerList(String id) {
 		return userMapper.findFollower(id);
 	}
+	
+	public List<String> getFollowingHaveImageList(String id) {
+		return userMapper.getFollowingHaveImageList(id);
+	}
 }
