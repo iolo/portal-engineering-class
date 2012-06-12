@@ -17,4 +17,11 @@
 		INSERT INTO  `JinSNS`.`jinSns` (`index` ,`id` ,`date`,`sns`)
 		VALUES(NULL, #{id}, #{sns}, #{date});
 	</insert>	
+	
+	<select id="allGetSns" parameterType="String" resultType="kr.ac.jejuuniv.model.SnsListModel">
+		SELECT user.id, user.name, jinSns.sns, jinSns.date
+		FROM jinSns, user 
+		WHERE jinSns.id=user.id
+		ORDER BY date DESC
+	</select>
 </mapper>

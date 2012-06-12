@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/join")
-public class JoinController {
+@RequestMapping("/update")
+public class UpdateController {
 	
 	@RequestMapping()
 	public void join(){
@@ -21,7 +21,7 @@ public class JoinController {
 	@Autowired
 	JoinService joinService;
 	
-	@RequestMapping(method = RequestMethod.POST, value="/join")
+	@RequestMapping(method = RequestMethod.POST, value="/update")
 	public String joinUser(@RequestParam("id") String id,
 						   @RequestParam("password")String password, @RequestParam("name")String name, 
 						   @RequestParam("explain")String explain, @RequestParam("image")MultipartFile image)

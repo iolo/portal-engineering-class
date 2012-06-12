@@ -14,8 +14,8 @@
 	</div>
 	<div>
 	<p>
-	     <input type="button" value="${user.id}" onclick="location.href='/personal'"/>
-	     <input type="button" value="글쓰기" />
+	    <input type="button" value="${user.id}" onclick="location.href='/personal'"/>
+	    <input type="button" value="글쓰기" onclick="window.open('/write','win','width=450,height=350,toolbar=0,scrollbars=0,resizable=0')" />
 		<input type="button" value="following"  />
 		<input type="button" value="follower"  />
 		<input type="button" value="전체 사용자"  />
@@ -24,15 +24,26 @@
 	</div>
 	
 	<div>
-		<table>
+			<table>
 			<thead>
 				<tr>
 					<th>프로필 이미지</th>
-					<th>이름</th>
 					<th>내용</th>
+					<th>삭제</th>
 					<th>날짜</th>
 				</tr>
 			</thead>
+			<tbody>
+				<c:forEach items="${snsListModelList}" var="snsListModel">
+				
+					<tr>
+						<td>머야이거</td>
+						<td>${snsListModel.name}</td>
+						<td>${snsListModel.sns}</td>
+						<td>${snsListModel.date}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
 		</table>
 	</div>
 </body>

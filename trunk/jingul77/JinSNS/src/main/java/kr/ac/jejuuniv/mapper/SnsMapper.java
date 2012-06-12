@@ -16,4 +16,6 @@ public interface SnsMapper {
 
 	void write(SnsModel setWrite);
 
+	List<SnsListModel> allGetSns(String id);
+
 }

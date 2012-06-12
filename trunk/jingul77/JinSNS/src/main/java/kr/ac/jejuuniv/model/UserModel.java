@@ -1,14 +1,16 @@
 package kr.ac.jejuuniv.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserModel
 {
 	private String id;
 	private String password;
 	private String name;
 	private String explain;
-	private String image;
+	private MultipartFile image;
 	
-	public UserModel(String id, String password, String name, String explain, String image)
+	public UserModel(String id, String password, String name, String explain, MultipartFile image)
 	{
 		this.setId(id);
 		this.setPassword(password);
@@ -45,12 +47,14 @@ public class UserModel
 	public void setExplain(String explain) {
 		this.explain = explain;
 	}
-	public String getImage() {
+
+	public MultipartFile getImage() {
 		return image;
 	}
-	public void setImage(String image) {
+
+	public void setImage(MultipartFile image) {
 		this.image = image;
-	}	
+	}
 }
 
 
