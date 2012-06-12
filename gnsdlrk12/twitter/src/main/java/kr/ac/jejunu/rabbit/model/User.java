@@ -8,6 +8,7 @@ public class User {
 	private String userid;
 	private String name;
 	private String password;
+	private String introduce;
 	private String loginUser;
 	public String getUserid() {
 		return userid;
@@ -37,6 +38,12 @@ public class User {
 	}
 	public void setLoginUser(String loginUser) {
 		this.loginUser = loginUser;
+	}
+	public String getIntroduce() {
+		return introduce;
+	}
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
 	}
 	
 }

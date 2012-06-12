@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div id="Header">
-		${user.userid }
-		${user.password }
+		${user.name }
+		(${user.introduce })
 		 <input type="button"
 				value="글쓰기"
 				onclick="window.open('/write','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
@@ -19,6 +19,7 @@
 		<c:forEach items="${posts }" var="post">
 			${post.content }
 			${post.name }
+			${post.regdate }
 			<br/>
 		</c:forEach>
 	</div>
