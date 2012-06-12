@@ -7,11 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SSiggle</title>
-	<link href="/ssiggle/resources/css/common.css" rel="stylesheet"
-		type="text/css" media="all" />
-	<link href="/ssiggle/resources/css/allUser.css" rel="stylesheet"
-		type="text/css" media="all" />
-		
+<link href="/ssiggle/resources/css/common.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="/ssiggle/resources/css/allUser.css" rel="stylesheet"
+	type="text/css" media="all" />
+	
 <script type="text/javascript">
 	function openNewWindow(window) {
 		open(
@@ -40,7 +40,7 @@
 					<td class="prof"><img
 						src="/ssiggle/resources/userimage/${target.user.image}"
 						width="50px" height="50px"></td>
-					<td class="name"><a href="javascript:openNewWindow('/ssiggle/service/userData/${target.user.id}')">${target.user.id}</a></td>
+					<td class="name">${target.user.name}</td>
 					<td class="introduce">${target.user.introduce }</td>
 					<td class="following">
 						<c:choose>

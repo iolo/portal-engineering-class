@@ -23,7 +23,7 @@
 <body>
 	<div id="container">
 		<div class="header">
-			<a class="profile"> ${user.id }(${user.introduce })</a>
+			<a class="profile"> ${user.name }(${user.introduce })</a>
 			<a class="btn" href="/ssiggle/logout">로그아웃</a>
 			<a class="btn"
 				href="javascript:openNewWindow('/ssiggle/service/writeSsiggle')">글쓰기</a>
@@ -38,7 +38,7 @@
 						width="50" height="50"></td>
 					<td class="text">${ssiggle.text}</td>
 					<td class="delete">
-						<a class="btn" href="/ssiggle/service/deleteSsiggle?&ssiggleId=${ssiggle.id}">삭제</a>
+						<a class="btn" href="/ssiggle/service/deleteSsiggle?ssiggleId=${ssiggle.id}">삭제</a>
 					</td>
 					<td class="time">${ssiggle.time}</td>
 				</tr>

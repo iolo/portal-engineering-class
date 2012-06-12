@@ -4,8 +4,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.ac.jejuuniv.controller.ControllerConstant;
-
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +14,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie c : cookies) {
-				if (c.getName().equals(ControllerConstant.LOGIN_COOKIE_NAME)) {
+				if (c.getName().equals("loginId")) {
 					if (c.getValue() != null && !c.getValue().equals("")) {
 						return true;
 					}
