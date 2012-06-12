@@ -17,4 +17,5 @@ public interface SnsService {
 	
 	String date();
 
+	List<SnsListModel> allGetSns(String id);
 }

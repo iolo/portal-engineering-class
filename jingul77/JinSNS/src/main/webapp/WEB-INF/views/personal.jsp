@@ -16,9 +16,9 @@
 	<div>
 		<p>
 		${user.name}		
-		<input type="button" value="프로필 수정" /> 
-	
-				<input type="button" value="글쓰기" onclick="window.open('/write','win','width=450,height=350,toolbar=0,scrollbars=0,resizable=0')" />
+		<input type="button" value="프로필 수정" onclick="location.href='/update'"/>
+		<input type="button" value="글쓰기" onclick="window.open('/write','win','width=450,height=350,toolbar=0,scrollbars=0,resizable=0')" />
+		<input type="button" value="메인페이지" onclick="location.href='/main'"/>
 		</p>
 	</div>
 	<div>

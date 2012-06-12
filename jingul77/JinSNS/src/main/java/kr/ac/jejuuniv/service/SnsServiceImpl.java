@@ -52,4 +52,13 @@ public class SnsServiceImpl implements SnsService {
 		
 		snsMapper.write(this.setWrite(id, sns));
 	}
+
+
+	@Override
+	public List<SnsListModel> allGetSns(String id) {
+		
+		return snsMapper.allGetSns(id);
+	}
+
+
 }

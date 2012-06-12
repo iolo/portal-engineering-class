@@ -7,17 +7,17 @@
 </head>
 <body>
 	<div>
-		<h2>회원 가입</h2>
+		<h2>회원 정보 수정</h2>
 	</div>
 	<div> 
 	<form action="join" method="post">
 	<table>
  		<tr>
-			<td><label>ID</label></td>
-			<td><input type="text" name="id" /></td>
+			<td><label>${user.id}</label></td>
+
 		</tr>
 		<tr>
-			<td><label>Password</label></td>
+			<td><label>Password 수정 </label></td>
 			<td><input type="password" name="password" /><td>
 		</tr>
 		<tr>

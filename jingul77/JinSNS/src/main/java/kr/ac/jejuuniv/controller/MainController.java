@@ -1,7 +1,12 @@
 package kr.ac.jejuuniv.controller;
 
-import kr.ac.jejuuniv.model.UserModel;
+import java.util.List;
 
+import kr.ac.jejuuniv.model.UserModel;
+import kr.ac.jejuuniv.model.SnsListModel;
+import kr.ac.jejuuniv.service.SnsService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +17,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("user")
 public class MainController {
 	
+	@Autowired
+	SnsService snsService;
+	
 	@RequestMapping()
-	public void aaa(@ModelAttribute("user") UserModel user){
+	public List<SnsListModel> main(@ModelAttribute("user") UserModel user){
+		
+		return snsService.allGetSns(user.getId());
 		
 	}
 	

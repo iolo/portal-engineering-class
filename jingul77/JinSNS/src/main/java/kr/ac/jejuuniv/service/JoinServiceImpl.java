@@ -5,6 +5,7 @@ import kr.ac.jejuuniv.model.UserModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class JoinServiceImpl implements JoinService {
@@ -13,7 +14,7 @@ public class JoinServiceImpl implements JoinService {
 	JoinMapper joinMapper;
 	
 	@Override
-	public void joinUser(String id, String password, String name, String explain,String image){
+	public void joinUser(String id, String password, String name, String explain, MultipartFile image){
 		UserModel user=new UserModel(id, password, name, explain, image);
 		joinMapper.joinUser(user);		
 	}
