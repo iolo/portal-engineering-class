@@ -15,6 +15,12 @@ public class AuthController {
 	@Autowired
 	UserService userService;
 	
+	@RequestMapping("fileuppage")
+	public ModelAndView fileuppage() {
+		
+		return new ModelAndView("fileupload");
+	}
+	
 	@RequestMapping("login.do")
 	public ModelAndView Login(UserModel user, HttpServletRequest request) {
 		UserModel authUser = userService.getUser(user.getId());
@@ -22,7 +28,7 @@ public class AuthController {
 			if(authUser.getPassword().equals(user.getPassword())) {
 				request.getSession().setAttribute("LoginId", user.getId());
 				
-				ModelAndView modelAndView = new ModelAndView("redirect:Individual");
+				ModelAndView modelAndView = new ModelAndView("redirect:publicPage");
 				
 				return modelAndView;
 				
