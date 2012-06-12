@@ -33,7 +33,7 @@ public class UserController {
 		User user = new User().findUserById(userId);
 
 		List<UserRow> rowList = user.markFollowUser(user
-				.findAllUserNotExistMe());
+				.findAllUser());
 
 		model.addAttribute("user", user);
 		model.addAttribute("allUser", rowList);

@@ -12,11 +12,10 @@ public interface UserMapper {
 
 	void insertUser(User user);
 
-	List<User> selectAllUserNotExistId(String userId);
-
 	void deleteUser(String id);
 
-	// TODO : 이 둘은 여기에 있는게 맞겠지?
+	List<User> selectAllUser();
+
 	List<User> selectAllFollowingUser(String id);
 
 	List<User> selectAllFollowerUser(String id);

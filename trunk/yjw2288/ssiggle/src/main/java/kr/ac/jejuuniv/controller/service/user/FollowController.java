@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/service/follow")
 public class FollowController {
 	@RequestMapping(method = RequestMethod.GET)
-	public String action(@CookieValue("userId") String userId,
+	public String action(@CookieValue("loginId") String userId,
 			@RequestParam("targetId") String targetId,
 			HttpServletRequest request) {
 		follow(userId, targetId);

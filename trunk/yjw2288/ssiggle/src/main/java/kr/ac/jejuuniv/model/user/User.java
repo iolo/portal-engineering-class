@@ -113,8 +113,8 @@ public class User implements Serializable {
 		return userMapper.selectUserById(loginId);
 	}
 
-	public List<User> findAllUserNotExistMe() {
-		return userMapper.selectAllUserNotExistId(getId());
+	public List<User> findAllUser() {
+		return userMapper.selectAllUser();
 	}
 
 	public void followUserById(String targetId) {
