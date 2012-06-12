@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.ac.jejunu.rabbit.mapper.UserMapper">
-	<sql id="selectUser">userid, name, password</sql>
+	<sql id="selectUser">userid, name, password, introduce</sql>
 	<sql id="selectPost">image, name, content, regdate</sql>
 	
 	<select id="findUserAll" resultType="kr.ac.jejunu.rabbit.model.User" >
@@ -15,7 +15,7 @@
 	<select id="findPostAll" resultType="kr.ac.jejunu.rabbit.model.Post" >
 		select 
 		<include refid="selectPost"/>
-		from userinfo INNER JOIN userpost on (userinfo.`userid` = userpost.`userid`) where userinfo.userid = #{userid};
+		from userinfo INNER JOIN userpost on (userinfo.`userid` = userpost.`userid`) where userinfo.userid = #{userid} ORDER BY regdate DESC;
 	</select>
 	
 	<select id="findById" resultType="kr.ac.jejunu.rabbit.model.User">
@@ -49,7 +49,7 @@
 		insert into follow(userid, followerid, state) values (#{userid}, #{followerid}, "following")
 	</insert>
 	
-	<select id="Login" parameterType="kr.ac.jejunu.rabbit.model.User">
+	<select id="Login" parameterType="kr.ac.jejunu.rabbit.model.User" resultType="kr.ac.jejunu.rabbit.model.User" >
 		select *
 		from userinfo where userid = #{userid} and password = #{password}
 	</select>

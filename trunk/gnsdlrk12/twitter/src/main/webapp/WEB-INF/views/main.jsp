@@ -23,7 +23,8 @@
 				</p>
 				<p style="text-align:center">
 					<input type="submit" value="로그인" />
-					<input type="button" value="회원가입" />
+					<input type="button" value="회원가입"
+						onclick="location.href='/memberJoin'" />
 				</p>
 		</form>
 	</div>
