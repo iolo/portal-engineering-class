@@ -1,20 +1,18 @@
 package kr.ac.jejuuniv.service.impl;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
 import kr.ac.jejuuniv.service.UserDto;
 import kr.ac.jejuuniv.service.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -87,7 +85,6 @@ public class UserServiceImpl implements UserService {
 				resultUsers.add(new UserDto(allUser.get(i), false));
 			}
 		}
-		
 		return resultUsers;
 	}
 

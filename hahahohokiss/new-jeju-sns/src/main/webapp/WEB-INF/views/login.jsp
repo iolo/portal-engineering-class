@@ -4,10 +4,12 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Login</title>
 </head>
 <body>
-	
+<div id="MainImage" align="center">
+	<img src="/resources/images/main_image.jpg" width="800" height="500">
+</div>
 
 
 <div id="LoginContent">

@@ -5,20 +5,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript"></script>
-<title>Insert title here</title>
+<title>글쓰기</title>
 </head>
 <body>
 	<script language="javascript">
 		function sendit() {
-			var url = "/serivce/tweetAdd?tweet=" + document.tweetform.tweet.value + "&url=" +opener.document.URL;
-			opener.document.location.href=url;
+			var url = "/serivce/tweetAdd?tweet="
+					+ document.tweetform.tweet.value + "&url="
+					+ opener.document.URL;
+			opener.document.location.href = url;
 			self.close();
 		}
 	</script>
-	<form name="tweetform">
-		요즘 어떠신가요? <p> 
-		<input type=text name=tweet><p>
-		 <a	href="javascript:sendit()">확인</a>
-	</form>
+	<div align="center">
+		<form name="tweetform">
+			요즘 어떠신가요?
+			<p>
+				<input type=text name=tweet style="width:90%; padding: 5px">
+			<p>
+				<a href="javascript:sendit()"><input type="button" value="확인" /></a>
+				<a href="javascript:self.close()"><input type="button"
+					value="취소" /></a>
+		</form>
+	</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package kr.ac.jejuuniv.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import kr.ac.jejuuniv.model.User;
@@ -18,10 +19,11 @@ public class UnFollowController {
 	UserService userService;
 	
 	@RequestMapping
-	public String unFollowAction(String followingId, HttpSession session) {
+	public String unFollowAction(String followingId, HttpSession session, HttpServletRequest request) {
 		User user = (User) session.getAttribute("loginUser");
-		System.out.println(followingId);
+		int subStringStart = request.getHeader("Referer").indexOf("/service");
+		String redirectViewName = request.getHeader("Referer").substring(subStringStart);
 		userService.removeFollow(user.getLoginId(), followingId);
-		return "redirect:/service/mainSns";
+		return "redirect:/"+redirectViewName;
 	}
 }

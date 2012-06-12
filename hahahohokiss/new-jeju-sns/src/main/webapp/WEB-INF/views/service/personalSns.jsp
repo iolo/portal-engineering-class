@@ -9,11 +9,14 @@
 	<title>개인 SNS</title>
 </head>
 <body>
+	<div id="Title">
+		<h1>개인 SNS</h1>
+	</div>
 	<div id="Header">
 		<p>
 			<label id="${loginUser.username}">${loginUser.username}( ${loginUser.explanation} )</label>
 			<a href="/service/userform"><input type="button" value="프로필수정" /></a>
-			<a href="javascript:window.open('/service/tweetWriteForm', 'test','width=300, height=70')"><input type="button" value="글쓰기" /></a>
+			<a href="javascript:window.open('/service/tweetWriteForm', 'tweet','width = 300px, height=200px')"><input type="button" value="글쓰기" /></a>
 			<a href="/service/mainSns"><input type="button" value="메인페이지" /></a>
 		</p>
 	</div>
@@ -22,16 +25,16 @@
 		<c:forEach items="${tweets}" var="tweet" >
 			<table boarder="1">
 				<tr>
-					<td width="100">
+					<td width="150" align="center">
 						<img src = "${loginUser.imgUrl}" width="100" height="70"/>
 					</td>
-					<td width="200">
+					<td width="250" align="center">
 						<label>${tweet.contents}</label>
 					</td>
-					<td withd="100">
+					<td withd="150" align="center">
 						<a href="/service/delete?tweetId=${tweet.tweetId }"><input type=button style="height: 35px; width: 90px"  value=삭제></a>
 					</td>
-					<td width="150">
+					<td width="150" align="center">
 						<label>${tweet.date}</label>
 					</td>
 					<td height="90">
@@ -39,10 +42,6 @@
 					</td>
 				</tr>
 			</table>
- 				<%-- <img src = "${loginUser.imgUrl}" width="100" height="70"	/>
-				<label>${tweet.contents}</label>
-				<a href="/service/delete?tweetId=${tweet.tweetId }">삭제</a>
-				<label>${tweet.date}</label><p> --%>
 		</c:forEach>
 	</div>
 </body>
