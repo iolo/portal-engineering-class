@@ -1,8 +1,12 @@
 package kr.ac.jejuuniv.twitter.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.service.UserService;
@@ -28,9 +32,17 @@ public class JoinController {
 		File uploadedFile = new File("/Users/JunTheater/Documents/"+user.getId());
 		FileOutputStream fos;
 		fos = new FileOutputStream(uploadedFile);
+		
+		//이미지를 업로드를 할 경우 아이디에 맞게 이미지 전송
+		//이미지를 업로드 하지 않을 경우 디폴트 이미지 링크
+		if(byteFile.length==0){
+//			file.transferTo("Users/JunTheater/Document/Develope/Lecture/jeju_twitter/src/main/webapp/resources/profile/a.jpg");
+			user.setPath(false);
+		}
+		else	user.setPath(true);
+		
 		fos.write(byteFile);
 		fos.close();
-		
 		userService.addUser(user);
 		return "redirect:/index";
 	}

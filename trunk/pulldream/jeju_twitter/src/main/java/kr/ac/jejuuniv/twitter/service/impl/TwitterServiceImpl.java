@@ -1,6 +1,7 @@
 package kr.ac.jejuuniv.twitter.service.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.jejuuniv.twitter.model.FollowModel;
+import kr.ac.jejuuniv.twitter.model.FollowerModel;
 import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.repository.TwitterRepository;
@@ -46,5 +48,25 @@ public class TwitterServiceImpl implements TwitterService{
 
 	public void unFollowingById(String id, String following) {
 		twitterRepoistory.unFollowingById(id, following);
+	}
+
+	public List<FollowerModel> getFollowerList(String id) {
+		
+		List<String> getFollowingList = twitterRepoistory.getFollowingList(id);
+		List<FollowerModel> follower = new ArrayList<FollowerModel>();
+		
+		for (FollowerModel followerModel : twitterRepoistory.getFollowerById(id)) {
+			if(getFollowingList.contains(followerModel.getId())){
+				followerModel.setFollowing(true);
+			}else followerModel.setFollowing(false);
+			follower.add(followerModel);
+		}
+		
+		return follower;
+	}
+
+	@Override
+	public void addFollowingById(String id, String following) {
+		
 	}
 }

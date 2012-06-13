@@ -1,17 +1,16 @@
 package kr.ac.jejuuniv.twitter.model;
 
-public class FollowingModel {
-	private String following;
+public class FollowerModel {
+	private String id;
 	private String name;
 	private String profile;
-	private String path;
-	//팔로잉 이름
+	private boolean following;
 	
-	public String getFollowing() {
-		return following;
+	public String getId() {
+		return id;
 	}
-	public void setFollowing(String following) {
-		this.following = following;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -25,10 +24,10 @@ public class FollowingModel {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
-	public String getPath() {
-		return path;
+	public boolean isFollowing() {
+		return following;
 	}
-	public void setPath(String path) {
-		this.path = path;
+	public void setFollowing(boolean following) {
+		this.following = following;
 	}
 }
