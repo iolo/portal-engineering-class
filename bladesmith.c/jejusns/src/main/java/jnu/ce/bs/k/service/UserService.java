@@ -22,4 +22,8 @@ public interface UserService {
 
 	List<User> findFollowUserById(User user);
 
+	void follow(Map<String, String> map);
+
+	void unfollow(Map<String, String> map);
+
 }

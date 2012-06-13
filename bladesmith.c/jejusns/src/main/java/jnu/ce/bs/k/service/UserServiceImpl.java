@@ -82,4 +82,15 @@ public class UserServiceImpl implements UserService {
 		return users;
 	}
 
+	@Override
+	public void follow(Map<String, String> map) {
+		userMapper.follow(map);
+		
+	}
+
+	@Override
+	public void unfollow(Map<String, String> map) {
+		userMapper.unfollow(map);
+	}
+
 }
