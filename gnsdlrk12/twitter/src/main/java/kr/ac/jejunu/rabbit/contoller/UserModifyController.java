@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -22,13 +23,14 @@ public class UserModifyController {
 	UserService userService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String userReg(@ModelAttribute User user, MultipartFile image) throws FileNotFoundException, IOException{
-		
-		saveImage(user, image);
-		
-		
-		userService.UserModify(user);
-
+	public String userReg(@ModelAttribute User user, MultipartFile image, @RequestParam(value = "checkPass") String pass) throws FileNotFoundException, IOException{
+		if(userService.Login(user.getUserid(), pass)){
+			if(user.getPassword().isEmpty()) {
+				user.setPassword(pass);
+			}
+			saveImage(user, image);		
+			userService.UserModify(user);
+		}
 		return "finish";		
 	}
 	
