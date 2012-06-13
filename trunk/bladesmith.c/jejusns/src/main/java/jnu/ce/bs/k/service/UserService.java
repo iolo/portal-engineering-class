@@ -26,4 +26,6 @@ public interface UserService {
 
 	void unfollow(Map<String, String> map);
 
+	List<User> findFollowingByUserId(String id);
+
 }

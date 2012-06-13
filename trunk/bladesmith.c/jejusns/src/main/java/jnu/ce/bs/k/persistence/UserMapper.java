@@ -28,4 +28,6 @@ public interface UserMapper {
 	public void follow(Map<String, String> map);
 
 	public void unfollow(Map<String, String> map);
+
+	public List<User> findFollwingByUserId(String id);
 }
