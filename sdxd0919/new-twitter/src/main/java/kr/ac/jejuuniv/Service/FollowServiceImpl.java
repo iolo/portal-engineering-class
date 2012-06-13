@@ -1,13 +1,11 @@
 package kr.ac.jejuuniv.Service;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import kr.ac.jejuuniv.Model.Follow;
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Repository.FollowRepository;
-import kr.ac.jejuuniv.Repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +17,6 @@ public class FollowServiceImpl implements FollowService {
 	private FollowRepository followRepository;
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private UserRepository userRepository;
 
 	public FollowServiceImpl() {
 	}
@@ -92,7 +88,7 @@ public class FollowServiceImpl implements FollowService {
 
 	public List<Follow> checkAllUsers(int userNum) {
 		List<Integer> followingUserNumList = followRepository.getFollowingUserNumList(userNum); 
-		List<User> allUsers = userRepository.getAllUser();
+		List<User> allUsers = userService.getAllUser();
 		allUsers.remove(userNum - 1);
 		
 		List<Follow> allUserLists = new ArrayList<Follow>();
