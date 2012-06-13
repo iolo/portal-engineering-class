@@ -1,4 +1,4 @@
-package kr.ac.jejuuniv.repository;
+package kr.ac.jejuuniv.dao;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 					 "classpath:/hibernate.cfg.xml"
 		})
 @Transactional
-public class UserRespositoryTest {
+public class UserDaoTest {
 	private HibernateTemplate hibernateTemplate;
 	
 	@Autowired

@@ -20,10 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.ac.jejuuniv.exception.UserNotFoundException;
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
-import kr.ac.jejuuniv.repository.UserRepository;
+import kr.ac.jejuuniv.repository.UserDao;
 
 @Repository
-public class UserRepositoryImpl implements UserRepository {
+public class UserDaoImpl implements UserDao {
 
 	private HibernateTemplate hibernateTemplate;
 	
@@ -108,12 +108,15 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	public User insertUser(User user, MultipartFile file) throws IOException {
-		byte[] byteFile = file.getBytes();
-		File imgFile = new File("/Users/jinsoohan/Documents/Projects/new-jeju-sns/src/main/webapp/resources/images/"+file.getOriginalFilename());
-		FileOutputStream fos;
-		fos = new FileOutputStream(imgFile);
-		fos.write(byteFile);
-		fos.close();
+		System.out.println(file.getOriginalFilename());
+		if(!file.isEmpty()) {
+			byte[] byteFile = file.getBytes();
+			File imgFile = new File("/Users/jinsoohan/Documents/Projects/new-jeju-sns/src/main/webapp/resources/images/"+file.getOriginalFilename());
+			FileOutputStream fos;
+			fos = new FileOutputStream(imgFile);
+			fos.write(byteFile);
+			fos.close();
+		}
 		hibernateTemplate.save(user);
 		return user;
 	}

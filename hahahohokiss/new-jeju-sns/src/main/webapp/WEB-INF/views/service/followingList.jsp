@@ -15,7 +15,7 @@
 	<div id="Header">
 		<p>
 			<label id="${loginUser.username}">${loginUser.username}( ${loginUser.explanation} )</label>
-			<a href="javascript:window.open('/service/tweetWriteForm', 'test','width = 300px, height=200px')"><input type="button" value="글쓰기" /></a>
+			<a href="javascript:window.open('/service/tweetWriteForm', 'tweet','width = 300px, height=200px')"><input type="button" value="글쓰기" /></a>
 			<a href="/service/followingList"><input type="button" value="Following" /></a>
 			<a href="/service/followerList"><input type="button" value="Follower" /></a>
 			<a href="/service/allUserList"><input type="button" value="전체사용자" /></a>
