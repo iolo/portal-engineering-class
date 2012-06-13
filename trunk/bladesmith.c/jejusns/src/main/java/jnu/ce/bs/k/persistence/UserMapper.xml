@@ -38,4 +38,12 @@
 	<select id="findFollowUserByID" parameterType="String" resultType="jnu.ce.bs.k.model.Follow">
 		SELECT * FROM follow WHERE follower_id=#{followerID}
 	</select>
+	
+	<insert id="follow" parameterType="java.util.Map">
+		INSERT INTO follow(follower_id, following_id) values(#{userId}, #{followId})
+	</insert>
+	
+	<delete id="unfollow" parameterType="java.util.Map">
+		DELETE FROM follow WHERE follower_id=#{userId} AND following_id=#{followId}
+	</delete>
 </mapper>

@@ -37,13 +37,13 @@
 						<td><c:choose>
 								<c:when test="${user.userNum == 'true'}">
 									<form action="unfollow" method="post">
-										<input type="hidden" value="${user.id}" name="id"></input>
+										<input type="hidden" value="${user.id}" name="userId"></input>
 										<input type="submit" value="unFollow"></input>
 									</form>
 								</c:when>
 								<c:otherwise>
 									<form action="follow" method="post">
-										<input type="hidden" value="${user.id}" name="id"></input>
+										<input type="hidden" value="${user.id}" name="userId"></input>
 										<input type="submit" value="follow"></input>
 									</form>
 								</c:otherwise>

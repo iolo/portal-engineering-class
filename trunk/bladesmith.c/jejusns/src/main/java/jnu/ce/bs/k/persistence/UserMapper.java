@@ -24,4 +24,8 @@ public interface UserMapper {
 	public List<User> findAllUser();
 
 	public List<Follow> findFollowUserByID(String followerID);
+
+	public void follow(Map<String, String> map);
+
+	public void unfollow(Map<String, String> map);
 }
