@@ -9,24 +9,22 @@
 	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-	<div>
-		개인 트윗 관리
-	</div>
-	<div>
+
+	<div class = "menu">
 	<p>
 		<input type="button" value="${user.name}"
 							onclick="location.href='/personal'"; />
 		<input type="button" value="프로필 수정"
 							onclick="location.href='/modify'"; />
 		<input type="button" value="글쓰기"
-		onclick="window.open('/write','win','width=350,height=250,toolbar=0,scrollbars=0,resizable=0')"; />
+		onclick="window.open('/write','win','width=400,height=380,toolbar=0,scrollbars=0,resizable=0')" ; />
 		<input type="button" value="메인화면" onclick="location.href='/main'" ; />
 	</p>
 	</div>
 	
-	<div>
+	<div class = "show">
 		<table>
-			<caption>사용자 목록</caption>
+			<caption>내 글</caption>
 			<thead>
 				<tr>
 					<th>사용자</th>
