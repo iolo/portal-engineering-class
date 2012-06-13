@@ -15,7 +15,7 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/resources/**/*" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -33,11 +33,12 @@
 	</interceptors>
 
 	<view-controller path="/" view-name="login" />
-	<view-controller path="/service" view-name="/service/personSNS" />
+	<view-controller path="/service/" view-name="/service/personSNS" />
 
 
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="UTF-8"></beans:property>
 	</beans:bean>
 
 	<!-- Imports user-defined @Controller beans that process client requests 

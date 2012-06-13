@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="Header">
-		<label>제주 SNS 오신것을 환영합니다.</label>
+		<h3>제주 SNS 오신것을 환영합니다.</h3>
 		<p>
 			<img src="/twitter/resources/main.png" />
 		</p>

@@ -1,11 +1,14 @@
 package kr.ac.jejuuniv.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import kr.ac.jejuuniv.Model.Tweet;
+import kr.ac.jejuuniv.Model.User;
+import kr.ac.jejuuniv.Model.UserTweet;
 import kr.ac.jejuuniv.Repository.TweetRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,8 @@ public class TweetServiceImpl implements TweetService {
 	
 	@Autowired
 	private TweetRepository tweetRepository;
+	@Autowired
+	private UserService userService;
 
 	public TweetServiceImpl() {
 	}
@@ -42,6 +47,19 @@ public class TweetServiceImpl implements TweetService {
 		
 		tweetRepository.insert(tweet);
 	}
-	
 
+	public List<UserTweet> getUserTweet(int userNum) {
+		List<Integer> tweetSeq = tweetRepository.getTweetSeq(userNum);
+		List<UserTweet> userTweets = new ArrayList<UserTweet>();
+		
+		for(int i=0; i<tweetSeq.size(); i++){
+			int seq = tweetSeq.get(i);
+			
+			Tweet tweet = tweetRepository.getTweetBySeq(seq);
+			User user = userService.getUser(tweet.getUserNum());
+			userTweets.add(new UserTweet(tweet, user));
+		}
+		
+		return userTweets;
+	}
 }

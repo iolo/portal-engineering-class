@@ -14,7 +14,7 @@
 <body>
 	<div id="ProfileContent">
 		<form:form name="profileForm" modelAttribute="user" action="/twitter/service/profileSave" 
-								method="post"  enctype="multipart/form-data" acceptCharset="UTR-8"> 
+								method="post"  enctype="multipart/form-data"> 
 			<fieldset>
 				<legend>사용자 정보 수정</legend>
 				<form:hidden path="userNum"/>

@@ -16,7 +16,6 @@
 		<h1>Follower</h1>
 		<p>
 			<label>${user.name}(${user.description })</label>
-			<a href="/twitter/service/write"><input type="button" value="글쓰기" /></a>
 			<a href="/twitter/service/followingList"><input type="button" value="Following" /></a>
 			<a href="/twitter/service/allUserList"><input type="button" value="전체사용자" /></a>
 			<a href="/twitter/service/SNS"><input type="button" value="메인페이지" /></a>
