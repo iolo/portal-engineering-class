@@ -92,6 +92,11 @@ public class Ssiggle implements Serializable {
 	}
 
 	public void delete() {
+		if (ssiggleMapper.selectSsiggleById(getId()) == null) {
+			throw new SsiggleDeleteException("지우시려는 Ssiggle " + getId()
+					+ " (이)가 존재하지 않습니다");
+		}
+
 		ssiggleMapper.deleteSsiggleById(this.getId());
 	}
 
