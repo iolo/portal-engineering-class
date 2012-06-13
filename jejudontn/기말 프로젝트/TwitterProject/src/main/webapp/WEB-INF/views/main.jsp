@@ -10,8 +10,7 @@
 	media="all" />
 </head>
 <body>
-	<div>개인 트윗 관리</div>
-	<div>
+	<div class ="menu">
 		<p>
 			<input type="button" value="${user.name}"
 				onclick="location.href='/personal'" ; /> <input type="button"
@@ -25,9 +24,9 @@
 		</p>
 	</div>
 
-	<div>
+	<div class="show">
 		<table>
-			<caption>SNS MAIN</caption>
+			<caption>Twitt</caption>
 			<thead>
 				<tr>
 					<th>사용자</th>

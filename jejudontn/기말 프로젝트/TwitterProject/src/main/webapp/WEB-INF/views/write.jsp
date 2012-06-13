@@ -9,9 +9,6 @@
 </head>
 <body>
 	<div>
-	글쓰기
-	</div>
-	<div>
 		<form action="write/save" method="post">
 			<fieldset>
 				<legend>글쓰기</legend>

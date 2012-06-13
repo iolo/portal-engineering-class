@@ -4,33 +4,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 <title>Login Page</title>
 </head>
 <body>
-	<div>
-		<h2>제주 SNS에 오신것을 환영합니다.</h2>
+	<div id = "LoginImage">
+		<img src="/resources/Image/index.png" />
 	</div>
-	<div>
-		<img src="/resources/Image/index.jpg" />
-	</div>
-	<div>
+	<div class ="LoginPannel">
 	<form action="index/login" method="post">
-		<fieldset>
+		
 			<p>
 				<label>ID</label>
 				<input type="text" name="id" />
 			</p>
 			<p>
-				<label>Password</label>
+				<label>PW</label>
 				<input type="password" name="password" />
 			</p>
-			<p>
+			<p id ="LoginButton">
 				<input type="submit" value="로그인" />
 				
 					<input type="button" value="회원가입"
 						onclick="location.href='/create'" />
 			</p>
-		</fieldset>
+	
 	</form>
 	</div>
 	

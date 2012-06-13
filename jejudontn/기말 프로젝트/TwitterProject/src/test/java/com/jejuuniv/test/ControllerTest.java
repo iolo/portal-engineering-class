@@ -1,6 +1,6 @@
 package com.jejuuniv.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import kr.ac.jejuuniv.controller.AllUserController;
 import kr.ac.jejuuniv.model.User;
 
@@ -14,10 +14,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:src/main/webapp/WEB-INF/servlet-context.xml", "classpath:src/main/webapp/WEB-INF/root-context.xml"})
+@ContextConfiguration(locations = {"classpath:webapp/WEB-INF/web.xml"})
 public class ControllerTest {
 
-
+	
 	@Autowired
 	AllUserController allUserController;
 	
@@ -39,6 +39,5 @@ public class ControllerTest {
 		assertEquals(result, "redirect:/alluser");
 		
 	}
-	
 
 }

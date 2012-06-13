@@ -9,10 +9,8 @@
 	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-	<div>
-		모든 사용자
-	</div>
-	<div>
+
+	<div class="menu">
 	<p>
 			<input type="button" value="${user.name}"
 				onclick="location.href='/personal'" ; /> <input type="button"
@@ -26,9 +24,9 @@
 		</p>
 	</div>
 	
-	<div>
+	<div class ="show">
 		<table>
-			<caption>following</caption>
+			<caption>전체 사용자</caption>
 			<thead>
 				<tr>
 					<th>사용자</th>

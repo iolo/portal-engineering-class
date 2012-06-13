@@ -9,10 +9,8 @@
 	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-	<div>
-		Following
-	</div>
-	<div>
+
+	<div class ="menu">
 <p>
 			<input type="button" value="${user.name}"
 				onclick="location.href='/personal'" ; /> <input type="button"
@@ -26,7 +24,7 @@
 		</p>
 	</div>
 	
-	<div>
+	<div class = "show">
 		<table>
 			<caption>following</caption>
 			<thead>
