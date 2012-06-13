@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="login">
-		<form action="modify" method="post">
+		<form action="modify" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>사용자 수정</legend>
 				<p>
@@ -31,7 +31,7 @@
 				</p>
 				<p>
 					<label>프로필 이미지</label>
-					<input type="text" name="profile" /><input type="button" value="찾아보기" />
+					<input type="file" name="profile" />
 				</p>
 				<p>
 					<input type="submit" value="수정" /><input type="button" value="취소" onclick="self.history.go(-1)">

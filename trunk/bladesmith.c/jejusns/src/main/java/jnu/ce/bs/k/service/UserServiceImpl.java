@@ -1,5 +1,6 @@
 package jnu.ce.bs.k.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import jnu.ce.bs.k.persistence.UserMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,10 +22,27 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void createUser(String id, String password, String name,
-			String description, String profile) {
+			String description, MultipartFile profile) {
 
-		User user = new User(id, password, name, description, profile);
+		User user = new User(id, password, name, description,
+				profile.getOriginalFilename());
+		
+		saveImage(profile);
+		
 		userMapper.addUser(user);
+	}
+
+	public String saveImage(MultipartFile profile) {
+		String fileURL = profile.getOriginalFilename();
+
+		File file = new File("E:\\개인자료\\spring\\profile\\" + fileURL);
+		try {
+			profile.transferTo(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return fileURL;
 	}
 
 	@Override
@@ -102,10 +121,10 @@ public class UserServiceImpl implements UserService {
 		List<Follow> follows = new ArrayList();
 		follows = userMapper.findFollowUserByID(id);
 
-		for(int i=0; i<users.size(); i++){
+		for (int i = 0; i < users.size(); i++) {
 			users.get(i).setUserNum("true");
 		}
-		
+
 		return users;
 	}
 
@@ -117,14 +136,15 @@ public class UserServiceImpl implements UserService {
 		List<Follow> follows = new ArrayList();
 		follows = userMapper.findFollowUserByID(id);
 
-		for(int i=0; i<users.size(); i++){
-			for(int count=0; count<follows.size(); count++){
-				if(users.get(i).getId().equals(follows.get(count).getFollowing_id())){
+		for (int i = 0; i < users.size(); i++) {
+			for (int count = 0; count < follows.size(); count++) {
+				if (users.get(i).getId()
+						.equals(follows.get(count).getFollowing_id())) {
 					users.get(i).setUserNum("true");
 				}
 			}
 		}
-		
+
 		return users;
 	}
 
