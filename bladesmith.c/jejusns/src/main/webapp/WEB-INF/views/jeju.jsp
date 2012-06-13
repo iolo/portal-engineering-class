@@ -4,18 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>사용자 등록</title>
-<link href="/user/resources/jeju.css" rel="stylesheet" type="text/css"
-	media="all" />
+<title>jejuSNS</title>
+<link href="/user/resources/jeju.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-	<div id="Header">제주SNS에 오신것을 환영합니다.</div>
+	<div id="Header"><a href="jeju.bs">제주SNS</a>에 오신것을 환영합니다.</div>
 	<div id="main">
 		<fieldset>
 			<p>
-				<label>${User.name}(${User.description})</label> 
+				<label><a href="myjeju.bs">${User.name}(${User.description})</a></label>
 				<input type="button" value="글쓰기" onclick="window.open('write.bs')" />
-				<input type="button" value="Following" onclick=""> 
+				<input type="button" value="Following" onclick="">
 				<input type="button" value="Follower" onclick=""> 
 				<input type="button" value="전체사용자" onclick="location.href='users.bs'">
 			</p>

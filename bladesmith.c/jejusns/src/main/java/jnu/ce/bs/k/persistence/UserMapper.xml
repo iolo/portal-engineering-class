@@ -34,4 +34,8 @@
 	<delete id="deleteNoteByWriteNum" parameterType="String">
 		DELETE FROM Note WHERE write_num=#{write_num}
 	</delete>
+	
+	<select id="findFollowUserByID" parameterType="String" resultType="jnu.ce.bs.k.model.Follow">
+		SELECT * FROM follow WHERE follower_id=#{followerID}
+	</select>
 </mapper>
