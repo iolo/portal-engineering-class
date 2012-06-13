@@ -29,7 +29,7 @@ public class SsiggleMapperIntegralTest {
 		System.out.println(ssiggle.getUser());
 	}
 
-	@Test
+//	@Test
 	public void testSsiggleInsert() {
 		Ssiggle ssiggle = new Ssiggle();
 		ssiggle.setText("Jnit 테스트 입니다.");
