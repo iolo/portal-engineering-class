@@ -39,15 +39,6 @@ public class SsiggleMapperIntegralTest {
 	}
 
 	// @Test
-	public void testUpdateSsiggle() {
-		Ssiggle ssiggle = new Ssiggle();
-		ssiggle.setId(9);
-		ssiggle.setText("반갑습니다.");
-
-		ssiggleMapper.updateSsiggle(ssiggle);
-	}
-
-	// @Test
 	public void testDeleteSsiggle() {
 		ssiggleMapper.deleteSsiggleById(10);
 	}

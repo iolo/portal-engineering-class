@@ -54,8 +54,17 @@ public class SsiggleTest {
 		assertThat(list.get(1).getId(), is(1L));
 	}
 
+	@Test(expected = SsiggleExistException.class)
+	public void testSaveSsiggleFail() {
+		when(ssiggleMapper.selectSsiggleById(0L)).thenReturn(new Ssiggle());
+
+		Ssiggle ssiggle = new Ssiggle(ssiggleMapper);
+		ssiggle.setId(0);
+		ssiggle.save();
+	}
+
 	@Test
-	public void testInsertSsiggle() {
+	public void testSaveSsiggle() {
 		final Ssiggle repoSsiggle = new Ssiggle(ssiggleMapper);
 		when(ssiggleMapper.selectSsiggleById(0)).thenAnswer(
 				new Answer<Ssiggle>() {
@@ -157,44 +166,5 @@ public class SsiggleTest {
 
 		Ssiggle ssiggle = new Ssiggle(ssiggleMapper).findSsiggleById(1);
 		assertThat(ssiggle.getId(), is(1L));
-	}
-
-	@Test
-	public void testUpdateSsiggle() {
-		final Ssiggle s = new Ssiggle(ssiggleMapper);
-		s.setId(0);
-		s.setText("abcd");
-
-		when(ssiggleMapper.selectSsiggleById(0)).thenAnswer(
-				new Answer<Ssiggle>() {
-					@Override
-					public Ssiggle answer(InvocationOnMock invocation)
-							throws Throwable {
-						Ssiggle item = new Ssiggle(ssiggleMapper);
-						item.setId(s.getId());
-						item.setText(s.getText());
-
-						return item;
-					}
-				});
-		doAnswer(new Answer<Void>() {
-			@Override
-			public Void answer(InvocationOnMock invocation) throws Throwable {
-				Ssiggle param = (Ssiggle) invocation.getArguments()[0];
-				s.setText(param.getText());
-				return null;
-			}
-		}).when(ssiggleMapper).updateSsiggle(s);
-
-		Ssiggle oldSsiggle = s.findSsiggleById(0);
-		assertThat(oldSsiggle.getId(), is(0L));
-		assertThat(oldSsiggle.getText(), is("abcd"));
-
-		s.setText("changed");
-		s.save();
-
-		Ssiggle newSsiggle = s.findSsiggleById(0);
-		assertThat(newSsiggle.getId(), is(0L));
-		assertThat(newSsiggle.getText(), is("changed"));
 	}
 }

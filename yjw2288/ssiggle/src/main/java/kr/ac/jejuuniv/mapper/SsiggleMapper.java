@@ -11,7 +11,5 @@ public interface SsiggleMapper {
 
 	void insertSsiggle(Ssiggle s);
 
-	void updateSsiggle(Ssiggle s);
-
 	List<Ssiggle> selectSsiggleListByUserIdDescTime(String userId);
 }
