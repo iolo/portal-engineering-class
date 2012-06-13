@@ -28,7 +28,7 @@
 	</insert>
 	
 	<update id="UserUpdate" parameterType="kr.ac.jejunu.rabbit.model.User"> 
-		update userinfo set name=#{name}, password=#{password} where userid = #{userid}
+		update userinfo set name=#{name}, password=#{password}, introduce=#{introduce}, image=#{imageURL} where userid = #{userid}
 	</update>
 	
 	<delete id="UserDelete" parameterType="kr.ac.jejunu.rabbit.model.User">

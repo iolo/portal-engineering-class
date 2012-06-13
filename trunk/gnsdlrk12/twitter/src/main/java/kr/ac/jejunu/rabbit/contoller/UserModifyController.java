@@ -16,15 +16,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/userjoin")
-public class UserJoin {
+@RequestMapping("/userModify")
+public class UserModifyController {
 	@Autowired
 	UserService userService;
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String userReg(@ModelAttribute User user, MultipartFile image) throws FileNotFoundException, IOException{
+		
 		saveImage(user, image);
-		userService.UserInsert(user);
+		
+		
+		userService.UserModify(user);
 
 		return "finish";		
 	}
@@ -32,11 +35,9 @@ public class UserJoin {
 	public void saveImage(User user, MultipartFile image) throws IOException, FileNotFoundException {
 		String fileType = getFileType(image);
 
-		File imageFile = new File("/Users/jeongjaehun/Documents/springworkspace/twitter/src/main/webapp/resources/"
+		File imageFile = new File("/Users/jeongjaehun/Documents/springworkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/twitter/resources/"
 				+ user.getUserid() + fileType);
 
-		
-		
 		if (imageFile.exists()) {
 			imageFile.delete();
 		}
@@ -45,8 +46,14 @@ public class UserJoin {
 		FileOutputStream fos = new FileOutputStream(imageFile);
 		fos.write(image.getBytes());
 		fos.close();
-
-		user.setImageURL(user.getUserid() + fileType);
+		
+		if(image == null || image.isEmpty()){
+			user.setImageURL("nullRegImage" + fileType);
+		}
+		else{
+			user.setImageURL(user.getUserid() + fileType);
+		}
+		
 	}
 	
 	private String getFileType(MultipartFile image) {
@@ -59,6 +66,9 @@ public class UserJoin {
 		}
 		else if (image.getContentType().equals("image/png")) {
 			file = ".png";
+		}
+		else if (image.isEmpty()){
+			file = ".jpg";
 		}
 		return file;
 	}

@@ -24,4 +24,6 @@ public interface UserService {
 	void following(String userid, String followerid);
 
 	boolean Login(String userid, String password);
+
+	void UserModify(User user);
 }

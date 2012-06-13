@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/join")
-public class MemberJoinController {
+public class UserJoinConnectionController {
 	@RequestMapping
-	public String memberjoin(Model model){
+	public String userJoin(Model model){
 		model.addAttribute("user", new User());
 		return "memberJoin";
 	}

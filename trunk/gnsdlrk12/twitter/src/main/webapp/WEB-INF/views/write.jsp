@@ -14,22 +14,16 @@
 </head>
 <body>
 	<div>
-	글쓰기
-	</div>
-	<div>
 		<form action="save" method="post">
-			<fieldset>
 				<legend>글쓰기</legend>
 				<p>
-					<label>글쓰기</label>
-					<textarea rows="10" cols="40" name="content"></textarea>
+					<textarea width=300px rows="10" cols="40" name="content"></textarea>
 				</p>
 				<p>
 					<input type="hidden" value="${userId}" name="userId"/>
 					<input type="submit" value="저장"/>
 					<input type="button" value="취소" onclick="postclose();" />
 				</p>
-			</fieldset>
 		</form>
 	</div>
 </body>
