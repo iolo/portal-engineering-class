@@ -22,6 +22,7 @@ public class AllUserController {
 	
 	@RequestMapping
 	public List<User> action(@ModelAttribute("User") User user){
-		return userService.findAllUser(user);
+
+		return userService.findFollowUserById(user);
 	}
 }

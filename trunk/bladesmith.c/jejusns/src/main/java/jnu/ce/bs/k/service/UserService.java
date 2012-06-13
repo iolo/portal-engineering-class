@@ -20,4 +20,6 @@ public interface UserService {
 	void modifyUser(String name, String password, String description,
 			String profile, User user);
 
+	List<User> findFollowUserById(User user);
+
 }

@@ -4,17 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>사용자 등록</title>
+<title>jejuSNS</title>
 <link href="/user/resources/jeju.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>
-	<div id="Header">제주SNS에 오신것을 환영합니다.</div>
+	<div id="Header"><a href="jeju.bs">제주SNS</a>에 오신것을 환영합니다.</div>
 	<div id="main">
 		<fieldset>
 			<p>
-
-				<label>${User.name}(${User.description})</label> 
+				<label><a href="myjeju.bs">${User.name}(${User.description})</a></label> 
 				<input type="button" value="프로필 수정" onclick="location.href='modify.bs'">
 				<input type="button" value="글쓰기" onclick="window.open('write.bs')" />
 			</p>
@@ -34,7 +33,7 @@
 						<td>${note.writer}</td>
 						<td>${note.note}</td>
 						<td>
-						<button id="delete" value="삭제" onclick="location.href='remove?write_num=${note.write_num}'"></button></td>
+						<button id="delete" value="delete" type="button" onclick="location.href='remove?write_num=${note.write_num}'">삭제</button></td>
 						<td>${note.write_date}</td>
 					</tr>
 				</c:forEach>

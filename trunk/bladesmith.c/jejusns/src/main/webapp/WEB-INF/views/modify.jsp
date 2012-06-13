@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>사용자 등록</title>
+<title>사용자 수정</title>
 <link href="/user/resources/create.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
@@ -12,7 +12,7 @@
 	<div id="login">
 		<form action="modify" method="post">
 			<fieldset>
-				<legend>사용자 등록</legend>
+				<legend>사용자 수정</legend>
 				<p>
 					<label>아이디</label>
 					<input type="text" name="id" value="${User.id}" readonly="readonly"/>

@@ -3,6 +3,7 @@ package jnu.ce.bs.k.persistence;
 import java.util.List;
 import java.util.Map;
 
+import jnu.ce.bs.k.model.Follow;
 import jnu.ce.bs.k.model.Note;
 import jnu.ce.bs.k.model.User;
 
@@ -21,4 +22,6 @@ public interface UserMapper {
 	public void modifyUser(User user);
 
 	public List<User> findAllUser();
+
+	public List<Follow> findFollowUserByID(String followerID);
 }

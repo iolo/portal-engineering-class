@@ -4,6 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>글쓰기</title>
+<script type="text/javascript">
+function parentWindowReload(){
+	window.close();
+	parent.window.opener.location.href="javascript:location.reload(true)";
+}
+</script>
 </head>
 <body>
 	<div id="main">
@@ -12,7 +18,7 @@
 			<legend>글쓰기</legend>
 			<p>
 				<textarea name="note" rows="6" cols="60"></textarea><br />
-				<input type="submit" value="작성" onclick="self.close()"/>
+				<input type="submit" value="작성" onclick="parentWindowReload()"/>
 				<input type="button" value="취소" onclick="self.close()"> 
 			</p>
 		</fieldset>

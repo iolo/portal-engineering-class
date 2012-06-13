@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import jnu.ce.bs.k.model.Follow;
 import jnu.ce.bs.k.model.Note;
 import jnu.ce.bs.k.model.User;
 import jnu.ce.bs.k.persistence.UserMapper;
@@ -60,6 +61,25 @@ public class UserServiceImpl implements UserService {
 		user.setProfile(profile);
 		
 		userMapper.modifyUser(user);
+	}
+
+	@Override
+	public List<User> findFollowUserById(User user) {
+		List<Follow> follows = new ArrayList();
+		follows = userMapper.findFollowUserByID(user.getId());
+		
+		List<User> users = new ArrayList(); 
+		users = findAllUser(user);
+		
+		for(int count=0; count<users.size(); count++){
+			for(int followcount=0; followcount<follows.size(); followcount++){
+				if(users.get(count).getId().equals(follows.get(followcount).getFollowing_id())){
+					users.get(count).setUserNum("true");
+				}
+			}
+		}
+		
+		return users;
 	}
 
 }
