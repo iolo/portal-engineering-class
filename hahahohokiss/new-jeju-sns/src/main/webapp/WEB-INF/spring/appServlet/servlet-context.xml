@@ -26,7 +26,9 @@
 	
 	<context:component-scan base-package="kr.ac.jejuuniv" />
 	
-<!-- 	<view-controller path="/" view-name="login"/> -->
+	<view-controller path="/" view-name="login"/>
+	<view-controller path="/signupform" view-name="signupform"/>
+	<view-controller path="/service/tweetWriteForm" view-name="service/tweetWriteForm"/>
 	
 	<resources mapping="/resources/**" location="/resources/" />
 	

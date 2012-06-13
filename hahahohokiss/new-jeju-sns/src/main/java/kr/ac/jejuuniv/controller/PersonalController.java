@@ -8,17 +8,13 @@ import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/service/personalSns")
-public class PersonalController {
-	@Autowired
-	UserService userService;
-	
+public class PersonalController extends BaseFormController {
 	public PersonalController(UserService userService) {
 		this.userService = userService;
 	}

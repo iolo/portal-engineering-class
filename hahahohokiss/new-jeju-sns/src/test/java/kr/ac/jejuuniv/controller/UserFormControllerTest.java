@@ -6,18 +6,15 @@ import kr.ac.jejuuniv.model.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.web.servlet.ModelAndView;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserFormControllerTest {
+public class UserFormControllerTest extends BaseFormControllerTest {
 	
 	UserFormController userFormController;
 	
-	@Mock
-	MockHttpSession session;
 	
 	@Test
 	public void testUserFormAction() {

@@ -39,38 +39,33 @@ public class UserRespositoryTest {
 	}
 	@Test
 	public void testFindUserByUserId() {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		assertThat(user.getLoginId(), is("hahahohokiss"));
 	}
 	
 	@Test
 	public void testFindPasswordByUserId() {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		assertThat(user.getPassword(), is("password"));
 	}
 	
 	@Test
 	public void testFindTweetByUserId()	{
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		List<Tweet> tweets = user.getTweets();
 		assertTrue(tweets.size() > 0);
 	}
 	
 	@Test
 	public void testFindFollowingUserByUserId() {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		List<User> followingUser = user.getFollowing();
 		assertTrue(followingUser.size() > 0);
 	}
 	
 	@Test
 	public void testFindFollowerUserByUserId() {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		List<User> follower = user.getFollower();
 		assertTrue(follower.size() > 0);
 	}
@@ -83,8 +78,7 @@ public class UserRespositoryTest {
 	
 	@Test
 	public void testFindFollowingUserTweetByFollowingUser() {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		List<User> followingUser = user.getFollowing();
 		List<Tweet> getTweets = new ArrayList<Tweet>();
 		List<Tweet> resultTweets = new ArrayList<Tweet>();
@@ -101,8 +95,7 @@ public class UserRespositoryTest {
 	
 	@Test
 	public void testUpdateUser() {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		user.setUsername("change");
 		hibernateTemplate.merge(user);
 	}
@@ -112,8 +105,7 @@ public class UserRespositoryTest {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
 		String date = simpleDateFormat.format(new Date());
 		
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		Tweet tweet = new Tweet();
 		tweet.setContents("AAA");
 		tweet.setDate(date);
@@ -142,8 +134,7 @@ public class UserRespositoryTest {
 	public void testDeleteTweet() {
 		int tweetId = 0;
 		
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
-		User user = users.get(0);
+		User user = findUserByLoginId();
 		List<Tweet> tweets = user.getTweets();
 		for(Iterator i = tweets.iterator(); i.hasNext();) {
 			Tweet tweet =(Tweet) i.next();
@@ -151,6 +142,11 @@ public class UserRespositoryTest {
 				hibernateTemplate.delete(tweet);
 			}
 		}
-		
+	}
+	
+	private User findUserByLoginId() {
+		List<User> users = hibernateTemplate.find("from User where login_id = ?", "hahahohokiss");
+		User user = users.get(0);
+		return user;
 	}
 }

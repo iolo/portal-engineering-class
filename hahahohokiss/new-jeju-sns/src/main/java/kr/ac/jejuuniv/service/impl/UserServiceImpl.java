@@ -2,8 +2,11 @@ package kr.ac.jejuuniv.service.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import kr.ac.jejuuniv.exception.SignupException;
+import kr.ac.jejuuniv.exception.UserNotFoundException;
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
@@ -28,11 +31,20 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public User getUser(String userId) {
-		return userRepository.findUserByUserId(userId);
+		User user = userRepository.findUserByUserId(userId);
+		if(user != null) {
+			return userRepository.findUserByUserId(userId);
+		} else {
+			throw new UserNotFoundException();
+		}
 	}
 
 	public String getPassword(String userId) {
-		return userRepository.findPasswordByUserId(userId);
+		if(userRepository.findUserByUserId(userId) != null) {
+			return userRepository.findPasswordByUserId(userId);
+		} else {
+			throw new UserNotFoundException();
+		}
 	}
 
 	public List<Tweet> getTweets(String userId) {
@@ -71,6 +83,13 @@ public class UserServiceImpl implements UserService {
 		List<User> followingUsers = userRepository.findFollowingUserByUserId(userId);
 		List<User> allUser = userRepository.findAllUser();
 		
+		for(Iterator i = allUser.iterator(); i.hasNext();) {
+			User user = (User) i.next();
+			if(user.getLoginId().equals(userId)) {
+				i.remove();
+			}
+		}
+		
 		for(int i=0; i<allUser.size(); i++) {
 			boolean flag = false;
 			for(int j=0; j<followingUsers.size(); j++) {
@@ -94,7 +113,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User modifyUser(User user) {
-		return userRepository.updateUser(user);
+		User getUser = userRepository.findUserByUserId(user.getLoginId());
+		if(getUser != null) {
+			return userRepository.updateUser(user);
+		} else {
+			throw new UserNotFoundException();
+		}
 	}
 
 	public void addFollow(String followId, String followingId) {
@@ -110,6 +134,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User addUser(User user, MultipartFile file) throws IOException {
+		if(user.getLoginId() == null) 
+			throw new SignupException();
+		if(user.getPassword() == null) 
+			throw new SignupException();
+		if(user.getUsername() == null)
+			throw new SignupException();
 		return userRepository.insertUser(user, file);
 	}
 

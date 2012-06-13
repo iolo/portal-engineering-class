@@ -6,19 +6,15 @@ import javax.servlet.http.HttpSession;
 
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserDto;
-import kr.ac.jejuuniv.service.UserService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/service/followerList")
-public class FollowerListController {
+public class FollowerListController extends BaseFormController {
 
-	@Autowired
-	UserService userService;
 	
 	@RequestMapping
 	public ModelAndView action(HttpSession session) {

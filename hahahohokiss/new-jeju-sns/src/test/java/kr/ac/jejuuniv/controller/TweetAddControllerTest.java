@@ -3,24 +3,16 @@ package kr.ac.jejuuniv.controller;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import kr.ac.jejuuniv.model.User;
-import kr.ac.jejuuniv.service.UserService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.mock.web.MockHttpSession;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TweetAddControllerTest {
+public class TweetAddControllerTest extends BaseFormControllerTest {
 	
 	TweetAddController tweetAddController;
-	
-	@Mock
-	UserService userService;
-	
-	@Mock
-	MockHttpSession session;
 	
 	@Test
 	public void testAddTweet() {
