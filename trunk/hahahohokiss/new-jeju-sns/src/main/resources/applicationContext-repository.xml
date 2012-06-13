@@ -24,5 +24,4 @@
 	 <bean id="transactionManager" 
           class="org.springframework.orm.hibernate3.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory" />
-	<!-- class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"> -->
 </beans>

@@ -9,7 +9,7 @@ import kr.ac.jejuuniv.exception.SignupException;
 import kr.ac.jejuuniv.exception.UserNotFoundException;
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
-import kr.ac.jejuuniv.repository.UserRepository;
+import kr.ac.jejuuniv.repository.UserDao;
 import kr.ac.jejuuniv.service.UserDto;
 import kr.ac.jejuuniv.service.UserService;
 
@@ -20,9 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
-	UserRepository userRepository;
+	UserDao userRepository;
 	
-	public UserServiceImpl(UserRepository userRepository) {
+	public UserServiceImpl(UserDao userRepository) {
 		this.userRepository = userRepository;
 	}
 
@@ -134,12 +134,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User addUser(User user, MultipartFile file) throws IOException {
-		if(user.getLoginId() == null) 
+		if(user.getLoginId().isEmpty() || user.getPassword().isEmpty() || user.getUsername().isEmpty()) 
 			throw new SignupException();
-		if(user.getPassword() == null) 
-			throw new SignupException();
-		if(user.getUsername() == null)
-			throw new SignupException();
+		if(file.isEmpty()) {
+			user.setImgUrl("/resources/images/default.jpg");
+		} else {
+			user.setImgUrl("/resources/images/"+file.getOriginalFilename());
+		}
 		return userRepository.insertUser(user, file);
 	}
 

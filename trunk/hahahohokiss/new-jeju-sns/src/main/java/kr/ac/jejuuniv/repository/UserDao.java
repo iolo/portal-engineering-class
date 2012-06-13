@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
 
-public interface UserRepository {
+public interface UserDao {
 
 	User findUserByUserId(String userId);
 

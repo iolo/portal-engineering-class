@@ -15,7 +15,6 @@ public class SingupController extends BaseFormController {
 	
 	@RequestMapping
 	public String test(User user, @RequestParam("file") MultipartFile file) throws IOException {
-		user.setImgUrl("/resources/images/"+file.getOriginalFilename());
 		userService.addUser(user, file);
 		return "redirect:/";
 	}

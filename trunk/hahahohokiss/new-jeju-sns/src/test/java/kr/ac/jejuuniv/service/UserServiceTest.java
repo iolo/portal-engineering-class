@@ -13,7 +13,7 @@ import kr.ac.jejuuniv.exception.SignupException;
 import kr.ac.jejuuniv.exception.UserNotFoundException;
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
-import kr.ac.jejuuniv.repository.UserRepository;
+import kr.ac.jejuuniv.repository.UserDao;
 import kr.ac.jejuuniv.service.impl.UserServiceImpl;
 
 import org.junit.Before;
@@ -45,7 +45,7 @@ public class UserServiceTest {
 	*/
 	
 	@Mock
-	UserRepository userRepository;
+	UserDao userRepository;
 	
 	UserService userService;
 	
