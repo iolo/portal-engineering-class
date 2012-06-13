@@ -11,7 +11,7 @@
 		사용자 등록
 	</div>
 	<div>
-		<form action="/join"  method="post"  enctype="multipart/form-data">
+		<form action="userjoin"  method="post">
 			<fieldset>
 				<legend>회원가입</legend>
 				<p>
@@ -28,12 +28,12 @@
 				</p>
 				<p>
 					<label>설명 </label>
-					<input type="text" name="information" />
+					<input type="text" name="introduce" />
 				</p>
-				<p>
+				<!-- <p>
 					<label>프로필이미지 </label>
 					<input type="file" name="image" />
-				</p>
+				</p> -->
 				<p>
 					<input type="submit" value="등록" />
 					<input type="button" value="취소" onclick="location.href='/'" />

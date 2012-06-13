@@ -24,7 +24,7 @@
 	</select>
 	
 	<insert id="UserInsert" parameterType="kr.ac.jejunu.rabbit.model.User">
-		insert into userinfo(userid, name, password) values(#{userid}, #{name}, #{password})
+		insert into userinfo(userid, name, password, introduce, image) values(#{userid}, #{name}, #{password}, #{introduce}, #{image})
 	</insert>
 	
 	<update id="UserUpdate" parameterType="kr.ac.jejunu.rabbit.model.User"> 
