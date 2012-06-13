@@ -26,6 +26,9 @@ public class TwitterServiceImpl implements TwitterService{
 		twitterRepoistory.writeTwitt(twittModel);
 	}
 	
+	public void deleteMyTwitt(int twinum) {
+		twitterRepoistory.deleteMyTwitt(twinum);
+	}
 	
 	public List<FollowingModel> getFollowingList(String id){
 		return twitterRepoistory.getFollowingById(id);
@@ -39,5 +42,9 @@ public class TwitterServiceImpl implements TwitterService{
 
 	public List<TwittModel> getMyTwittList(String id) {
 		return twitterRepoistory.getMyTwittOrderByDate(id);
+	}
+
+	public void unFollowingById(String id, String following) {
+		twitterRepoistory.unFollowingById(id, following);
 	}
 }

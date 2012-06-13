@@ -1,10 +1,12 @@
 package kr.ac.jejuuniv.twitter.repository.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import kr.ac.jejuuniv.twitter.model.FollowModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
+import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.TwitterRepository;
 
 import org.junit.Before;
@@ -38,8 +40,8 @@ public class TwitterRepositoryTest {
 	
 	@Test//글삭제를 위한 테스트
 	public void delelteArticleTest(){
-		String artid="8";
-		twitterRepository.deleteTwitt(artid);
+		int artid=2;
+		twitterRepository.deleteMyTwitt(artid);
 	}
 	
 //	@Test//팔로잉 하기... 내가 추천하는것?
@@ -63,5 +65,15 @@ public class TwitterRepositoryTest {
 	public void getTwittList(){
 		List<TwittModel> twittList = new ArrayList<TwittModel>();
 		twittList = twitterRepository.getTwittListOderByDate("juntheater");
+	}
+	
+	@Test
+	public void getHashTest(){
+//		List<HashMap> test = twitterRepository.getUserHash();
+//		for (int i = 0; i < test.size(); i++) {
+//			System.out.println(test.get(i).keySet().toString());
+//		}
+		List<HashMap> test = twitterRepository.getTestHash();
+		
 	}
 }

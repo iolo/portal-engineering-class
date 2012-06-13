@@ -1,16 +1,14 @@
 package kr.ac.jejuuniv.twitter.model;
 
-public class FollowingModel {
-	private String following;
+public class FollowTestModel {
+	private String id;
 	private String name;
 	private String profile;
-	//팔로잉 이름
-	
-	public String getFollowing() {
-		return following;
+	public String getId() {
+		return id;
 	}
-	public void setFollowing(String following) {
-		this.following = following;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

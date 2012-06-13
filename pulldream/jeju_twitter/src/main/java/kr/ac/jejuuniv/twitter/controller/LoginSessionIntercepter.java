@@ -23,6 +23,7 @@ public class LoginSessionIntercepter implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object arg2) throws Exception {
+
 		if("false".equals(request.getParameter("return"))){
 			System.out.println("Break");
 			response.sendRedirect("main");
