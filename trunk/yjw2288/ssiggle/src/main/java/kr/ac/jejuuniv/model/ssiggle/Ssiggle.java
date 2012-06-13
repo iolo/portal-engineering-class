@@ -6,6 +6,7 @@ import java.util.List;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
 import kr.ac.jejuuniv.model.user.User;
+import kr.ac.test.domain.SsiggleExistException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -84,11 +85,11 @@ public class Ssiggle implements Serializable {
 	}
 
 	public void save() {
-		if (ssiggleMapper.selectSsiggleById(getId()) == null) {
-			ssiggleMapper.insertSsiggle(this);
-		} else {
-			ssiggleMapper.updateSsiggle(this);
+		if (ssiggleMapper.selectSsiggleById(getId()) != null) {
+			throw new SsiggleExistException("저장하시려는 " + getId()
+					+ " (이)가 이미 존재하고 있습니다.");
 		}
+		ssiggleMapper.insertSsiggle(this);
 	}
 
 	public void delete() {
