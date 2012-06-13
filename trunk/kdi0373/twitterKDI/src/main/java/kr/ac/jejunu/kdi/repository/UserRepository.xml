@@ -3,8 +3,9 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.ac.jejunu.kdi.repository.UserRepository">
+
 	<insert id="createUser" parameterType="kr.ac.jejunu.kdi.model.User">
-		insert into 'user'('id', 'password', 'name', 'memo', 'image')
+		insert into user(id, password, name, memo, image)
 		values(#{id}, #{password}, #{name}, #{memo}, #{image})
 	</insert>
 </mapper>
