@@ -1,6 +1,9 @@
 package jnu.ce.bs.k.service;
 
+import java.util.List;
+
 import jnu.ce.bs.k.model.Note;
+import jnu.ce.bs.k.model.User;
 import jnu.ce.bs.k.persistence.UserMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,11 @@ public class NoteServiceImpl implements NoteService{
 	@Override
 	public void deleteNoteByWriteNum(String write_num) {
 		userMapper.deleteNoteByWriteNum(write_num);
+	}
+
+	@Override
+	public List<Note> findNoteByUser(User user) {
+		return userMapper.findNoteByUser(user);
 	}
 
 }
