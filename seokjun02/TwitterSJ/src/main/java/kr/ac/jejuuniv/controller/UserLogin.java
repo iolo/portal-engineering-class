@@ -19,13 +19,12 @@ public class UserLogin {
 
 	@RequestMapping
 	public String action(@ModelAttribute User user, HttpSession session, Model model) {
-		boolean value = loginService.checkUser(user.getUserid(),
-				user.getPassword());
+		boolean value = loginService.checkUser(user.getUserid(), user.getPassword());
 		if (!value) {
 			return "redirect:/";
 		}
 		session.setAttribute("loginId", user.getUserid());
 		model.addAttribute("userId", user.getUserid());
-		return "main";
+		return "redirect:/personal";
 	}
 }
