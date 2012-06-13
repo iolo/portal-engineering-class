@@ -9,7 +9,8 @@ public class User {
 	private String name;
 	private String password;
 	private String introduce;
-	private String image;
+	private String imageURL = "nullRegImage.jpg";
+	
 	private String loginUser;
 	public String getUserid() {
 		return userid;
@@ -46,11 +47,11 @@ public class User {
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
-	public String getImage() {
-		return image;
+	public String getImageURL() {
+		return imageURL;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 	
 }
