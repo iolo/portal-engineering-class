@@ -22,15 +22,10 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.web.servlet.ModelAndView;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PersonalControllerTest {
+public class PersonalControllerTest extends BaseFormControllerTest {
 	
 	PersonalController personalController;
 	
-	@Mock
-	UserService userService;
-	
-	@Mock
-	MockHttpSession session;
 	
 	@Test
 	public void testAction() {

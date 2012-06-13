@@ -17,6 +17,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.ac.jejuuniv.exception.UserNotFoundException;
 import kr.ac.jejuuniv.model.Tweet;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.repository.UserRepository;
@@ -33,25 +34,26 @@ public class UserRepositoryImpl implements UserRepository {
 	
 	public User findUserByUserId(String userId) {
 		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		return users.get(0);
+		if(users.size()==0) {
+			return null;
+		} else {
+			return users.get(0);
+		}
 	}
 
 	public String findPasswordByUserId(String userId) {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		return users.get(0).getPassword();
+		return findUserByUserId(userId).getPassword();
 	}
 
 	public List<Tweet> findTweetByUserId(String userId) {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		List<Tweet> tweets = users.get(0).getTweets();
+		List<Tweet> tweets = findUserByUserId(userId).getTweets();
 		Collections.sort(tweets);
 		Collections.reverse(tweets);
 		return tweets;
 	}
 
 	public List<User> findFollowingUserByUserId(String userId) {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		return users.get(0).getFollowing();
+		return findUserByUserId(userId).getFollowing();
 	}
 
 	public List<User> findFollowerUserByUserId(String userId) {
@@ -64,8 +66,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	public List<Tweet> findFollowingUserTweetByFollowingUser(String userId) {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		User user = users.get(0);
+		User user = findUserByUserId(userId);
 		List<User> followingUser = user.getFollowing();
 		List<Tweet> getTweets = new ArrayList<Tweet>();
 		List<Tweet> resultTweets = new ArrayList<Tweet>();
@@ -84,8 +85,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	public User updateUser(User user) {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", user.getLoginId());
-		User getUser = users.get(0);
+		User getUser = findUserByUserId(user.getLoginId());
 		getUser.setLoginId(user.getLoginId());
 		getUser.setPassword(user.getPassword());
 		getUser.setUsername(user.getUsername());
@@ -100,8 +100,7 @@ public class UserRepositoryImpl implements UserRepository {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
 		String date = simpleDateFormat.format(new Date());
 		
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		User user = users.get(0);
+		User user = findUserByUserId(userId);
 		tweet.setDate(date);
 		tweet.setUser(user);
 		hibernateTemplate.save(tweet);
@@ -120,11 +119,9 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	public void insertFollowing(String followId, String followingId) {
-		List<User> followUsers = hibernateTemplate.find("from User where login_id = ?", followId);
-		User followerUser = followUsers.get(0);
+		User followerUser = findUserByUserId(followId);
 		
-		List<User> followingUsers = hibernateTemplate.find("from User where login_id = ?", followingId);
-		User followingUser = followingUsers.get(0);
+		User followingUser = findUserByUserId(followingId);
 		
 		followerUser.getFollowing().add(followingUser);
 		hibernateTemplate.merge(followerUser);
@@ -132,8 +129,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	public void deleteTweet(String userId, int tweetId) {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		User user = users.get(0);
+		User user = findUserByUserId(userId);
 		List<Tweet> tweets = user.getTweets();
 		for(Iterator i = tweets.iterator(); i.hasNext();) {
 			Tweet tweet =(Tweet) i.next();
@@ -144,12 +140,10 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	public void deleteFollow(String followId, String followingId) {
-		List<User> followUsers = hibernateTemplate.find("from User where login_id = ?", followId);
-		User followerUser = followUsers.get(0);
+		User followerUser = findUserByUserId(followId);
 		List<User> users = followerUser.getFollowing();
 		
-		List<User> followingUsers = hibernateTemplate.find("from User where login_id = ?", followingId);
-		User followingUser = followingUsers.get(0);
+		User followingUser = findUserByUserId(followingId);
 		
 		for(Iterator i = users.iterator(); i.hasNext();) {
 			User user = (User) i.next();

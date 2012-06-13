@@ -1,13 +1,22 @@
 package kr.ac.jejuuniv.service;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.exception.SignupException;
+import kr.ac.jejuuniv.exception.UserNotFoundException;
+import kr.ac.jejuuniv.model.Tweet;
+import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.repository.UserRepository;
+import kr.ac.jejuuniv.service.impl.UserServiceImpl;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -15,11 +24,6 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 import org.springframework.web.multipart.MultipartFile;
-
-import kr.ac.jejuuniv.model.Tweet;
-import kr.ac.jejuuniv.model.User;
-import kr.ac.jejuuniv.repository.UserRepository;
-import kr.ac.jejuuniv.service.impl.UserServiceImpl;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -43,9 +47,15 @@ public class UserServiceTest {
 	@Mock
 	UserRepository userRepository;
 	
+	UserService userService;
+	
+	@Before
+	public void setUserService() {
+		userService = new UserServiceImpl(userRepository);
+	}
+	
 	@Test
-	public void testGetUser() {
-		UserService userService = new UserServiceImpl(userRepository);
+	public void testGetUserSuccess() {
 		when(userRepository.findUserByUserId("hahahohokiss")).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				User user = new User();
@@ -57,36 +67,86 @@ public class UserServiceTest {
 		assertThat(user.getLoginId(), is("hahahohokiss"));
 	}
 	
+	@Test(expected=UserNotFoundException.class)
+	public void testGetUserFail() {
+		when(userRepository.findUserByUserId("unknow")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+		});
+		User user = userService.getUser("unknow");
+	}
+	
 	@Test
-	public void testModifyUser() {
-		UserService userService = new UserServiceImpl(userRepository);
+	public void testModifyUserSuccess() {
 		User user = new User();
-		user.setUsername("modfiyUser");
+		user.setLoginId("hahahohokiss");
+		user.setUsername("changeUsername");
+		when(userRepository.findUserByUserId("hahahohokiss")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setLoginId((String)invocation.getArguments()[0]);
+				return user;
+			}
+		});
 		
 		when(userRepository.updateUser(user)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				return (User) invocation.getArguments()[0];
 			}
 		});
+		
+		
 		user = userService.modifyUser(user);
-		assertThat(user.getUsername(), is("modfiyUser"));
+		assertThat(user.getLoginId(), is("hahahohokiss"));
+		assertThat(user.getUsername(), is("changeUsername"));
+	}
+	
+	@Test(expected=UserNotFoundException.class)
+	public void testModifyUserFail() {
+		User user = new User();
+		user.setLoginId("hahahohokiss");
+		
+		when(userRepository.findUserByUserId("hahahohokiss")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+		});
+		
+		userService.modifyUser(user);
 	}
 	
 	@Test
 	public void testGetPassword() {
-		UserService userService = new UserServiceImpl(userRepository);
+		when(userRepository.findUserByUserId("hahahohokiss")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setLoginId((String)invocation.getArguments()[0]);
+				return user;
+			}
+			
+		});
+		
 		when(userRepository.findPasswordByUserId("hahahohokiss")).thenAnswer(new Answer<String>() {
 			public String answer(InvocationOnMock invocation) throws Throwable {
 				return "password";
 			}
 		});
-		String password = userService.getPassword("hahahohokiss");
-		assertThat(password, is("password"));
+		assertThat(userService.getPassword("hahahohokiss"), is("password"));
+	}
+	
+	@Test(expected=UserNotFoundException.class)
+	public void testGetPasswordFail() {
+		when(userRepository.findUserByUserId("hahahohokiss")).thenAnswer(new Answer<User>() {
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				return null;
+			}
+		});
+		userService.getPassword("hahahohokiss");
 	}
 	
 	@Test
 	public void testGetTweets() {
-		UserService userService = new UserServiceImpl(userRepository);
 		
 		when(userRepository.findTweetByUserId("hahahohokiss")).thenAnswer(new Answer<List<Tweet>>() {
 			public List<Tweet> answer(InvocationOnMock invocation) throws Throwable {
@@ -108,7 +168,6 @@ public class UserServiceTest {
 	
 	@Test
 	public void testGetFollowingUser() {
-		UserService userService = new UserServiceImpl(userRepository);
 		
 		when(userRepository.findFollowingUserByUserId("hahahohokiss")).thenAnswer(new Answer<List<User>>() {
 			public List<User> answer(InvocationOnMock invocation) throws Throwable {
@@ -124,9 +183,9 @@ public class UserServiceTest {
 		assertTrue(following.size() > 0);
 		assertThat(following.get(0).getLoginId(), is("followingUser"));
 	}
+	
 	@Test
 	public void testGetFollowerUser() {
-		UserService userService = new UserServiceImpl(userRepository);
 		
 		when(userRepository.findFollowerUserByUserId("hahahohokiss")).thenAnswer(new Answer<List<User>>() {
 			public List<User> answer(InvocationOnMock invocation) throws Throwable {
@@ -145,7 +204,6 @@ public class UserServiceTest {
 
 	@Test
 	public void testAddFollow() {
-		UserService userService = new UserServiceImpl(userRepository);
 		
 		User user = new User();
 		User following = new User();
@@ -155,7 +213,6 @@ public class UserServiceTest {
 	
 	@Test
 	public void testGetFollowingTweet() {
-		UserService userService = new UserServiceImpl(userRepository);
 		
 		when(userRepository.findFollowingUserByUserId("hahahohokiss")).thenAnswer(new Answer<List<User>>() {
 			public List<User> answer(InvocationOnMock invocation) throws Throwable {
@@ -185,7 +242,6 @@ public class UserServiceTest {
 	
 	@Test
 	public void testGetAllUser() {
-		UserService userService = new UserServiceImpl(userRepository);
 		
 		when(userRepository.findAllUser()).thenAnswer(new Answer<List<User>>() {
 			public List<User> answer(InvocationOnMock invocation) throws Throwable {
@@ -193,19 +249,31 @@ public class UserServiceTest {
 				User user = new User();
 				user.setLoginId("hahahohokiss");
 				users.add(user);
+				User user1 = new User();
+				user1.setLoginId("followingUser");
+				users.add(user1);
+				
 				return users;
 			}
-			
+		});
+		when(userRepository.findFollowingUserByUserId("hahahohokiss")).thenAnswer(new Answer<List<User>>() {
+			public List<User> answer(InvocationOnMock invocation) throws Throwable {
+				List<User> users = new ArrayList<User>();
+				User user = new User();
+				user.setLoginId("followingUser");
+				users.add(user);
+				return users;
+			}
 		});
 		String userId = "hahahohokiss";
+		
 		List<UserDto> users = userService.getAllUser(userId);
 		assertTrue(users.size() > 0);
-		assertThat(users.get(0).getUser().getLoginId(), is("hahahohokiss"));
+		assertThat(users.get(0).getUser().getLoginId(), is("followingUser"));
 	}
 	
 	@Test
 	public void testAddTweet() {
-		UserService userService = new UserServiceImpl(userRepository);
 		
 		Tweet tweet = new Tweet();
 		User user = new User();
@@ -227,7 +295,6 @@ public class UserServiceTest {
 	
 	@Test
 	public void testRemoveTweet() {
-		UserService userService = new UserServiceImpl(userRepository);
 		User user = new User();
 		Tweet tweet = new Tweet();
 		String userId = user.getLoginId();
@@ -237,9 +304,10 @@ public class UserServiceTest {
 	
 	@Test
 	public void tsetAddUser() throws IOException {
-		UserService userService = new UserServiceImpl(userRepository);
 		User user = new User();
 		user.setLoginId("hahahohokiss");
+		user.setPassword("password");
+		user.setUsername("한진수");
 		MultipartFile file = null;
 		when(userRepository.insertUser(user, file)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
@@ -250,9 +318,17 @@ public class UserServiceTest {
 		assertThat(user.getLoginId(), is("hahahohokiss"));
 	}
 	
+	@Test(expected=SignupException.class)
+	public void testAddUserFail() throws IOException {
+		User user = new User();
+		user.setLoginId("hahahohokiss");
+		MultipartFile file = null;
+		
+		user = userService.addUser(user, file);
+	}
+	
 	@Test
 	public void testUnFollow() {
-		UserService userService = new UserServiceImpl(userRepository);
 		User user = new User();
 		User followingUser = new User();
 		userService.removeFollow(user.getLoginId(), followingUser.getLoginId());
