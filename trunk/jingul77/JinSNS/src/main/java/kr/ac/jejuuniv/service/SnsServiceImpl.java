@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import kr.ac.jejuuniv.mapper.SnsMapper;
 import kr.ac.jejuuniv.model.SnsListModel;
 import kr.ac.jejuuniv.model.SnsModel;
+import kr.ac.jejuuniv.model.TotalUserModel;
 
 @Service
 public class SnsServiceImpl implements SnsService {
@@ -24,7 +25,11 @@ public class SnsServiceImpl implements SnsService {
 		
 		return snsMapper.PersonalSns(id);
 	}
-
+	
+	@Override
+	public List<TotalUserModel> totalUser(String id) {
+		return null;
+	}
 
 	@Override
 	public void remove(String index) {
@@ -59,6 +64,9 @@ public class SnsServiceImpl implements SnsService {
 		
 		return snsMapper.allGetSns(id);
 	}
+
+
+
 
 
 }

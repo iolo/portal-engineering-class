@@ -1,0 +1,62 @@
+@CHARSET "EUC-KR";
+
+#casting
+{
+	background:#f0f2fb;
+}
+table {
+    border-collapse: collapse;
+    width: 50em;
+    border: 0px solid #ddd;
+}
+
+th, td{
+    padding: 0.5em 1em;
+    font: 13pt µ¸¿ò sans-serif;
+    
+}
+tbody td a {background: transparent;text-decoration: none;color: #000;}
+tbody td a:hover {background: transparent;color: #abcbe6;}
+caption{
+    font: bold 1.2em µ¸¿ò sans-serif;
+    margin: 1em 0;
+}
+
+row{
+    border-bottom: 1px solid #ccc;
+}
+
+
+thead{
+	
+    background-color: #bed8ee;
+ 
+}
+
+th{
+    font-weight: normal;
+    text-align: center;
+    
+}
+
+#artistNumHead{
+    text-indent: -1000em;
+}
+
+.odd{
+    background-color:#edf5ff;
+}
+
+tr:hover{
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+thead tr:hover, tfoot tr:hover{
+    background-color: transparent;
+    color: inherit;
+}
+
+thead td{
+    border-right: 1px solid #EEE;
+}

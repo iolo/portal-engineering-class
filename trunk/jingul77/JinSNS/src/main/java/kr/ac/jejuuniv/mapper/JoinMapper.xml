@@ -8,5 +8,11 @@
 		INSERT INTO  `JinSNS`.`user` (`id` ,`password` ,`name` ,`explain` ,`image`)
 		VALUES (#{id}, #{password}, #{name}, #{explain}, #{image})
 		</insert>
+		
+	  <update id="updateUser" parameterType="kr.ac.jejuuniv.model.UserModel">
+		UPDATE `JinSNS`.`user`
+		SET password = #{password}, name = #{name}, explain = #{explain}, image =#{image}
+		WHERE id = #{id}
+	 </update>	
 
 </mapper>

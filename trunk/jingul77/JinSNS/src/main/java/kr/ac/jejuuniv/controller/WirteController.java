@@ -22,7 +22,7 @@ public class WirteController {
 	SnsService snsService;
 	
 	@RequestMapping()
-	public void write(){
+	public void action(){
 		
 	}
 	

@@ -6,4 +6,6 @@ public interface JoinService {
 
 	void joinUser(String id, String password, String name, String explain,MultipartFile image);
 
+	void UpdateUser(String id, String password, String name, String explain,MultipartFile image);
+
 }
