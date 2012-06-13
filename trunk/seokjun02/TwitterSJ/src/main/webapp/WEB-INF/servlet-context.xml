@@ -10,6 +10,12 @@
 	<!-- Scans within the base package of the application for @Components to 
 		configure as beans -->
 	<context:component-scan base-package="kr.ac.jejuuniv" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/service/**/*"/>
+			<beans:bean class="kr.ac.jejuuniv.controller.MyInterceptor"/>
+		</interceptor>
+	</interceptors>
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 

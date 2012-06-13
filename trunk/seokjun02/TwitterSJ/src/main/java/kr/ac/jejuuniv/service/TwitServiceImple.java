@@ -16,7 +16,6 @@ public class TwitServiceImple implements TwitService {
 
 	@Override
 	public List<Post> showPostById(String userid) {
-
 		return userPostMapper.showPostById(userid);
 	}
 
