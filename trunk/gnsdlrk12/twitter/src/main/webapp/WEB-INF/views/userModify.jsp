@@ -22,8 +22,11 @@
 					<form:input path="userid"  readonly="true"/>
 				</p>
 				<p>
+					<label>Password 확인</label>
+					<input type="password" name="checkPass" />
+				<p>
 					<label>Password </label>
-					<form:password path="password"/>
+					<form:password path="password" />
 				</p>
 				<p>
 					<label>이름 </label>
