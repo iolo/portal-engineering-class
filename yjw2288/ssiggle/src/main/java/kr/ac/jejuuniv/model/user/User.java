@@ -194,7 +194,7 @@ public class User implements Serializable {
 			return ".png";
 		}
 
-		return "";
+		throw new NotExsitFileTypeException();
 	}
 
 	public List<UserRow> markFollowUser(List<User> userList) {
