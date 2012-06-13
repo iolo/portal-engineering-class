@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.ac.jejunu.rabbit.mapper.UserMapper">
-	<sql id="selectUser">userid, name, password, introduce</sql>
+	<sql id="selectUser">userid, image, name, password, introduce</sql>
 	<sql id="selectPost">image, post_num, postid, name, content, regdate</sql>
 	
 	<select id="findUserAll" resultType="kr.ac.jejunu.rabbit.model.User" >
@@ -24,7 +24,7 @@
 	</select>
 	
 	<insert id="UserInsert" parameterType="kr.ac.jejunu.rabbit.model.User">
-		insert into userinfo(userid, name, password, introduce, image) values(#{userid}, #{name}, #{password}, #{introduce}, #{image})
+		insert into userinfo(userid, name, password, introduce, image) values(#{userid}, #{name}, #{password}, #{introduce}, #{imageURL})
 	</insert>
 	
 	<update id="UserUpdate" parameterType="kr.ac.jejunu.rabbit.model.User"> 

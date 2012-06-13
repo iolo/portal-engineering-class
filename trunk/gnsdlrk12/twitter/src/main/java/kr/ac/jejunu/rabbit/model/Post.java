@@ -32,16 +32,22 @@ public class Post {
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
-	}
+	}	
 	
 	@Override
 	public String toString() {
-		return "User [image=" + image + ", name=" + getName() + ", content=" + content + ", regdate=" + regdate + "]";
+		return "User [image=" + getImage() + ", name=" + getName() + ", content=" + content + ", regdate=" + regdate + "]";
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

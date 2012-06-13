@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,35 +12,37 @@
 		사용자 등록
 	</div>
 	<div>
-		<form action="userjoin"  method="post">
+		<form:form modelAttribute="user" action="/userjoin" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>회원가입</legend>
 				<p>
 					<label>ID </label>
-					<input type="text" name="userid" />
+					<form:input path="userid"/>
 				</p>
 				<p>
 					<label>Password </label>
-					<input type="password" name="password" />
+					<form:password path="password"/>
 				</p>
 				<p>
 					<label>이름 </label>
-					<input type="name" name="name" />
+					<form:input path="name"/>
 				</p>
 				<p>
 					<label>설명 </label>
-					<input type="text" name="introduce" />
+					<form:input path="introduce"/>
 				</p>
-				<!-- <p>
+				<p>
 					<label>프로필이미지 </label>
-					<input type="file" name="image" />
-				</p> -->
+					<input name="image" type="file">
+				</p>
 				<p>
 					<input type="submit" value="등록" />
 					<input type="button" value="취소" onclick="location.href='/'" />
 				</p>
+				<form:hidden path="imageURL" />
 			</fieldset>
-		</form>
+			
+		</form:form>
 	</div>
 </body>
 </html>

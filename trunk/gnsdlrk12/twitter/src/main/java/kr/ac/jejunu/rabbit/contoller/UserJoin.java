@@ -1,12 +1,19 @@
 package kr.ac.jejunu.rabbit.contoller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import kr.ac.jejunu.rabbit.model.User;
 import kr.ac.jejunu.rabbit.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/userjoin")
@@ -14,16 +21,45 @@ public class UserJoin {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping
-	public String userReg(@RequestParam(value = "userid") String userid, @RequestParam(value = "password") String password,
-			@RequestParam(value = "name") String name, @RequestParam(value = "introduce") String introduce){
-		User user = new User();
-		user.setUserid(userid);
-		user.setPassword(password);
-		user.setName(name);
-		user.setIntroduce(introduce);
-		
+	@RequestMapping(method = RequestMethod.POST)
+	public String userReg(@ModelAttribute User user, MultipartFile image) throws FileNotFoundException, IOException{
+		saveImage(user, image);
 		userService.UserInsert(user);
-				return "finish";		
+
+		return "finish";		
+	}
+	
+	public void saveImage(User user, MultipartFile image) throws IOException, FileNotFoundException {
+		String fileType = getFileType(image);
+
+		File imageFile = new File("/Users/jeongjaehun/Documents/springworkspace/twitter/src/main/webapp/resources/"
+				+ user.getUserid() + fileType);
+
+		
+		
+		if (imageFile.exists()) {
+			imageFile.delete();
+		}
+		imageFile.createNewFile();
+
+		FileOutputStream fos = new FileOutputStream(imageFile);
+		fos.write(image.getBytes());
+		fos.close();
+
+		user.setImageURL(user.getUserid() + fileType);
+	}
+	
+	private String getFileType(MultipartFile image) {
+		String file = null;
+		if(image.getContentType().equals("image/jpg") || image.getContentType().equals("image/jpeg")){		
+			file = ".jpg";
+		}
+		else if (image.getContentType().equals("image/gif")) {
+			file = ".gif";
+		}
+		else if (image.getContentType().equals("image/png")) {
+			file = ".png";
+		}
+		return file;
 	}
 }
