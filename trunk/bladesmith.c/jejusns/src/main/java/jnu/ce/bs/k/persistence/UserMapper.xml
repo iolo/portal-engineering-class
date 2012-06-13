@@ -48,6 +48,10 @@
 	</delete>
 	
 	<select id="findFollwingByUserId" parameterType="String" resultType="jnu.ce.bs.k.model.User">
-		SELECT m.id, m.`profile`, m.`name`, m.description FROM member m, follow f WHERE f.following_id = m.id AND f.follower_id=#{id}
+		SELECT m.id, m.`profile`, m.`name`, m.description FROM member m, follow f WHERE f.following_id = m.id AND f.follower_id=#{id} ORDER BY m.`name` ASC 
+	</select>
+	
+	<select id="findFollwerByUserId" parameterType="String" resultType="jnu.ce.bs.k.model.User">
+		SELECT m.id, m.`profile`, m.`name`, m.description FROM member m, follow f WHERE f.follower_id = m.id AND f.following_id=#{id} ORDER BY m.`name` ASC
 	</select>
 </mapper>

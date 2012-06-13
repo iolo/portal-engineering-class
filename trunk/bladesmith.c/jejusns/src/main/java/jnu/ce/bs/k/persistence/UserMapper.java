@@ -30,4 +30,6 @@ public interface UserMapper {
 	public void unfollow(Map<String, String> map);
 
 	public List<User> findFollwingByUserId(String id);
+
+	public List<User> findFollwerByUserId(String id);
 }
