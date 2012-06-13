@@ -75,4 +75,10 @@ public class UserServiceImp implements UserService{
 		usermapper.postDelete(postid, post_num);
 	}
 
+	@Override
+	public void UserModify(User user) {
+		usermapper.UserUpdate(user);
+		
+	}
+
 }

@@ -14,8 +14,8 @@
 	<div id="Header">
 		${user.name }
 		(${user.introduce })
-		<input type="button" value="글쓰기"	onclick="window.open('/write','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
-		<input type="button" value="회원수정" />
+		<input type="button" value="글쓰기"	onclick="window.open('/userReg','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
+		<input type="button" value="프로필수정" onclick="window.open('/modify','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
 		<input type="button" value="로그아웃" onclick="location.href='/logout'" />
 	</div>
 	<div id="Content">
@@ -24,7 +24,6 @@
 			<input type="hidden" value="${post.postid}" name="postid"/>
 			<img width=50px height=50px src="/resources/${post.image }"/>			
 			${post.content }
-			<%-- <td><a href="personal/remove?twittId=${twitt.twiitNumber}">삭제</a></td> --%>
 			<input type="button" value="삭제" onclick="location.href='/delete?postid=${post.postid }&post_num=${post.post_num}'" />
 			${post.regdate }
 			<br/>

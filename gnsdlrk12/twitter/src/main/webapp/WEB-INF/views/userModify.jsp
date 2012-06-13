@@ -5,15 +5,21 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>사용자 등록</title>
+	<title>프로필 수정</title>
+	<script type="text/javascript">
+		function postclose(){
+			window.opener.location.reload();
+			window.close();
+		}
+	</script>
 </head>
 <body>
 	<div>
-		<form:form modelAttribute="user" action="/userjoin" method="post" enctype="multipart/form-data">
-				<legend>회원가입</legend>
+		<form:form modelAttribute="user" action="/userModify" method="post" enctype="multipart/form-data">
+				<legend>프로필 수정</legend>
 				<p>
 					<label>ID </label>
-					<form:input path="userid"/>
+					<form:input path="userid"  readonly="true"/>
 				</p>
 				<p>
 					<label>Password </label>
@@ -33,7 +39,7 @@
 				</p>
 				<p>
 					<input type="submit" value="등록" />
-					<input type="button" value="취소" onclick="location.href='/'" />
+					<input type="button" value="취소" onclick="postclose();" />
 				</p>
 				<form:hidden path="imageURL" />
 			
