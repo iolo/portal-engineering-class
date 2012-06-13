@@ -46,4 +46,8 @@
 	<delete id="unfollow" parameterType="java.util.Map">
 		DELETE FROM follow WHERE follower_id=#{userId} AND following_id=#{followId}
 	</delete>
+	
+	<select id="findFollwingByUserId" parameterType="String" resultType="jnu.ce.bs.k.model.User">
+		SELECT m.id, m.`profile`, m.`name`, m.description FROM member m, follow f WHERE f.following_id = m.id AND f.follower_id=#{id}
+	</select>
 </mapper>
