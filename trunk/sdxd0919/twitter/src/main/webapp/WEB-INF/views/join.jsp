@@ -13,7 +13,7 @@
 	<div id="JoinContent">
 		<form action="/twitter/userSave" method="post" 
 					enctype="multipart/form-data" >
-			<fieldset>
+			<fieldset>	
 				<legend>사용자 등록</legend>
 				<p>
 					<label>아이디</label>

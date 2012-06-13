@@ -21,4 +21,19 @@
 		delete from tweet
 		where seq = #{seq}
 	</delete>
+	
+	<select id="getTweetSeq" parameterType="int" resultType="int">
+		select distinct t.seq
+			from tweet t
+			inner join follow f
+			on f.userNum = #{userNum}
+		where f.followingUserNum = t.userNum or t.userNum = #{userNum}
+		order by date desc
+	</select>
+	
+	<select id="getTweetBySeq" parameterType="int" resultType="kr.ac.jejuuniv.Model.Tweet">
+		select * from tweet
+		where seq = #{seq}
+	</select>
+	
 </mapper>

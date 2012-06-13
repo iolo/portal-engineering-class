@@ -16,4 +16,7 @@ public interface TweetRepository {
 
 	void insert(Tweet tweet);
 
+	List<Integer> getTweetSeq(int userNum);
+
 }
+
