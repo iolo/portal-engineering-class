@@ -9,6 +9,7 @@ public class UserModel {
 	private String name;
 	private String password;
 	private String profile;
+	private String path;
 	
 	public String getId() {
 		return id;
@@ -33,5 +34,11 @@ public class UserModel {
 	}
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 }

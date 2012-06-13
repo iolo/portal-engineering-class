@@ -19,12 +19,12 @@ public class UnFollowingController {
 	private TwitterService twitterService;
 	
 	@RequestMapping
-	public String UnFollowing(@ModelAttribute("asdf")FollowModel followModel,HttpServletRequest request){
+	public String UnFollowing(@ModelAttribute("following")FollowModel followModel,HttpServletRequest request){
 		String id = (String)request.getSession().getAttribute("loginID");
 		System.out.println(followModel.getFollowing());
-		
-//		twitterService.
-		return null;
+		twitterService.unFollowingById(id, followModel.getFollowing());
+//		return new ModelAndView("/getfollowing.do");
+		return "redirect:/getfollowing.do";
 	}
 
 }

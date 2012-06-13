@@ -12,6 +12,7 @@
 <title>Welcome To Jeju Twitt</title>
 </head>
 <body>
-
+<jsp:include page="user/loginpage.jsp"/><br>
+<jsp:include page="${pageType }"/>
 </body>
 </html>

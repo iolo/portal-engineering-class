@@ -20,8 +20,8 @@
 	</select>
 	
 	<!-- 트위터 글삭제 -->
-	<delete id="deleteTwitt" parameterType="String">
-		Delete from article where artid=#{twit_num}
+	<delete id="deleteMyTwitt" parameterType="int">
+		Delete from twitt where twinum=#{twit_num}
 	</delete>
 	
 	<!-- Follower 등록 -->
@@ -38,4 +38,31 @@
 	<select id="getFollowingById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowingModel">
 		Select follow.following, user.name from follow inner join user on follow.following=user.id where follow.id=#{id}
 	</select>
+	
+	<!--UnFollowing  -->
+	<delete id="unFollowingById" parameterType="String">
+		Delete from follow where id=#{id} and following=#{following}
+	</delete>
+	
+	<!--Test  -->
+	<select id="getTestHash" resultType="hashmap">
+		Select * from follow where id="juntheater3"
+	</select>
+	
+<!-- 	
+	<select id="follwerTest" parameterType="String" resultMap="follwTest">
+		Select 
+	</select>
+	
+	<resultMap id="followTest" type="kr.ac.jejuuniv.twitter.model.FollowTestModel">
+		<id property="id" column="id"/>
+		
+	</resultMap>
+	
+	<resultMap id="getFollowerProfile" type="kr.ac.jejuuniv.twitter.model.UserModel">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="profile" column="profile"/>
+	</resultMap> -->
+	
 </mapper>
