@@ -11,6 +11,7 @@ import java.util.List;
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
 import kr.ac.jejuuniv.model.ssiggle.NotFoundSsiggleException;
 import kr.ac.jejuuniv.model.ssiggle.Ssiggle;
+import kr.ac.jejuuniv.model.ssiggle.SsiggleDeleteException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -91,6 +92,14 @@ public class SsiggleTest {
 		assertThat(repoSsiggle.getText(), is(ssiggle.getText()));
 	}
 
+	@Test(expected = SsiggleDeleteException.class)
+	public void testDeleteFail() {
+		Ssiggle ssiggle = new Ssiggle(ssiggleMapper);
+		ssiggle.setId(0);
+
+		ssiggle.delete();
+	}
+
 	@Test
 	public void testDelete() {
 		final List<Ssiggle> repository = new ArrayList<>();
@@ -102,22 +111,11 @@ public class SsiggleTest {
 		Ssiggle ssiggleThree = new Ssiggle(ssiggleMapper);
 		ssiggleThree.setId(2);
 
-		when(ssiggleMapper.selectSsiggleById(anyLong())).thenAnswer(
-				new Answer<Ssiggle>() {
-					@Override
-					public Ssiggle answer(InvocationOnMock invocation)
-							throws Throwable {
-						long l = (long) invocation.getArguments()[0];
+		repository.add(ssiggleOne);
+		repository.add(ssiggleTwo);
+		repository.add(ssiggleThree);
 
-						for (Ssiggle s : repository) {
-							if (s.getId() == l) {
-								return s;
-							}
-						}
-
-						return null;
-					}
-				});
+		when(ssiggleMapper.selectSsiggleById(0L)).thenReturn(ssiggleOne);
 
 		doAnswer(new Answer<Void>() {
 			@Override
@@ -126,14 +124,16 @@ public class SsiggleTest {
 					long l = (long) invocation.getArguments()[0];
 					if (repository.get(i).getId() == l) {
 						repository.remove(i);
+						i--;
 					}
 				}
 
 				return null;
 			}
-		}).when(ssiggleMapper).deleteSsiggleById(anyLong());
+		}).when(ssiggleMapper).deleteSsiggleById(0L);
 
 		ssiggleOne.delete();
+		assertThat(repository.size(), is(2));
 	}
 
 	@Test(expected = NotFoundSsiggleException.class)
