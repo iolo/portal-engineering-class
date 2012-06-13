@@ -36,7 +36,7 @@
 	</delete>
 	
 	<insert id="PostInsert" parameterType="kr.ac.jejunu.rabbit.model.Post" >
-		insert into userpost(userid, content) values (#{userid}, #{content})
+		insert into userpost(postid, content) values (#{userid}, #{content})
 	</insert>
 	
 	<delete id="postDelete" parameterType="kr.ac.jejunu.rabbit.model.Post" >
