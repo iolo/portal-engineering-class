@@ -12,21 +12,20 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/join")
 public class JoinController {
-	
-	@RequestMapping()
-	public void join(){
 		
-	}
-	
 	@Autowired
 	JoinService joinService;
 	
-	@RequestMapping(method = RequestMethod.POST, value="/join")
+	@RequestMapping()
+	public void action(){
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
 	public String joinUser(@RequestParam("id") String id,
 						   @RequestParam("password")String password, @RequestParam("name")String name, 
-						   @RequestParam("explain")String explain, @RequestParam("image")MultipartFile image)
+						   @RequestParam("explain")String explain, @RequestParam("image") MultipartFile image)
 	{
-		
 		joinService.joinUser(id, password, name, explain, image);
 		
 		return "redirect:/login";

@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<title>Update</title>
 </head>
 <body>
 	<div>
 		<h2>회원 정보 수정</h2>
 	</div>
 	<div> 
-	<form action="join" method="post">
+	<form:form modelAttribute="user" action="update" method="post" enctype="multipart/form-data">
 	<table>
  		<tr>
 			<td><label>${user.id}</label></td>
 
 		</tr>
 		<tr>
-			<td><label>Password 수정 </label></td>
+			<td><label>Password 수정</label></td>
 			<td><input type="password" name="password" /><td>
 		</tr>
 		<tr>
@@ -37,11 +38,11 @@
 			<td><input type="file" name="image" /><td>
 		</tr>
 		<tr><td><center>
-				<input type="submit" value="회원가입" />				
-				<input type="button" value="취소" onclick="location.href='/login'"/>
+				<input type="submit" value="수정완료" />				
+				<input type="button" value="취소" onclick="location.href='/personal'"/>
 		</center></td></tr>
 	</table>
-	 </form>
+	 </form:form>
 	</div>
 	
 </body>

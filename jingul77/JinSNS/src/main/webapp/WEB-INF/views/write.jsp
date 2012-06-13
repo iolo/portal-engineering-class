@@ -9,11 +9,11 @@
 <body>
 	<div>
 		<form action="write" method="post">			
-			<label>글쓰기</label><br>
-			<textarea rows="20" cols="50" name="sns"></textarea><br>
+			<label>글쓰기</label><br><br>
+			<textarea rows="20" cols="50" name="sns"></textarea><br><center>
 		
 			<input type="submit" value="저장" onclick="window.close()"/>
-			<input type="button" value="취소" onclick="window.close()"/>
+			<input type="button" value="취소" onclick="window.close()"/></center>
 		</form>
 	</div>
 </body>

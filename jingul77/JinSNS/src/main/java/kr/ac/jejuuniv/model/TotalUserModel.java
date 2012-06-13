@@ -1,38 +1,19 @@
 package kr.ac.jejuuniv.model;
 
 
-public class UserModel
+public class TotalUserModel
 {
 	private String id;
-	private String password;
 	private String name;
 	private String explain;
 	private String image;
+	private String follow;
 	
-	public UserModel(String id, String password, String name, String explain, String image)
-	{
-		this.setId(id);
-		this.setPassword(password);
-		this.setName(name);
-		this.setExplain(explain);
-		this.setImage(image);
-	}
-	
-	public UserModel()
-	{
-		
-	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public String getName() {
 		return name;
@@ -53,6 +34,12 @@ public class UserModel
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public String getFollow() {
+		return follow;
+	}
+	public void setFollow(String follow) {
+		this.follow = follow;
 	}
 
 	

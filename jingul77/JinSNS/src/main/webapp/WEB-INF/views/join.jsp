@@ -10,7 +10,7 @@
 		<h2>회원 가입</h2>
 	</div>
 	<div> 
-	<form action="join" method="post">
+	<form action="join" method="post" enctype="multipart/form-data">
 	<table>
  		<tr>
 			<td><label>ID</label></td>

@@ -17,7 +17,7 @@
 		<p>
 		${user.name}		
 		<input type="button" value="프로필 수정" onclick="location.href='/update'"/>
-		<input type="button" value="글쓰기" onclick="window.open('/write','win','width=450,height=350,toolbar=0,scrollbars=0,resizable=0')" />
+		<input type="button" value="글쓰기" onclick="window.open('/write','win','width=370,height=350,toolbar=0,scrollbars=0,resizable=0')" />
 		<input type="button" value="메인페이지" onclick="location.href='/main'"/>
 		</p>
 	</div>
@@ -35,7 +35,7 @@
 				<c:forEach items="${snsListModelList}" var="snsListModel">
 				
 					<tr>
-						<td>머야이거</td>
+						<td><img src="/resources/image/${user.image}" width="90px" height="90px"></td>
 						<td>${snsListModel.sns}</td>
 						<td><a href="/personal/remove?index=${snsListModel.index}">삭제</a></td>
 						<td>${snsListModel.date}</td>

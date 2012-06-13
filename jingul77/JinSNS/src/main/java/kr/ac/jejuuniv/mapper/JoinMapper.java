@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface JoinMapper {
 	
 	void joinUser(UserModel user);
+
+	void updatUser(UserModel user);
 	
 }
