@@ -29,12 +29,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${notesList}" var="note">
+				<c:forEach items="${noteList}" var="note">
 					<tr>
-						<td>${notes.writer}</td>
-						<td>${notes.writer}</td>
-						<td>${notes.note}</td>
-						<td>${notes.write_date}</td>
+						<td>${note.writer}</td>
+						<td>${note.writer}</td>
+						<td>${note.note}</td>
+						<td>${note.write_date}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
