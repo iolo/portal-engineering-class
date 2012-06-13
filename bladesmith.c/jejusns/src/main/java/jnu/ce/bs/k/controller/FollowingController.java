@@ -1,6 +1,5 @@
 package jnu.ce.bs.k.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jnu.ce.bs.k.model.User;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes("User")
 @RequestMapping("/following.bs")
-public class FollowersController {
+public class FollowingController {
 	
 	@Autowired
 	private UserService userService;

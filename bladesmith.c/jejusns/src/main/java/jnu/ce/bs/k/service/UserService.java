@@ -28,4 +28,6 @@ public interface UserService {
 
 	List<User> findFollowingByUserId(String id);
 
+	List<User> findFollowerByUserId(String id);
+
 }

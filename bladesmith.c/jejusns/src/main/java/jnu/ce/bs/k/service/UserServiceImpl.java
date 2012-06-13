@@ -109,4 +109,23 @@ public class UserServiceImpl implements UserService {
 		return users;
 	}
 
+	@Override
+	public List<User> findFollowerByUserId(String id) {
+		List<User> users = new ArrayList();
+		users = userMapper.findFollwerByUserId(id);
+
+		List<Follow> follows = new ArrayList();
+		follows = userMapper.findFollowUserByID(id);
+
+		for(int i=0; i<users.size(); i++){
+			for(int count=0; count<follows.size(); count++){
+				if(users.get(i).getId().equals(follows.get(count).getFollowing_id())){
+					users.get(i).setUserNum("true");
+				}
+			}
+		}
+		
+		return users;
+	}
+
 }
