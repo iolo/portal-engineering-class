@@ -9,12 +9,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>트윗 글쓰기</title>
 </head>
+
+<script type="text/javascript" language="javascript">
+function open_reload(){
+	var page = "write.do?content="+document.writeTwitt.content.value;
+	window.opener.document.location.href= page;
+	window.close();
+}
+</script>
 <body>
-<form action="write.do">
+
+<form:form commandName="twitt" name="writeTwitt">
 	요즘 어떠신가요??<br>
-	<input type="text" name="content"/>
-	<input type="submit"/>
-	<input type="button" value="취소"/>
-</form>
+	<!-- <input type="text" name="content"/> -->
+	<form:textarea name="content" path="content"/><br>
+	<form:button onclick="open_reload();">입력</form:button>
+	<input type="button" onClick="window.close();" value="취소"/>
+</form:form>
 </body>
 </html>

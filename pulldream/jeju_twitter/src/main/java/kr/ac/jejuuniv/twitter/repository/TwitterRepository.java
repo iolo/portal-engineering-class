@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.jejuuniv.twitter.model.FollowModel;
+import kr.ac.jejuuniv.twitter.model.FollowerModel;
 import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
@@ -17,10 +18,12 @@ public interface TwitterRepository {
 	void writeTwitt(TwittModel articleModel);
 	void addFollowing(FollowModel followModel);
 	void unFollowingById(@Param("id")String id,@Param("following")String following);
+	void addFollowingById(String id,String following);
 	
 	List<FollowingModel> getFollowingById(String id);
 	List<FollowModel> getAllFollower(String id);
 	List<TwittModel> getTwittListOderByDate(@Param("id")String id);
 	List<TwittModel> getMyTwittOrderByDate(String id);
-	List<HashMap> getTestHash();
+	List<FollowerModel> getFollowerById(String id);
+	List<String> getFollowingList(String id);
 }

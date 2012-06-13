@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("unfollow.do")
+@RequestMapping("unfollow.do/{pageType}")
 public class UnFollowingController {
 	
 	@Autowired
@@ -24,7 +24,13 @@ public class UnFollowingController {
 		System.out.println(followModel.getFollowing());
 		twitterService.unFollowingById(id, followModel.getFollowing());
 //		return new ModelAndView("/getfollowing.do");
-		return "redirect:/getfollowing.do";
+		System.out.println(request.getRequestURI().endsWith("test2"));
+		
+		if(request.getRequestURI().endsWith("following")){
+			return "rdirect:/getfollowing.do";
+		}
+		else
+			return "redirect:/getfollower.do";
 	}
 
 }

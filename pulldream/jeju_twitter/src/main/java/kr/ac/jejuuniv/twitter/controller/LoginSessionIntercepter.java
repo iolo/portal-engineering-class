@@ -2,6 +2,7 @@ package kr.ac.jejuuniv.twitter.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,13 +24,24 @@ public class LoginSessionIntercepter implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object arg2) throws Exception {
-
-		if("false".equals(request.getParameter("return"))){
-			System.out.println("Break");
-			response.sendRedirect("main");
+		
+		HttpSession session = request.getSession(false);
+		
+		//처음 로그인때문에 인터셉터 벗어나기 위함....
+		//왜 다른걸로 안될까나요? 
+		if(request.getRequestURI().equals("/login.do"))		return true;
+		
+		if(session==null){
+			response.sendRedirect("/");
 			return false;
 		}
-		System.out.println("reHandle");
+		
+		String id = (String)session.getAttribute("loginID");
+		if(id==null){
+			response.sendRedirect("/");
+			return false;
+		}
+
 		return true;
 	}
 }

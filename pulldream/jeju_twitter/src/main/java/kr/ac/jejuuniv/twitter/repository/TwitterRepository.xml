@@ -24,8 +24,8 @@
 		Delete from twitt where twinum=#{twit_num}
 	</delete>
 	
-	<!-- Follower 등록 -->
-	<insert id="addFollowing" parameterType="kr.ac.jejuuniv.twitter.model.FollowModel">
+	<!-- Following 등록 -->
+	<insert id="addFollowingById" parameterType="kr.ac.jejuuniv.twitter.model.FollowModel">
 		Insert into follow(id, following) values(#{id},#{following})	
 	</insert>
 	
@@ -36,20 +36,32 @@
 	
 	<!--Following 목록  -->
 	<select id="getFollowingById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowingModel">
-		Select follow.following, user.name from follow inner join user on follow.following=user.id where follow.id=#{id}
-	</select>
+		Select follow.following, user.name, user.profile from follow inner join user on follow.following=user.id where follow.id=#{id}
+	</select> 
 	
 	<!--UnFollowing  -->
 	<delete id="unFollowingById" parameterType="String">
 		Delete from follow where id=#{id} and following=#{following}
 	</delete>
 	
-	<!--Test  -->
-	<select id="getTestHash" resultType="hashmap">
-		Select * from follow where id="juntheater3"
+	<!--Hash Test  -->
+	<select id="getFollowerById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowerModel">
+		Select user.id, user.name, user.profile from user inner join follow on follow.id=user.id where following=#{id}
 	</select>
 	
-<!-- 	
+	<select id="getFollowingList" parameterType="String" resultType="String">
+		Select following from follow where id=#{id};
+	</select>
+	
+<!--
+	Hash로 할려다가 막힘 .. 
+	<select id="getTestHash" resultType="hashmap">
+		Select user.id, user.name, user.profile from user inner join follow on follow.id=user.id where following="juntheater"
+	</select>
+	
+	<select id="getTestHash2" resultType="String">
+		Select following from follow where id="juntheater";
+	</select> 	
 	<select id="follwerTest" parameterType="String" resultMap="follwTest">
 		Select 
 	</select>

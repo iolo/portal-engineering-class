@@ -5,7 +5,7 @@
 <mapper namespace="kr.ac.jejuuniv.twitter.repository.UserRepository">
 	<!-- 사용자가입 -->
 	<insert id="addUser" parameterType="kr.ac.jejuuniv.twitter.model.UserModel">
-		Insert into user values(#{id},#{password},#{name},#{profile})
+		Insert into user values(#{id},#{password},#{name},#{profile},#{path})
 	</insert>
 	
 	<!--로그인 처리  -->
