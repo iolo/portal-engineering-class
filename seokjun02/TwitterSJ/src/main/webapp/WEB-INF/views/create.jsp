@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>사용자 등록</title>
+	<title>회원가입</title>
 	<link href="/user/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>

@@ -6,8 +6,18 @@
 
 	<select id="checkUser" parameterType="map" resultType="int">
 		Select
-		count(userid) From twituser Where userid=#{id} and password = #{password}
+		count(userid) From twituser Where userid=#{userId} and password = #{password}
 	</select>
+	<select id="checkId" parameterType="String" resultType="int">
+		Select
+		count(userid) From twituser Where userid=#{userId}
+	</select>
+	<insert id="insertUser" parameterType="kr.ac.jejuuniv.model.User">
+		insert into twituser (userid,
+		password, username, introduce, photo)
+		values (#{userId}, #{password}, #{userName},
+		#{introduce}, #{photo})
+	</insert>
 <!-- 	<select id="findAll" resultType="kr.ac.jejuuniv.model.User">
 		SELECT * FROM twituser
 	</select>

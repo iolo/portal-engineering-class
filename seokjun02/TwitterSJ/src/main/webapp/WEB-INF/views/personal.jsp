@@ -6,26 +6,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TwitterSJ</title>
+<link href="resources/gnb.css" rel="stylesheet" type="text/css"
+	media="all" />
 </head>
 <body>
-	<div id="Header">${userId}님이 로그인 되었습니다.!!!</div>
-	<div id="Menu">
-		<a href="personal">목록보기</a><br /> <a href="/TwitterSJ/logout">logout</a>
-	</div>
-	<div id="Content">
-		<table>
-			<tbody>
-				<c:forEach items="${postList}" var="post">
-					<tr>
-						<td>${post.photo}</td>
-						<td>${post.sequenceNumber}</td>
-						<td>${post.content}</td>
-						<td><a href="remove?id=${post.userId}">삭제</a></td>
-						<td>${post.writeDate}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+	<div id="Wrap">
+		<div id="Header">${userId}님이 로그인 되었습니다.!!!</div>
+		<div id="Menu">
+			<a href="personal">목록보기</a><br /> <a href="/TwitterSJ/logout">logout</a>
+		</div>
+		<div id="Content">
+			<table>
+				<tbody>
+					<c:forEach items="${postList}" var="post">
+						<tr>
+							<td>${post.photo}</td>
+							<td>${post.sequenceNumber}</td>
+							<td>${post.content}</td>
+							<td><a href="remove?id=${post.sequenceNumber}">삭제</a></td>
+							<td>${post.writeDate}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
