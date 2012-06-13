@@ -17,7 +17,7 @@ public interface UserService {
 
 	List<Post> GetUserPost(String loginid);
 
-	void PostInsert(String userid, String content);
+	void PostInsert(String postid, String content);
 	
 	void postDelete(String postid, int post_num);
 	

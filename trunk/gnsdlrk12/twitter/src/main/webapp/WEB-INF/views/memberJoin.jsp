@@ -11,7 +11,7 @@
 		사용자 등록
 	</div>
 	<div>
-		<form action="memberJoin"  method="post"  enctype="multipart/form-data">
+		<form action="/join"  method="post"  enctype="multipart/form-data">
 			<fieldset>
 				<legend>회원가입</legend>
 				<p>
@@ -36,6 +36,7 @@
 				</p>
 				<p>
 					<input type="submit" value="등록" />
+					<input type="button" value="취소" onclick="location.href='/'" />
 				</p>
 			</fieldset>
 		</form>

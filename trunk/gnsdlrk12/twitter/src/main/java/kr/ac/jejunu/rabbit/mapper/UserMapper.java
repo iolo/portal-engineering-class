@@ -23,7 +23,7 @@ public interface UserMapper {
 	
 	List<Post> findPostAll(String userid);
 
-	void PostInsert(@Param("userid") String userid, @Param("content") String content);
+	void PostInsert(@Param("userid") String postid, @Param("content") String content);
 
 	void followInsert(@Param("userid") String userid, @Param("followerid") String followerid);
 

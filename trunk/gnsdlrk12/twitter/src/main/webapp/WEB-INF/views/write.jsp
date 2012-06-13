@@ -5,6 +5,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>사용자 등록</title>
+	<script type="text/javascript">
+		function postclose(){
+			window.opener.location.reload();
+			window.close();
+		}
+	</script>
 </head>
 <body>
 	<div>
@@ -21,6 +27,7 @@
 				<p>
 					<input type="hidden" value="${userId}" name="userId"/>
 					<input type="submit" value="저장"/>
+					<input type="button" value="취소" onclick="postclose();" />
 				</p>
 			</fieldset>
 		</form>

@@ -23,8 +23,9 @@
 				</p>
 				<p style="text-align:center">
 					<input type="submit" value="로그인" />
-					<input type="button" value="회원가입"
-						onclick="location.href='/memberJoin'" />
+					<input type="button"
+				value="회원가입"
+				onclick="window.open('/join','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
 				</p>
 		</form>
 	</div>

@@ -14,8 +14,8 @@ public class SaveController {
 	UserService userService;
 	
 	@RequestMapping
-	public String action(@RequestParam("content") String content, @RequestParam("userId") String userid){
-		userService.PostInsert(userid, content);
+	public String action(@RequestParam("content") String content, @RequestParam("userId") String userId){
+		userService.PostInsert(userId, content);
 		return "finish";
 	}
 }

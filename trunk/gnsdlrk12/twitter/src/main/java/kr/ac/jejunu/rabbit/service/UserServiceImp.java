@@ -47,8 +47,8 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public void PostInsert(String userid, String content) {
-		usermapper.PostInsert(userid, content);
+	public void PostInsert(String postid, String content) {
+		usermapper.PostInsert(postid, content);
 		
 	}
 
