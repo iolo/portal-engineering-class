@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.mapper.UserPostMapper">
+	<resultMap type="kr.ac.jejuuniv.model.Post" id="resultPostById">
+		<id property="sequenceNumber" column="sequenceNumber" />
+		<result property="content" column="content" />
+		<result property="writeDate" column="writeDate" />
+		<association property="user" column="twituser"
+			javaType="kr.ac.jejuuniv.model.User">
+			<id property="userid" column="userId" />
+			<result property="username" column="userName" />
+			<result property="photo" column="photo" />
+		</association>
+	</resultMap>
+
+	<select id="showPostById" parameterType="String" resultMap="resultPostbyId">
+		SELECT
+			userpost.sequ_number AS sequenceNumber,
+			userpost.content AS content,
+			userpost.write_date AS writeDate,
+			twituser.userid AS userId,
+			twituser.username AS userName,
+			twituser.photo AS photo
+		FROM twituser, userpost
+		WHERE twituser.userid = userpost.userid
+		AND twituser.userid = #{userid} ORDER BY userpost.write_date DESC
+	</select>
+
+</mapper>
