@@ -32,4 +32,6 @@ public interface UserMapper {
 	public List<User> findFollwingByUserId(String id);
 
 	public List<User> findFollwerByUserId(String id);
+
+	public List<Note> findNoteByUser(User user);
 }

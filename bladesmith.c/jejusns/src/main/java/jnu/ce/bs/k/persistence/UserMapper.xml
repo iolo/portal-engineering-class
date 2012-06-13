@@ -54,4 +54,8 @@
 	<select id="findFollwerByUserId" parameterType="String" resultType="jnu.ce.bs.k.model.User">
 		SELECT m.id, m.`profile`, m.`name`, m.description FROM member m, follow f WHERE f.follower_id = m.id AND f.following_id=#{id} ORDER BY m.`name` ASC
 	</select>
+	
+	<select id="findNoteByUser" parameterType="jnu.ce.bs.k.model.User" resultType="jnu.ce.bs.k.model.Note">
+		SELECT n.* FROM note n LEFT OUTER JOIN follow f on(n.writer = f.following_id) WHERE f.follower_id=#{id} UNION SELECT * FROM note WHERE writer=#{id} ORDER BY write_date DESC
+	</select>
 </mapper>
