@@ -11,11 +11,30 @@
 <link href="resources/css/join.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
+<script type="text/javascript">
+
+
+function checkForm(form) {
+
+	if (form.password.value == "" || form.password.value == null) {
+		alert("비밀번호를 반드시 입력하십시오.");
+		form.password.focus();
+		return false;
+	}
+	if (form.userName.value == "" || form.userName.value == null) {
+		alert("이름이 없습니까?");
+		form.userName.focus();
+		return false;
+	}
+	return true;
+}
+</script>
 <body>
 	<div id="Wrap">
 		<div id="Content">
 			<h1>회원가입</h1>
-			<form:form modelAttribute="user" action="joinSubmit" method="post" enctype="multipart/form-data">
+			<form:form modelAttribute="user" action="joinSubmit" method="post" enctype="multipart/form-data"
+			onsubmit="return checkForm(this)">
 				<p>
 					<span class="labelName">ID</span>
 					<form:input path="userId" cssClass="inputBox"/>
