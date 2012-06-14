@@ -16,7 +16,6 @@ public class UnfollowController {
 	
 	@RequestMapping
 	public String unfollow(@RequestParam(value="userid") String userid, @RequestParam(value="followerid") String followerid){
-		System.out.println(userid + followerid);
 		userService.UserUnfollow(userid, followerid);
 		return "following";
 	}

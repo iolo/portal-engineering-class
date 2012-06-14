@@ -28,4 +28,6 @@ public interface UserService {
 	void UserModify(User user);
 	
 	void UserUnfollow(String userid, String followerid);
+
+	List<User> followerList(String userid);
 }

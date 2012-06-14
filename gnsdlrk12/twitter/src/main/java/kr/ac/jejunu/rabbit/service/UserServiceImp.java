@@ -84,8 +84,13 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public void UserUnfollow(String userid, String followerid) {
-		System.out.println(3252352);
 		usermapper.UserUnfollow(userid, followerid);
+	}
+
+	@Override
+	public List<User> followerList(String userid) {
+		List<User> follower = usermapper.followerUserAll(userid);
+		return follower;
 	}
 
 }
