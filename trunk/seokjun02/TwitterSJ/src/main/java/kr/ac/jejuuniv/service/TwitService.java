@@ -14,6 +14,14 @@ public interface TwitService {
 	User getUser(String userId);
 
 	void savePost(Post post);
+
+	List<User> getAllUser();
+
+	List<String> checkFollow(String userId);
+
+	List<User> getFollowingUser(String userId);
+
+	List<User> getFollowerUser(String userId);
 	
 
 }
