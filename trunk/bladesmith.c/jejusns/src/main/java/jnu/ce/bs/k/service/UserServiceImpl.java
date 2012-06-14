@@ -13,6 +13,7 @@ import jnu.ce.bs.k.persistence.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -73,12 +74,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void modifyUser(String name, String password, String description,
-			String profile, User user) {
+			MultipartFile profile, User user) {
+		
 		user.setName(name);
 		user.setPassword(password);
 		user.setDescription(description);
-		user.setProfile(profile);
-
+		user.setProfile(profile.getOriginalFilename());
+		
+		saveImage(profile);
+		
 		userMapper.modifyUser(user);
 	}
 
