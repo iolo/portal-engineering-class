@@ -20,7 +20,6 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
-//TODO : 의존성 제거
 @RunWith(MockitoJUnitRunner.class)
 public class UserTest {
 	@Mock
@@ -52,6 +51,7 @@ public class UserTest {
 		assertThat(new User(userMapper).loginValid("sens", "sens"), is(true));
 		assertThat(new User(userMapper).loginValid("sens", "senseeee"),
 				is(false));
+		assertThat(new User(userMapper).loginValid("abcd", "abcd"), is(false));
 	}
 
 	@Test(expected = NotFoundUserException.class)
