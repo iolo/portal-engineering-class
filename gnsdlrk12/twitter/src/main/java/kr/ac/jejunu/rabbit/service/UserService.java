@@ -2,6 +2,8 @@ package kr.ac.jejunu.rabbit.service;
 
 import java.util.List;
 
+import kr.ac.jejunu.rabbit.model.AllFollow;
+import kr.ac.jejunu.rabbit.model.AllUser;
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 
@@ -30,4 +32,12 @@ public interface UserService {
 	void UserUnfollow(String userid, String followerid);
 
 	List<User> followerList(String userid);
+	
+	List<AllUser> getAllUser(String userid);
+	
+	List<AllFollow> getAllFollow(String userid);
+
+	List<AllFollow> setFollow(List<AllUser> allUsers, List<AllFollow> allFollows);
+
+	void userFollow(String userid, String followerid);
 }

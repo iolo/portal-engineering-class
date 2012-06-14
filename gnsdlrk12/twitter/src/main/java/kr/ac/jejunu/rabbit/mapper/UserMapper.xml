@@ -30,7 +30,7 @@
 	</insert>
 	
 	<update id="UserUpdate" parameterType="kr.ac.jejunu.rabbit.model.User"> 
-		update userinfo set name=#{name}, password=#{password}, introduce=#{introduce}, image=#{imageURL} where userid = #{userid}
+		update userinfo set name=#{name}, password=#{password}, introduce=#{introduce}, image=#{image} where userid = #{userid}
 	</update>
 	
 	<delete id="UserDelete" parameterType="kr.ac.jejunu.rabbit.model.User">
@@ -62,4 +62,18 @@
 	<delete id="UserUnfollow" parameterType="kr.ac.jejunu.rabbit.model.Follow">
 		delete from follow where userid = #{userid} and followerid = #{followerid}
 	</delete>
+	
+	<select id="getAllUser" resultType="kr.ac.jejunu.rabbit.model.AllUser" >
+		select userinfo.image, userinfo.name,  userinfo.userid, userinfo.introduce, follow.followerid
+		from userinfo INNER JOIN follow where userinfo.userid = follow.userid and follow.userid = #{userid}
+	</select>
+	
+	<select id="getAllFollow" resultType="kr.ac.jejunu.rabbit.model.AllFollow">
+		select userinfo.image, userinfo.name, userinfo.introduce, userinfo.userid, follow.followerid
+		from follow INNER JOIN userinfo where userinfo.userid = follow.userid and follow.followerid = #{userid}
+	</select>
+	
+	<insert id="userFollow" parameterType="kr.ac.jejunu.rabbit.model.User"> 
+		insert into follow(userid, followerid) values (#{userid}, #{followerid})
+	</insert>
 </mapper>

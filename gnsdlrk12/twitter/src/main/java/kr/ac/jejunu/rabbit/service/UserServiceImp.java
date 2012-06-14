@@ -2,13 +2,14 @@ package kr.ac.jejunu.rabbit.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import kr.ac.jejunu.rabbit.mapper.UserMapper;
-import kr.ac.jejunu.rabbit.model.Follow;
+import kr.ac.jejunu.rabbit.model.AllFollow;
+import kr.ac.jejunu.rabbit.model.AllUser;
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImp implements UserService{
@@ -91,6 +92,42 @@ public class UserServiceImp implements UserService{
 	public List<User> followerList(String userid) {
 		List<User> follower = usermapper.followerUserAll(userid);
 		return follower;
+	}
+
+	@Override
+	public List<AllUser> getAllUser(String userid) {
+		List<AllUser> allUser = usermapper.getAllUser(userid);
+		return allUser;
+	}
+
+	@Override
+	public List<AllFollow> getAllFollow(String userid) {
+		List<AllFollow> allFollow = usermapper.getAllFollow(userid);
+		return allFollow;
+	}
+	
+	@Override
+	public List<AllFollow> setFollow(List<AllUser> allUsers, List<AllFollow> allFollows) {
+		
+		for (AllFollow allFollow : allFollows) {
+			allFollow.setFollow("Follow");			
+		}
+		if (!allFollows.isEmpty()) {			
+			for (AllUser alluser : allUsers) {
+				for (AllFollow allFollow : allFollows) {					
+					if (alluser.getFollowerid().equals(allFollow.getUserid())) {
+						allFollow.setFollow("UnFollow");
+					}
+				}
+			}
+		}		
+		return allFollows;
+	}
+
+	@Override
+	public void userFollow(String userid, String followerid) {
+		usermapper.userFollow(userid, followerid);
+		
 	}
 
 }

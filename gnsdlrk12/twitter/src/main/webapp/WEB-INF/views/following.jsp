@@ -26,7 +26,7 @@
 				<img width=50px height=50px src="/resources/${following.image}" />
 				${following.name }
 				${following.introduce }
-				<input type="button" value= "Unfollow" onclick="location.href='/unfollow?userid=${loginUser.userid }&followerid=${following.userid}'"/>
+				<input type="button" value= "Unfollow" onclick="location.href='/unfollow?userid=${loginUser.userid }&followerid=${following.userid}&page=1'"/>
 				<br/>
 		</c:forEach>
 	</table>
