@@ -17,13 +17,9 @@ public class UploadFileData {
 		String path = "/Users/HSY/Documents/workspace-sts-2.9.0.RELEASE/workspace/PortalService/new-twitter/src/main/webapp/resources/profileImg";
 		path = path + "/" + userId + "/";
 		
-		System.out.println("path =  " + path);
-		
 		File dirPaht = new File(path);
 		if(!dirPaht.exists()){
-			System.out.println("path nono...");
 			dirPaht.mkdir();
-			System.out.println("dir make!");
 		}
 
 		File uploadedFile = new File(path + name);
@@ -33,7 +29,6 @@ public class UploadFileData {
 		fos.close();
 
 		String imagePath = "/twitter/resources/profileImg/" + userId + "/" + name;
-		System.out.println("fileupload  + imagepath = " + imagePath);
 		return imagePath;
 	}
 }

@@ -17,7 +17,7 @@
 		<p>
 			<a href="/twitter/service/personalSNS"><label>${user.name}(${user.description })</label></a>
 			<a href="javascript:void(window.open('/twitter/service/write', '글쓰기',
-						'width=500, height=300'))"><input type="button" value="글쓰기" /></a>
+						'width=300, height=200'))"><input type="button" value="글쓰기" /></a>
 			<a href="/twitter/service/followingList"><input type="button" value="Following" /></a>
 			<a href="/twitter/service/followerList"><input type="button" value="Follower" /></a>
 			<a href="/twitter/service/allUserList"><input type="button" value="전체사용자" /></a>
