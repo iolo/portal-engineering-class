@@ -10,6 +10,7 @@
 	media="all" />
 <link href="/ssiggle/resources/css/login.css" rel="stylesheet" type="text/css"
 	media="all" />
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" type="text/css" />
 </head>
 <body>
 	<div id="container">
@@ -17,20 +18,22 @@
 		<img class="mainImg" src="/ssiggle/resources/DukeWithHelmet.png" />
 		<form action="/ssiggle/loginProcess" method="post">
 		<div class="loginForm">
-			<table class="loginForm">
-				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="id"></td>
-					<td rowspan="2"><input type="submit"	value="로그인" style="height: 50px; width: 60px; "/> </td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="password"></td>
-				</tr>
-			</table>
+			<div>
+				<div class="userId">아이디</div>
+				<span class="uId"><input type="text" name="id"></span>
+			</div>
+			<div class="clear">
+				<div class="userPw">비밀번호</div>
+				<span class="psw"><input type="password" name="password"></span>
+			</div>
+			<div class="btnClass">
+				<button type="submit" id="btn-primary" class="btn btn-primary">로그인</button>
+			</div>
 		</div>
 		</form>
-		<p>처음 방문하세요?<a href="/ssiggle/joinUser" class="joinBtn">가입하기</a></p>		
+		<div class="joinFirst">
+			처음 방문하세요?<a href="/ssiggle/joinUser" class="joinBtn">가입하기</a>
+		</div>		
 	</div>
 </body>
 </html>

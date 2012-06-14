@@ -10,6 +10,7 @@
 	media="all" />
 <link href="/ssiggle/resources/css/joinUser.css" rel="stylesheet" type="text/css"
 	media="all" />
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" type="text/css" />
 </head>
 <body>
 	<div id="container">
@@ -39,12 +40,12 @@
 			</p>
 			<p>
 				<span>이미지</span> <input name="imageFile" type="file">
+				<form:hidden path="image" />
 			</p>
-			<p class="btnBox">
-				<input type="submit" value="가입" />
-				<input type="reset" value="취소" />
+			<p id="btnBox2">
+				<input class="btn btn-primary" type="reset" value="취소" />
+				<input class="btn btn-primary" type="submit" value="가입" />
 			</p>
-			<form:hidden path="image" />
 		</form:form>
 		</div>
 	</div>

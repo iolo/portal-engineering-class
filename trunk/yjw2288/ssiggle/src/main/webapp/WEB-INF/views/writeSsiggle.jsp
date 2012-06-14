@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" type="text/css" />
+<title>Ssiggle</title>
 </head>
 <body>
 	<form:form modelAttribute="ssiggle" action="/ssiggle/service/saveSsiggle"
-		method="post">
+		method="post" style="margin: 0 20px;">
 		<fieldset>
 			<legend>요즘 어떠신가요?</legend>
 			<p>
@@ -17,11 +18,11 @@
 				<form:errors path="text" />
 				<form:hidden path="user.id"/>
 			</p>
+			<p>
+				<input class="btn btn-primary" type="submit" value="등록" />
+				<button class="btn btn-primary" onclick="window.close();">취소</button>
+			</p>
 		</fieldset>
-		<p>
-			<input type="submit" value="등록" />
-			<button onclick="window.close();">취소</button>
-		</p>
 	</form:form>
 </body>
 </html>
