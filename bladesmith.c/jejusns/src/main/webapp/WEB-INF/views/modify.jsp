@@ -19,19 +19,19 @@
 				</p>
 				<p>
 					<label>암호</label>
-					<input type="password" name="password" />
+					<input type="password" name="modifypassword" />
 				</p>
 				<p>
 					<label>이름</label>
-					<input type="name" name="name" />
+					<input type="name" name="modifyname" />
 				</p>
 				<p>
 					<label>설명</label>
-					<input type="text" name="description" />
+					<input type="text" name="modifydescription" />
 				</p>
 				<p>
 					<label>프로필 이미지</label>
-					<input type="file" name="profile" />
+					<input type="file" name="modifyprofile" />
 				</p>
 				<p>
 					<input type="submit" value="수정" /><input type="button" value="취소" onclick="self.history.go(-1)">
