@@ -15,7 +15,7 @@ public class AllUserController {
 	@Autowired
 	private TwitterService twitterService;
 	
-	@RequestMapping("getallusers.do")
+	@RequestMapping("alluser")
 	public ModelAndView goToMainWithAllUser(HttpServletRequest request){
 		return new ModelAndView("main","pageType","/getalluser");
 	}
