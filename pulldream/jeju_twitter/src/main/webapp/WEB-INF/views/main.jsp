@@ -7,10 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- <link href="/resources/css/content_style.css" rel="stylesheet" type="text/css" media="all" /> -->
 <title>Welcome To Jeju Twitt</title>
 </head>
 <body>
-<jsp:include page="user/loginpage.jsp"/><br>
-<jsp:include page="${pageType }"/>
+<div >
+	<jsp:include page="user/loginpage.jsp"/><br>
+	<jsp:include page="${pageType }"/>
+</div>
 </body>
 </html>

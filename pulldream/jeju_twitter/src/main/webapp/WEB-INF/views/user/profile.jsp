@@ -11,10 +11,10 @@
 </head>
 <body>
 <form:form method="post" action="join.do" commandName="join" enctype="multipart/form-data">
-	아이디 : <form:input path="id"/><br>
-	비밀번호 : <form:input path="password"/><br>
-	이름 : <form:input path="name"/><br>
-	설명 : <form:textarea path="profile"/><br>
+	아이디 : <form:input path="id" placeholder="아이디"/><br>
+	비밀번호 : <form:input path="password" placeholder="비밀번호"/><br>
+	이름 : <form:input path="name" placeholder="이름"/><br>
+	설명 : <form:textarea path="profile"placeholder="설명"/><br>
 	사진 : <input type="file" name="file"/>
 	<form:button>회원가입</form:button>
 </form:form>
