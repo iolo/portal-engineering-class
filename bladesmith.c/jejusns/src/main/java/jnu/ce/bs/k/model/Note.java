@@ -5,6 +5,7 @@ public class Note {
 	private String writer;
 	private String note;
 	private String write_date;
+	private String writer_profile;
 
 	public Note() {
 
@@ -45,5 +46,13 @@ public class Note {
 
 	public void setWrite_num(String write_num) {
 		this.write_num = write_num;
+	}
+
+	public String getWriter_profile() {
+		return writer_profile;
+	}
+
+	public void setWriter_profile(String writer_profile) {
+		this.writer_profile = writer_profile;
 	}
 }

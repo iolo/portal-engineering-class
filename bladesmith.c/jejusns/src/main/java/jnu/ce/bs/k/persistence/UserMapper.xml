@@ -56,6 +56,7 @@
 	</select>
 	
 	<select id="findNoteByUser" parameterType="jnu.ce.bs.k.model.User" resultType="jnu.ce.bs.k.model.Note">
-		SELECT n.* FROM note n LEFT OUTER JOIN follow f on(n.writer = f.following_id) WHERE f.follower_id=#{id} UNION SELECT * FROM note WHERE writer=#{id} ORDER BY write_date DESC
+		SELECT m.`profile` AS writer_profile, n.* FROM member m LEFT OUTER JOIN note n ON(m.id = n.writer) LEFT OUTER JOIN follow f on(n.writer = f.following_id) WHERE f.follower_id=#{id} UNION 
+		SELECT m.`profile` AS writer_profile, n.* FROM note n LEFT OUTER JOIN member m ON(n.writer = m.id) WHERE writer=#{id} ORDER BY write_date DESC
 	</select>
 </mapper>
