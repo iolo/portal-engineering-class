@@ -31,7 +31,7 @@
 			<tbody>
 				<c:forEach items="${noteList}" var="note">
 					<tr>
-						<td>${note.writer}</td>
+						<td><img src="resources/profile/${note.writer_profile}" /></td>
 						<td>${note.writer}</td>
 						<td>${note.note}</td>
 						<td>${note.write_date}</td>
