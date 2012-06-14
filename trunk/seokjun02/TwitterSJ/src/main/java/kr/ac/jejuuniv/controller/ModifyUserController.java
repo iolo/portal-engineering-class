@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/service/modifyUser")
+@RequestMapping("/service/modifyuser")
 public class ModifyUserController {
 	@Autowired
 	private LoginService loginService;
@@ -24,7 +24,7 @@ public class ModifyUserController {
 		user.setPassword("");
 		
 		model.addAttribute("user", user);
-		return "modifyUser";
+		return "modifyuser";
 	}
 
 }
