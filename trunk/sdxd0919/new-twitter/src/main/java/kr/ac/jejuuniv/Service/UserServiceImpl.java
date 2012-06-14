@@ -49,11 +49,14 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	public void update(User user) {
-		if(userRepository.getUserByUserNum(user.getUserNum()) == null){
+	public void update(User newUser) {
+		User user = userRepository.getUserByUserNum(newUser.getUserNum()); 
+		if(user == null){
 			throw new UserNotFoundException();
 		}else{
-			userRepository.update(user);
+			if(newUser.getName().equals("")) newUser.setName(user.getName());
+			if(newUser.getPassword().equals("")) newUser.setPassword(user.getPassword());
+			userRepository.update(newUser);
 		}
 	}
 
