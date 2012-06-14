@@ -11,7 +11,7 @@
 	type="text/css" media="all" />
 <link href="/ssiggle/resources/css/allUser.css" rel="stylesheet"
 	type="text/css" media="all" />
-	
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" type="text/css" />
 <script type="text/javascript">
 	function openNewWindow(window) {
 		open(
@@ -25,13 +25,13 @@
 <body>
 	<div id="container">
 		<div class="header">
-			<a class="profile" href="/ssiggle/service/user">${user.name}(${user.introduce})</a>
-			<a class="btn" href="/ssiggle/logout">로그아웃</a> 
-			<a class="btn"
+			<a class="profile" href="/ssiggle/service/user">${user.name}<br />(${user.introduce})</a>
+			<a class="btn btn-primary" href="/ssiggle/logout">로그아웃</a> 
+			<a class="btn btn-primary"
 				href="/ssiggle/service/user/allUser">전체사용자</a> 
-			<a class="btn" href="/ssiggle/service/user/follower">follower</a>
-			<a class="btn" href="/ssiggle/service/user/following">following</a>
-			<a class="btn" href="/ssiggle">메인 페이지</a>
+			<a class="btn btn-primary" href="/ssiggle/service/user/follower">follower</a>
+			<a class="btn btn-primary" href="/ssiggle/service/user/following">following</a>
+			<a class="btn btn-primary" href="/ssiggle">메인 페이지</a>
 		</div>
 		<hr />
 		<table>
@@ -46,10 +46,10 @@
 					<td class="following">
 						<c:choose>
 							<c:when test="${target.following}">
-									<a class="btn"
+									<a class="btn btn-danger"
 										href="/ssiggle/service/unFollow/?targetId=${target.user.id}">unfollow</a>
 								</c:when> <c:otherwise>
-									<a class="btn"
+									<a class="btn btn-success"
 										href="/ssiggle/service/follow/?targetId=${target.user.id}">follow</a>
 								</c:otherwise>
 						</c:choose>

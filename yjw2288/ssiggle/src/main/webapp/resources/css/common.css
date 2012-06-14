@@ -6,6 +6,7 @@ body{background-color:white;}
 
 table { border-coolapse:collapse; border-width:0;}
 
+table loginForm {width:400px;}
 img, fieldset{border:none;}
 
 a{color:#333; }

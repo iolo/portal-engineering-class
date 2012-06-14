@@ -15,6 +15,7 @@ public class LoginProcessController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String loginPage(@RequestParam String id,
 			@RequestParam String password, HttpServletResponse response) {
+
 		if (!(new User().loginValid(id, password))) {
 			return "redirect:/login";
 		}

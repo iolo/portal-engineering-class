@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginControllUtil {
 	public static String saveCookie4Login(String id, HttpServletResponse response) {
 		response.addCookie(new Cookie("loginId", id));
-		return "redirect:/service/user/";
+
+		return "redirect:/service/main/";
 	}
 }

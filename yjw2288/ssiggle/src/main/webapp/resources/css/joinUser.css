@@ -3,7 +3,7 @@
 #joinBox
 {
 	width:370px;
-	margin:0 auto;	
+	margin:100px auto;	
 	text-align:left;
 }
 
@@ -22,8 +22,13 @@ span {
 	display: block;
 }
 
-btnBox{
-	text-align:center;
-	background-color:red;
-	margin:0 auto;	
+#btnBox{
+	width:40px;
+	margin:0 auto;
 }
+
+#btnBox2{
+	width:104px;
+	margin:0 auto;
+}
+
