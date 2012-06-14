@@ -5,9 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TwitterSJ Join Member</title>
+<title>TwitterSJ Modify Member</title>
 <link href="resources/gnb.css" rel="stylesheet" type="text/css" media="all" />
 <link href="resources/join.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" language="JavaScript">
+	function checkPassword(form) {
+		
+		if(form.password.value == ""){
+			alert("비밀번호를 반드시 입력하십시오.");
+			form.password.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
 	<div id="Header">
@@ -15,8 +26,8 @@
 	</div>
 	<div id="Content">
 
-		<form:form modelAttribute="user" action="/TwitterSJ/joinSubmit" method="post"
-			enctype="multipart/form-data">
+		<form:form modelAttribute="user" action="/TwitterSJ/joinSubmit" method="post" enctype="multipart/form-data"
+		onsubmit="return checkPassword(this)">
 			<p>
 				<span>ID</span>
 				<form:input path="userId" readonly="true"/>
