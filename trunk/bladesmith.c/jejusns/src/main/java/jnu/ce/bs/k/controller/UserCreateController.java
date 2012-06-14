@@ -29,6 +29,7 @@ public class UserCreateController {
 			@RequestParam("profile") MultipartFile profile) {
 
 		userService.createUser(id, password, name, description, profile);
+		
 		return "redirect:/";
 	}
 }
