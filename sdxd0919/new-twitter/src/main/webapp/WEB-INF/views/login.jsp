@@ -12,7 +12,7 @@
 <body>
 <center>
 	<div id="Header">
-		<h3>제주 SNS 오신것을 환영합니다.</h3>
+		<h3>Animal World 오신것을 환영합니다.</h3>
 		<p>
 			<img src="/twitter/resources/image/main.png" width="500" height="500"/>
 		</p>

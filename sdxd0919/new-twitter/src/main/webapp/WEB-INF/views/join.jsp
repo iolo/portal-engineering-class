@@ -8,11 +8,25 @@
 <!-- 
 	<link href="/userㅁ/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 	 -->
+	<script type="text/javascript">
+		function validation(){
+			var url = document.URL;
+			var id = document.joinForm.id.value;
+			var name = document.joinForm.name.value;
+			var password = document.joinForm.password.value;
+			if((id=="") || (name=="") ||(password == "")){
+				alert("id, password, name은 꼭 입력해야 합니다!")
+			}else{
+				document.joinForm.submit();
+				document.joinForm.action = "/twitter/userSave";
+			}
+		}
+	</script>	 
 </head>
 <body>
 <center>
 	<div id="JoinContent">
-		<form action="/twitter/userSave" method="post" 
+		<form name="joinForm" onsubmit="javascript:validation()" method="post" 
 					enctype="multipart/form-data" >
 			<center>
 			<fieldset>	
@@ -36,7 +50,7 @@
 				</tr>
 				<tr>
 					<td width="100" align="left">프로필이미지</td>
-					<td width="200" align="left"><input type="file" name="file"/></td>
+					<td width="100" align="left"><input type="file" name="file"/></td>
 				</tr>
 				<tr>
 					<td width="200" align="center"><input type="submit" value="등록" /></td>

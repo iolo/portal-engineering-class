@@ -3,6 +3,8 @@ package kr.ac.jejuuniv.Service;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import org.junit.Assert;
+
+import java.io.IOException;
 import java.util.List;
 
 import kr.ac.jejuuniv.Model.User;
@@ -53,21 +55,21 @@ public class UserInterationTest {
 	}
 	
 	@Test
-	public void insert(){
+	public void insert() throws IOException{
 		User user = new User("kim","aabbc","kim","", "");
 		
-		userService.addUser(user);
+		userService.addUser(user, null);
 		
 		List<User>users = userService.getAllUser();
 		assertTrue(users.size() == 3);
 	}
 	
 	@Test
-	public void update(){
+	public void update() throws IOException{
 		User user = userService.getUserByUserNum(3);
 		user.setName("KimSY");
 		user.setPassword("kkk");
-		userService.update(user);
+		userService.update(user,null);
 		
 		user = userService.getUserByUserNum(3);
 		assertThat(user.getName(), is("KimSY"));

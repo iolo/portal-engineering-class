@@ -28,14 +28,7 @@ public class JoinController {
 	
 	@RequestMapping(value = "/userSave", method=RequestMethod.POST)
 	public String save(User user, @RequestParam("file") MultipartFile file) throws IOException{
-		UploadFileData fileData = new UploadFileData();
-		
-		String name = file.getOriginalFilename(); 
-		if(!name.equals("")){
-			String imagePath = fileData.uploadFile(file, user.getId(), name);
-			user.setProfileImg(imagePath);
-		}
-		userService.addUser(user);
+		userService.addUser(user, file);
 		
 		return "redirect:/";
 	}

@@ -43,14 +43,10 @@ public class TweetServiceImpl implements TweetService {
 	}
 
 	public void addTweet(Tweet tweet) {
-		if(tweet.getMessage().equals("")){
-			throw new dateIsNullException();
-		}else{
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
-			tweet.setDate(format.format(new Date()));
-			
-			tweetRepository.insert(tweet);
-		}
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
+		tweet.setDate(format.format(new Date()));
+		
+		tweetRepository.insert(tweet);
 	}
 
 	public List<UserTweet> getUserTweet(int userNum) {
