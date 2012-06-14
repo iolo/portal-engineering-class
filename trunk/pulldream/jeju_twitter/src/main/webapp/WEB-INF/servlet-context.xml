@@ -14,7 +14,7 @@
 		infrastructure -->
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-	<resources mapping="/resources/profile/**" location="/resources/" />
+	<resources mapping="/resources/**/**" location="/resources/" />
 	<interceptors>
 		<interceptor>
 			<mapping path="/**/*" />
