@@ -6,46 +6,46 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TwitterSJ Join Member</title>
-<link href="resources/gnb.css" rel="stylesheet" type="text/css" media="all" />
-<link href="resources/join.css" rel="stylesheet" type="text/css" media="all" />
+<link href="resources/css/gnb.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="resources/css/join.css" rel="stylesheet" type="text/css"
+	media="all" />
 </head>
 <body>
-	<div id="Header">
-		<span id="pageTitle">회원가입</span>
-	</div>
-	<div id="Content">
-
-		<form:form modelAttribute="user" action="joinSubmit" method="post"
-			enctype="multipart/form-data">
-			<p>
-				<span>ID</span>
-				<form:input path="userId" />
-				<form:errors path="userId" />
-			</p>
-			<p>
-				<span>Password</span>
-				<form:password path="password"/>
-				<form:errors path="password"/>
-			</p>
-			<p>
-				<span>이름</span>
-				<form:input path="userName" />
-				<form:errors path="userName" />
-			</p>
-			<p>
-				<span>설명</span>
-				<form:input path="introduce" />
-				<form:errors path="introduce" />
-			</p>
-			<p>
-				<label>프로필이미지</label> <input type="file" name=profileImage />
-			</p>
-			<p>
-				<input type="submit" value="가입" />
-				<input type="reset" value="Reset" />
-			</p>
-			<form:hidden path="photo"/>
-		</form:form>
+	<div id="Wrap">
+		<div id="Content">
+			<h1>회원가입</h1>
+			<form:form modelAttribute="user" action="joinSubmit" method="post" enctype="multipart/form-data">
+				<p>
+					<span class="labelName">ID</span>
+					<form:input path="userId" cssClass="inputBox"/>
+					<form:errors path="userId" />
+				</p>
+				<p>
+					<span class="labelName">Password</span>
+					<form:password path="password" cssClass="inputBox" />
+					<form:errors path="password" />
+				</p>
+				<p>
+					<span class="labelName">이름</span>
+					<form:input path="userName" cssClass="inputBox" />
+					<form:errors path="userName" />
+				</p>
+				<p>
+					<span class="labelName">설명</span>
+					<form:input path="introduce" cssClass="inputBox" />
+					<form:errors path="introduce" />
+				</p>
+				<p>
+					<span class="labelName">프로필이미지</span> <input type="file" name=profileImage class="inputBox" />
+				</p>
+				<p id="btnTag">
+					<input type="submit" value="가입" />
+					<input type="reset"	value="Reset" />
+				</p>
+				<form:hidden path="photo" />
+			</form:form>
+		</div>
 	</div>
 </body>
 </html>

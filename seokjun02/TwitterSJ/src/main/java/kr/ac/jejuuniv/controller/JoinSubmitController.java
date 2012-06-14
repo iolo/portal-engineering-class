@@ -20,16 +20,25 @@ import org.springframework.web.multipart.MultipartFile;
 public class JoinSubmitController {
 	@Autowired
 	private LoginService loginService;
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public String action(@ModelAttribute User user, @RequestParam(value = "profileImage", required = false) MultipartFile file, HttpSession session) throws IOException{
-		if (file != null && !file.isEmpty()){
-			loginService.saveImage(file, user);
+	public String action(
+			@ModelAttribute User user,
+			@RequestParam(value = "profileImage", required = false) MultipartFile file,
+			HttpSession session) throws IOException {
+		if (user.getUserId() != null && !user.getUserId().isEmpty()) {
+
+			if (file != null && !file.isEmpty()) {
+				loginService.saveImage(file, user);
+			}
+
+			loginService.saveUser(user);
+			session.setAttribute("loginId", user.getUserId());
+
+			return "redirect:/service/personal";
+
 		}
-		
-		loginService.saveUser(user);
-		session.setAttribute("loginId", user.getUserId());
-		
-		return "redirect:/service/personal";
+		return "redirect:/joinmember";
+
 	}
 }

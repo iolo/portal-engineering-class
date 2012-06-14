@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TwitterSJ</title>
-<link href="resources/gnb.css" rel="stylesheet" type="text/css"
+<link href="resources/css/gnb.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript">
 	function openPopUp(window) {
