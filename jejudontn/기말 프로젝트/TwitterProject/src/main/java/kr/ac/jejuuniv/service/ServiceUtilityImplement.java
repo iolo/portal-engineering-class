@@ -18,7 +18,7 @@ public class ServiceUtilityImplement implements ServiceUtility {
 
 	@Override
 	public String getTime() {
-		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd",
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd 'at' hh:mm",
 				Locale.KOREA);
 		Date currentTime = new Date();
 		return mSimpleDateFormat.format(currentTime);

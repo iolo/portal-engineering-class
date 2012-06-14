@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping("/main")
@@ -23,6 +24,12 @@ public class MainController {
 	public List<TwittList> main(@ModelAttribute("user") User user) {
 		return twittService.getFollowingTwitt(user.getId());
 
+	}
+	
+	@RequestMapping("/logout")
+	public String Logout(SessionStatus sessionStatus){
+		sessionStatus.setComplete();
+		return "redirect:/index";
 	}
 
 }
