@@ -13,7 +13,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/service/**/*"/>
-			<beans:bean class="kr.ac.jejuuniv.controller.MyInterceptor"/>
+			<beans:bean class="kr.ac.jejuuniv.controller.MyInterceptorController"/>
 		</interceptor>
 	</interceptors>
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 

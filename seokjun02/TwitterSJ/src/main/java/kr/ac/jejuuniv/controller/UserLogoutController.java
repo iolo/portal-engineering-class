@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @RequestMapping("/logout")
-public class UserLogout {
+public class UserLogoutController {
 	@RequestMapping
 	public String action(HttpSession session) {
 		session.removeAttribute("loginId");

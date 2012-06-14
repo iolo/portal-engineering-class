@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class Index {
+public class IndexController {
 	@RequestMapping
 	public String action(HttpSession session, Model model) {
 

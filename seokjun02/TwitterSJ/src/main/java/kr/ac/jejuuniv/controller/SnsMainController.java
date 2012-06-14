@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/main")
-public class SnsMain {
+public class SnsMainController {
 	@Autowired
 	private LoginService loginService;
 //	@RequestMapping
