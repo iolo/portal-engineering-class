@@ -13,8 +13,12 @@
 		function MovePage() {
 			var url = opener.document.URL;
 			var message = document.writeForm.message.value;
-			opener.document.location.href = "/twitter/service/addTweet?message="+message+"&url="+url;
-			window.close();
+			if(message==""){
+				window.alert("메세지 내용이 없습니다. 다시 입력해주세요.");
+			}else{
+				opener.document.location.href = "/twitter/service/addTweet?message="+message+"&url="+url;
+				window.close();
+			}
 		}
 	</script>	
 	

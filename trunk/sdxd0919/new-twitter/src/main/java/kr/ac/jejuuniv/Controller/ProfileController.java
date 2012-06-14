@@ -29,15 +29,8 @@ public class ProfileController {
 	@RequestMapping(value = "/service/profileSave", method=RequestMethod.POST)
 	public String save(HttpSession session, User user, 
 			@RequestParam("file") MultipartFile file) throws IOException{
-		UploadFileData fileData = new UploadFileData();
-		
-		String name = file.getOriginalFilename(); 
-		if(!name.equals("")){
-			String imagePath = fileData.uploadFile(file, user.getId(), name);
-			user.setProfileImg(imagePath);
-		}
-		userService.update(user);
-		
+		userService.update(user, file);
+
 		return "redirect:/service/personalSNS";
 	}
 

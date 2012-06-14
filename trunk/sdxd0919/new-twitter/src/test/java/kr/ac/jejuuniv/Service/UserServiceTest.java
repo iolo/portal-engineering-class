@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,28 +84,27 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void addUser(){
+	public void addUser() throws IOException{
 		UserService userService = new UserServiceImpl(userRepository);
 		
 		User user = new User("hsy","aaa", "현소영");
-		userService.addUser(user);
+		userService.addUser(user, null);
 		
 		verify(userRepository).insert(user);
 	}
 	
 	@Test
-	public void updateUser(){
+	public void updateUser() throws IOException{
 		UserService userService = new UserServiceImpl(userRepository);
 		
 		when(userRepository.getUserByUserNum(1)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				return new User(1, "hsy","aaa","현소영");
 			}
-			
 		});
 		
 		User user = new User(1, "hsy", "abc", "현소영");
-		userService.update(user);
+		userService.update(user,null);
 		
 		assertNotNull(userRepository.getUserByUserNum(1));
 		verify(userRepository).update(user);
@@ -112,13 +112,13 @@ public class UserServiceTest {
 	}
 	
 	@Test(expected=UserNotFoundException.class)
-	public void updateFail(){
+	public void updateFail() throws IOException{
 		UserService userService = new UserServiceImpl(userRepository);
 		
 		when(userRepository.getUserByUserNum(1) == null).thenThrow(new UserNotFoundException());
 		
 		User user = new User("hsy", "abc", "현소영");
-		userService.update(user);
+		userService.update(user,null);
 		
 		verify(userRepository).update(user);
 	}
