@@ -8,6 +8,7 @@ import kr.ac.jejuuniv.twitter.service.TwitterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,16 +20,11 @@ public class UnFollowingController {
 	private TwitterService twitterService;
 	
 	@RequestMapping
-	public String UnFollowing(@ModelAttribute("following")FollowingModel followModel,HttpServletRequest request){
+	public String UnFollowing(@PathVariable("pageType")String pageType,  @ModelAttribute("following")FollowingModel followModel,HttpServletRequest request){
 		String id = (String)request.getSession().getAttribute("loginID");
 		twitterService.unFollowingById(id, followModel.getFollowing());
-//		return new ModelAndView("/getfollowing.do");
+		return "redirect:/"+pageType;
 
-		if(request.getRequestURI().endsWith("following")){
-			return "redirect:/getfollowing.do";
-		}
-		else
-			return "redirect:/getfollower.do";
 	}
 
 }

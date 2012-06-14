@@ -12,12 +12,12 @@ AllUserList<br>
 			<c:out value="${alluser.profile }" />
 			<c:choose>
 				<c:when test="${alluser.following}">
-					<a href="unfollow.do/follower?following=${alluser.id }">
+					<a href="unfollow.do/alluser?following=${alluser.id }">
 						<input type="submit" value="UnFollowing">
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a href="following.do/follower?following=${alluser.id }">
+					<a href="following.do/alluser?following=${alluser.id }">
 						<input type="submit" value="Following">
 					</a>
 				</c:otherwise>

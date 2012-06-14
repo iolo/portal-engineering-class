@@ -15,7 +15,7 @@ public class FollowerController {
 	@Autowired
 	private TwitterService twitterService;
 	
-	@RequestMapping("getfollower.do")
+	@RequestMapping("follower")
 	public ModelAndView goToMainWithFollowingList(HttpServletRequest reqeust){
 		return new ModelAndView("main","pageType","/followerlist");
 	}
