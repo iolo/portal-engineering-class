@@ -26,7 +26,14 @@
 				<img width=50px height=50px src="/resources/${follower.image}" />
 				${follower.name }
 				${follower.introduce }
-				<input type="button" value= "Unfollow" onclick="location.href='/unfollow?userid=${loginUser.userid }&followerid=${follower.userid}'"/>
+				
+				<c:if test="${follower.follow == 'UnFollow' }">
+					<input type="button" value = "${follower.follow }" onclick="location.href='/unfollow?userid=${loginUser.userid }&followerid=${follower.userid}&page=2'" />
+				</c:if>
+				<c:if test="${follower.follow == 'Follow' }">
+					<input type="button" value = "${follower.follow }" onclick="location.href='/unfollow?userid=${loginUser.userid }&followerid=${follower.userid}&page=3'" />
+				</c:if>
+				
 				<br/>
 		</c:forEach>
 	</table>

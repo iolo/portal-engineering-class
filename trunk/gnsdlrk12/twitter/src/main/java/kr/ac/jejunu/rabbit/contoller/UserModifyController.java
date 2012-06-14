@@ -23,12 +23,12 @@ public class UserModifyController {
 	UserService userService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String userReg(@ModelAttribute User user, MultipartFile image, @RequestParam(value = "checkPass") String pass) throws FileNotFoundException, IOException{
+	public String userReg(@ModelAttribute User user, MultipartFile userimage, @RequestParam(value = "checkPass") String pass) throws FileNotFoundException, IOException{
 		if(userService.Login(user.getUserid(), pass)){
 			if(user.getPassword().isEmpty()) {
 				user.setPassword(pass);
 			}
-			saveImage(user, image);		
+			saveImage(user, userimage);		
 			userService.UserModify(user);
 		}
 		return "finish";		

@@ -1,11 +1,16 @@
 package kr.ac.jejunu.rabbit.model;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("Follow")
 public class Follow {
 	private String followerimageURL;
 	private String followername;
 	private String userid;
 	private String followerintroduce;
 	private String followerid;
+	private String state;
+	private String follow;
 	
 	public String getUserid() {
 		return userid;
@@ -36,5 +41,17 @@ public class Follow {
 	}
 	public void setFollowerid(String followerid) {
 		this.followerid = followerid;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getFollow() {
+		return follow;
+	}
+	public void setFollow(String follow) {
+		this.follow = follow;
 	}
 }

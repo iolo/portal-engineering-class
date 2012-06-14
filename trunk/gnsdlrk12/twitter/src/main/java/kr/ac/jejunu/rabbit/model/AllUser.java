@@ -1,19 +1,14 @@
 package kr.ac.jejunu.rabbit.model;
 
-import org.apache.ibatis.type.Alias;
-
-@Alias("User")
-public class User {
-	
+public class AllUser {
 	private String userid;
 	private String name;
 	private String password;
-	private String introduce;
 	private String image;
-	private String following;
+	private String introduce;
 	private String follow;
+	private String followerid;
 	
-	private String loginUser;
 	public String getUserid() {
 		return userid;
 	}
@@ -32,16 +27,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	@Override
-	public String toString() {
-		return "User [id=" + userid + ", name=" + name + ", password=" + password + "]";
+	public String getImage() {
+		return image;
 	}
-	public String getLoginUser() {
-		return loginUser;
-	}
-	public void setLoginUser(String loginUser) {
-		this.loginUser = loginUser;
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public String getIntroduce() {
 		return introduce;
@@ -49,23 +39,17 @@ public class User {
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
-	public String getFollowing() {
-		return following;
-	}
-	public void setFollowing(String following) {
-		this.following = following;
-	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public String getFollow(){
+	public String getFollow() {
 		return follow;
 	}
 	public void setFollow(String follow) {
-		this.follow = follow;		
+		this.follow = follow;
+	}
+	public String getFollowerid() {
+		return followerid;
+	}
+	public void setFollowerid(String followerid) {
+		this.followerid = followerid;
 	}
 	
 }
