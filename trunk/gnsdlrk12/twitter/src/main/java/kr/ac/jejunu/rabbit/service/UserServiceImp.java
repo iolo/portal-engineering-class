@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.jejunu.rabbit.mapper.UserMapper;
+import kr.ac.jejunu.rabbit.model.Follow;
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 
@@ -35,9 +36,9 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public List<User> UserList() {
-		List<User> users = usermapper.findUserAll();
-		return users;
+	public List<User> followingList(String userid) {
+		List<User> following = usermapper.followingUserAll(userid);
+		return following;
 	}
 
 	@Override
@@ -79,6 +80,12 @@ public class UserServiceImp implements UserService{
 	public void UserModify(User user) {
 		usermapper.UserUpdate(user);
 		
+	}
+
+	@Override
+	public void UserUnfollow(String userid, String followerid) {
+		System.out.println(3252352);
+		usermapper.UserUnfollow(userid, followerid);
 	}
 
 }

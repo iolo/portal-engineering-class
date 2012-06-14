@@ -49,12 +49,6 @@ public class TestUserService {
 		userService.UserDelete(DeleteUserId);
 	}
 	
-	@Test
-	public void TestList(){	//UserList
-		List<User> users = userService.UserList();
-		printUsers(users);
-	}
-	
 	public void printUsers(List<User> users) {
 		System.out.println("------------------------------------------");
 		for (User user : users) {

@@ -2,11 +2,11 @@ package kr.ac.jejunu.rabbit.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
-
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserMapper {
@@ -19,7 +19,7 @@ public interface UserMapper {
 
 	User findById(String userid);
 	
-	List<User> findUserAll();
+	List<User> followingUserAll(String userid);
 	
 	List<Post> findPostAll(String userid);
 
@@ -30,5 +30,7 @@ public interface UserMapper {
 	User Check(@Param("userid") String userid, @Param("password") String password);
 
 	void postDelete(@Param("postid") String postid, @Param("post_num") int post_num);
+
+	void UserUnfollow(@Param("userid") String userid, @Param("followerid") String followerid);
 	
 }

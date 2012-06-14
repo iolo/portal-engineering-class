@@ -6,10 +6,8 @@
 	<sql id="selectUser">userid, image, name, password, introduce</sql>
 	<sql id="selectPost">image, post_num, postid, name, content, regdate</sql>
 	
-	<select id="findUserAll" resultType="kr.ac.jejunu.rabbit.model.User" >
-		select 
-		<include refid="selectUser"/>
-		from userinfo
+	<select id="followingUserAll" resultType="kr.ac.jejunu.rabbit.model.User" >
+		select * from userinfo where userid in (select followerid from follow where userid=#{userid})
 	</select>
 	
 	<select id="findPostAll" resultType="kr.ac.jejunu.rabbit.model.Post" >
@@ -56,4 +54,8 @@
 		select *
 		from userinfo where userid = #{userid} and password = #{password}
 	</select>
+	
+	<delete id="UserUnfollow" parameterType="kr.ac.jejunu.rabbit.model.Follow">
+		delete from follow where userid = #{userid} and followerid = #{followerid}
+	</delete>
 </mapper>

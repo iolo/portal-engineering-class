@@ -19,9 +19,9 @@ public class LoginController {
 	private UserService userService;
 
 	@RequestMapping
-	public String action(@RequestParam(value = "userid") String userid,
-			@RequestParam(value = "password") String password,
+	public String action(@RequestParam(value = "userid") String userid,	@RequestParam(value = "password") String password,
 			HttpServletRequest request, Model model) {
+		System.out.println(userid + password);
 		boolean value = userService.Login(userid, password);
 		if (value != true) {
 			return "main";

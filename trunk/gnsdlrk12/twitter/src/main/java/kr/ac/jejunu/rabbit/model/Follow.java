@@ -1,8 +1,11 @@
 package kr.ac.jejunu.rabbit.model;
 
 public class Follow {
+	private String followerimageURL;
+	private String followername;
 	private String userid;
-	private String fowllowerid;
+	private String followerintroduce;
+	private String followerid;
 	
 	public String getUserid() {
 		return userid;
@@ -10,10 +13,28 @@ public class Follow {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getFowllowerid() {
-		return fowllowerid;
+	public String getFollowerimageURL() {
+		return followerimageURL;
 	}
-	public void setFowllowerid(String fowllowerid) {
-		this.fowllowerid = fowllowerid;
-	}	
+	public void setFollowerimageURL(String followerimageURL) {
+		this.followerimageURL = followerimageURL;
+	}
+	public String getFollowername() {
+		return followername;
+	}
+	public void setFollowername(String followername) {
+		this.followername = followername;
+	}
+	public String getFollowerintroduce() {
+		return followerintroduce;
+	}
+	public void setFollowerintroduce(String followerintroduce) {
+		this.followerintroduce = followerintroduce;
+	}
+	public String getFollowerid() {
+		return followerid;
+	}
+	public void setFollowerid(String followerid) {
+		this.followerid = followerid;
+	}
 }
