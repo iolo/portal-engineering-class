@@ -1,9 +1,13 @@
 package kr.ac.jejuuniv.model;
 
+import java.io.Serializable;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("User")
-public class User {
+public class User implements Serializable{
+	private static final long serialVersionUID = -732288218857259643L;
+	
 	private String userId;
 	private String password;
 	private String userName;

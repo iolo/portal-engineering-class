@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/joinSubmit")
-public class JoinSubmit {
+public class JoinSubmitController {
 	@Autowired
 	private LoginService loginService;
 	

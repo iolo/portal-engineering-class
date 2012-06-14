@@ -17,4 +17,6 @@ public interface LoginService {
 
 	void saveImage(MultipartFile file, User user) throws IOException, FileNotFoundException;
 
+	User findUserById(String userId);
+
 }
