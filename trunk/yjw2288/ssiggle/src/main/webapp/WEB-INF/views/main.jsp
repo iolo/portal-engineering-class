@@ -18,7 +18,7 @@
 	media="all" />
 <link href="/ssiggle/resources/css/main.css" rel="stylesheet" type="text/css"
 	media="all" />
-<title>Siggle</title>
+<title>SSiggle</title>
 </head>
 <body>
 	<div id="container">
@@ -37,7 +37,7 @@
 				<tr>
 					<td class="prof"><img src=/ssiggle/resources/userimage/${ssiggle.user.image}
 						width="50px" height="50px"></td>
-					<td class="name">${ssiggle.user.name }</td>
+					<td class="name">${ssiggle.user.id}<br/>( ${ssiggle.user.name } )</td>
 					<td class="text" align="left">${ssiggle.text }</td>
 					<td class="time">${ssiggle.time }</td>
 				</tr>

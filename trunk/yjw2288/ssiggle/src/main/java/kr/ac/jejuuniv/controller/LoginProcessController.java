@@ -1,6 +1,5 @@
 package kr.ac.jejuuniv.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.ac.jejuuniv.model.user.User;
@@ -20,7 +19,6 @@ public class LoginProcessController {
 			return "redirect:/login";
 		}
 
-		response.addCookie(new Cookie("loginId", id));
-		return "redirect:/service/main";
+		return LoginControllUtil.saveCookie4Login(id, response);
 	}
 }

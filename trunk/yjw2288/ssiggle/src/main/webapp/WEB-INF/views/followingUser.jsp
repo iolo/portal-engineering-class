@@ -18,7 +18,7 @@
 		<a class="profile" href="/ssiggle/service/user">${user.name}(${user.introduce})</a>
 		<a class="btn" href="/ssiggle/logout">로그아웃</a> 
 		<a class="btn"
-			href="/ssiggle/service/user/user/allUser">전체사용자</a> 
+			href="/ssiggle/service/user/allUser">전체사용자</a> 
 		<a class="btn" href="/ssiggle/service/user/follower">follower</a>
 		<a class="btn" href="/ssiggle/service/user/following">following</a>
 		<a class="btn" href="/ssiggle">메인 페이지</a>
@@ -29,7 +29,7 @@
 			<tr>
 				<td class="prof"><img src="/ssiggle/resources/userimage/${following.image}"
 					width="50px" height="50px"></td>
-				<td class="name">${following.name }</td>
+				<td class="name">${following.id }<br/>( ${following.name } )</td>
 				<td class="introduce">${following.introduce }</td>
 				<td class="following"><a class="btn"
 					href="/ssiggle/service/unFollow?targetId=${following.id}">unfollow</a></td>

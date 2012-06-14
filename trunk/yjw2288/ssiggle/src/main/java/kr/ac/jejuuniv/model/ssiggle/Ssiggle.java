@@ -6,7 +6,6 @@ import java.util.List;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
 import kr.ac.jejuuniv.model.user.User;
-import kr.ac.test.domain.SsiggleExistException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
