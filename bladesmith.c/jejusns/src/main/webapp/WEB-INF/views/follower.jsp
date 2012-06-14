@@ -31,7 +31,7 @@
 			<tbody>
  				<c:forEach items="${userList}" var="user">
 					<tr>
-						<td>${user.profile}</td>
+						<td><img src ="/resources/profile/${user.profile}" /></td>
 						<td>${user.name}</td>
 						<td>${user.description}</td>
 						<td><c:choose>

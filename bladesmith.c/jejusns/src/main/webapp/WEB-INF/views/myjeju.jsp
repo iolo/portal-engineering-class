@@ -30,7 +30,7 @@
 			<tbody>
 				<c:forEach items="${noteList}" var="note">
 					<tr>
-						<td>${note.writer}</td>
+						<td><img src ="/resources/profile/${User.profile}" /></td>
 						<td>${note.note}</td>
 						<td>
 						<button id="delete" value="delete" type="button" onclick="location.href='remove?write_num=${note.write_num}'">삭제</button></td>

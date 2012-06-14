@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 	public String saveImage(MultipartFile profile) {
 		String fileURL = profile.getOriginalFilename();
 
-		File file = new File("E:\\개인자료\\spring\\profile\\" + fileURL);
+		File file = new File("C:\\Users\\K\\Documents\\workspace-sts-2.9.0.RELEASE\\jejusns\\src\\main\\resources\\profile" + fileURL);
 		try {
 			profile.transferTo(file);
 		} catch (Exception e) {
