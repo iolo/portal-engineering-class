@@ -26,8 +26,7 @@
 		select distinct t.seq
 			from tweet t
 			inner join follow f
-			on f.userNum = #{userNum}
-		where f.followingUserNum = t.userNum or t.userNum = #{userNum}
+		where (f.userNum = #{userNum} and f.followingUserNum = t.userNum) or t.userNum = #{userNum}
 		order by date desc
 	</select>
 	
