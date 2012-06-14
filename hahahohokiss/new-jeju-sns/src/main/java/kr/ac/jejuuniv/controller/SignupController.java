@@ -11,10 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/signup")
-public class SingupController extends BaseFormController {
+public class SignupController extends BaseFormController {
 	
 	@RequestMapping
-	public String test(User user, @RequestParam("file") MultipartFile file) throws IOException {
+	public String signupAction(User user, @RequestParam("file") MultipartFile file) throws IOException {
 		userService.addUser(user, file);
 		return "redirect:/";
 	}

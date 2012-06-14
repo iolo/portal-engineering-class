@@ -26,6 +26,7 @@ public class PersonalController extends BaseFormController {
 		ModelAndView modelAndView = new ModelAndView();
 		User user = (User) session.getAttribute("loginUser");
 		List<Tweet> tweets = userService.getTweets(user.getLoginId());
+		
 		user = userService.getUser(user.getLoginId());
 		session.setAttribute("loginUser", user);
 		modelAndView.addObject("tweets", tweets);

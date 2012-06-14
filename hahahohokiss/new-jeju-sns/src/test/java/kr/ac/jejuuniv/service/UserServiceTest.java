@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -43,6 +45,8 @@ public class UserServiceTest {
 	 * User 등록 - 성공
 	 * unfollowing
 	*/
+	@Mock
+	MockMultipartFile file;
 	
 	@Mock
 	UserDao userRepository;
@@ -308,7 +312,7 @@ public class UserServiceTest {
 		user.setLoginId("hahahohokiss");
 		user.setPassword("password");
 		user.setUsername("한진수");
-		MultipartFile file = null;
+		
 		when(userRepository.insertUser(user, file)).thenAnswer(new Answer<User>() {
 			public User answer(InvocationOnMock invocation) throws Throwable {
 				return (User) invocation.getArguments()[0];
@@ -322,8 +326,8 @@ public class UserServiceTest {
 	public void testAddUserFail() throws IOException {
 		User user = new User();
 		user.setLoginId("hahahohokiss");
-		MultipartFile file = null;
-		
+		user.setPassword("password");
+		user.setUsername("");
 		user = userService.addUser(user, file);
 	}
 	

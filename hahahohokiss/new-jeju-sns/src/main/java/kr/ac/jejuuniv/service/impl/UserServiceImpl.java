@@ -134,8 +134,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User addUser(User user, MultipartFile file) throws IOException {
-		if(user.getLoginId().isEmpty() || user.getPassword().isEmpty() || user.getUsername().isEmpty()) 
+		if(user.getLoginId().isEmpty() || user.getPassword().isEmpty() || user.getUsername().isEmpty()) {
 			throw new SignupException();
+		}
 		if(file.isEmpty()) {
 			user.setImgUrl("/resources/images/default.jpg");
 		} else {
@@ -143,7 +144,7 @@ public class UserServiceImpl implements UserService {
 		}
 		return userRepository.insertUser(user, file);
 	}
-
+	
 	public void removeFollow(String followId, String followingId) {
 		userRepository.deleteFollow(followId, followingId);
 		
