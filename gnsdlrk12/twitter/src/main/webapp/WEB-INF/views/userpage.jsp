@@ -17,7 +17,7 @@
 		<input type="button" value="글쓰기"	onclick="window.open('/userReg','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
 		<input type="button" value="following" onclick="location.href='/following?userid=${user.userid}'" />
 		<input type="button" value="follower" onclick="location.href='/follower?userid=${user.userid}'" />
-		<input type="button" value="전체사용자" onclick="" />
+		<input type="button" value="전체사용자" onclick="location.href='/alluser?userid=${user.userid}'" />
 		<input type="button" value="프로필수정" onclick="window.open('/modify','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
 		<input type="button" value="로그아웃" onclick="location.href='/logout'" />
 	</div>

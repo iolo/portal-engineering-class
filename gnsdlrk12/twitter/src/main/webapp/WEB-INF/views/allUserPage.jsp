@@ -15,18 +15,23 @@
 		(${loginUser.introduce })
 		<input type="button" value="글쓰기"	onclick="window.open('/userReg','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
 		<input type="button" value="개인페이지" onclick="location.href='/?userid=${loginUser.userid }$password=${loginUser.password }'" />
+		<input type="button" value="following" onclick="location.href='/following?userid=${loginUser.userid}'" />
 		<input type="button" value="follower" onclick="location.href='/follower?userid=${loginUser.userid}'" />
-		<input type="button" value="전체사용자" onclick="location.href='/alluser?userid=${loginuser.userid}'" />
 		<input type="button" value="프로필수정" onclick="window.open('/modify','NewWindow','width=400,height=380,toolbar=0,scrollbars=0,resizable=0');" />
 		<input type="button" value="로그아웃" onclick="location.href='/logout'" />
 	</div>
 	<hr/>
 	<table>
-		<c:forEach items="${user}" var="following">
-				<img width=50px height=50px src="/resources/${following.image}" />
-				${following.name }
-				${following.introduce }
-				<input type="button" value= "Unfollow" onclick="location.href='/unfollow?userid=${loginUser.userid }&followerid=${following.userid}&page=1'"/>
+		<c:forEach items="${alluser}" var="alluser">
+				<img width=50px height=50px src="/resources/${alluser.image}" />
+				${alluser.name }
+				${alluser.introduce }
+				<c:if test="${alluser.state == 'UnFollow' }">
+					<input type="button" value = "${alluser.state }" onclick="location.href='/unfollow?userid=${loginUser.userid }&followerid=${alluser.userid}&page=4'" />
+				</c:if>
+				<c:if test="${alluser.state == 'Follow' }">
+					<input type="button" value = "${alluser.state }" onclick="location.href='/unfollow?userid=${loginUser.userid }&followerid=${alluser.userid}&page=5'" />
+				</c:if>
 				<br/>
 		</c:forEach>
 	</table>

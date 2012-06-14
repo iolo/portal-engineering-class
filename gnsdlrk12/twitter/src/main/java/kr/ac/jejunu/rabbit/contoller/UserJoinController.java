@@ -22,19 +22,16 @@ public class UserJoinController {
 	UserService userService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String userReg(@ModelAttribute User user, MultipartFile image) throws FileNotFoundException, IOException{
-		saveImage(user, image);
+	public String userReg(@ModelAttribute User user, MultipartFile userimage) throws FileNotFoundException, IOException{
+		saveImage(user, userimage);
 		userService.UserInsert(user);
-
 		return "finish";		
 	}
 	
 	public void saveImage(User user, MultipartFile image) throws IOException, FileNotFoundException {
 		String fileType = getFileType(image);
-
 		File imageFile = new File("/Users/jeongjaehun/Documents/springworkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/twitter/resources/"
 				+ user.getUserid() + fileType);
-
 		if (imageFile.exists()) {
 			imageFile.delete();
 		}
@@ -43,13 +40,14 @@ public class UserJoinController {
 		FileOutputStream fos = new FileOutputStream(imageFile);
 		fos.write(image.getBytes());
 		fos.close();
-
+		
 		if(image == null || image.isEmpty()){
 			user.setImage("nullRegImage" + fileType);
 		}
 		else{
 			user.setImage(user.getUserid() + fileType);
 		}
+		
 	}
 	
 	private String getFileType(MultipartFile image) {
@@ -63,7 +61,7 @@ public class UserJoinController {
 		else if (image.getContentType().equals("image/png")) {
 			file = ".png";
 		}
-		else if (image.isEmpty()){
+		else{
 			file = ".jpg";
 		}
 		return file;

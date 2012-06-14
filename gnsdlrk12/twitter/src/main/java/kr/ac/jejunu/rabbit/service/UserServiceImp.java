@@ -4,7 +4,9 @@ import java.util.List;
 
 import kr.ac.jejunu.rabbit.mapper.UserMapper;
 import kr.ac.jejunu.rabbit.model.AllFollow;
+import kr.ac.jejunu.rabbit.model.AllFollowList;
 import kr.ac.jejunu.rabbit.model.AllUser;
+import kr.ac.jejunu.rabbit.model.AllUserList;
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 
@@ -20,8 +22,9 @@ public class UserServiceImp implements UserService{
 	
 	@Override
 	public void UserInsert(User user) {
-		if (UserGet(user.getUserid()) == null)
+		if (UserGet(user.getUserid()) == null){
 			usermapper.UserInsert(user);
+		}
 		else
 			usermapper.UserUpdate(user);
 	}
@@ -128,6 +131,41 @@ public class UserServiceImp implements UserService{
 	public void userFollow(String userid, String followerid) {
 		usermapper.userFollow(userid, followerid);
 		
+	}
+
+	@Override
+	public List<AllUserList> setAllFollow(List<AllUserList> allUserList, List<AllFollowList> allFollowList) {
+		
+		for (AllUserList allUserList2 : allUserList) {
+			allUserList2.setState("Follow");			
+		}
+		
+		if (!allFollowList.isEmpty()) {	
+			
+			for (AllUserList allUserList2 : allUserList) {
+				
+				for (AllFollowList allFollowUser : allFollowList) {	
+					
+					if (allUserList2.getUserid().equals(allFollowUser.getFollowerid())){
+						allUserList2.setState("UnFollow");
+					}
+				}
+			}
+		}
+		
+		return allUserList;
+	}
+
+	@Override
+	public List<AllUserList> getAllUserList(String userid) {
+		List<AllUserList> allUser = usermapper.getAllUserList(userid);
+		return allUser;
+	}
+
+	@Override
+	public List<AllFollowList> getAllFollowList(String userid) {
+		List<AllFollowList> allFollow = usermapper.getAllFollowList(userid);
+		return allFollow;
 	}
 
 }

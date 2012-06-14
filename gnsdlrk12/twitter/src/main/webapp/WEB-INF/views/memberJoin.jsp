@@ -29,13 +29,13 @@
 				</p>
 				<p>
 					<label>프로필이미지 </label>
-					<input name="image" type="file">
+					<input name="userimage" type="file">
 				</p>
 				<p>
 					<input type="submit" value="등록" />
 					<input type="button" value="취소" onclick="location.href='/'" />
 				</p>
-				<form:hidden path="imageURL" />
+				<form:hidden path="image" />
 			
 		</form:form>
 	</div>
