@@ -11,16 +11,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
+import kr.ac.jejuuniv.model.Tweet;
+import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.repository.UserDao;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
-
-import kr.ac.jejuuniv.exception.UserNotFoundException;
-import kr.ac.jejuuniv.model.Tweet;
-import kr.ac.jejuuniv.model.User;
-import kr.ac.jejuuniv.repository.UserDao;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -57,8 +56,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public List<User> findFollowerUserByUserId(String userId) {
-		List<User> users = hibernateTemplate.find("from User where login_id = ?", userId);
-		return users.get(0).getFollower();
+		return findUserByUserId(userId).getFollower();
 	}
 
 	public List<User> findAllUser() {
@@ -108,7 +106,6 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public User insertUser(User user, MultipartFile file) throws IOException {
-		System.out.println(file.getOriginalFilename());
 		if(!file.isEmpty()) {
 			byte[] byteFile = file.getBytes();
 			File imgFile = new File("/Users/jinsoohan/Documents/Projects/new-jeju-sns/src/main/webapp/resources/images/"+file.getOriginalFilename());

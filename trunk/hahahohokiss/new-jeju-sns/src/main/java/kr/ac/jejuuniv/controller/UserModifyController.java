@@ -1,5 +1,6 @@
 package kr.ac.jejuuniv.controller;
 
+import kr.ac.jejuuniv.exception.UserNotFoundException;
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.UserService;
 
@@ -20,7 +21,11 @@ public class UserModifyController extends BaseFormController {
 	
 	@RequestMapping
 	public String userModifyAction(User user) {
-		userService.modifyUser(user);
+		try {
+			userService.modifyUser(user);
+		} catch(UserNotFoundException e) {
+			return "redirect:/service/userform";
+		}
 		return "redirect:/service/personalSns";
 	}
 
