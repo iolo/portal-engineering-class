@@ -32,5 +32,7 @@ public interface UserMapper {
 	void postDelete(@Param("postid") String postid, @Param("post_num") int post_num);
 
 	void UserUnfollow(@Param("userid") String userid, @Param("followerid") String followerid);
+
+	List<User> followerUserAll(String userid);
 	
 }

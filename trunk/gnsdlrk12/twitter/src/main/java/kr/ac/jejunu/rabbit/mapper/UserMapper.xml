@@ -10,6 +10,10 @@
 		select * from userinfo where userid in (select followerid from follow where userid=#{userid})
 	</select>
 	
+	<select id="followerUserAll" resultType="kr.ac.jejunu.rabbit.model.User" >
+		select * from userinfo where userid in (select userid from follow where followerid=#{userid})
+	</select>
+	
 	<select id="findPostAll" resultType="kr.ac.jejunu.rabbit.model.Post" >
 		select 
 		<include refid="selectPost"/>
