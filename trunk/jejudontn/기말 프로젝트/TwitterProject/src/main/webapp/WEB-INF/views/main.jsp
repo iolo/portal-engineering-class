@@ -10,6 +10,9 @@
 	media="all" />
 </head>
 <body>
+<div class = "header"> 
+		<a href ="/main"><img src = "/resources/Image/index.png" /></a>
+	</div>
 	<div class ="menu">
 		<p>
 			<input type="button" value="${user.name}"
@@ -20,7 +23,7 @@
 				onclick="location.href='/following'" ; /> <input type="button"
 				value="Follower" onclick="location.href='/follower'" ; /> <input
 				type="button" value="전체사용자" onclick="location.href='/alluser'" ; />
-			<input type="button" value="메인화면" onclick="location.href='/main'" ; />
+			<input type="button" value="Logout" onclick="location.href='/main/logout'";/>
 		</p>
 	</div>
 

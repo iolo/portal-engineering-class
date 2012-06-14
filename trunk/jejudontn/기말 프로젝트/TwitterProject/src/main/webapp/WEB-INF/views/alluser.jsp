@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"    uri="http://java.sun.com/jstl/core_rt" %>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>사용자 등록</title>
-	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>사용자 등록</title>
+<link href="/resources/menu.css" rel="stylesheet" type="text/css"
+	media="all" />
 </head>
 <body>
-
+	<div class="header">
+		<a href="/main"><img src="/resources/Image/index.png" /></a>
+	</div>
 	<div class="menu">
-	<p>
+		<p>
 			<input type="button" value="${user.name}"
 				onclick="location.href='/personal'" ; /> <input type="button"
 				value="글쓰기"
@@ -20,11 +23,12 @@
 				onclick="location.href='/following'" ; /> <input type="button"
 				value="Follower" onclick="location.href='/follower'" ; /> <input
 				type="button" value="전체사용자" onclick="location.href='/alluser'" ; />
-			<input type="button" value="메인화면" onclick="location.href='/main'" ; />
+			<input type="button" value="Logout"
+				onclick="location.href='/main/logout'" ;/>
 		</p>
 	</div>
-	
-	<div class ="show">
+
+	<div class="show">
 		<table>
 			<caption>전체 사용자</caption>
 			<thead>
@@ -36,15 +40,16 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${allUsersList}" var="Allusers" >
-				<tr>
-					<td><img src ="/resources/ProfileImage/${Allusers.imageURI}"/></td>
-					<td>${Allusers.name} </td>
-					<td>${Allusers.information} </td>
-					<td><a href="alluser/changefollow?follow=${Allusers.follow}&followId=${Allusers.id}">${Allusers.follow}</a></td>
-				</tr>
-			</c:forEach>
-			</tbody>	
+				<c:forEach items="${allUsersList}" var="Allusers">
+					<tr>
+						<td><img src="/resources/ProfileImage/${Allusers.imageURI}" /></td>
+						<td>${Allusers.name}</td>
+						<td>${Allusers.information}</td>
+						<td><a
+							href="alluser/changefollow?follow=${Allusers.follow}&followId=${Allusers.id}">${Allusers.follow}</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
 		</table>
 	</div>
 </body>
