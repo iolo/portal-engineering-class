@@ -32,7 +32,7 @@
 						<img src = "${tweet.user.imgUrl}" width="100" height="70"/>
 					</td>
 					<td width="200"  align="center">
-						<label>${tweet.user.loginId}</label>
+						<label>${tweet.user.username}</label>
 					</td>
 					<td width="250" align="center">
 						<label>${tweet.contents}</label>
