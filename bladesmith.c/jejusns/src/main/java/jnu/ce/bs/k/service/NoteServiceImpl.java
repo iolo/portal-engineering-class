@@ -1,6 +1,5 @@
 package jnu.ce.bs.k.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jnu.ce.bs.k.model.Note;

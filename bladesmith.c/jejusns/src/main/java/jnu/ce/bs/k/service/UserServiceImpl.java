@@ -13,7 +13,6 @@ import jnu.ce.bs.k.persistence.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,19 +23,28 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void createUser(String id, String password, String name,
 			String description, MultipartFile profile) {
+		User user;
+		String defaultImage;
+		
+		defaultImage = "default.jpg";
+		if (profile.getOriginalFilename() == "") {
+			user = new User(id, password, name, description,
+					defaultImage);
+		} else {
+			user = new User(id, password, name, description,
+					profile.getOriginalFilename());
+			saveImage(profile);
+		}
 
-		User user = new User(id, password, name, description,
-				profile.getOriginalFilename());
-		
-		saveImage(profile);
-		
-		userMapper.addUser(user);
+		 userMapper.addUser(user);
 	}
 
 	public String saveImage(MultipartFile profile) {
 		String fileURL = profile.getOriginalFilename();
 
-		File file = new File("C:\\Users\\K\\Documents\\workspace-sts-2.9.0.RELEASE\\jejusns\\src\\main\\webapp\\resources\\profile\\" + fileURL);
+		File file = new File(
+				"C:\\Users\\K\\Documents\\workspace-sts-2.9.0.RELEASE\\jejusns\\src\\main\\webapp\\resources\\profile\\"
+						+ fileURL);
 		try {
 			profile.transferTo(file);
 		} catch (Exception e) {
@@ -75,14 +83,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void modifyUser(String name, String password, String description,
 			MultipartFile profile, User user) {
-		
+
 		user.setName(name);
 		user.setPassword(password);
 		user.setDescription(description);
 		user.setProfile(profile.getOriginalFilename());
-		
+
 		saveImage(profile);
-		
+
 		userMapper.modifyUser(user);
 	}
 
