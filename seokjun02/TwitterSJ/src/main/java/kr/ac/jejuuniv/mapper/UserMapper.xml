@@ -28,5 +28,13 @@
 			photo =	#{photo}
 		where userid = #{userId}
 	</update>
-
+	<select id="selectAllUser" resultType="kr.ac.jejuuniv.model.User">
+		Select userid, username, introduce, photo From twituser Order By username asc
+	</select>
+	<select id="checkFollow" parameterType="String" resultType="String">
+		Select followid From follow Where userid = #{userid}
+	</select>
+	<select id="selectFollowingUser" parameterType="String" resultType="kr.ac.jejuuniv.model.User">
+		Select followid From follow Where userid = #{userid}
+	</select>
 </mapper>

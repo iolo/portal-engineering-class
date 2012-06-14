@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TwitterSJ</title>
-<link href="resources/css/gnb.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link href="resources/css/gnb.css" rel="stylesheet" type="text/css"	media="all" />
+<script language="javascript" src="/TwitterSJ/resources/js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	function openPopUp(window) {
 		open(
@@ -15,6 +15,24 @@
 				"NewWindow",
 				"left=0, top=0, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=280, height=200");
 	}
+	function navIn() {
+		var imgSrc = $(this).attr("src");
+		imgSrc = imgSrc.replace("_01.png", "_02.png");
+		$(this).attr("src", imgSrc);
+	}
+
+	function navOut() {
+		var imgSrc = $(this).attr("src");
+		imgSrc = imgSrc.replace("_02.png", "_01.png");
+		$(this).attr("src", imgSrc);
+	}
+
+	function init() {
+		$("a img").mouseover(navIn);
+		$("a img").mouseout(navOut);
+	}
+
+	$(window).ready(init);
 </script>
 </head>
 <body>
@@ -27,18 +45,18 @@
 			<a class="btn" href="/TwitterSJ/service/following">Following</a>
 			<a class="btn" href="/TwitterSJ/service/follower">Follower</a>
 			<a class="btn" href="/TwitterSJ/service/alluser">전체페이지</a>
+			<a class="btn" href="/TwitterSJ/service/personal">마이페이지</a>
 		</div>
 		<div id="Content">
 			<table>
 				<tbody>
-					<c:forEach items="${postList}" var="post">
+					<c:forEach items="${follower}" var="user">
 						<tr>
-							<td><img src="/TwitterSJ/resources/images/${post.photo}"
+							<td><img src="/TwitterSJ/resources/images/${user.photo}"
 								width="50" height="50"></td>
-							<td>${post.sequenceNumber}</td>
-							<td>${post.content}</td>
-							<td><a href="deleteUserPost?sequenceNumber=${post.sequenceNumber}">삭제</a></td>
-							<td>${post.writeDate}</td>
+							<td>${user.userName}</td>
+							<td>${user.introduce}</td>
+							<td><a href=""><img src="/TwitterSJ/resources/follow_01.png" alt="followbtn" id="followbtn"/></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

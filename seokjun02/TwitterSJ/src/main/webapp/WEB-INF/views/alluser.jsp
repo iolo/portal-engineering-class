@@ -21,23 +21,23 @@
 	<div id="Wrap">
 		<div id="Header">${user.userName} SNS Page</div>
 		<div id="Menu">
-			<a class="profile"> ${user.userName}(${user.introduce})</a>
+			<a class="profile" href="modifyuser"> ${user.userName}(${user.introduce})</a>
 			<a class="btn" href="/TwitterSJ/logout">로그아웃</a>
 			<a href="javascript:openPopUp('/TwitterSJ/service/writePost')">글쓰기</a>
-			<a class="btn" href="/TwitterSJ/service/modifyUser">정보수정</a>
-			<a class="btn" href="personal">전체페이지</a>
+			<a class="btn" href="/TwitterSJ/service/following">Following</a>
+			<a class="btn" href="/TwitterSJ/service/follower">Follower</a>
+			<a class="btn" href="/TwitterSJ/service/personal">마이페이지</a>
 		</div>
 		<div id="Content">
 			<table>
 				<tbody>
-					<c:forEach items="${postList}" var="post">
+					<c:forEach items="${userList}" var="user">
 						<tr>
-							<td><img src="/TwitterSJ/resources/images/${post.photo}"
+							<td><img src="/TwitterSJ/resources/images/${user.photo}"
 								width="50" height="50"></td>
-							<td>${post.sequenceNumber}</td>
-							<td>${post.content}</td>
-							<td><a href="deleteUserPost?sequenceNumber=${post.sequenceNumber}">삭제</a></td>
-							<td>${post.writeDate}</td>
+							<td>${user.userName}</td>
+							<td>${user.introduce}</td>
+							<%-- <td>${follow.status}</td> --%>
 						</tr>
 					</c:forEach>
 				</tbody>
