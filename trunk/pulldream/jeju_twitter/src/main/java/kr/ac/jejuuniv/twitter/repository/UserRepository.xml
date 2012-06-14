@@ -14,8 +14,8 @@
 	</select>
 	
 	<!-- 모든 사용자 가지고 오기 -->
-	<select id="getAllUser" resultType="kr.ac.jejuuniv.twitter.model.UserModel">
-		Select id name from user 
+	<select id="getAllUser" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
+		Select id, name, profile from user 
 	</select>
 	
 	<!-- 탈퇴?? -->

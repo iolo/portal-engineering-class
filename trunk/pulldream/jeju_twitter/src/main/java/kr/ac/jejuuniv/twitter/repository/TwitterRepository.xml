@@ -15,7 +15,7 @@
 	
 	<!-- 트위터 글 보기  -->
 	<select id="getTwittListOderByDate" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.TwittModel">
-		select twitt.twinum, twitt.name, twitt.id, twitt.content, twitt.write_date from twitt left outer join follow on twitt.id=follow.following 
+		select distinct twitt.* from follow left outer join twitt on twitt.id=follow.following 
 		where follow.id=#{id} or twitt.id=#{id} order by write_date desc 
 	</select>
 	
@@ -25,7 +25,7 @@
 	</delete>
 	
 	<!-- Following 등록 -->
-	<insert id="addFollowingById" parameterType="kr.ac.jejuuniv.twitter.model.FollowModel">
+	<insert id="addFollowingById" parameterType="kr.ac.jejuuniv.twitter.model.FollowingModel">
 		Insert into follow(id, following) values(#{id},#{following})	
 	</insert>
 	
@@ -35,8 +35,9 @@
 	</select>
 	
 	<!--Following 목록  -->
-	<select id="getFollowingById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowingModel">
-		Select follow.following, user.name, user.profile from follow inner join user on follow.following=user.id where follow.id=#{id}
+	<select id="getFollowingById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
+		Select follow.following as "id",
+		 user.name, user.profile from follow inner join user on follow.following=user.id where follow.id=#{id}
 	</select> 
 	
 	<!--UnFollowing  -->
@@ -44,8 +45,8 @@
 		Delete from follow where id=#{id} and following=#{following}
 	</delete>
 	
-	<!--Hash Test  -->
-	<select id="getFollowerById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowerModel">
+	<!--getFollower  -->
+	<select id="getFollowerById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
 		Select user.id, user.name, user.profile from user inner join follow on follow.id=user.id where following=#{id}
 	</select>
 	

@@ -15,4 +15,4 @@ open (window,"NewWindow","left=100, top=100, toolbar=yes, location=yes, director
 <input type="button" value="글쓰기" onClick="javascript:openNewWindow('writeform')"/>
 <a href="getfollower.do"><input type="button" value="Follower" /></a>
 <a href="getfollowing.do"><input type="button" value="Following" /></a>
-<input type="button" value="전체사용자"/>
+<a href="getallusers.do"><input type="button" value="전체사용자"/></a>

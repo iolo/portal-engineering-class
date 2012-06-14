@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import kr.ac.jejuuniv.twitter.model.FollowModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 
@@ -16,5 +17,5 @@ public interface UserRepository {
 	
 	UserModel checkUser(UserModel user);
 	
-	List<UserModel> getAllUser();
+	List<FollowModel> getAllUser();
 }

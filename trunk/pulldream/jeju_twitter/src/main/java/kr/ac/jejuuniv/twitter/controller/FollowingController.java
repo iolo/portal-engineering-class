@@ -21,7 +21,7 @@ public class FollowingController {
 	}
 	
 	@RequestMapping("followinglist")
-	public ModelAndView test(HttpServletRequest reqeust){
+	public ModelAndView GetFollowingList(HttpServletRequest reqeust){
 		String id = (String)reqeust.getSession().getAttribute("loginID");
 		ModelAndView followListView = new ModelAndView();
 		followListView.setViewName("/twitt/followinglist");
