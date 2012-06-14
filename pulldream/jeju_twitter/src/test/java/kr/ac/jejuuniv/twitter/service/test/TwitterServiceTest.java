@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import kr.ac.jejuuniv.twitter.model.FollowModel;
+import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.repository.TwitterRepository;
@@ -50,7 +50,7 @@ public class TwitterServiceTest {
 	public void getFollowingList(){
 		List<FollowingModel> FollowingList = new ArrayList<FollowingModel>();
 		
-		FollowingList = twitterRepository.getFollowingById("juntheater");
+//		FollowingList = twitterRepository.getFollowingById("juntheater");
 		
 		assertThat(FollowingList.get(0).getFollowing(), is("asdf"));
 	}

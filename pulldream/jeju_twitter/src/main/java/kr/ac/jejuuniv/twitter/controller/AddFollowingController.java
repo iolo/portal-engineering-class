@@ -1,19 +1,32 @@
 package kr.ac.jejuuniv.twitter.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.service.TwitterService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("addfollowing.do")
+@RequestMapping("following.do/{pageType}")
 public class AddFollowingController {
+	
 	@Autowired
 	private TwitterService twitterService;
 	
 	@RequestMapping
-	public void Test(){
-//		twitterService.addFollowingById(id, following);
+	public String Following(@ModelAttribute("following")FollowingModel followModel,HttpServletRequest request){
+		String id = (String)request.getSession().getAttribute("loginID");
+		twitterService.addFollowingById(id, followModel.getFollowing());
+
+		if(request.getRequestURI().endsWith("following")){
+			return "redirect:/getfollowing.do";
+		}
+		else
+			return "redirect:/getfollower.do";
 	}
+
 }

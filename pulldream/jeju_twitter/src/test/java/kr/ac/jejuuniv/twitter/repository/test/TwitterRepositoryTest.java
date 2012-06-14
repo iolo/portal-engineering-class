@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.FollowModel;
-import kr.ac.jejuuniv.twitter.model.FollowerModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.TwitterRepository;
@@ -75,11 +75,11 @@ public class TwitterRepositoryTest {
 //		for (int i = 0; i < test.size(); i++) {
 //			System.out.println(test.get(i).keySet().toString());
 //		}
-		List<FollowerModel> getFollower = twitterRepository.getFollowerById("juntheater");
+		List<FollowModel> getFollower = twitterRepository.getFollowerById("juntheater");
 		List<String> test2 = twitterRepository.getFollowingList("juntheater");
-		List<FollowerModel> follower = new ArrayList<FollowerModel>();
+		List<FollowModel> follower = new ArrayList<FollowModel>();
 		
-		for (FollowerModel followerModel : getFollower) {
+		for (FollowModel followerModel : getFollower) {
 			if(test2.contains(followerModel.getId())){
 				followerModel.setFollowing(true);
 			}else followerModel.setFollowing(false);

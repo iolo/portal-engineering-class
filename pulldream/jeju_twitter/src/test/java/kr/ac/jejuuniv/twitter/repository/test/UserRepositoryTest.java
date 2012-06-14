@@ -3,6 +3,7 @@ package kr.ac.jejuuniv.twitter.repository.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jejuuniv.twitter.model.FollowModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.UserRepository;
@@ -42,7 +43,7 @@ public class UserRepositoryTest {
 	@Test
 	public void getAllUserTest(){
 		//모든 사용자를 보여주기 위한 테스트
-		List<UserModel> user = new ArrayList<UserModel>();
+		List<FollowModel> user = new ArrayList<FollowModel>();
 		
 		user = userRepository.getAllUser();
 		
@@ -51,7 +52,7 @@ public class UserRepositoryTest {
 			System.out.println("getAllUserTest");
 			System.out.println("user Id : " + user.get(i).getId());
 			System.out.println("user Name : "+user.get(i).getName());
-			System.out.println("user Password : "+user.get(i).getPassword());
+//			System.out.println("user Password : "+user.get(i).getPassword());
 			System.out.println();
 		}
 		System.out.println("----------------------------------------");

@@ -8,7 +8,7 @@ import static org.mockito.Mockito.verify;
 
 import kr.ac.jejuuniv.twitter.controller.FollowingController;
 import kr.ac.jejuuniv.twitter.controller.LoginController;
-import kr.ac.jejuuniv.twitter.model.FollowModel;
+import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.UserRepository;
 import kr.ac.jejuuniv.twitter.service.TwitterService;
@@ -56,14 +56,14 @@ public class GetFollowingListControllerTest {
 	@Test
 	public void LoginControllerTester(){
 		UserModel user2 = new UserModel();
-		FollowModel followModel = new FollowModel();
+		FollowingModel followModel = new FollowingModel();
 		
 		
-		when(twitterService.getFollowingList("juntheater")).thenAnswer(new Answer<FollowModel>() {
+		when(twitterService.getFollowingList("juntheater")).thenAnswer(new Answer<FollowingModel>() {
 
-			public FollowModel answer(InvocationOnMock invocation)
+			public FollowingModel answer(InvocationOnMock invocation)
 					throws Throwable {
-				FollowModel followModel = new FollowModel();
+				FollowingModel followModel = new FollowingModel();
 				followModel.setId("juntheaetr");
 				followModel.setFollowing("asdf");
 				return followModel;

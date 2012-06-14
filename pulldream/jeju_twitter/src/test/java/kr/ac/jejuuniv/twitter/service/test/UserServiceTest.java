@@ -4,7 +4,7 @@ import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.ac.jejuuniv.twitter.model.FollowModel;
+import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.UserRepository;
 import kr.ac.jejuuniv.twitter.service.UserService;

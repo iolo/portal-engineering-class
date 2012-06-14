@@ -2,7 +2,6 @@ package kr.ac.jejuuniv.twitter.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -10,10 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.jejuuniv.twitter.model.FollowModel;
-import kr.ac.jejuuniv.twitter.model.FollowerModel;
-import kr.ac.jejuuniv.twitter.model.FollowingModel;
+import kr.ac.jejuuniv.twitter.model.FollowModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
+import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.TwitterRepository;
+import kr.ac.jejuuniv.twitter.repository.UserRepository;
 import kr.ac.jejuuniv.twitter.service.TwitterService;
 
 @Service
@@ -21,6 +21,9 @@ public class TwitterServiceImpl implements TwitterService{
 
 	@Autowired
 	private TwitterRepository twitterRepoistory;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	public void writeTwitt(TwittModel twittModel) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
@@ -32,7 +35,7 @@ public class TwitterServiceImpl implements TwitterService{
 		twitterRepoistory.deleteMyTwitt(twinum);
 	}
 	
-	public List<FollowingModel> getFollowingList(String id){
+	public List<FollowModel> getFollowingList(String id){
 		return twitterRepoistory.getFollowingById(id);
 	}
 
@@ -50,23 +53,37 @@ public class TwitterServiceImpl implements TwitterService{
 		twitterRepoistory.unFollowingById(id, following);
 	}
 
-	public List<FollowerModel> getFollowerList(String id) {
+	public void addFollowingById(String id, String following) {
+		twitterRepoistory.addFollowingById(id, following);
+	}
+	
+	public List<FollowModel> getFollowerList(String id) {
 		
 		List<String> getFollowingList = twitterRepoistory.getFollowingList(id);
-		List<FollowerModel> follower = new ArrayList<FollowerModel>();
+		List<FollowModel> follower = new ArrayList<FollowModel>();
 		
-		for (FollowerModel followerModel : twitterRepoistory.getFollowerById(id)) {
+		for (FollowModel followerModel : twitterRepoistory.getFollowerById(id)) {
 			if(getFollowingList.contains(followerModel.getId())){
 				followerModel.setFollowing(true);
 			}else followerModel.setFollowing(false);
 			follower.add(followerModel);
 		}
-		
 		return follower;
 	}
 
-	@Override
-	public void addFollowingById(String id, String following) {
+	public List<FollowModel> getAllUserList(String id) {
 		
+		List<FollowModel> getAllUser = userRepository.getAllUser();
+		List<FollowModel> allFollower = new ArrayList<FollowModel>();
+		List<String> getFollowingList = twitterRepoistory.getFollowingList(id);
+		
+		for (FollowModel followModel : getAllUser) {
+			if(getFollowingList.contains(followModel.getId())){
+				followModel.setFollowing(true);
+			}else followModel.setFollowing(false);
+			allFollower.add(followModel);
+		}
+		return allFollower;
 	}
+	
 }

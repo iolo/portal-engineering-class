@@ -4,20 +4,20 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="f"%>
 <form:form commandName="following" action="unfollow.do/follower">
-FollowingList<br>
-	<c:if test="${f:length(followerList) gt 0}">
-		<c:forEach items="${followerList}" var="follower">
-			<c:out value="${follower.id }" />
-			<c:out value="${follower.name }" />
-			<c:out value="${follower.profile }" />
+AllUserList<br>
+	<c:if test="${f:length(alluserlist) gt 0}">
+		<c:forEach items="${alluserlist}" var="alluser">
+			<c:out value="${alluser.id }" />
+			<c:out value="${alluser.name }" />
+			<c:out value="${alluser.profile }" />
 			<c:choose>
-				<c:when test="${follower.following}">
-					<a href="unfollow.do/follower?following=${follower.id }">
+				<c:when test="${alluser.following}">
+					<a href="unfollow.do/follower?following=${alluser.id }">
 						<input type="submit" value="UnFollowing">
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a href="following.do/follower?following=${follower.id }">
+					<a href="following.do/follower?following=${alluser.id }">
 						<input type="submit" value="Following">
 					</a>
 				</c:otherwise>
