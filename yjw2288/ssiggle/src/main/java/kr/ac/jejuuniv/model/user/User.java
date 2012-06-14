@@ -24,7 +24,7 @@ public class User implements Serializable {
 	private String password;
 	private String name;
 	private String introduce;
-	private String image = "DefaultUserImage.jpg";
+	private String image = "DefaultUserImage.png";
 
 	public User() {
 	}
@@ -163,8 +163,7 @@ public class User implements Serializable {
 		return userMapper.selectAllFollowingUser(getId());
 	}
 
-	public void saveImage(MultipartFile file) throws IOException,
-			FileNotFoundException {
+	public void saveImage(MultipartFile file) throws IOException {
 		String fileType = getFileType(file);
 
 		File uploadedFile = new File(
@@ -175,7 +174,7 @@ public class User implements Serializable {
 			uploadedFile.delete();
 		}
 		uploadedFile.createNewFile();
-
+		
 		FileOutputStream fos = new FileOutputStream(uploadedFile);
 		fos.write(file.getBytes());
 		fos.close();

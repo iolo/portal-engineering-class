@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Siggle</title>
+<title>SSiggle</title>
 <link href="/ssiggle/resources/css/common.css" rel="stylesheet" type="text/css"
 	media="all" />
 <link href="/ssiggle/resources/css/joinUser.css" rel="stylesheet" type="text/css"

@@ -31,6 +31,7 @@
 				href="/ssiggle/service/user/allUser">전체사용자</a> 
 			<a class="btn" href="/ssiggle/service/user/follower">follower</a>
 			<a class="btn" href="/ssiggle/service/user/following">following</a>
+			<a class="btn" href="/ssiggle">메인 페이지</a>
 		</div>
 		<hr />
 		<table>
@@ -40,7 +41,7 @@
 					<td class="prof"><img
 						src="/ssiggle/resources/userimage/${target.user.image}"
 						width="50px" height="50px"></td>
-					<td class="name">${target.user.name}</td>
+					<td class="name">${target.user.id} <br/> ( ${target.user.name} )</td>
 					<td class="introduce">${target.user.introduce }</td>
 					<td class="following">
 						<c:choose>

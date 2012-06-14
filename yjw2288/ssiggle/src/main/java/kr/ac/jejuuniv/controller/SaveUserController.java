@@ -2,7 +2,6 @@ package kr.ac.jejuuniv.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.ac.jejuuniv.model.user.User;
@@ -20,15 +19,14 @@ public class SaveUserController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String action(
 			@ModelAttribute User user,
-			@RequestParam(value = "imageFile", required = false) MultipartFile file, HttpServletResponse response)
-			throws IOException {
+			@RequestParam(value = "imageFile", required = false) MultipartFile file,
+			HttpServletResponse response) throws IOException {
 
 		if (file != null && !file.isEmpty()) {
 			user.saveImage(file);
 		}
 		user.save();
 
-		response.addCookie(new Cookie("loginId", user.getId()));
-		return "redirect:/service/user/";
+		return LoginControllUtil.saveCookie4Login(user.getId(), response);
 	}
 }
