@@ -3,7 +3,9 @@ package kr.ac.jejunu.rabbit.mapper;
 import java.util.List;
 
 import kr.ac.jejunu.rabbit.model.AllFollow;
+import kr.ac.jejunu.rabbit.model.AllFollowList;
 import kr.ac.jejunu.rabbit.model.AllUser;
+import kr.ac.jejunu.rabbit.model.AllUserList;
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 
@@ -42,4 +44,8 @@ public interface UserMapper {
 	List<AllFollow> getAllFollow(String userid);
 
 	void userFollow(@Param("userid") String userid, @Param("followerid") String followerid);
+
+	List<AllFollowList> getAllFollowList(String userid);
+
+	List<AllUserList> getAllUserList(String userid);
 }

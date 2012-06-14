@@ -3,7 +3,9 @@ package kr.ac.jejunu.rabbit.service;
 import java.util.List;
 
 import kr.ac.jejunu.rabbit.model.AllFollow;
+import kr.ac.jejunu.rabbit.model.AllFollowList;
 import kr.ac.jejunu.rabbit.model.AllUser;
+import kr.ac.jejunu.rabbit.model.AllUserList;
 import kr.ac.jejunu.rabbit.model.Post;
 import kr.ac.jejunu.rabbit.model.User;
 
@@ -40,4 +42,11 @@ public interface UserService {
 	List<AllFollow> setFollow(List<AllUser> allUsers, List<AllFollow> allFollows);
 
 	void userFollow(String userid, String followerid);
+
+	List<AllUserList> setAllFollow(List<AllUserList> allUserList, List<AllFollowList> allFollowList);
+
+	List<AllUserList> getAllUserList(String userid);
+
+	List<AllFollowList> getAllFollowList(String userid);
+
 }

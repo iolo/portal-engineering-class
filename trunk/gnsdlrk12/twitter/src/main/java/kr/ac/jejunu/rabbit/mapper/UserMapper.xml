@@ -26,7 +26,7 @@
 	</select>
 	
 	<insert id="UserInsert" parameterType="kr.ac.jejunu.rabbit.model.User">
-		insert into userinfo(userid, name, password, introduce, image) values(#{userid}, #{name}, #{password}, #{introduce}, #{imageURL})
+		insert into userinfo(userid, name, password, introduce, image) values(#{userid}, #{name}, #{password}, #{introduce}, #{image})
 	</insert>
 	
 	<update id="UserUpdate" parameterType="kr.ac.jejunu.rabbit.model.User"> 
@@ -76,4 +76,13 @@
 	<insert id="userFollow" parameterType="kr.ac.jejunu.rabbit.model.User"> 
 		insert into follow(userid, followerid) values (#{userid}, #{followerid})
 	</insert>
+	
+	<select id="getAllUserList" resultType="kr.ac.jejunu.rabbit.model.AllUserList" >
+		select * from userinfo
+	</select>
+	
+	<select id="getAllFollowList" resultType="kr.ac.jejunu.rabbit.model.AllFollowList" >
+		select userinfo.image, userinfo.name, userinfo.introduce, userinfo.userid, follow.followerid
+		from follow INNER JOIN userinfo where userinfo.userid = follow.userid and follow.userid = #{userid}
+	</select>
 </mapper>
