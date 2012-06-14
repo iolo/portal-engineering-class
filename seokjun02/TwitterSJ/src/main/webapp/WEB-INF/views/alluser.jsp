@@ -24,7 +24,7 @@
 			<a class="profile"> ${user.userName}(${user.introduce})</a>
 			<a class="btn" href="/TwitterSJ/logout">로그아웃</a>
 			<a href="javascript:openPopUp('/TwitterSJ/service/writePost')">글쓰기</a>
-			<a class="btn" href="/TwitterSJ/service/modifyuser">정보수정</a>
+			<a class="btn" href="/TwitterSJ/service/modifyUser">정보수정</a>
 			<a class="btn" href="personal">전체페이지</a>
 		</div>
 		<div id="Content">
