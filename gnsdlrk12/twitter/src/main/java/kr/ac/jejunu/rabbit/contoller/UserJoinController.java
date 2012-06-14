@@ -45,10 +45,10 @@ public class UserJoinController {
 		fos.close();
 
 		if(image == null || image.isEmpty()){
-			user.setImageURL("nullRegImage" + fileType);
+			user.setImage("nullRegImage" + fileType);
 		}
 		else{
-			user.setImageURL(user.getUserid() + fileType);
+			user.setImage(user.getUserid() + fileType);
 		}
 	}
 	

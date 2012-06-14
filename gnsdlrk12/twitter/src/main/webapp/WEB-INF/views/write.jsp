@@ -15,7 +15,7 @@
 <body>
 	<div>
 		<form action="save" method="post">
-				<legend>글쓰기</legend>
+				<legend>요즘 어떠신가요?</legend>
 				<p>
 					<textarea width=300px rows="10" cols="40" name="content"></textarea>
 				</p>

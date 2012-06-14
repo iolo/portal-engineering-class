@@ -13,7 +13,7 @@ public interface UserService {
 	
 	User UserGet(String userid);
 	
-	List<User> UserList();
+	List<User> followingList(String userid);
 
 	List<Post> GetUserPost(String loginid);
 
@@ -26,4 +26,6 @@ public interface UserService {
 	boolean Login(String userid, String password);
 
 	void UserModify(User user);
+	
+	void UserUnfollow(String userid, String followerid);
 }
