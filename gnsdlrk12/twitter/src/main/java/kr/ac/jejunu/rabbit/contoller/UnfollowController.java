@@ -54,7 +54,6 @@ public class UnfollowController {
 		else if(page == 4 || page == 5){
 			
 			if (page == 4){
-				System.out.println(userid + "                 " +followerid);
 				userService.UserUnfollow(userid, followerid);
 				
 				model.addAttribute("loginUser", userService.UserGet(userid));		
