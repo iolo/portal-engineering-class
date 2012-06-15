@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>jejuSNS</title>
-<link href="/user/resources/jeju.css" rel="stylesheet" type="text/css"
+<link href="/resources/css/jeju.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>
@@ -21,20 +21,20 @@
 		<table>
 			<thead>
 				<tr>
-					<th>profile</th>
-					<th>note</th>
-					<th>check</th>
-					<th>date</th>
+					<th id="profile">profile</th>
+					<th id="note">note</th>
+					<th id="button">check</th>
+					<th id="date">date</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${noteList}" var="note">
 					<tr>
-						<td><img src ="/resources/profile/${User.profile}" /></td>
-						<td>${note.note}</td>
-						<td>
+						<td id="profile"><img src ="/resources/profile/${User.profile}" /></td>
+						<td id="note">${note.note}</td>
+						<td id="button">
 						<button id="delete" value="delete" type="button" onclick="location.href='remove?write_num=${note.write_num}'">삭제</button></td>
-						<td>${note.write_date}</td>
+						<td id="date">${note.write_date}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
