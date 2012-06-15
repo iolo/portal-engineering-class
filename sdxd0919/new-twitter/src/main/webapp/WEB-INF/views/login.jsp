@@ -8,6 +8,19 @@
 	<!-- 
 	<link href="/user/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
 	-->
+	<script type="text/javascript">
+		function validation(){
+			var id = document.loginForm.id.value;
+			var password = document.loginForm.password.value;
+			if((id=="") ||(password == "")){
+				alert("id, password, name은 꼭 입력해야 합니다!");
+			}else{
+				document.loginForm.submit();
+				document.loginForm.action = "/twitter/login";
+			}
+		}
+	</script>	 
+	
 </head>
 <body>
 <center>
@@ -19,7 +32,7 @@
 	</div>
 
 	<div id="LoginContent">
-		<form action="/twitter/login" method="post" accept-charset="UTF-8">
+		<form name="loginForm" onsubmit="javascript:validation()" method="post" accept-charset="UTF-8">
 				<table width="500" align="center">
 					<tr>
 						<td align="right" width="500">

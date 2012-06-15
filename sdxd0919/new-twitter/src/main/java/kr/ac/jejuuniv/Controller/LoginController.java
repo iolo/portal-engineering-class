@@ -24,7 +24,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public ModelAndView login_post(String id, String password, HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		if(!(id.equals("") && password.equals(""))){
+		if(!(id.equals("")) && !(password.equals(""))){
 			mav.setViewName("redirect:/service/SNS");
 			
 			User user = userService.checkUser(id, password);
