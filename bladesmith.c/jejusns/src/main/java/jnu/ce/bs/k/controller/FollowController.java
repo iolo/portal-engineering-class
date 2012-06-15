@@ -21,28 +21,76 @@ public class FollowController {
 
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value="/follow")
-	public String follow(@ModelAttribute("User") User user, @RequestParam("userId") String userId) {
+
+	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value = "/follow")
+	public String follow(@ModelAttribute("User") User user,
+			@RequestParam("userId") String userId) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("userId", user.getId());
 		map.put("followId", userId);
-		
+
 		userService.follow(map);
-		
+
 		return "redirect:/users.bs";
 	}
 
-	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value="/unfollow")
-	public String unFollow(@ModelAttribute("User") User user, @RequestParam("userId") String userId) {
+	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value = "/unfollow")
+	public String unFollow(@ModelAttribute("User") User user,
+			@RequestParam("userId") String userId) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("userId", user.getId());
 		map.put("followId", userId);
-		
+
 		userService.unfollow(map);
-		
+
 		return "redirect:/users.bs";
+	}
+
+	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value = "/fwingfollow")
+	public String fwingFollow(@ModelAttribute("User") User user,
+			@RequestParam("userId") String userId) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userId", user.getId());
+		map.put("followId", userId);
+
+		userService.follow(map);
+
+		return "redirect:/following.bs";
+	}
+
+	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value = "/fwingunfollow")
+	public String fwingUnFollow(@ModelAttribute("User") User user,
+			@RequestParam("userId") String userId) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userId", user.getId());
+		map.put("followId", userId);
+
+		userService.unfollow(map);
+
+		return "redirect:/following.bs";
+	}
+
+	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value = "/fwerfollow")
+	public String fwerFollow(@ModelAttribute("User") User user,
+			@RequestParam("userId") String userId) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userId", user.getId());
+		map.put("followId", userId);
+
+		userService.follow(map);
+
+		return "redirect:/follower.bs";
+	}
+
+	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value = "/fwerunfollow")
+	public String fwerUnFollow(@ModelAttribute("User") User user,
+			@RequestParam("userId") String userId) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userId", user.getId());
+		map.put("followId", userId);
+
+		userService.unfollow(map);
+
+		return "redirect:/follower.bs";
 	}
 }
-
-

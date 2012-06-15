@@ -41,13 +41,13 @@
 						<td id="description">${user.description}</td>
 						<td id="button"><c:choose>
 								<c:when test="${user.userNum == 'true'}">
-									<form action="unfollow" method="post">
+									<form action="fwingunfollow" method="post">
 										<input type="hidden" value="${user.id}" name="userId"></input>
 										<input type="submit" value="Unfollow" class="innerbutton" ></input>
 									</form>
 								</c:when>
 								<c:otherwise>
-									<form action="follow" method="post">
+									<form action="fwingfollow" method="post">
 										<input type="hidden" value="${user.id}" name="userId"></input>
 										<input type="submit" value="follow" class="innerbutton" ></input>
 									</form>
