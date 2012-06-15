@@ -15,7 +15,7 @@
 			var name = document.joinForm.name.value;
 			var password = document.joinForm.password.value;
 			if((id=="") || (name=="") ||(password == "")){
-				alert("id, password, name은 꼭 입력해야 합니다!")
+				alert("id, password, name은 꼭 입력해야 합니다!");
 			}else{
 				document.joinForm.submit();
 				document.joinForm.action = "/twitter/userSave";

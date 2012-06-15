@@ -52,16 +52,13 @@ public class UserServiceImpl implements UserService {
 
 
 	public void update(User newUser, MultipartFile file) throws IOException {
-		User user = userRepository.getUserByUserNum(newUser.getUserNum()); 
-		if(user == null){
-			throw new UserNotFoundException();
-		}else{
-			if(newUser.getName().equals("")) newUser.setName(user.getName());
-			if(newUser.getPassword().equals("")) newUser.setPassword(user.getPassword());
+		User user = userRepository.getUserByUserNum(newUser.getUserNum());
+		
+		if(newUser.getName().equals("")) newUser.setName(user.getName());
+		if(newUser.getPassword().equals("")) newUser.setPassword(user.getPassword());
 
-			newUser.setProfileImg(getImagePath(user, file));
-			userRepository.update(newUser);
-		}
+		newUser.setProfileImg(getImagePath(user, file));
+		userRepository.update(newUser);
 	}
 
 	public List<User> getAllUser() {
