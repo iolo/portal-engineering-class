@@ -51,13 +51,12 @@
 		<div id="Content">
 			<table>
 				<tbody>
-					<c:forEach items="${following}" var="user">
+					<c:forEach items="${following}" var="follow">
 						<tr>
-							<td><img src="/TwitterSJ/resources/images/${user.photo}"
-								width="50" height="50"></td>
-							<td>${user.userName}</td>
-							<td>${user.introduce}</td>
-							<td><a href=""><img src="/TwitterSJ/resources/unfollow_01.png" alt="followbtn" id="followbtn"/></a></td>
+							<td><img src="/TwitterSJ/resources/images/${follow.photo}" width="50" height="50"></td>
+							<td>${follow.userName}</td>
+							<td>${follow.introduce}</td>
+							<td><a href="/TwitterSJ/service/unfollow?followId=${follow.userId}"><img src="/TwitterSJ/resources/unfollow_01.png" alt="followbtn" id="followbtn"/></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

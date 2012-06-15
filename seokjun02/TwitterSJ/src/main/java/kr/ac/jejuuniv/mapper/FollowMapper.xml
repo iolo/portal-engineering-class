@@ -6,8 +6,12 @@
 	<select id="checkFollow" parameterType="String" resultType="String">
 		Select followid From follow Where userid = #{userid}
 	</select>
+	<select id="checkFollowing" parameterType="map" resultType="int">
+		Select count(userid) From follow Where userid = #{userId} And followid = #{followId}
+	</select>
 	<select id="selectFollowingUser" parameterType="String" resultType="kr.ac.jejuuniv.model.User">
-		SELECT twituser.username AS userName,
+		SELECT twituser.userid AS userId, 
+			twituser.username AS userName,
 			twituser.introduce AS introduce,
 			twituser.photo AS photo
 		FROM twituser, follow
@@ -15,11 +19,26 @@
 		AND follow.userid = #{userid} ORDER BY twituser.username ASC
 	</select>
 	<select id="selectFollowerUser" parameterType="String" resultType="kr.ac.jejuuniv.model.User">
-		SELECT twituser.username AS userName,
+		SELECT twituser.userid AS userId, 
+			twituser.username AS userName,
+			twituser.introduce AS introduce,
+			twituser.photo AS photo
+		FROM twituser, (SELECT * FROM follow WHERE followid = #{userid})follower, follow
+		WHERE twituser.userid =	follower.userid
+		AND follower.followid != follow.userid 
+		AND follow.followid = #{userid} ORDER BY twituser.username ASC
+		<!-- SELECT twituser.userid AS userId, 
+			twituser.username AS userName,
 			twituser.introduce AS introduce,
 			twituser.photo AS photo
 		FROM twituser, follow
 		WHERE twituser.userid =	follow.userid
-		AND follow.followid = #{userid} ORDER BY twituser.username ASC
+		AND follow.followid = #{userid} ORDER BY twituser.username ASC -->
 	</select>
+	<delete id="deleteFollowingUser" parameterType="map">
+		Delete From follow Where userid = #{userId} And followid = #{followId}
+	</delete>
+	<insert id="insertFollowUser" parameterType="map">
+		Insert Into follow Values (#{userId}, #{followId})
+	</insert>
 </mapper>
