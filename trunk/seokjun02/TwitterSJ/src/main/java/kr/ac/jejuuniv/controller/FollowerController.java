@@ -24,8 +24,9 @@ public class FollowerController {
 		User user = twitService.getUser(userId);
 		model.addAttribute("user", user);
 		
-		List<User> users = twitService.getFollowerUser(userId);
-		model.addAttribute("follower", users);
+		List<User> follow = twitService.getFollowerUser(userId);
+		
+		model.addAttribute("follower", follow);
 		return "follower";
 	}
 }

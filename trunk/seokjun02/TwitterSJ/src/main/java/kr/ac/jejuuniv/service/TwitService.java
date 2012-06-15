@@ -17,11 +17,13 @@ public interface TwitService {
 
 	List<User> getAllUser();
 
-	List<String> checkFollow(String userId);
-
 	List<User> getFollowingUser(String userId);
 
 	List<User> getFollowerUser(String userId);
+
+	void unfollow(String userId, String followId);
+
+	void followUser(String userId, String followId);
 	
 
 }

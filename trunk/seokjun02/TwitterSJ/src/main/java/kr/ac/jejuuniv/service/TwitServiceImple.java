@@ -39,13 +39,9 @@ public class TwitServiceImple implements TwitService {
 	}
 	@Override
 	public List<User> getAllUser() {
-//		List<User> users = userMapper.selectAllUser();
+		// List<User> users = userMapper.selectAllUser();
 
 		return userMapper.selectAllUser();
-	}
-	@Override
-	public List<String> checkFollow(String userId) {
-		return followMapper.checkFollow(userId);
 	}
 	@Override
 	public List<User> getFollowingUser(String userId) {
@@ -55,5 +51,13 @@ public class TwitServiceImple implements TwitService {
 	public List<User> getFollowerUser(String userId) {
 		return followMapper.selectFollowerUser(userId);
 	}
-
+	@Override
+	public void unfollow(String userId, String followId) {
+		followMapper.deleteFollowingUser(userId, followId);
+		
+	}
+	@Override
+	public void followUser(String userId, String followId) {
+		followMapper.insertFollowUser(userId, followId);		
+	}
 }

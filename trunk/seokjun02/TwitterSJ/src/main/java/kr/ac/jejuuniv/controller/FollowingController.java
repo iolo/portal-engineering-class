@@ -9,27 +9,27 @@ import kr.ac.jejuuniv.service.TwitService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/service/following")
 public class FollowingController {
-	
+
 	@Autowired
 	private TwitService twitService;
-	
+
 	@RequestMapping
-	public String action(HttpSession session, Model model){
+	public String action(HttpSession session, ModelMap model) {
 		String userId = (String) session.getAttribute("loginId");
 		User user = twitService.getUser(userId);
 		model.addAttribute("user", user);
-		
-		List<User> users = twitService.getFollowingUser(userId);
-		model.addAttribute("following", users);
-		
+
+		List<User> follow = twitService.getFollowingUser(userId);
+		model.addAttribute("following", follow);
+
 		return "following";
-		
+
 	}
 
 }
