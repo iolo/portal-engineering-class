@@ -1,13 +1,12 @@
 
-
 =user=
 
 || *Field* || *Type* || *Null* || *Key* ||
 || id       || varchar(30) || NO   || PRI || 
-|| password || text || NO  ||     || NULL||
-|| name     || text || NO  ||     ||NULL || 
-||explain  || text  || NO  ||     || NULL  || 
-|| image     || text  || NO   ||     || NULL| ||
+|| password || text || NO  || NULL||
+|| name     || text || NO  ||NULL || 
+||explain  || text  || NO  ||NULL  || 
+|| image     || text  || NO   ||NULL||
 		
 following
 
