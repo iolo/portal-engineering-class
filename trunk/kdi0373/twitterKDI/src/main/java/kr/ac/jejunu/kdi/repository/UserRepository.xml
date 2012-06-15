@@ -4,8 +4,12 @@
 
 <mapper namespace="kr.ac.jejunu.kdi.repository.UserRepository">
 
-	<insert id="createUser" parameterType="kr.ac.jejunu.kdi.model.User">
+	<insert id="createUser" parameterType="kr.ac.jejunu.kdi.model.CreateUser">
 		insert into user(id, password, name, memo, image)
 		values(#{id}, #{password}, #{name}, #{memo}, #{image})
 	</insert>
+	
+ 	<select id ="loginCheck" parameterType="kr.ac.jejunu.kdi.repository.UserRepository" resultType="kr.ac.jejunu.kdi.model.User">
+		SELECT * FORM user WHERE id= #{id} AND password = #{password}
+	</select>
 </mapper>

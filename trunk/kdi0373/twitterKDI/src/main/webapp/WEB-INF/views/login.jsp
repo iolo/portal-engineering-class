@@ -13,7 +13,7 @@
 	<center>
 		<h1>JEJU SNS</h1>
 	</center>
-		
+
 	<div id="Content">
 		<form action="login" method="post">
 			<table>
@@ -26,8 +26,8 @@
 					<td><input type="password" name="password" /></td>
 				</tr>
 			</table>
-				<input type="submit" value="로그인" />				
-				<input type="button" value="회원가입" onclick="location.href='/create'" />
+			<input type="submit" value="로그인" /> 
+			<input type="button" value="회원가입" onclick="location.href='/create'" />
 		</form>
 	</div>
 </body>

@@ -1,6 +1,6 @@
 package kr.ac.jejunu.kdi.controller;
 
-import kr.ac.jejunu.kdi.service.UserService;
+import kr.ac.jejunu.kdi.service.CreateService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,26 +10,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping ("/create")
-public class UserCreate {
+public class Create {
 	
 	@Autowired
-	private UserService userService;
+	private CreateService createService;
 	
 	@RequestMapping
 	public void createView(){
-		
+		System.out.println("asdfafafafaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 	}
-
 	
-	@RequestMapping(value="/create", method = RequestMethod.POST )
+	@RequestMapping( method = RequestMethod.POST)
 	public String createUser(@RequestParam("id") String id,
 							 @RequestParam("password") String password,
 							 @RequestParam("name") String name,
 							 @RequestParam("memo") String memo,
 							 @RequestParam("image") String image) {
 								
-		userService.createUser(id, password, name, memo, image);
-		
+		createService.createUser(id, password, name, memo, image);
+		System.out.println("bbbbbbg");
 		return "redirect:/login";
 	}
 	
