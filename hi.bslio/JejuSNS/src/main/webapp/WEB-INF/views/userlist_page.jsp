@@ -19,7 +19,7 @@
 				<tr>
 					<td><img src="/images/userprofile/${user.image}" width=36 height=36/></td>
 					<td><strong><span style="font-size: 10pt;padding-right:10px">${user.name}</span></strong></td>					
-					<c:if test="${user.follow==true}"><td width="400" bgcolor="#F0F0F0"><span style="font-size: 9pt">${user.comment}</span></td></c:if>
+					<c:if test="${user.follow==true}"><td width="400" bgcolor="#DDDDFF"><span style="font-size: 9pt">${user.comment}</span></td></c:if>
 					<c:if test="${user.follow==false}"><td width="400"><span style="font-size: 9pt">${user.comment}</span></td></c:if>
 					<td>
 						<c:if test="${user.follow==true}"><img src="/images/interface/unfollow" onClick="location.href='unfollow.do?target=${user.id}'"></c:if>

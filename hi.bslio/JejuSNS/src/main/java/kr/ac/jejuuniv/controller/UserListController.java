@@ -22,13 +22,13 @@ public class UserListController {
 	private FollowService followService;
 	
 	@RequestMapping("follow.do") 
-	public ModelAndView followTEST(String target, HttpServletRequest request){
+	public ModelAndView follow(String target, HttpServletRequest request){
 		followService.follow(target, (String)request.getSession().getAttribute("LoginId"));
 		return new ModelAndView("redirect:" + request.getSession().getAttribute("ListPage"));
 	}
 	
 	@RequestMapping("unfollow.do")
-	public ModelAndView unfollowTEST(String target, HttpServletRequest request) {
+	public ModelAndView unfollow(String target, HttpServletRequest request) {
 		followService.unfollow(target, (String)request.getSession().getAttribute("LoginId"));
 		return new ModelAndView("redirect:" + request.getSession().getAttribute("ListPage"));
 	}
