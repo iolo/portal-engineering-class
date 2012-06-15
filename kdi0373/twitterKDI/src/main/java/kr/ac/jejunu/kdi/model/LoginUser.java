@@ -1,6 +1,5 @@
 package kr.ac.jejunu.kdi.model;
 
-
 public class LoginUser {
 	private String id;
 	private String password;
@@ -9,9 +8,7 @@ public class LoginUser {
 		this.setId(id);
 		this.setPassword(password);
 	}
-	public LoginUser(){
 
-	}
 	public String getId() {
 		return id;
 	}

@@ -3,6 +3,7 @@ package kr.ac.jejunu.kdi.controller;
 
 
 import kr.ac.jejunu.kdi.service.LoginService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/login")
-//@SessionAttribute는  model을 위한 conversional data를 저장하는 것이 목적.
 public class Login {
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class Login {
 						@RequestParam("password") String password){
 		
 		if(loginService.login(id,password)){
-			return "redirct:/main";
+			return "redirect:/main";
 		}else{
 			return "redirect:/login";
 		}

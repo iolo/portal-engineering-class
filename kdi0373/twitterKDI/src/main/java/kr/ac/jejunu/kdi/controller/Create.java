@@ -17,7 +17,7 @@ public class Create {
 	
 	@RequestMapping
 	public void createView(){
-		System.out.println("asdfafafafaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+	
 	}
 	
 	@RequestMapping( method = RequestMethod.POST)
@@ -28,7 +28,7 @@ public class Create {
 							 @RequestParam("image") String image) {
 								
 		createService.createUser(id, password, name, memo, image);
-		System.out.println("bbbbbbg");
+		
 		return "redirect:/login";
 	}
 	

@@ -9,7 +9,7 @@
 		values(#{id}, #{password}, #{name}, #{memo}, #{image})
 	</insert>
 	
- 	<select id ="loginCheck" parameterType="kr.ac.jejunu.kdi.repository.UserRepository" resultType="kr.ac.jejunu.kdi.model.User">
-		SELECT * FORM user WHERE id= #{id} AND password = #{password}
+ 	<select id ="loginCheck" parameterType="kr.ac.jejunu.kdi.model.LoginUser" resultType="kr.ac.jejunu.kdi.model.User">
+		SELECT image, name, id , memo FROM user WHERE id= #{id} AND password = #{password}
 	</select>
 </mapper>
