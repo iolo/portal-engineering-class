@@ -15,14 +15,14 @@
 <body>
 	<div>
 		<form action="save" method="post">
-				<legend>요즘 어떠신가요?</legend>
-				<p>
-					<textarea width=300px rows="10" cols="40" name="content"></textarea>
+				<p style="text-indent:30px;">요즘 어떠신가요?</p>
+				<p style="text-align:center;" >
+					<textarea rows="10" cols="40" name="content"></textarea>
 				</p>
-				<p>
+				<p style="text-align:center;" >
 					<input type="hidden" value="${userId}" name="userId"/>
 					<input type="submit" value="저장"/>
-					<input type="button" value="취소" onclick="postclose();" />
+					<input type="button" value="취소" onclick="postclose();" />	
 				</p>
 		</form>
 	</div>

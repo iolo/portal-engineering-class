@@ -14,6 +14,9 @@
 		<form action="/login" method="post">
 				<h1 style="text-align:center">육식토끼의 twitter에 오신 것을 환영합니다.</h1>
 				<p style="text-align:center">
+					<img width=400px height=400px src="/resources/main.jpg">
+				</p>
+				<p style="text-align:center">
 					<label>아이디 : </label>
 					<input type="text" name="userid"/>
 				</p>
