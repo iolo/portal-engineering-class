@@ -10,7 +10,7 @@
 	
 	<!--프로필 수정  -->
 	<update id="updateUser" parameterType="kr.ac.jejuuniv.twitter.model.UserModel">
-		Update user set password=#{password}, name=#{name}, profile=#{profile} where id=#{id}  
+		Update user set password=#{password}, name=#{name}, profile=#{profile}, path=#{path} where id=#{id}  
 	</update>
 	<!--로그인 처리  -->
 	<select id="checkUser" resultType="kr.ac.jejuuniv.twitter.model.UserModel">

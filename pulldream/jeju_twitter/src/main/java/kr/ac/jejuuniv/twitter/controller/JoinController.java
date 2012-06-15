@@ -39,11 +39,11 @@ public class JoinController {
 		FileChannel in = null;
 		FileChannel out = null;
 		
-		fos = new FileOutputStream(uploadedFile);
 		
 		//이미지를 업로드를 할 경우 아이디에 맞게 이미지 전송
 		//이미지를 업로드 하지 않을 경우 디폴트 이미지 링크
 		try {
+			fos = new FileOutputStream(uploadedFile);
 			if(file.isEmpty()){
 				user.setPath(false);
 				File default_img = new File("/Volumes/Data/Mac Data/Documents/Develope/Lecture/jeju_twitter/src/main/webapp/resources/profile/default_img.png");
@@ -58,6 +58,7 @@ public class JoinController {
 				user.setPath(true);
 				fos.write(byteFile);
 			}
+			userService.addUser(user);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -68,7 +69,6 @@ public class JoinController {
 			fos.close();
 			out.close();
 		}
-		userService.addUser(user);
 		return "redirect:/index";
 	}
 	

@@ -23,17 +23,17 @@ Follower<br>
 			<th><img src="/resources/profile/${follower.id }"/></th>
 			<th><c:out value="${follower.id }" /></th>
 			<th><c:out value="${follower.name }" /></th>
-			<th><c:out value="${follower.profile }" /></th>
+			<th class="rounded"><c:out value="${follower.profile }" /></th>
 			<th>
 				<c:choose>
 					<c:when test="${follower.following}">
 						<a href="unfollow.do/follower?following=${follower.id }">
-							<input type="submit" value="UnFollowing">
+							<input class="medium red bttn"  type="submit" value="UnFollowing">
 						</a>
 					</c:when>
 					<c:otherwise>
 						<a href="following.do/follower?following=${follower.id }">
-							<input type="submit" value="Following">
+							<input class="medium blue bttn"  type="submit" value="Following">
 						</a>
 					</c:otherwise>
 				</c:choose>

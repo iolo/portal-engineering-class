@@ -12,7 +12,7 @@ ${title }
 			<th>	</th>
 			<th>이 름</th>
 			<th>내 용</th>
-			<th>작성일</th>
+			<th width="100">작성일</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,12 +20,12 @@ ${title }
 		<tr>
 			<th><img src="/resources/profile/${twittlist.id }"/></th>
 			<th><c:out value="${twittlist.name }" /></th>
-			<th><c:out value="${twittlist.content }" /></th>
-			<th><c:out value="${twittlist.write_date }" /></th>
+			<th class="rounded"><c:out value="${twittlist.content }" /></th>
+			<th width="100"><c:out value="${twittlist.write_date }" /></th>
 			<th>		
 				<c:if test="${title == '나의 트윗' }">
-					<input type="hidden" name="twinum" value="${twittlist.twinum }"/>
-					<input type="submit" value="삭제"/>
+					<input  type="hidden" name="twinum" value="${twittlist.twinum }"/>
+					<input class="medium red bttn"  type="submit" value="삭제"/>
 				</c:if>
 			</th>
 		</tr>

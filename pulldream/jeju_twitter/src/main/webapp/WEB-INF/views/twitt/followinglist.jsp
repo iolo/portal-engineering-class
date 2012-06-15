@@ -23,20 +23,11 @@ FollowingList<br>
 			<th><img src="/resources/profile/${following.id }"/></th>
 			<th><c:out value="${following.id }" /></th>
 			<th><c:out value="${following.name }" /></th>
-			<th><c:out value="${following.profile }" /></th>
+			<th class="rounded"><c:out value="${following.profile }" /></th>
 			<th>
-				<c:choose>
-					<c:when test="${following.following}">
 						<a href="unfollow.do/following?following=${following.id }">
-							<input type="submit" value="UnFollowing">
+							<input class="medium red bttn" type="submit" value="UnFollowing">
 						</a>
-					</c:when>
-					<c:otherwise>
-						<a href="following.do/following?following=${following.id }">
-							<input type="submit" value="Following">
-						</a>
-					</c:otherwise>
-				</c:choose>
 			</th>
 		</tr>
 		</c:forEach>
