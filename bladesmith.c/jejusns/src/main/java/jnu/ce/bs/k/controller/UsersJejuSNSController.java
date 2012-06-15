@@ -4,7 +4,7 @@ import java.util.List;
 
 import jnu.ce.bs.k.model.Note;
 import jnu.ce.bs.k.model.User;
-import jnu.ce.bs.k.service.UserService;
+import jnu.ce.bs.k.service.NoteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class UsersJejuSNSController {
 	
 	@Autowired
-	private UserService userService;
+	private NoteService noteService;
 	
 	@RequestMapping
 	public List<Note> action(@ModelAttribute("User") User user){
 
-		return userService.findAllNoteByID(user.getId());
+		return noteService.findAllNoteByID(user.getId());
 	}
 
 }

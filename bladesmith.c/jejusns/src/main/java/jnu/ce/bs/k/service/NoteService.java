@@ -14,4 +14,6 @@ public interface NoteService {
 	List<Note> findNoteByUser(User user);
 
 	List<Note> findNeighborhoodNoteById(String id);
+
+	List<Note> findAllNoteByID(String id);
 }
