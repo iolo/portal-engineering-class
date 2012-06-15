@@ -1,10 +1,14 @@
-user 
 
-	||id||	varchar(30)||utf8_bin||		 	 	 	 	 	 	
-	||password||text||utf8_bin||			 	 	 				
-	||name||text||utf8_bin||		 	 	 				
-	||explain||text||utf8_bin||		 	 	 	 				
-	||image||text||utf8_bin||			
+
+=user=
+
+|| *Field* || *Type* || *Null* || *Key* ||
+|| id       || varchar(30) || NO   || PRI || 
+|| password || text || NO  ||     || NULL||
+|| name     || text || NO  ||     ||NULL || 
+||explain  || text  || NO  ||     || NULL  || 
+|| image     || text  || NO   ||     || NULL| ||
+		
 following
 
 	id	varchar(30)	utf8_bin		예	NULL		 	 	 	 	 	 	
