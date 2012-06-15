@@ -18,7 +18,7 @@ ${title }
 	<tbody>
 		<c:forEach items="${twittList}" var="twittlist">
 		<tr>
-			<th>IMAGE</th>
+			<th><img src="/resources/profile/${twittlist.id }"/></th>
 			<th><c:out value="${twittlist.name }" /></th>
 			<th><c:out value="${twittlist.content }" /></th>
 			<th><c:out value="${twittlist.write_date }" /></th>

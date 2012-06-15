@@ -7,12 +7,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- <link href="/resources/css/content_style.css" rel="stylesheet" type="text/css" media="all" /> -->
+<link href="/resources/css/content_style.css" rel="stylesheet" type="text/css" media="all" />
 <title>Welcome To Jeju Twitt</title>
 </head>
 <body>
 <div >
-	<jsp:include page="user/loginpage.jsp"/><br>
+	<c:choose>
+		<c:when test="${pageType=='/mytwitt' }">
+			<jsp:include page="user/loginpage_with_update.jsp"/><br>
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="user/loginpage.jsp"/><br>
+		</c:otherwise>
+	
+	</c:choose>
 	<jsp:include page="${pageType }"/>
 </div>
 </body>

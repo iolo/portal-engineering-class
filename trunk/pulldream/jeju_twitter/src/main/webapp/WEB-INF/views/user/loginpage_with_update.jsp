@@ -10,7 +10,9 @@ open (window,"NewWindow","left=100, top=100, toolbar=yes, location=yes, director
 }
 </script>
   
-안녕하세요 <a href="getmytwitt.do"><% out.println((String)session.getAttribute("loginID")+" 님"); %></a><br>
+안녕하세요 <a href="getmytwitt.do"><% out.println((String)session.getAttribute("loginID")+" 님"); %></a>
+<a href="updateform"><input type="button" value="프로필수정"></a>
+<br>
 
 <input type="button" value="글쓰기" onClick="javascript:openNewWindow('writeform')"/>
 <a href="follower"><input type="button" value="Follower" /></a>

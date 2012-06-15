@@ -20,6 +20,7 @@ public class FollowingController {
 		return new ModelAndView("main","pageType","/followinglist");
 	}
 	
+	//팔로잉리스트 보여지기
 	@RequestMapping("followinglist")
 	public ModelAndView GetFollowingList(HttpServletRequest reqeust){
 		String id = (String)reqeust.getSession().getAttribute("loginID");

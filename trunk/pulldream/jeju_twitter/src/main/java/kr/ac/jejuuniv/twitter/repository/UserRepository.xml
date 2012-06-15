@@ -8,6 +8,10 @@
 		Insert into user values(#{id},#{password},#{name},#{profile},#{path})
 	</insert>
 	
+	<!--프로필 수정  -->
+	<update id="updateUser" parameterType="kr.ac.jejuuniv.twitter.model.UserModel">
+		Update user set password=#{password}, name=#{name}, profile=#{profile} where id=#{id}  
+	</update>
 	<!--로그인 처리  -->
 	<select id="checkUser" resultType="kr.ac.jejuuniv.twitter.model.UserModel">
 		Select * from user where id=#{id} and password=#{password}
@@ -16,6 +20,11 @@
 	<!-- 모든 사용자 가지고 오기 -->
 	<select id="getAllUser" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
 		Select id, name, profile from user 
+	</select>
+	
+	<!--사용자 정보 가지고 오기  -->
+	<select id="findUserById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.UserModel">
+		Select * from user where id=#{id}
 	</select>
 	
 	<!-- 탈퇴?? -->

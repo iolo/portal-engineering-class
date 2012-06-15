@@ -18,7 +18,7 @@
 	<tbody>
 		<c:forEach items="${alluserlist}" var="alluser">
 		<tr>
-			<th>IMAGE</th>
+			<th><img src="/resources/profile/${alluser.id }"/></th>
 			<th><c:out value="${alluser.id }" /></th>
 			<th><c:out value="${alluser.name }" /></th>
 			<th><c:out value="${alluser.profile }" /></th>

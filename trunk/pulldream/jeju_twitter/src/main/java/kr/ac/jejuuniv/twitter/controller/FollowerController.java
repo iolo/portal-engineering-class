@@ -20,6 +20,7 @@ public class FollowerController {
 		return new ModelAndView("main","pageType","/followerlist");
 	}
 	
+	//팔로어 리스트 보여지기
 	@RequestMapping("followerlist")
 	public ModelAndView test(HttpServletRequest reqeust){
 		String id = (String)reqeust.getSession().getAttribute("loginID");

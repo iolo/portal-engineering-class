@@ -20,7 +20,7 @@ Follower<br>
 	<tbody>
 		<c:forEach items="${followerList}" var="follower">
 		<tr>
-			<th>IMAGE</th>
+			<th><img src="/resources/profile/${follower.id }"/></th>
 			<th><c:out value="${follower.id }" /></th>
 			<th><c:out value="${follower.name }" /></th>
 			<th><c:out value="${follower.profile }" /></th>

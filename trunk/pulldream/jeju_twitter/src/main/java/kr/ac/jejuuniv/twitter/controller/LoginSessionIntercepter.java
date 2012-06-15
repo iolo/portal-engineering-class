@@ -29,7 +29,8 @@ public class LoginSessionIntercepter implements HandlerInterceptor{
 		
 		//처음 로그인때문에 인터셉터 벗어나기 위함....
 		//왜 다른걸로 안될까나요? 
-		if(request.getRequestURI().equals("/login.do"))		return true;
+		if(request.getRequestURI().equals("/login.do") || request.getRequestURI().equals("/joinform")
+				|| request.getRequestURI().equals("/join.do"))		return true;
 		
 		if(session==null){
 			response.sendRedirect("/");
