@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.mapper.SnsMapper">
+
+	<select id="PersonalSns" parameterType="String" resultType="kr.ac.jejuuniv.model.SnsListModel">
+		SELECT * FROM jinSns WHERE id =#{id}
+		ORDER BY date DESC
+	</select>
+	
+	<delete id="remove" parameterType="int">
+		DELETE FROM `JinSNS`.`jinSns` WHERE `jinSns`.`index` = #{index}
+	</delete>
+	
+	<insert id="write" parameterType="kr.ac.jejuuniv.model.SnsModel">
+		INSERT INTO  `JinSNS`.`jinSns` (`index` ,`id` ,`date`,`sns`)
+		VALUES(NULL, #{id}, #{sns}, #{date});
+	</insert>	
+	
+	<select id="allGetSns" parameterType="String" resultType="kr.ac.jejuuniv.model.SnsListModel">
+		SELECT user.id, user.name, jinSns.sns, jinSns.date, user.image
+		FROM jinSns, user 
+		WHERE jinSns.id=user.id
+		ORDER BY date DESC
+	</select>
+</mapper>

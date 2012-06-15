@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.mapper.JoinMapper">
+
+		<insert id="joinUser" parameterType="kr.ac.jejuuniv.model.UserModel">
+		INSERT INTO  `JinSNS`.`user` (`id` ,`password` ,`name` ,`explain` ,`image`)
+		VALUES (#{id}, #{password}, #{name}, #{explain}, #{image})
+		</insert>
+		
+	  <update id="updateUser" parameterType="kr.ac.jejuuniv.model.UserModel">
+		UPDATE  `JinSNS`.`user` SET  `password` =  #{password},
+		`name` =  #{name},
+		`explain` = #{explain},
+		`image` =  #{image} WHERE  `user`.`id` = #{id}
+	 </update>	
+
+</mapper>
