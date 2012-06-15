@@ -27,11 +27,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 //@RequestMapping("join.do")
+//프로필 수정
+//이미지 경로 지정 여부에 따라 디폴트 이미지로 할지 그냥 이미지로 할지 정해줌
 public class UpdateController {
 
-	@Autowired
-	private UserService userService;
-	
 	@Autowired
 	private UserRepository userRepository;
 	

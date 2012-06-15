@@ -24,36 +24,6 @@
 		Delete from twitt where twinum=#{twit_num}
 	</delete>
 	
-	<!-- Following 등록 -->
-	<insert id="addFollowingById" parameterType="kr.ac.jejuuniv.twitter.model.FollowingModel">
-		Insert into follow(id, following) values(#{id},#{following})	
-	</insert>
-	
-	<!-- Follower 목록-->
-	<select id="getAllFollower" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
-			Select * from follow where id=#{id}
-	</select>
-	
-	<!--Following 목록  -->
-	<select id="getFollowingById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
-		Select follow.following as "id",
-		 user.name, user.profile from follow inner join user on follow.following=user.id where follow.id=#{id}
-	</select> 
-	
-	<!--UnFollowing  -->
-	<delete id="unFollowingById" parameterType="String">
-		Delete from follow where id=#{id} and following=#{following}
-	</delete>
-	
-	<!--getFollower  -->
-	<select id="getFollowerById" parameterType="String" resultType="kr.ac.jejuuniv.twitter.model.FollowModel">
-		Select user.id, user.name, user.profile from user inner join follow on follow.id=user.id where following=#{id}
-	</select>
-	
-	<select id="getFollowingList" parameterType="String" resultType="String">
-		Select following from follow where id=#{id};
-	</select>
-	
 <!--
 	Hash로 할려다가 막힘 .. 
 	<select id="getTestHash" resultType="hashmap">

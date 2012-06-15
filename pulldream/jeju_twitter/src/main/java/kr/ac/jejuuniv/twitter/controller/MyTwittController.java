@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+//자신이 쓴 글 찾아오기
 @Controller
 @RequestMapping
 public class MyTwittController {

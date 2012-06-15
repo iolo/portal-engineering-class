@@ -11,6 +11,7 @@ import kr.ac.jejuuniv.twitter.controller.LoginController;
 import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
 import kr.ac.jejuuniv.twitter.repository.UserRepository;
+import kr.ac.jejuuniv.twitter.service.FollowService;
 import kr.ac.jejuuniv.twitter.service.TwitterService;
 import kr.ac.jejuuniv.twitter.service.UserService;
 import kr.ac.jejuuniv.twitter.service.impl.UserServiceImpl;
@@ -37,6 +38,9 @@ public class GetFollowingListControllerTest {
 	@Mock
 	private TwitterService twitterService;
 	
+	@Mock
+	private FollowService followService;
+	
 	
 	@InjectMocks
 	private FollowingController followingController = new FollowingController();
@@ -59,7 +63,7 @@ public class GetFollowingListControllerTest {
 		FollowingModel followModel = new FollowingModel();
 		
 		
-		when(twitterService.getFollowingList("juntheater")).thenAnswer(new Answer<FollowingModel>() {
+		when(followService.getFollowingList("juntheater")).thenAnswer(new Answer<FollowingModel>() {
 
 			public FollowingModel answer(InvocationOnMock invocation)
 					throws Throwable {

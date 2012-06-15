@@ -2,7 +2,7 @@ package kr.ac.jejuuniv.twitter.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import kr.ac.jejuuniv.twitter.service.TwitterService;
+import kr.ac.jejuuniv.twitter.service.FollowService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class FollowingController {
 
 	@Autowired
-	private TwitterService twitterService;
+	private FollowService followService;
 	
 	@RequestMapping("following")
 	public ModelAndView goToMainWithFollowingList(HttpServletRequest reqeust){
@@ -26,7 +26,7 @@ public class FollowingController {
 		String id = (String)reqeust.getSession().getAttribute("loginID");
 		ModelAndView followListView = new ModelAndView();
 		followListView.setViewName("/twitt/followinglist");
-		followListView.addObject("followingList",twitterService.getFollowingList(id));
+		followListView.addObject("followingList",followService.getFollowingList(id));
 		return followListView;
 	}
 
