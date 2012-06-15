@@ -1,4 +1,3 @@
-
 =user=
 
 || *Field* || *Type* || *Null* || *Key* ||
@@ -8,10 +7,13 @@
 ||explain  || text  || NO  ||NULL  || 
 || image     || text  || NO   ||NULL||
 		
-following
 
-	id	varchar(30)	utf8_bin		예	NULL		 	 	 	 	 	 	
-	following	varchar(30)	utf8_bin		예	NULL		 	 	 	 	 	 	
+=following=
+
+|| *Field* || *Type* || *Null* || *Key* ||
+|| id       || varchar(30) || YES || NULL || 
+|| following || varchar(30) ||YES  || NULL||
+	 	 	 	 	
 
 jinSNS
 
