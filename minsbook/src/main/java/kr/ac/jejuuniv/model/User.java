@@ -1,12 +1,15 @@
 package kr.ac.jejuuniv.model;
 
 public class User {
-	private String id;
-	private String password;
-	private String name;
-	private String nickName;
-	private String profileImgPath;
+	private String id = "";
+	private String password = "";
+	private String name = "";
+	private String nickName = "";
+	private String profileImgPath = "";
 
+	public User() {
+	}
+	
 	/**
 	 * 
 	 * @param id
@@ -48,11 +51,11 @@ public class User {
 		this.name = name;
 	}
 
-	public String getNickname() {
+	public String getNickName() {
 		return nickName;
 	}
 
-	public void setNickname(String nickname) {
+	public void setNickName(String nickname) {
 		this.nickName = nickname;
 	}
 

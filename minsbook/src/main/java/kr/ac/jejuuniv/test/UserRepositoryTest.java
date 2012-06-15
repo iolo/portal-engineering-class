@@ -38,10 +38,10 @@ public class UserRepositoryTest {
 	@Test
 	public void testModify() {
 		User user = userRepository.findById("jungmin");
-		user.setNickname("미남");
+		user.setNickName("미남");
 		userRepository.saveUser(user);
 		user = userRepository.findById("jungmin");
-		assertEquals("미남", user.getNickname());
+		assertEquals("미남", user.getNickName());
 		
 	}
 
