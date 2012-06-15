@@ -9,12 +9,12 @@
 
 	<!-- Scans within the base package of the application for @Components to 
 		configure as beans -->
+		<annotation-driven/>
 	<context:component-scan base-package="kr.ac.jejunu.rabbit" />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />
 	
 	<resources mapping="/resources/**" location="/resources/" />
 
