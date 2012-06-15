@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
+import kr.ac.jejuuniv.mapper.UserMapper;
+import kr.ac.jejuuniv.model.user.NotFoundUserException;
 import kr.ac.jejuuniv.model.user.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +23,18 @@ public class Ssiggle implements Serializable {
 
 	@Autowired
 	private SsiggleMapper ssiggleMapper;
+	@Autowired
+	private UserMapper userMapper;
 
 	public Ssiggle() {
 	}
 
 	public Ssiggle(SsiggleMapper ssiggleMapper) {
 		this.ssiggleMapper = ssiggleMapper;
+	}
+
+	public void setUserMapper(UserMapper userMapper) {
+		this.userMapper = userMapper;
 	}
 
 	public long getId() {
@@ -80,6 +88,10 @@ public class Ssiggle implements Serializable {
 	}
 
 	public List<Ssiggle> ssiggleListByUserIdDesTime(String loginId) {
+		if (userMapper.selectUserById(loginId) == null) {
+			throw new NotFoundUserException("user " + loginId + " (이)가 존재하지 않습니다");
+		}
+
 		return ssiggleMapper.selectSsiggleListByUserIdDescTime(loginId);
 	}
 

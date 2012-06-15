@@ -27,7 +27,6 @@ import org.mockito.stubbing.Answer;
 public class SsiggleServiceTest {
 	@Mock
 	private SsiggleMapper ssiggleMapper;
-
 	@Mock
 	private UserMapper userMapper;
 
@@ -96,9 +95,12 @@ public class SsiggleServiceTest {
 
 		SsiggleService service = new SsiggleServiceImpl();
 
+		Ssiggle s = new Ssiggle(ssiggleMapper);
+		s.setUserMapper(userMapper);
+		
 		User user = new User(userMapper).findUserById("sens");
 		List<Ssiggle> list = service.readAllSsiggleByFollowingUser(user,
-				new Ssiggle(ssiggleMapper));
+				s);
 
 		assertThat(list.size(), is(5));
 		for (int i = 0; i < 5; i++) {

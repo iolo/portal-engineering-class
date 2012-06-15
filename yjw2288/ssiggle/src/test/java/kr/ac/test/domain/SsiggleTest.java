@@ -9,10 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ac.jejuuniv.mapper.SsiggleMapper;
+import kr.ac.jejuuniv.mapper.UserMapper;
 import kr.ac.jejuuniv.model.ssiggle.NotFoundSsiggleException;
 import kr.ac.jejuuniv.model.ssiggle.Ssiggle;
 import kr.ac.jejuuniv.model.ssiggle.SsiggleDeleteException;
 import kr.ac.jejuuniv.model.ssiggle.SsiggleExistException;
+import kr.ac.jejuuniv.model.user.NotFoundUserException;
+import kr.ac.jejuuniv.model.user.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +28,16 @@ import org.mockito.stubbing.Answer;
 public class SsiggleTest {
 	@Mock
 	private SsiggleMapper ssiggleMapper;
+	@Mock
+	private UserMapper userMapper;
+
+	@Test(expected = NotFoundUserException.class)
+	public void testListFail() {
+		Ssiggle s = new Ssiggle(ssiggleMapper);
+		s.setUserMapper(userMapper);
+
+		s.ssiggleListByUserIdDesTime("sens");
+	}
 
 	@Test
 	public void testSsiggleList() {
@@ -47,8 +60,20 @@ public class SsiggleTest {
 					}
 				});
 
-		List<Ssiggle> list = new Ssiggle(ssiggleMapper)
-				.ssiggleListByUserIdDesTime("sens");
+		when(userMapper.selectUserById("sens")).thenAnswer(new Answer<User>() {
+			@Override
+			public User answer(InvocationOnMock invocation) throws Throwable {
+				User user = new User();
+				user.setId("sens");
+
+				return user;
+			}
+		});
+
+		Ssiggle s = new Ssiggle(ssiggleMapper);
+		s.setUserMapper(userMapper);
+
+		List<Ssiggle> list = s.ssiggleListByUserIdDesTime("sens");
 
 		assertThat(list.size(), is(2));
 		assertThat(list.get(0).getId(), is(0L));
