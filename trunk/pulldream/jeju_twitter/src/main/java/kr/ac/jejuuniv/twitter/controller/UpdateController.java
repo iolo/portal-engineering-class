@@ -40,8 +40,6 @@ public class UpdateController {
 		byte[] byteFile = file.getBytes();
 		File uploadedFile = new File("/Volumes/Data/Mac Data/Documents/Develope/Lecture/jeju_twitter/src/main/webapp/resources/profile/"+user.getId());
 
-		userRepository.updateUser(user);
-		
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
 		FileChannel in = null;
@@ -51,8 +49,9 @@ public class UpdateController {
 		
 		//이미지를 업로드를 할 경우 아이디에 맞게 이미지 전송
 		//이미지를 업로드 하지 않을 경우 디폴트 이미지 링크
-		if(user.isPath()==false){
-			try {
+
+		try {
+		if(!user.isPath()){
 				if(file.isEmpty()){
 					user.setPath(false);
 					File default_img = new File("/Volumes/Data/Mac Data/Documents/Develope/Lecture/jeju_twitter/src/main/webapp/resources/profile/default_img.png");
@@ -67,18 +66,18 @@ public class UpdateController {
 					user.setPath(true);
 					fos.write(byteFile);
 				}
-				
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}finally{
-				fis.close();
-				in.close();
-				fos.close();
-				out.close();
 			}
 		}
-		
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			fos.close();
+			fis.close();
+			out.close();
+			in.close();
+		}
+		userRepository.updateUser(user);
 		return "redirect:/index";
 	}
 	

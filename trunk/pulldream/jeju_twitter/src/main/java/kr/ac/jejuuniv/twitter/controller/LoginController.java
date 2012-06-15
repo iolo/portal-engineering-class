@@ -29,6 +29,7 @@ public class LoginController{
 			if(loginUser.equals(null))	System.out.println("asdfasdf");
 			else{
 				request.getSession().setAttribute("loginID", loginUser.getId());
+				System.out.println(loginUser.getName());
 				request.getSession().setAttribute("loginName", loginUser.getName());
 				return "redirect:/index";
 			}

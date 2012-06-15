@@ -24,7 +24,7 @@ public class WriteTwittController {
 	}
 	
 	@RequestMapping("write.do")
-	public String writeTwitt(TwittModel twittModel,HttpServletRequest request){
+	public String writeTwitt(@ModelAttribute("twitt")TwittModel twittModel,HttpServletRequest request){
 		String twittID = (String)request.getSession().getAttribute("loginID");
 		String twittName = (String)request.getSession().getAttribute("loginName");
 		twittModel.setId(twittID);

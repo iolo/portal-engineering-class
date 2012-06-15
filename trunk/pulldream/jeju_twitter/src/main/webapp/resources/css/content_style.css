@@ -1,16 +1,26 @@
 @CHARSET "UTF-8";
 <style>
+
 p {
 	font-size: 12px;
 	line-height: 20px;
 }
-div.rounded {
-    background-color: #eeebff;
+th.rounded {
+    background-color: #f0f8ff;
     color: black;
     line-height: 20px;
     width: 250px;
     padding: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
+}
+
+.myphoto{
+	position:absolute;
+	left:50px;
+	top:70px;
+	transform: rotate(15deg);
+	-webkit-transform:rotate(15deg);
+	-moz-transform:rotate(15deg); 
 }
 </style>
