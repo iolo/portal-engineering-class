@@ -30,25 +30,25 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void saveUser(User user, MultipartFile profileImgPath) {
+	public void saveUser(User user, MultipartFile profileImg) {
 		String imageURI, id, password, name, nickName;
 
-		imageURI = profileImgPath.getOriginalFilename();
+		imageURI = profileImg.getOriginalFilename();
 
 		String filePath = FILE_PATH;
 		File file = new File(filePath + imageURI);
 		try {
-			profileImgPath.transferTo(file);
+			profileImg.transferTo(file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		id = user.getId();
 		password = user.getPassword();
 		name = user.getName();
-		nickName = user.getNickname();
+		nickName = user.getNickName();
 
 		User userModel = new User(id, password, name, nickName,
-				profileImgPath.getOriginalFilename());
+				profileImg.getOriginalFilename());
 
 		userRepository.saveUser(userModel);
 	}

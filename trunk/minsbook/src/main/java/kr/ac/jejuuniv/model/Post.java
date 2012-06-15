@@ -8,6 +8,9 @@ public class Post {
 	private String content;
 	private Date date;
 	
+	public Post() {		
+	}
+	
 	/**
 	 * 생성자
 	 * @param index 번호

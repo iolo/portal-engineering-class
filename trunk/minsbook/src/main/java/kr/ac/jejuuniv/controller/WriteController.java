@@ -1,9 +1,6 @@
 package kr.ac.jejuuniv.controller;
 
-import java.util.List;
-
 import kr.ac.jejuuniv.model.Post;
-import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.post.PostService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,23 +11,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/write")
 @SessionAttributes("user")
-public class UserPageController {
-	
+public class WriteController {
 	@Autowired
 	PostService postService;
 	
-	@RequestMapping()
-	public List<Post> userPage(@ModelAttribute("user") User user){
-
-		return postService.getPosts(user.getId());		
+	@RequestMapping(method=RequestMethod.GET)
+	public String showWritePage() {
+		return "write";
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/remove")
-	public String remove(int index){
-		postService.delete(index);
-		
-		return "redirect:/personal";
+	@RequestMapping(method=RequestMethod.POST)
+	public void write(@ModelAttribute Post newPost) {
+		postService.save(newPost);
 	}
+
 }

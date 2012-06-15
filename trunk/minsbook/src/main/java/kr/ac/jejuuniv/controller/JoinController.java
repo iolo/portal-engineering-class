@@ -1,6 +1,5 @@
 package kr.ac.jejuuniv.controller;
 
-
 import kr.ac.jejuuniv.model.User;
 import kr.ac.jejuuniv.service.user.UserService;
 
@@ -14,22 +13,19 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/join")
 public class JoinController {
-		
+
 	@Autowired
 	UserService userService;
-	
-//	@RequestMapping()
-//	public String action(){
-//		return "joine";
-//	}
-	
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String action(@ModelAttribute User user) {
+		return "join";
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
-	public String saveUser(@ModelAttribute User user, MultipartFile profileImgPath)
-	{
-		userService.saveUser(user, profileImgPath);
-		
-		
+	public String saveUser(@ModelAttribute User user, MultipartFile profileImg) {
+		userService.saveUser(user, profileImg);
 		return "redirect:/login";
 	}
-	
+
 }
