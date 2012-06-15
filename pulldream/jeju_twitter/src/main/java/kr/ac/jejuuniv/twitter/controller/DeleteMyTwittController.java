@@ -15,6 +15,7 @@ public class DeleteMyTwittController {
 	@Autowired
 	private TwitterService twitterService;
 	
+	//자신의 트위터 삭제
 	@RequestMapping
 	public String deteMyTwitt(TwittModel twittModel){
 		twitterService.deleteMyTwitt(twittModel.getTwinum());

@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.FileChannel;
 
+import javax.servlet.http.HttpServletRequest;
+
 import kr.ac.jejuuniv.twitter.model.UserModel;
+import kr.ac.jejuuniv.twitter.repository.UserRepository;
 import kr.ac.jejuuniv.twitter.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +27,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 //@RequestMapping("join.do")
-public class JoinController {
+public class UpdateController {
 
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("join.do")
-	public String JoinUser(UserModel user, @RequestParam("file")MultipartFile file)throws IOException{
+	@Autowired
+	private UserRepository userRepository;
+	
+	@RequestMapping("update.do")
+	public String JoinUser(@ModelAttribute("join")UserModel user, @RequestParam("file")MultipartFile file)throws IOException{
 		byte[] byteFile = file.getBytes();
 		File uploadedFile = new File("/Volumes/Data/Mac Data/Documents/Develope/Lecture/jeju_twitter/src/main/webapp/resources/profile/"+user.getId());
+
+		userRepository.updateUser(user);
 		
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
@@ -43,37 +51,42 @@ public class JoinController {
 		
 		//이미지를 업로드를 할 경우 아이디에 맞게 이미지 전송
 		//이미지를 업로드 하지 않을 경우 디폴트 이미지 링크
-		try {
-			if(file.isEmpty()){
-				user.setPath(false);
-				File default_img = new File("/Volumes/Data/Mac Data/Documents/Develope/Lecture/jeju_twitter/src/main/webapp/resources/profile/default_img.png");
+		if(user.isPath()==false){
+			try {
+				if(file.isEmpty()){
+					user.setPath(false);
+					File default_img = new File("/Volumes/Data/Mac Data/Documents/Develope/Lecture/jeju_twitter/src/main/webapp/resources/profile/default_img.png");
+					
+					fis = new FileInputStream(default_img);
+					in = fis.getChannel();
+					out = fos.getChannel();
+					
+					in.transferTo(0, in.size(), out);
+					
+				}else{
+					user.setPath(true);
+					fos.write(byteFile);
+				}
 				
-				fis = new FileInputStream(default_img);
-				in = fis.getChannel();
-				out = fos.getChannel();
-				
-				in.transferTo(0, in.size(), out);
-				
-			}else{
-				user.setPath(true);
-				fos.write(byteFile);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}finally{
+				fis.close();
+				in.close();
+				fos.close();
+				out.close();
 			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}finally{
-			fis.close();
-			in.close();
-			fos.close();
-			out.close();
 		}
-		userService.addUser(user);
+		
 		return "redirect:/index";
 	}
 	
-	@RequestMapping("joinform")
-	public ModelAndView JoinForm(@ModelAttribute("join")UserModel user){
-		return new ModelAndView("user/profile");
+	@RequestMapping("updateform")
+	public ModelAndView JoinForm(@ModelAttribute("join")UserModel user, HttpServletRequest request)throws IOException{
+		String id = (String)request.getSession().getAttribute("loginID");
+		user=userRepository.findUserById(id);
+		System.out.println(user.getProfile());
+		return new ModelAndView("user/updateuser","user",user);
 	}
 }

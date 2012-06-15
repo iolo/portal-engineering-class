@@ -18,6 +18,8 @@ public class AddFollowingController {
 	@Autowired
 	private TwitterService twitterService;
 	
+	
+	//Following 추가
 	@RequestMapping
 	public String Following(@PathVariable("pageType")String pageType, @ModelAttribute("following")FollowingModel followModel,HttpServletRequest request){
 		String id = (String)request.getSession().getAttribute("loginID");

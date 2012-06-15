@@ -20,6 +20,7 @@ public class AllUserController {
 		return new ModelAndView("main","pageType","/getalluser");
 	}
 	
+	//전체 사용자 불러오기
 	@RequestMapping("getalluser")
 	public ModelAndView GetAllUser(HttpServletRequest request){
 		String id = (String)request.getSession().getAttribute("loginID");
