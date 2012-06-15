@@ -22,7 +22,7 @@ public class UserJoinController {
 	UserService userService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String userReg(@ModelAttribute User user, MultipartFile userimage) throws FileNotFoundException, IOException{
+	public String userReg(User user, MultipartFile userimage) throws FileNotFoundException, IOException{
 		saveImage(user, userimage);
 		userService.UserInsert(user);
 		return "finish";		
