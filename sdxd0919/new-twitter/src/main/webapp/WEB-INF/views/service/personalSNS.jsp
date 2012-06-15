@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div id="Header">
-		<h1>PersonalSNS</h1>
+		<img src="/twitter/resources/image/2.png"/>
 		<p>
 			<a href="/twitter/service/personalSNS"><label>${user.name}(${user.description })</label></a>
 			<a href="/twitter/service/profile"><input type="button" value="프로필수정" /></a>

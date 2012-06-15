@@ -1,10 +1,6 @@
 package kr.ac.jejuuniv.Controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import javax.servlet.http.HttpSession;
 
 import kr.ac.jejuuniv.Model.User;
 import kr.ac.jejuuniv.Service.UserService;

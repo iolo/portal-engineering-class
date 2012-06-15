@@ -89,7 +89,6 @@ public class FollowServiceImpl implements FollowService {
 	public List<Follow> checkAllUsers(int userNum) {
 		List<Integer> followingUserNumList = followRepository.getFollowingUserNumList(userNum); 
 		List<User> allUsers = userService.getAllUser();
-		allUsers.remove(userNum - 1);
 		
 		List<Follow> allUserLists = new ArrayList<Follow>();
 		int k = 0; boolean flag;
@@ -111,6 +110,11 @@ public class FollowServiceImpl implements FollowService {
 			}else{
 				allUserLists.add(new Follow(allUsers.get(i), false));
 			}
+			
+			if(userNum == selectedUserNum){
+				allUserLists.remove(new Follow(allUsers.get(i), false));
+			}
+			
 		}
 		
 		return allUserLists;
