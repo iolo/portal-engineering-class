@@ -1,5 +1,5 @@
 DB 구조 입니다.
-
+{{{
 mysql> desc user;
 +-----------+--------------+------+-----+----------------------+-------+
 | Field     | Type         | Null | Key | Default              | Extra |
@@ -31,3 +31,4 @@ mysql> desc following;
 | following | varchar(10) | NO   | PRI |         |       |
 +-----------+-------------+------+-----+---------+-------+
 2 rows in set (0.00 sec)
+}}}
