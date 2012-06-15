@@ -17,7 +17,7 @@
 		<p>
 			<a href="/twitter/service/personalSNS"><label>${user.name}(${user.description })</label></a>
 			<a href="javascript:void(window.open('/twitter/service/write', '글쓰기',
-						'width=300, height=200'))"><input type="button" value="글쓰기" /></a>
+						'width=400, height=200'))"><input type="button" value="글쓰기" /></a>
 			<a href="/twitter/service/followingList"><input type="button" value="Following" /></a>
 			<a href="/twitter/service/followerList"><input type="button" value="Follower" /></a>
 			<a href="/twitter/service/allUserList"><input type="button" value="전체사용자" /></a>
@@ -27,13 +27,13 @@
 		
 	<div id="SNSListContent">
 		<c:forEach items="${UserTweets}" var="userTweet" >
-			<table width="600" align="left">
+			<table width="800" align="left">
 				<tr>
 					<td width="100"  align="center">
 						<img src = "${userTweet.user.profileImg}" width="80" height="80" />
 					</td>
 					<td width="100"  align="center">${userTweet.user.name}</td>
-					<td width="200" align="left">${userTweet.tweet.message}</td>
+					<td width="400" align="left">${userTweet.tweet.message}</td>
 					<td width="200"  align="center">${userTweet.tweet.date}</td>
 				</tr>		
 			</table>
