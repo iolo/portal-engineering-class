@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-@RequestMapping
 @Controller
 @SessionAttributes("User")
+@RequestMapping
 public class FollowController {
 
 	@Autowired

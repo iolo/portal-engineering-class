@@ -19,6 +19,8 @@
 				<label><a href="myjeju.bs">
 					<img src="resources/profile/${User.profile}" height="60px" width="60px"/>
 					 &nbsp;&nbsp;&nbsp;&nbsp; ${User.name}(${User.description})</a></label>
+					 <input type="button" value="Following" onclick="location.href='following.bs'" class="button" />
+				<input type="button" value="전체사용자" onclick="location.href='users.bs'" class="button" />
 					 <input id="logout" type="button" value="Logout" onclick="location.href='logout'" class="button" />
 			</p>
 		</fieldset>
@@ -35,7 +37,7 @@
  				<c:forEach items="${userList}" var="user">
 					<tr>
 						<td id="profile"><img src ="/resources/profile/${user.profile}" /></td>
-						<td id="name">${user.name}</td>
+						<td id="name"><a href="neighborhood.bs?id=${user.id}">${user.name}</a></td>
 						<td id="description">${user.description}</td>
 						<td id="button"><c:choose>
 								<c:when test="${user.userNum == 'true'}">

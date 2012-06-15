@@ -34,4 +34,6 @@ public interface UserMapper {
 	public List<User> findFollwerByUserId(String id);
 
 	public List<Note> findNoteByUser(User user);
+
+	public List<Note> findNeighborhoodNoteById(String id);
 }

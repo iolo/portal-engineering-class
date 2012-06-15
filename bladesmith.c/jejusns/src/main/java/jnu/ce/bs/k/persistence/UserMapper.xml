@@ -31,6 +31,10 @@
 		SELECT * FROM note WHERE writer=#{id} ORDER BY `write_num` DESC
 	</select>
 	
+	<select id="findNeighborhoodNoteById" parameterType="String" resultType="jnu.ce.bs.k.model.Note">
+		SELECT m.`profile` AS writer_profile, n.writer, n.note, n.write_date FROM note n LEFT OUTER JOIN member m ON(n.writer = m.id) WHERE writer=#{id} ORDER BY `write_date` DESC
+	</select>
+	
 	<delete id="deleteNoteByWriteNum" parameterType="String">
 		DELETE FROM Note WHERE write_num=#{write_num}
 	</delete>
