@@ -32,7 +32,7 @@
 					<td><img src="/images/userprofile/${twit.image}" width=36 height=36/></td>
 					<td><strong><span style="font-size: 10pt;padding-right:10px">${twit.writer}</span></strong></td>
 					<c:if test="${id!=twit.writer}"><td width="400"><span style="font-size: 9pt">${twit.twit_text}</span></td></c:if>			
-					<c:if test="${id==twit.writer}"><td width="400" bgcolor="#F0F0F0"><span style="font-size: 9pt">${twit.twit_text}</span></td></c:if>
+					<c:if test="${id==twit.writer}"><td width="400" bgcolor="#DDDDFF"><span style="font-size: 9pt">${twit.twit_text}</span></td></c:if>
 					<td width="70" align="right"><c:if test="${id==twit.writer}"><img src="/images/interface/delete" onClick="location.href='twitDelete.do?id=${twit.id}'"></c:if></td>
 					<td width="80" align="center" valign="middle"><span style="font-size: 8pt">${twit.date}</span></td>
 				</tr>

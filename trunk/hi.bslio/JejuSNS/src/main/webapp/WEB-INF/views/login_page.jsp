@@ -4,7 +4,7 @@
 <html>
 <body>
 <center>
-<h2>Jeju SNS</h2>
+<img src="/images/interface/title">
 <form action="login.do">
 <input type="text" name="id"/>
 <input type="password" name="password"/>

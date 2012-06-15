@@ -22,8 +22,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 				return false;
 			}
 		}else{
+			System.out.println(request.getRequestURI());
+			
 			if(!request.getRequestURI().equals("/login.do") && !request.getRequestURI().equals("/login_page")
-					&& !request.getRequestURI().equals("/join_page") && !request.getRequestURI().equals("/join.do")) {
+					&& !request.getRequestURI().equals("/join_page") && !request.getRequestURI().equals("/join.do")
+					&& !request.getRequestURI().equals("/images/interface/title")) {
 				response.sendRedirect("/login_page");
 				return false;
 			}
