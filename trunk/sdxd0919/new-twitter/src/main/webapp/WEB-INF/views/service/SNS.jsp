@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div id="Header">
-		<h1>SNS</h1>
+		<img src="/twitter/resources/image/1.png"/>
 		<p>
 			<a href="/twitter/service/personalSNS"><label>${user.name}(${user.description })</label></a>
 			<a href="javascript:void(window.open('/twitter/service/write', '글쓰기',

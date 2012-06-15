@@ -1,7 +1,5 @@
 package kr.ac.jejuuniv.Controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import kr.ac.jejuuniv.Service.FollowService;

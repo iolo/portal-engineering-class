@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div id="Header">
-		<h1>Follower</h1>
+		<img src="/twitter/resources/image/4.png"/>
 		<p>
 			<a href="/twitter/service/personalSNS"><label>${user.name}(${user.description })</label></a>
 			<a href="/twitter/service/followingList"><input type="button" value="Following" /></a>
@@ -25,13 +25,13 @@
 		
 	<div id="followerListContent">
 		<c:forEach items="${followerList}" var="follow" >
-			<table width="600" align="left">
+			<table width="800" align="left">
 				<tr> 
 					<td width="100" align="center">
 						<img src = "${follow.user.profileImg}"  width="80" height="80" />
 					</td>
 					<td width="100" align="left">${follow.user.name}</td>
-					<td width="200"  align="left">${follow.user.description}</td>
+					<td width="400"  align="left">${follow.user.description}</td>
 					<td width="200"  align="center">
 					<c:choose>
 						<c:when test="${follow.state }">

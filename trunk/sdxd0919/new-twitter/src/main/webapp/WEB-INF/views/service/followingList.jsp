@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div id="Header">
-		<h1>Following</h1>
+		<img src="/twitter/resources/image/3.png"/>
 		<p>
 			<a href="/twitter/service/personalSNS"><label>${user.name}(${user.description })</label></a>
 			<a href="/twitter/service/followerList"><input type="button" value="Follower" /></a>
@@ -26,13 +26,13 @@
 		
 	<div id="followingListContent">
 		<c:forEach items="${followingList}" var="followingUser" >
-			<table width="600" align="left">
+			<table width="800" align="left">
 				<tr> 
 					<td width="100"  align="center">
 						<img src = "${followingUser.profileImg}"  width="80" height="80" />
 					</td>
 					<td width="100" align="left">${followingUser.name}</td>
-					<td width="200" align="left">${followingUser.description}</td>
+					<td width="400" align="left">${followingUser.description}</td>
 					<td width="200" align="center">
 					<a href="/twitter/service/unfollow?userNum=${followingUser.userNum}&url=/service/followingList">
 							<input type="button" value="UnFollow" />
