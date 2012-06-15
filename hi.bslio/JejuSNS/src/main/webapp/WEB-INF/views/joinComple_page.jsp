@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>가입 완료</title>
 </head>
 <body>
 ${user.id} 가입 완료 <br>

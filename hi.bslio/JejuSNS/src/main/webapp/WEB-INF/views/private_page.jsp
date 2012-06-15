@@ -8,35 +8,35 @@
 <title>개인 SNS 페이지</title>
 </head>
 <body>
-	${user.id}
-	<input type="button" value="프로필 수정" onClick="location.href='profileEdit_page'"/>
-	<input type="button" value="글쓰기" onClick="javascript:window.open('twitWrite_page', '', 'location=no, directories=no,resizable=no,status=no,toolbar=no,menubar=no, width=300,height=400,left=0, top=0, scrollbars=no')"/>
+<center>
+	<table>
+		<tr>
+			<td width="100" align="center" valign="middle">
+				<strong>${user.id}</strong>
+			</td>
+			<td>
+				<img src="/images/interface/editprofile" onClick="location.href='profileEdit_page'">
+				<img src="/images/interface/write" onClick="javascript:window.open('twitWrite_page', '', 'location=no, directories=no,resizable=no,status=no,toolbar=no,menubar=no, width=300,height=400,left=0, top=0, scrollbars=no')">	
+			</td>
+		</tr>
+	</table>
+
 	
 	<table>
 			<caption>트윗's</caption>
-			<thead>
-				<tr>
-					<th> </th>
-					<th>작성자</th>
-					<th>내용</th>
-					<th> </th>
-					<th>날짜</th>
-				</tr>
-			</thead>
 			<tbody>
 			<c:forEach items="${twitList}" var="twit" >
 				<tr>
-					<td><img src="/images/userprofile/${user.image}" width=48 height=48/></td>
-					<td>${twit.writer} </td>
-					<td>${twit.twit_text} </td>
-					<td><a href="twitDelete.do?id=${twit.id}">ㅁ삭제ㅁ</a></td>
-					<td>${twit.date} </td>
-					<!-- <td><a href="modify?id=${user.id}">수정</a></td> -->
-					<!-- <td><a href="remove?id=${user.id}">삭제</a></td> -->
+					<td><img src="/images/userprofile/${user.image}" width=36 height=36/></td>
+					<td><strong><span style="font-size: 10pt;padding-right:10px">${twit.writer}</span></strong></td>
+					<td width="400" bgcolor="#F0F0F0"><span style="font-size: 9pt">${twit.twit_text}</span></td>					
+					<td width="70" align="right"><c:if test="${id==twit.writer}"><img src="/images/interface/delete" onClick="location.href='twitDelete.do?id=${twit.id}'"></c:if></td>
+					<td width="80" align="center" valign="middle"><span style="font-size: 8pt">${twit.date}</span></td>
 				</tr>
 			</c:forEach>
 			</tbody>	
 		</table>
-	
+</center>
+
 </body>
 </html>

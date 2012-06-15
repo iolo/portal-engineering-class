@@ -8,38 +8,37 @@
 <title>SNS 페이지 메인</title>
 </head>
 <body>
-	<a href='private_page'>${id}</a>
-	<input type="button" value="글쓰기" onClick="javascript:window.open('twitWrite_page', '', 'location=no, directories=no,resizable=no,status=no,toolbar=no,menubar=no, width=300,height=400,left=0, top=0, scrollbars=no')"/>
-	<input type="button" value="Following" onClick="location.href='userlist_following'"/>
-	<input type="button" value="Follower" onClick="location.href='userlist_follower'"/>
-	<input type="button" value="전체사용자" onClick="location.href='userlist_all'"/>
+<center>
+	<table>
+		<tr>
+			<td width="100" align="center" valign="middle">
+				<a href='private_page'><strong>${id}</strong></a>
+			</td>
+			<td>
+				<img src="/images/interface/write" onClick="javascript:window.open('twitWrite_page', '', 'location=no, directories=no,resizable=no,status=no,toolbar=no,menubar=no, width=300,height=400,left=0, top=0, scrollbars=no')">
+				<img src="/images/interface/following" onClick="location.href='userlist_following'">
+				<img src="/images/interface/follower" onClick="location.href='userlist_follower'">
+				<img src="/images/interface/alluser" onClick="location.href='userlist_all'">
+			</td>
+		</tr>
+	</table>
+
 	
 	<table>
 			<caption>트윗's</caption>
-			<thead>
-				<tr>
-					<th> </th>
-					<th>작성자</th>
-					<th>내용</th>
-					<th> </th>
-					<th>날짜</th>
-				</tr>
-			</thead>
 			<tbody>
 			<c:forEach items="${twitList}" var="twit" >
 				<tr>
-					<td><img src="/images/userprofile/${twit.image}" width=48 height=48/></td>
-					<td>${twit.writer} </td>
-					<td>${twit.twit_text} </td>
-					
-					<td><c:if test="${id==twit.writer}"><a href="twitDelete.do?id=${twit.id}">ㅁ삭제ㅁ</a></c:if></td>
-					<td>${twit.date} </td>
-					<!-- <td><a href="modify?id=${user.id}">수정</a></td> -->
-					<!-- <td><a href="remove?id=${user.id}">삭제</a></td> -->
+					<td><img src="/images/userprofile/${twit.image}" width=36 height=36/></td>
+					<td><strong><span style="font-size: 10pt;padding-right:10px">${twit.writer}</span></strong></td>
+					<c:if test="${id!=twit.writer}"><td width="400"><span style="font-size: 9pt">${twit.twit_text}</span></td></c:if>			
+					<c:if test="${id==twit.writer}"><td width="400" bgcolor="#F0F0F0"><span style="font-size: 9pt">${twit.twit_text}</span></td></c:if>
+					<td width="70" align="right"><c:if test="${id==twit.writer}"><img src="/images/interface/delete" onClick="location.href='twitDelete.do?id=${twit.id}'"></c:if></td>
+					<td width="80" align="center" valign="middle"><span style="font-size: 8pt">${twit.date}</span></td>
 				</tr>
 			</c:forEach>
 			</tbody>	
 		</table>
-	
+</center>
 </body>
 </html>
