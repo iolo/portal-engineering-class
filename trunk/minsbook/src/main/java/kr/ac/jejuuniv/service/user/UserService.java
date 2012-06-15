@@ -11,7 +11,7 @@ public interface UserService {
 
 	List<User> getList();
 
-	void saveUser(String id, String password, String name, String nickName, MultipartFile profileImgPath);
+	void saveUser(User user, MultipartFile profileImgPath);
 
 	boolean loginCheck(String id, String password, Model model);
 	

@@ -11,15 +11,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.jejuuniv.model.User;
+import kr.ac.jejuuniv.repository.exception.UserNotFoundException;
 import kr.ac.jejuuniv.repository.user.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 
 	private static final String FILE_PATH = "E:\\LazyMars\\workspace-sts-2.9.2.RELEASE\\minsbook\\src\\main\\webapp\\WEB-INF\\images";
-	
+
 	User user;
-	
+
 	@Autowired
 	UserRepository userRepository;
 
@@ -29,9 +30,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void saveUser(String id, String password, String name,
-			String nickName, MultipartFile profileImgPath) {
-		String imageURI;
+	public void saveUser(User user, MultipartFile profileImgPath) {
+		String imageURI, id, password, name, nickName;
 
 		imageURI = profileImgPath.getOriginalFilename();
 
@@ -42,26 +42,32 @@ public class UserServiceImpl implements UserService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		id = user.getId();
+		password = user.getPassword();
+		name = user.getName();
+		nickName = user.getNickname();
 
-		User userModel = new User(id, password, name, nickName, profileImgPath.getOriginalFilename());
+		User userModel = new User(id, password, name, nickName,
+				profileImgPath.getOriginalFilename());
 
-		userRepository.saveUser(userModel);		
+		userRepository.saveUser(userModel);
 	}
-	
+
 	@Override
 	public boolean loginCheck(String id, String password, Model model) {
 
 		Map<String, String> LoginMap = new HashMap<String, String>();
 		LoginMap.put("id", id);
 		LoginMap.put("password", password);
-		user = userRepository.findById(id);
 		
-		if (user != null) {
-			model.addAttribute("user", user);			
+		try {
+			user = userRepository.findById(id);
+			model.addAttribute("user", user);
 			return true;
-			}
-			else 
+		} catch (UserNotFoundException e) {
 			return false;
+		}
+
 	}
 
 }

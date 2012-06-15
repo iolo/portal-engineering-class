@@ -15,23 +15,21 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/login")
 @SessionAttributes("user")
 public class LoginController {
-	
+
 	@Autowired
 	UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/login")
-	public void login(){
-		
+	public void login() {
+
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public String login(@RequestParam("id") String id, @RequestParam("password") String password, Model model)
-	{
-		
-		if (userService.loginCheck(id, password, model)) {
-			return "redirect:/main";
-		} else {
-			return "redirect:/login";
-		}
-	}	
+	public String login(@RequestParam("id") String id,
+			@RequestParam("password") String password, Model model) {
+			String value = null;
+		if (userService.loginCheck(id, password, model))
+			value = "redirect:/login";
+		return value;
+	}
 }
