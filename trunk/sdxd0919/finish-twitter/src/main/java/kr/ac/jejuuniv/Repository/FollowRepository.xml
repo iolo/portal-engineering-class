@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.Repository.FollowRepository">
+
+	<select id="getFollowingUserNumList" parameterType="int" resultType="int" >
+		select followingUserNum from follow
+		where userNum = #{userNum}
+	</select>
+
+	<select id="getFollowerUserNumList" parameterType="int" resultType="int" >
+		select userNum from follow
+		where followingUserNum = #{userNum}
+	</select>
+	
+	<delete id="unfollow" parameterType="int">
+		delete from follow
+		where userNum = #{0} AND followingUserNum = #{1}
+	</delete>
+	
+	<insert id="follow" parameterType="int">
+		insert into follow
+		values (#{0}, #{1})
+	</insert>
+</mapper>

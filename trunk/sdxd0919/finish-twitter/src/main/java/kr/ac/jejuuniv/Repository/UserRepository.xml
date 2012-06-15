@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.Repository.UserRepository">
+
+	<select id="getAllUser" resultType="kr.ac.jejuuniv.Model.User">
+		SELECT * FROM user
+	</select>
+	
+	<select id="getUserByUserNum" parameterType="int" resultType="kr.ac.jejuuniv.Model.User">
+		SELECT * FROM user WHERE userNum = #{userNum}
+	</select>
+
+	<select id="getUserById" parameterType="String" resultType="kr.ac.jejuuniv.Model.User">
+		SELECT * FROM
+		user WHERE id = #{id}
+	</select>
+
+	<insert id="insert" parameterType="kr.ac.jejuuniv.Model.User">
+		insert into user(id, password, name, description, profileImg)
+		values (#{id}, #{password}, #{name}, #{description}, #{profileImg})
+	</insert>
+	
+	<update id="update" parameterType="kr.ac.jejuuniv.Model.User">
+		update user 
+		set password=#{password}, name=#{name},
+			description=#{description}, profileImg=#{profileImg}
+		where userNum = #{userNum}
+	</update>
+	
+	<select id="getUserNumById" parameterType="String" resultType="int">
+		select userNum from user
+		where id=#{id}
+	</select>
+	
+	<select id="getPassword" parameterType="String" resultType="String">
+		select password from user
+		where id=#{id}
+	</select>
+
+</mapper>

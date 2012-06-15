@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.Repository.TweetRepository">
+
+	<select id="getTweetByUserNum" parameterType="int" resultType="kr.ac.jejuuniv.Model.Tweet">
+		select * from tweet where userNum = #{userNum} order by date desc
+	</select>
+
+	<select id="getAllTweet" resultType="kr.ac.jejuuniv.Model.Tweet">
+		select * from tweet order by date desc
+	</select>
+
+	<insert id="insert" parameterType="kr.ac.jejuuniv.Model.Tweet">
+		insert into tweet(userNum, message, date)
+		values(#{userNum}, #{message}, #{date})
+	</insert>
+
+	<delete id="delete">
+		delete from tweet
+		where seq = #{seq}
+	</delete>
+	
+	<select id="getTweetSeq" parameterType="int" resultType="int">
+		select distinct t.seq
+			from tweet t
+			inner join follow f
+		where (f.userNum = #{userNum} and f.followingUserNum = t.userNum) or t.userNum = #{userNum}
+		order by date desc
+	</select>
+	
+	<select id="getTweetBySeq" parameterType="int" resultType="kr.ac.jejuuniv.Model.Tweet">
+		select * from tweet
+		where seq = #{seq}
+	</select>
+	
+</mapper>
