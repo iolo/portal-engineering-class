@@ -1,0 +1,32 @@
+= DB 테이블 목록 =
+
+*follow	 Browse	  Structure	 Search	  Insert	 Empty	  Drop	13	MyISAM	utf8_general_ci
+
+*member	 Browse	  Structure	 Search	  Insert	 Empty	  Drop	11	MyISAM	utf8_general_ci
+
+*twit	 Browse	  Structure	 Search	  Insert	 Empty	  Drop	12	MyISAM	utf8_general_ci
+
+= follow 테이블 =
+*1	target	varchar(20)	utf8_general_ci		No	None
+
+*2	follower	varchar(20)	utf8_general_ci		No	None
+
+= member 테이블 =
+*1	id	varchar(20)	utf8_general_ci		No	None
+
+*2	name	varchar(20)	utf8_general_ci		No	None
+
+*3	password	varchar(38)	utf8_general_ci		No	None
+
+*4	comment	text	utf8_general_ci		No	None
+
+*5	image	varchar(20)	utf8_general_ci		No	None
+
+= twit 테이블 =
+*1	id	int(11)			No	None	AUTO_INCREMENT
+
+*2	writer	varchar(20)	utf8_general_ci		No	None
+
+*3	twit_text	text	utf8_general_ci		No	None
+
+*4	date	datetime			No	None
