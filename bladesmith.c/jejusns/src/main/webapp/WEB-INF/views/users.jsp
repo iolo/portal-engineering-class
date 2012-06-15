@@ -16,7 +16,10 @@
 	<div id="main">
 		<fieldset>
 			<p>
-				<label><a href="myjeju.bs">${User.name}(${User.description})</a></label>
+				<label><a href="myjeju.bs">
+					<img src="resources/profile/${User.profile}" height="60px" width="60px"/>
+					 &nbsp;&nbsp;&nbsp;&nbsp; ${User.name}(${User.description})</a></label>
+					 <input id="logout" type="button" value="Logout" onclick="location.href='logout'" class="button" />
 			</p>
 		</fieldset>
 		<table>
@@ -38,13 +41,13 @@
 								<c:when test="${user.userNum == 'true'}">
 									<form action="unfollow" method="post">
 										<input type="hidden" value="${user.id}" name="userId"></input>
-										<input type="submit" value="unFollow"></input>
+										<input type="submit" value="Unfollow" class="innerbutton" ></input>
 									</form>
 								</c:when>
 								<c:otherwise>
 									<form action="follow" method="post">
 										<input type="hidden" value="${user.id}" name="userId"></input>
-										<input type="submit" value="follow"></input>
+										<input type="submit" value="follow" class="innerbutton" ></input>
 									</form>
 								</c:otherwise>
 							</c:choose></td>

@@ -5,37 +5,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>사용자 수정</title>
-<link href="/resources/css/jeju.css" rel="stylesheet" type="text/css"
+<link href="/resources/css/write.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>
-	<div id="login">
+	<div id="main">
 		<form action="modify" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>사용자 수정</legend>
 				<p>
 					<label>아이디</label>
-					<input type="text" name="id" value="${User.id}" readonly="readonly"/>
+					<input type="text" name="id" value="${User.id}" readonly="readonly" class="input" />
 				</p>
 				<p>
 					<label>암호</label>
-					<input type="password" name="modifypassword" />
+					<input type="password" name="modifypassword" class="input" />
 				</p>
 				<p>
 					<label>이름</label>
-					<input type="name" name="modifyname" />
+					<input type="name" name="modifyname" class="input" />
 				</p>
 				<p>
 					<label>설명</label>
-					<input type="text" name="modifydescription" />
+					<input type="text" name="modifydescription" class="input" />
 				</p>
 				<p>
 					<label>프로필 이미지</label>
-					<input type="file" name="modifyprofile" />
+					<input type="file" name="modifyprofile" class="input" />
 				</p>
+				<div id="button_gap">
 				<p>
-					<input type="submit" value="수정" /><input type="button" value="취소" onclick="self.history.go(-1)">
+					<input type="submit" value="수정" class="button" />
+					<input type="button" value="취소" onclick="self.history.go(-1)" class="button" />
 				</p>
+				</div>
 			</fieldset>
 		</form>
 	</div>

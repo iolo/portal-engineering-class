@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>jejuSNS</title>
-<link href="/resources/css/jeju.css" rel="stylesheet" type="text/css"
+<link href="/resources/css/index.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>
@@ -12,15 +12,21 @@
 	<div id="login">
 		<form action="login" method="post">
 			<fieldset>
+				<img src="resources/background/door.jpg" />
 				<p>
-					<label>ID</label> <input type="text" name="id" />
+					<label>ID</label> <input type="text" name="id" class="input" />
 				</p>
 				<p>
-					<label>Password</label> <input type="password" name="password" />
+					<label>Password</label> <input type="password" name="password"
+						class="input" />
 				</p>
-				<p>
-					<input type="submit" value="login" /><input type="button" value="회원가입" onclick="location.href='create.bs'"/>
-				</p>
+				<div id="button_gap">
+					<p>
+						<input type="submit" value="login" class="button" /> <input
+							type="button" value="회원가입" onclick="location.href='create.bs'"
+							class="button" />
+					</p>
+				</div>
 			</fieldset>
 		</form>
 	</div>
