@@ -19,7 +19,6 @@ public class MainController {
 	@RequestMapping
 	public String action(HttpSession session, Model model) {
 		String userid = (String)session.getAttribute("loginId");
-		
 		if (userid == null) {
 			return "main";
 		}
