@@ -6,13 +6,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>개인 SNS 페이지</title>
-	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/resources/jin.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 	<div>
 		SNS 페이지 메인
 	</div>
-	<div>
+	<div id="menu">
 	<p>
 	    <input type="button" value="${user.id}" onclick="location.href='/personal'"/>
 	    <input type="button" value="글쓰기" onclick="window.open('/write','win','width=370,height=350,toolbar=0,scrollbars=0,resizable=0')" />

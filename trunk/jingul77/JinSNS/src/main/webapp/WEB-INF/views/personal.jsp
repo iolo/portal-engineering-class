@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>개인 SNS 페이지</title>
-<link href="/resources/menu.css" rel="stylesheet" type="text/css"
+<link href="/resources/jin.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>

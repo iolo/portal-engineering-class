@@ -15,9 +15,10 @@ public class JoinServiceImpl implements JoinService {
 	@Autowired
 	JoinMapper joinMapper;
 	
+	
 	@Override
-	public void joinUser(String id, String password, String name, String explain, MultipartFile image){
-		
+	public String saveFile(MultipartFile image) {
+
 		String imageURI;
 		imageURI = image.getOriginalFilename();
 	
@@ -28,26 +29,24 @@ public class JoinServiceImpl implements JoinService {
 			e.printStackTrace();
 		}
 		
-		UserModel user=new UserModel(id, password, name, explain, imageURI);
+		return imageURI;
+	}
+	
+	@Override
+	public void joinUser(String id, String password, String name, String explain, MultipartFile image){
+
+		UserModel user=new UserModel(id, password, name, explain, this.saveFile(image));
 		joinMapper.joinUser(user);		
 	}
 
 	@Override
 	public void UpdateUser(String id, String password, String name, String explain, MultipartFile image) {
 		
-		
-		String imageURI;
-		imageURI = image.getOriginalFilename();
-	
-		File f = new File("/Users/iclab/Desktop/JinSNS/src/main/webapp/resources/image/"+ imageURI);
-		try {
-			image.transferTo(f); 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		UserModel user=new UserModel(id, password, name, explain, imageURI);
-		joinMapper.updatUser(user);
+		UserModel user=new UserModel(id, password, name, explain, this.saveFile(image));
+		System.out.println(user.getId());
+		joinMapper.updateUser(user);
 		
 	}
+
+
 }

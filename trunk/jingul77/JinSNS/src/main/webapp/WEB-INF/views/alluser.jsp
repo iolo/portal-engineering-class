@@ -5,7 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>사용자 등록</title>
-	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/resources/jin.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 	<div>
@@ -24,6 +24,16 @@
 					<th>follow</th>
 				</tr>
 			</thead>
+				<tbody>
+				<c:forEach items="${totalUserModelList}" var="alluser">		
+					<tr>
+						<td><img src="/resources/image/${alluser.image}" width="90px" height="90px"></td>
+						<td>${alluser.name}</td>
+						<td>${alluser.explain}</td>
+						<td><a href="alluser/checkfollow?follow=${alluser.follow}&followId=${alluser.id}">${alluser.follow}</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
 		</table>
 	</div>
 </body>
