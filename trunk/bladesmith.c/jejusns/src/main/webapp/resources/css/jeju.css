@@ -12,24 +12,31 @@
 }
 
 #Header a:HOVER {
-	background-color: green;
+	background-color: fuchsia;
 	text-decoration: none;
 }
 
 fieldset {
 	margin-left: 15%;
 	margin-right: 15%;
-	height: 60px;
+	height: 80px;
 	text-align: left;
 }
 
 fieldset label {
-	padding: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 fieldset input {
-	margin: 5px;
+	margin: 0px 5px 0px 5px;
 }
+
+fieldset a {
+	text-decoration: none;	
+	color: black;
+	font-size: large;
+	}
 
 table {
 	border-collapse: collapse;
@@ -168,4 +175,37 @@ tbody img {
 
 #logout {
 	float: right;
+}
+
+
+.button {
+	margin-right: 20px;
+	width: 80px;
+	border: ridge;
+	padding: 2px 8px;
+	border: none;
+	width: 80px;
+}
+
+.button:hover {
+	border: none;
+	color: fuchsia;
+	padding: 2px 8px;
+}
+
+
+.innerbutton {
+	width: 80px;
+	padding: 2px 8px;
+	border: thin;
+	border-style:groove;
+	
+	width: 80px;
+	background-color: #bbb;
+}
+
+.innerbutton:hover {
+	border: none;
+	color: fuchsia;
+	padding: 2px 8px;
 }

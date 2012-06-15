@@ -1,0 +1,66 @@
+#Header {
+	font-size: 25px;
+	color: orange;
+	margin-left: 15%;
+	margin-top: 20px;
+	min-width: 400px;
+}
+
+fieldset {
+	margin-left: 15%;
+	margin-right: 15%;
+	min-width: 600px;
+}
+
+fieldset img {
+	width: 100%;
+	border: thin;
+}
+
+fieldset p {
+	margin: 20px;
+}
+
+.input {
+	border: 1px solid #006;
+	background: #fcc;
+}
+
+.input:hover {
+	border: 1px solid #f00;
+	background: #fc6;
+}
+
+.button {
+	margin-right: 20px;
+	width: 80px;
+	border: ridge;
+	padding: 2px 8px;
+	border: none;
+	width: 80px;
+}
+
+.button:hover {
+	border: none;
+	color: fuchsia;
+	padding: 2px 8px;
+}
+
+label {
+	display: block;
+	width: 150px;
+	float: left;
+	margin: 4px 8px 16px 8px;
+	text-align: right;
+	font-size: large;
+	font-weight: bold;
+	color: #fa7;
+}
+
+br {
+	clear: left;
+}
+
+#button_gap {
+	margin-left: 25%;
+}
