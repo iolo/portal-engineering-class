@@ -8,6 +8,7 @@
 </head>
 <body>
 	<form name="twitForm">
+		오늘 어떠신가요?
 		<input type="text" name="twit_text" placeholder="내용"/><br>
 		<input type="button" value="저장" onClick="javascript:save()"/>
 		<input type="button" value="취소" onClick="javascript:window.close()"/>

@@ -10,32 +10,25 @@
 <title>${ListTitle}</title>
 </head>
 <body>
+<center>
+	<strong>${ListTitle}</strong><p>
 	<table>
-			<caption>${ListTitle}</caption>
-			<thead>
-				<tr>
-					<th> </th>
-					<th>이름</th>
-					<th>코멘트</th>
-					<th>follow</th>
-				</tr>
-			</thead>
 			<tbody>
 			
 			<c:forEach items="${users}" var="user" >
 				<tr>
-					<td><img src="/images/userprofile/${user.image}" width=48 height=48/></td>
-					<td>${user.name} </td>
-					
-					<td>${user.comment} </td>
-					<td>${user.follow}
-						<c:if test="${user.follow==true}"><a href="unfollow.do?target=${user.id}">Unfollow 하기</a></c:if>
-						<c:if test="${user.follow==false}"><a href="follow.do?target=${user.id}">Follow 하기</a></c:if>
+					<td><img src="/images/userprofile/${user.image}" width=36 height=36/></td>
+					<td><strong><span style="font-size: 10pt;padding-right:10px">${user.name}</span></strong></td>					
+					<c:if test="${user.follow==true}"><td width="400" bgcolor="#F0F0F0"><span style="font-size: 9pt">${user.comment}</span></td></c:if>
+					<c:if test="${user.follow==false}"><td width="400"><span style="font-size: 9pt">${user.comment}</span></td></c:if>
+					<td>
+						<c:if test="${user.follow==true}"><img src="/images/interface/unfollow" onClick="location.href='unfollow.do?target=${user.id}'"></c:if>
+						<c:if test="${user.follow==false}"><img src="/images/interface/follow" onClick="location.href='follow.do?target=${user.id}'"></c:if>
 					</td>
 				</tr>
 			</c:forEach>
 			</tbody>	
 		</table>
-	
+</center>
 </body>
 </html>
