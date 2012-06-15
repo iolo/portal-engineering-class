@@ -26,10 +26,10 @@
 <body>
 	<div id="WriteContent">
 		<form name="writeForm" onsubmit="javascript:MovePage()" accept-charset="UTF-8">
-			<legend>요즘 어떠신가요?</legend>
+			<label>요즘 어떠신가요?</label>
 			<center>
 			<p>
-				<input type="text" width="200" name="message" />
+				<input type="text" size="50" name="message" />
 			</p>
 			<p>
 				<input type="submit" value="등록"/>
