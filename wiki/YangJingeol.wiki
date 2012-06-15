@@ -15,9 +15,12 @@
 || following || varchar(30) ||YES  || NULL||
 	 	 	 	 	
 
-jinSNS
+=jinSNS=
 
-	index	int(11)			 아니오	None	AUTO_INCREMENT	 	 	 	 	 	 	
-	id	varchar(30)	utf8_bin		 아니오	None		 	 	 	 	 	 	
-	sns	text	utf8_bin		 아니오	None		 	 	 				
-	date	text	utf8_bin		 아니오	None		 	 	 				
+|| *Field* || *Type* || *Null* || *Key* ||*Auto Increment*||
+|| index       || int(11) || NO   || PRI || NULL||
+|| id || varchar(30)  || NO  || NULL||NULL||
+|| sns     || text || NO  ||NULL || NULL||
+||date  || text  || NO  ||NULL  || NULL||
+
+	 	 				
