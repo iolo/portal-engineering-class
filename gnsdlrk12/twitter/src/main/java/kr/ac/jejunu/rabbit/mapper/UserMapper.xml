@@ -65,7 +65,7 @@
 	
 	<select id="getAllUser" resultType="kr.ac.jejunu.rabbit.model.AllUser" >
 		select userinfo.image, userinfo.name,  userinfo.userid, userinfo.introduce, follow.followerid
-		from userinfo INNER JOIN follow where userinfo.userid = follow.userid and follow.userid = #{userid}
+		from userinfo INNER JOIN follow where userinfo.userid = follow.userid and follow.userid = #{userid}  and follow.userid != follow.followerid
 	</select>
 	
 	<select id="getAllFollow" resultType="kr.ac.jejunu.rabbit.model.AllFollow">
@@ -78,7 +78,7 @@
 	</insert>
 	
 	<select id="getAllUserList" resultType="kr.ac.jejunu.rabbit.model.AllUserList" >
-		select * from userinfo
+		select * from userinfo where userid != #{userid}
 	</select>
 	
 	<select id="getAllFollowList" resultType="kr.ac.jejunu.rabbit.model.AllFollowList" >

@@ -63,6 +63,7 @@ public class UnfollowController {
 				model.addAttribute("alluser", allfollowerUser);			
 			}
 			else if (page == 5){
+				
 				userService.userFollow(userid, followerid);
 				model.addAttribute("loginUser", userService.UserGet(userid));		
 				userService.followerList(userid);
