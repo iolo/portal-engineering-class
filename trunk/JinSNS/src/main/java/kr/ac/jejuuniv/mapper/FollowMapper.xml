@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.jejuuniv.mapper.FollowMapper">
+
+	<select id="followingList" parameterType="String" resultType="kr.ac.jejuuniv.model.TotalUserModel">
+		SELECT user.id, user.image, user.name, user.explain
+		FROM user LEFT OUTER JOIN following ON user.id = following.following
+		WHERE following.id =  #{id}
+	</select>
+	
+	<select id="followerList" parameterType="String" resultType="kr.ac.jejuuniv.model.TotalUserModel">
+		SELECT user.id, user.image, user.name, user.explain
+		FROM user LEFT OUTER JOIN following ON following.id = user.id
+		WHERE following.following =  #{id}
+	</select>
+	
+	<insert id="addFollow" parameterType="java.util.Map">
+		INSERT INTO following (id, following)
+		VALUE (#{userId}, #{followId})
+	</insert>
+
+	<delete id="deleteFollow" parameterType="java.util.Map">
+		DELETE FROM following
+		WHERE id=#{userId} AND following = #{followId}
+	</delete>
+	
+	<select id="findFollow" parameterType="String" resultType="kr.ac.jejuuniv.model.FollowModel">
+		SELECT following
+		FROM following
+		WHERE id = #{id}
+	</select>
+	
+	<select id="TotalUser" parameterType ="String"  resultType="kr.ac.jejuuniv.model.TotalUserModel">
+		SELECT *FROM user
+	    WHERE id != #{id}
+	</select>
+
+</mapper>
