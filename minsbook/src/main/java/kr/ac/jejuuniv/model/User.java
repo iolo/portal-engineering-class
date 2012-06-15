@@ -1,7 +1,5 @@
 package kr.ac.jejuuniv.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class User {
 	private String id;
 	private String password;
