@@ -1,0 +1,23 @@
+table :follow
+
+      id	bigint(20)	NO	PRI	NULL	
+      following_id	bigint(20)	NO	PRI	NULL	
+
+table : user
+
+      id	bigint(20)	NO	PRI	NULL	auto_increment
+      login_id	varchar(255)	YES		NULL	
+      password	varchar(255)	YES		NULL	
+      username	varchar(255)	YES		NULL	
+      explanation	varchar(255)	YES		NULL	
+      img_url	varchar(255)	YES		NULL	
+
+table : tweet
+
+       tweet_id	bigint(20)	NO	PRI	NULL	auto_increment
+       contents	varchar(1024)	YES		NULL	
+       create_date	datetime	YES		NULL	
+       id	bigint(20)	NO	MUL	NULL	
+
+
+* database 외부 설정으로 서버에서 실행되고 있습니다.
