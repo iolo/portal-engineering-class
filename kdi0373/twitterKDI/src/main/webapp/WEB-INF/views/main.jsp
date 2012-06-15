@@ -13,11 +13,12 @@
 	<div id="Header"></div>
 	<div id="Menu">
 	
-				<input type="button" value= "" />
-				<input type ="button" value="글쓰기" >
-				<input type ="button" value="Follwing">
-				<input type ="button" value="Follower">
-				<input type ="button" value="전체사용자">
+				<input type="button" value= "${user.name}" onclick="location.href='/list'" />
+				<input type ="button" value="글쓰기" onclick=""/>
+				<input type ="button" value="Follwing" onclick=""/>
+				<input type ="button" value="Follower" onclick=""/>
+				<input type ="button" value="전체사용자" onclick=""/>
+				<input type ="button" value="로그 아웃 " onclick="location.href='/login'"/>
 			
 	</div>
 	<div id="Content">
