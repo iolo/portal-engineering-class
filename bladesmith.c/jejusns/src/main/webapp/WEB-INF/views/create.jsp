@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>사용자 등록</title>
-<link href="/user/resources/create.css" rel="stylesheet" type="text/css"
+<link href="/resources/css/jeju.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>
-	<div id="login">
+	<div id="main">
 		<form action="create" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>사용자 등록</legend>

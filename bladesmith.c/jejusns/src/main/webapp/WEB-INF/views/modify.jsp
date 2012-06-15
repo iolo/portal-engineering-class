@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>사용자 수정</title>
-<link href="/user/resources/create.css" rel="stylesheet" type="text/css"
+<link href="/resources/css/jeju.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>

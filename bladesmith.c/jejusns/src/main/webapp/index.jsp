@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>jejuSNS</title>
-<link href="/user/resources/menu.css" rel="stylesheet" type="text/css"
+<link href="/resources/css/jeju.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>

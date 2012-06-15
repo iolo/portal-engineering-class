@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>jejuSNS</title>
-<link href="/user/resources/jeju.css" rel="stylesheet" type="text/css"
+<link href="/resources/css/jeju.css" rel="stylesheet" type="text/css"
 	media="all" />
 </head>
 <body>
@@ -22,19 +22,19 @@
 		<table>
 			<thead>
 				<tr>
-					<th>profile</th>
-					<th>name</th>
-					<th>description</th>
-					<th>follow</th>
+					<th id="profile">profile</th>
+					<th id="name">name</th>
+					<th id="description">description</th>
+					<th id="button">follow</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${userList}" var="user">
 					<tr>
-						<td><img src ="/resources/profile/${user.profile}" /></td>
-						<td>${user.name}</td>
-						<td>${user.description}</td>
-						<td><c:choose>
+						<td id="profile"><img src ="/resources/profile/${user.profile}" /></td>
+						<td id="name">${user.name}</td>
+						<td id="description">${user.description}</td>
+						<td id="button"><c:choose>
 								<c:when test="${user.userNum == 'true'}">
 									<form action="unfollow" method="post">
 										<input type="hidden" value="${user.id}" name="userId"></input>
