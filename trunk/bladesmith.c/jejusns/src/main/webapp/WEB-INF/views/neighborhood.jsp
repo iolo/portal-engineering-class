@@ -16,15 +16,12 @@
 				<label><a href="myjeju.bs">
 					<img src="resources/profile/${User.profile}" height="60px" width="60px"/>
 					 &nbsp;&nbsp;&nbsp;&nbsp; ${User.name}(${User.description})</a></label>
-				<input type="button" value="프로필 수정" onclick="location.href='modify.bs'" class="button" />
-				<input type="button" value="글쓰기" onclick="window.open('write.bs')" class="button" />
-				<input type="button" value="Following" onclick="location.href='following.bs'" class="button" />
-				<input type="button" value="Follower" onclick="location.href='follower.bs'" class="button" /> 
 				<input id="logout" type="button" value="Logout" onclick="location.href='logout'" class="button" />
 			</p>
 		</fieldset>
 		<table>
 			<thead>
+				<tr><h3>${noteList[0].writer}님의 게시글</h3></tr>
 				<tr>
 					<th id="profile">profile</th>
 					<th id="note">note</th>
@@ -35,10 +32,9 @@
 			<tbody>
 				<c:forEach items="${noteList}" var="note">
 					<tr>
-						<td id="profile"><img src ="/resources/profile/${User.profile}" /></td>
+						<td id="profile"><img src ="/resources/profile/${note.writer_profile}" /></td>
 						<td id="note">${note.note}</td>
 						<td id="button">
-						<button id="delete" value="delete" type="button" onclick="location.href='remove?write_num=${note.write_num}'" class="innerbutton" >삭제</button></td>
 						<td id="date">${note.write_date}</td>
 					</tr>
 				</c:forEach>

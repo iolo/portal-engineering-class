@@ -12,4 +12,6 @@ public interface NoteService {
 	void deleteNoteByWriteNum(String write_num);
 
 	List<Note> findNoteByUser(User user);
+
+	List<Note> findNeighborhoodNoteById(String id);
 }
