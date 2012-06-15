@@ -22,7 +22,6 @@ public class MainController {
 	
 	@RequestMapping()
 	public List<SnsListModel> main(@ModelAttribute("user") UserModel user){
-		
 		return snsService.allGetSns(user.getId());
 		
 	}

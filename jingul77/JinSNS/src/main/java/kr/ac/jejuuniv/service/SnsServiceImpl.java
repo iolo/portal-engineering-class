@@ -8,10 +8,10 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.ac.jejuuniv.mapper.FollowMapper;
 import kr.ac.jejuuniv.mapper.SnsMapper;
 import kr.ac.jejuuniv.model.SnsListModel;
 import kr.ac.jejuuniv.model.SnsModel;
-import kr.ac.jejuuniv.model.TotalUserModel;
 
 @Service
 public class SnsServiceImpl implements SnsService {
@@ -19,16 +19,13 @@ public class SnsServiceImpl implements SnsService {
 	@Autowired
 	SnsMapper snsMapper;
 	
+	@Autowired
+	FollowMapper followMapper;
 	
 	@Override
 	public List<SnsListModel> personalList(String id) {
 		
 		return snsMapper.PersonalSns(id);
-	}
-	
-	@Override
-	public List<TotalUserModel> totalUser(String id) {
-		return null;
 	}
 
 	@Override
@@ -64,9 +61,6 @@ public class SnsServiceImpl implements SnsService {
 		
 		return snsMapper.allGetSns(id);
 	}
-
-
-
 
 
 }

@@ -1,6 +1,5 @@
 package kr.ac.jejuuniv.model;
 
-
 public class TotalUserModel
 {
 	private String id;
@@ -8,6 +7,20 @@ public class TotalUserModel
 	private String explain;
 	private String image;
 	private String follow;
+	
+	public TotalUserModel(String id, String name, String explain, String image,String follow)
+	{
+		this.setId(id);
+		this.setName(name);
+		this.setExplain(explain);
+		this.setImage(image);
+		this.setFollow(follow);
+	}
+	
+	public TotalUserModel()
+	{
+		
+	}
 	
 	public String getId() {
 		return id;

@@ -26,9 +26,9 @@ public class UpdateController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String updateUser(@ModelAttribute UserModel user,
+	public String updateUser(@ModelAttribute("user") UserModel user,
 						   @RequestParam("password")String password, @RequestParam("name")String name, 
-						   @RequestParam("explain")String explain, @RequestParam("image")MultipartFile image)
+						   @RequestParam("explain")String explain, @RequestParam("profileImage")MultipartFile image)
 	{	
 		String id=user.getId();
 		joinService.UpdateUser(id, password, name, explain, image);

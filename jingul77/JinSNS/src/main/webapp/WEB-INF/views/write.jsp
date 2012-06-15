@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>사용자 등록</title>
-	<link href="/resources/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/resources/jin.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 	<div>

@@ -35,7 +35,7 @@
 		</tr>
 		<tr>
 			<td><label>프로필 이미지</label></td>
-			<td><input type="file" name="image" /><td>
+			<td><input type="file" name="profileImage" /><td>
 		</tr>
 		<tr><td><center>
 				<input type="submit" value="수정완료" />				

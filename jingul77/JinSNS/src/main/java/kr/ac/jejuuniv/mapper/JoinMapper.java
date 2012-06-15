@@ -9,6 +9,6 @@ public interface JoinMapper {
 	
 	void joinUser(UserModel user);
 
-	void updatUser(UserModel user);
+	void updateUser(UserModel user);
 	
 }

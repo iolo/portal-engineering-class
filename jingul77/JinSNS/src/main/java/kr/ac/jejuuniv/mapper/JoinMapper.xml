@@ -10,9 +10,10 @@
 		</insert>
 		
 	  <update id="updateUser" parameterType="kr.ac.jejuuniv.model.UserModel">
-		UPDATE `JinSNS`.`user`
-		SET password = #{password}, name = #{name}, explain = #{explain}, image =#{image}
-		WHERE id = #{id}
+		UPDATE  `JinSNS`.`user` SET  `password` =  #{password},
+		`name` =  #{name},
+		`explain` = #{explain},
+		`image` =  #{image} WHERE  `user`.`id` = #{id}
 	 </update>	
 
 </mapper>
