@@ -1,11 +1,10 @@
 user 
 
-	id	varchar(30)	utf8_bin		예	NULL		 	 	 	 	 	 	
-	password	text	utf8_bin		예	NULL		 	 	 				
-	name	text	utf8_bin		 아니오	None		 	 	 				
-	explain	text	utf8_bin		 아니오	None		 	 	 				
-	image	text	utf8_bin		 아니오	None		 	 	 				
-
+	||id||	varchar(30)||	utf8_bin||		 	 	 	 	 	 	
+	||password||	text||	utf8_bin||			 	 	 				
+	||name||	text||	utf8_bin||		 	 	 				
+	explain||	text||		utf8_bin||		 	 	 	 				
+	image||	text||		utf8_bin||			
 following
 
 	id	varchar(30)	utf8_bin		예	NULL		 	 	 	 	 	 	
