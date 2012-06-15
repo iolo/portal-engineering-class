@@ -36,4 +36,9 @@ public class NoteServiceImpl implements NoteService{
 		return userMapper.findNeighborhoodNoteById(id);
 	}
 
+	@Override
+	public List<Note> findAllNoteByID(String id) {
+
+		return userMapper.findAllNoteById(id);
+	}
 }

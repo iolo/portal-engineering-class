@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jnu.ce.bs.k.model.User;
-import jnu.ce.bs.k.service.UserService;
+import jnu.ce.bs.k.service.FollowService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class FollowController {
 
 	@Autowired
-	private UserService userService;
+	private FollowService followService;
 
 	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET }, value = "/follow")
 	public String follow(@ModelAttribute("User") User user,
@@ -29,7 +29,7 @@ public class FollowController {
 		map.put("userId", user.getId());
 		map.put("followId", userId);
 
-		userService.follow(map);
+		followService.follow(map);
 
 		return "redirect:/users.bs";
 	}
@@ -41,7 +41,7 @@ public class FollowController {
 		map.put("userId", user.getId());
 		map.put("followId", userId);
 
-		userService.unfollow(map);
+		followService.unfollow(map);
 
 		return "redirect:/users.bs";
 	}
@@ -53,7 +53,7 @@ public class FollowController {
 		map.put("userId", user.getId());
 		map.put("followId", userId);
 
-		userService.follow(map);
+		followService.follow(map);
 
 		return "redirect:/following.bs";
 	}
@@ -65,7 +65,7 @@ public class FollowController {
 		map.put("userId", user.getId());
 		map.put("followId", userId);
 
-		userService.unfollow(map);
+		followService.unfollow(map);
 
 		return "redirect:/following.bs";
 	}
@@ -77,7 +77,7 @@ public class FollowController {
 		map.put("userId", user.getId());
 		map.put("followId", userId);
 
-		userService.follow(map);
+		followService.follow(map);
 
 		return "redirect:/follower.bs";
 	}
@@ -89,7 +89,7 @@ public class FollowController {
 		map.put("userId", user.getId());
 		map.put("followId", userId);
 
-		userService.unfollow(map);
+		followService.unfollow(map);
 
 		return "redirect:/follower.bs";
 	}

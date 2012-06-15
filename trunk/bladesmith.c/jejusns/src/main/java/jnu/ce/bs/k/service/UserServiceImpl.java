@@ -1,12 +1,11 @@
 package jnu.ce.bs.k.service;
 
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import jnu.ce.bs.k.model.Follow;
-import jnu.ce.bs.k.model.Note;
 import jnu.ce.bs.k.model.User;
 import jnu.ce.bs.k.persistence.UserMapper;
 
@@ -38,32 +37,25 @@ public class UserServiceImpl implements UserService {
 
 		 userMapper.addUser(user);
 	}
+	
+	@Override
+	public void modifyUser(String name, String password, String description,
+			MultipartFile profile, User user) {
 
-	public String saveImage(MultipartFile profile) {
-		String fileURL = profile.getOriginalFilename();
+		user.setName(name);
+		user.setPassword(password);
+		user.setDescription(description);
+		user.setProfile(profile.getOriginalFilename());
 
-		File file = new File(
-				"C:\\Users\\K\\Documents\\workspace-sts-2.9.0.RELEASE\\jejusns\\src\\main\\webapp\\resources\\profile\\"
-						+ fileURL);
-		try {
-			profile.transferTo(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		saveImage(profile);
 
-		return fileURL;
+		userMapper.modifyUser(user);
 	}
-
+	
 	@Override
 	public User login(Map<String, String> map) {
 
 		return userMapper.login(map);
-	}
-
-	@Override
-	public List<Note> findAllNoteByID(String id) {
-
-		return userMapper.findAllNoteById(id);
 	}
 
 	@Override
@@ -80,84 +72,24 @@ public class UserServiceImpl implements UserService {
 		return users;
 	}
 
-	@Override
-	public void modifyUser(String name, String password, String description,
-			MultipartFile profile, User user) {
+	public String saveImage(MultipartFile profile) {
+		String fileURL = profile.getOriginalFilename();
 
-		user.setName(name);
-		user.setPassword(password);
-		user.setDescription(description);
-		user.setProfile(profile.getOriginalFilename());
-
-		saveImage(profile);
-
-		userMapper.modifyUser(user);
-	}
-
-	@Override
-	public List<User> findFollowUserById(User user) {
-		List<Follow> follows = new ArrayList();
-		follows = userMapper.findFollowUserByID(user.getId());
-
-		List<User> users = new ArrayList();
-		users = findAllUser(user);
-
-		for (int count = 0; count < users.size(); count++) {
-			for (int followcount = 0; followcount < follows.size(); followcount++) {
-				if (users.get(count).getId()
-						.equals(follows.get(followcount).getFollowing_id())) {
-					users.get(count).setUserNum("true");
-				}
-			}
+		File file = new File(
+				"C:\\Users\\K\\Documents\\workspace-sts-2.9.0.RELEASE\\jejusns\\src\\main\\webapp\\resources\\profile\\"
+						+ fileURL);
+		try {
+			profile.transferTo(file);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		return users;
+		return fileURL;
 	}
 
-	@Override
-	public void follow(Map<String, String> map) {
-		userMapper.follow(map);
 
-	}
 
-	@Override
-	public void unfollow(Map<String, String> map) {
-		userMapper.unfollow(map);
-	}
 
-	@Override
-	public List<User> findFollowingByUserId(String id) {
-		List<User> users = new ArrayList();
-		users = userMapper.findFollwingByUserId(id);
 
-		List<Follow> follows = new ArrayList();
-		follows = userMapper.findFollowUserByID(id);
-
-		for (int i = 0; i < users.size(); i++) {
-			users.get(i).setUserNum("true");
-		}
-
-		return users;
-	}
-
-	@Override
-	public List<User> findFollowerByUserId(String id) {
-		List<User> users = new ArrayList();
-		users = userMapper.findFollwerByUserId(id);
-
-		List<Follow> follows = new ArrayList();
-		follows = userMapper.findFollowUserByID(id);
-
-		for (int i = 0; i < users.size(); i++) {
-			for (int count = 0; count < follows.size(); count++) {
-				if (users.get(i).getId()
-						.equals(follows.get(count).getFollowing_id())) {
-					users.get(i).setUserNum("true");
-				}
-			}
-		}
-
-		return users;
-	}
 
 }
