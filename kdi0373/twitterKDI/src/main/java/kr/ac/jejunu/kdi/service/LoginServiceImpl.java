@@ -19,12 +19,9 @@ public class LoginServiceImpl implements LoginService{
 
 	@Override
 	public boolean login(String id, String password) {
-		 
-		
+		 		
 		user = userRepository.loginCheck(id,password);
 		
-		
-		 
 		if( user != null ){
 		
 			return true;

@@ -13,7 +13,8 @@
 	<div id="Header">사용자 관리</div>
 	<div id="Menu">
 		<input type="button" value="프로필수정" onclick=""><br>
-		<input type="button" value="글쓰기" onclick="">
+		<input type="button" value="글쓰기" onclick=""><br>
+		<input type="button" value="Main" onclick="location.href='/main'">
 	</div>
 	<div id="Content">
 		<form action="list" method="post">
