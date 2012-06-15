@@ -13,6 +13,7 @@ introduce	varchar(200)	YES		NULL
 image	varchar(100)	YES		NULL
 
 userpost 테이블
+
 post_num	int(11)	NO	PRI	NULL	auto_increment
 postid	varchar(20)	YES		NULL	
 content	varchar(280)	YES		NULL	
