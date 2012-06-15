@@ -9,6 +9,7 @@ import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.FollowModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 import kr.ac.jejuuniv.twitter.model.UserModel;
+import kr.ac.jejuuniv.twitter.repository.FollowRepository;
 import kr.ac.jejuuniv.twitter.repository.TwitterRepository;
 
 import org.junit.Before;
@@ -27,6 +28,9 @@ public class TwitterRepositoryTest {
 	
 	@Autowired
 	private TwitterRepository twitterRepository;
+	
+	@Autowired
+	private FollowRepository followRepository;
 	
 	@Before
 	public void setWriteArticle(){
@@ -60,7 +64,7 @@ public class TwitterRepositoryTest {
 		String id = "juntheater";
 		List<FollowModel> getFollower = new ArrayList<FollowModel>();
 		System.out.println(getFollower.size());
-		getFollower = twitterRepository.getAllFollower(id);
+		getFollower = followRepository.getAllFollower(id);
 	}
 	
 	@Test
@@ -75,8 +79,8 @@ public class TwitterRepositoryTest {
 //		for (int i = 0; i < test.size(); i++) {
 //			System.out.println(test.get(i).keySet().toString());
 //		}
-		List<FollowModel> getFollower = twitterRepository.getFollowerById("juntheater");
-		List<String> test2 = twitterRepository.getFollowingList("juntheater");
+		List<FollowModel> getFollower = followRepository.getFollowerById("juntheater");
+		List<String> test2 = followRepository.getFollowingList("juntheater");
 		List<FollowModel> follower = new ArrayList<FollowModel>();
 		
 		for (FollowModel followerModel : getFollower) {

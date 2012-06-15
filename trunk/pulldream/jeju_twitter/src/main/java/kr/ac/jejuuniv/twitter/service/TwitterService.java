@@ -8,15 +8,15 @@ import kr.ac.jejuuniv.twitter.model.FollowingModel;
 import kr.ac.jejuuniv.twitter.model.TwittModel;
 
 public interface TwitterService {
+	
+	//자신의 글 쓰기
 	void writeTwitt(TwittModel twittModel);
+	//자신의 글 지우기
 	void deleteMyTwitt(int twinum);
-	void unFollowingById(String id, String following);
-	void addFollowingById(String id,String following);
 	
-	List<FollowModel> getFollowingList(String id);
+	//트윗리스트 가지고 옴...
 	List<TwittModel> getTwittList(String id);
+	//자신의 트윗리스트만 가지고옴.
 	List<TwittModel> getMyTwittList(String id);
-	List<FollowModel> getFollowerList(String id);
-	
-	List<FollowModel> getAllUserList(String id);
+
 }

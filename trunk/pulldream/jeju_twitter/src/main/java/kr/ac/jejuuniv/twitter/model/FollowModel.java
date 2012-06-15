@@ -4,6 +4,7 @@ public class FollowModel {
 	private String id;
 	private String name;
 	private String profile;
+	//following 여부 판단
 	private boolean following;
 	
 	public String getId() {
