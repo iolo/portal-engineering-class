@@ -4,13 +4,14 @@ User Table
  || Password || text || NO ||     || NULL ||
  || Name || text || YES ||     || NULL ||   
  || Information || text || YES ||     || NULL ||   
- || ImageURI || text || YES ||     || NULL ||   
+ || ImageURI || text || YES ||     || NULL ||  
+ 
 || *Field* || *Type* || *Null* || *Key* || *Default* ||
 || Id || varchar(30) || NO || PRI || NULL||
-|| 1910 || -15 || 30 ||
-|| 1920 || -10 || 32 ||
-|| 1930 || _N/A_ || _N/A_ ||
-|| 1940 || -2 || 40 ||
+|| Password || text || YES ||     || NULL||
+|| Name || text  || YES ||     || NULL||
+|| Information || text || NO ||     || NULL||
+|| ImageURI || text || YES ||     || NULL||
 
 
 Twitt Table
