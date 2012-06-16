@@ -1,0 +1,26 @@
+User Table
+ Field       Type          Null  Key  Default  Extra  
+ Id          varchar(30)   NO    PRI  NULL   
+ Password    text          NO         NULL   
+ Name        text          YES        NULL   
+ Information text          YES        NULL   
+ ImageURI    text          YES        NULL   
+
+
+Twitt Table
+Field        Type        Null  Key  Default  Extra  
+id           varchar(30) NO    MUL  NULL   
+twiitText    text        NO         NULL   
+writeDate    text        NO         NULL   
+twiitNumber  text        NO         NULL   
+
+
+
+Follow Talbe
+Field        Type        Null  Key  Default  Extra  
+id           varchar(30) NO    MUL  NULL   
+following    varchar(30) NO         NULL   
+
+
+
+늦어서 죄송합니다. 내려가서 원격으로 하는데 서버가 내려갔네요..
