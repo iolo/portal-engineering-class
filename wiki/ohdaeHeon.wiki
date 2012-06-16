@@ -10,7 +10,7 @@ User Table
 
 
 Twitt Table
-|| *Field* || *Type* || *Null* || *Key* || *Default* || *Extra*||
+|| *Field* || *Type* || *Null* || *Key* || *Default* ||
 || id || varchar(30) || NO || MUL || NULL ||
 || twiitText || text || NO ||     || NULL ||
 || writeDate || text || NO ||     || NULL ||
@@ -19,17 +19,10 @@ Twitt Table
 
 
 Follow Talbe
-Field        Type        Null  Key  Default  Extra  
-id           varchar(30) NO    MUL  NULL   
-following    varchar(30) NO         NULL   
+|| *Field* || *Type* || *Null* || *Key* || *Default* ||
+|| id || varchar(30) || NO || MUL || NULL ||
+|| following || varchar(30) ||     || NO || NULL ||
 
 
 
 늦어서 죄송합니다. 내려가서 원격으로 하는데 서버가 내려갔네요..
-
-|| *Year* || *Temperature (low)* || *Temperature (high)* ||
-|| 1900 || -10 || 25 ||
-|| 1910 || -15 || 30 ||
-|| 1920 || -10 || 32 ||
-|| 1930 || _N/A_ || _N/A_ ||
-|| 1940 || -2 || 40 ||
