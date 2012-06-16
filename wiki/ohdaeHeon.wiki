@@ -1,6 +1,6 @@
 User Table
- || *Field* |||| *Type* |||| *Null* |||| *Key* |||| *Default* |||| *Extra* ||
- || Id |||| varchar(30) |||| NO |||| PRI |||| NULL ||   
+ || *Field* || *Type* || *Null* || *Key* || *Default* || *Extra* ||
+ || Id || varchar(30) || NO || PRI || NULL ||   
  ||Password||||text||||NO||||   ||||NULL||
  ||Name||||text||||YES||||   ||||NULL||   
  ||Information||||text||||YES||||   ||||NULL||   
