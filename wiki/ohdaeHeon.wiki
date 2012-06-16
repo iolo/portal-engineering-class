@@ -1,10 +1,5 @@
 User Table
- || *Field* || *Type* || *Null* || *Key* || *Default* || 
- || Id || varchar(30) || NO || PRI || NULL ||   
- || Password || text || NO ||     || NULL ||
- || Name || text || YES ||     || NULL ||   
- || Information || text || YES ||     || NULL ||   
- || ImageURI || text || YES ||     || NULL ||  
+ 
  
 || *Field* || *Type* || *Null* || *Key* || *Default* ||
 || Id || varchar(30) || NO || PRI || NULL||
@@ -15,11 +10,11 @@ User Table
 
 
 Twitt Table
-Field        Type        Null  Key  Default  Extra  
-id           varchar(30) NO    MUL  NULL   
-twiitText    text        NO         NULL   
-writeDate    text        NO         NULL   
-twiitNumber  text        NO         NULL   
+|| *Field* || *Type* || *Null* || *Key* || *Default* || *Extra*||
+|| id || varchar(30) || NO || MUL || NULL ||
+|| twiitText || text || NO ||     || NULL ||
+|| writeDate || text || NO ||     || NULL ||
+|| twiitNumber || text || NO ||     || NULL ||   
 
 
 
