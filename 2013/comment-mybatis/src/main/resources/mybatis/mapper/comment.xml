@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.jejunu.repository.mapper.CommentMapper">
+	<select id="getComment" parameterType="int" resultType="kr.ac.jejunu.model.Comment">
+		SELECT * FROM `jejunu`.comments WHERE id = #{id}
+	</select>
+	
+	<insert id="saveComment" parameterType="kr.ac.jejunu.model.Comment">
+		INSERT INTO comments (comment, `password`, regdate)
+		VALUES (#{comment}, #{password}, #{regdate})
+	</insert>
+	
+	<select id="getList" parameterType="String" resultType="kr.ac.jejunu.model.Comment">
+		SELECT * FROM `jejunu`.comments
+		ORDER BY ${sortColumn}
+	</select>
+</mapper>
