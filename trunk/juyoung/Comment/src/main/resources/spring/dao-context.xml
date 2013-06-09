@@ -2,25 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-
-<!--  
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://127.0.0.1/jejunu?useUnicode=true&amp;characterEncoding=utf8"/>
-		<property name="username" value="jejunu"/>
-		<property name="password" value="jejunu1"/>
-	</bean>
-
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:mybatis/mapper/**/*.xml"/>
-	</bean>
-
-	<bean id="mapperConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.ac.jejunu.repository.mapper"/>
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-	</bean>	
--->
 	
+	<bean id="CommentDao" class="kr.ac.jejunu.repositry.CommentDaoImp" >
+	</bean>
+		
 </beans>
