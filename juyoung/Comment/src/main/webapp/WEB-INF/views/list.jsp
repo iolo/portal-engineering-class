@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="login">
-		<button>글쓰기</button>
+		<button onclick="location.href='./write'">글쓰기</button>
 	</div>
 	<%
 		//이하 반복 시작

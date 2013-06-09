@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CommentController {
 	
 	@RequestMapping
+	public String errorPage(){
+		return "error";
+	}
+	
+	@RequestMapping("/")
 	public String list() {
 		return "list";
 	}
@@ -18,5 +23,9 @@ public class CommentController {
 	@RequestMapping("/login")
 	public String login() {
 		return "login";
+	}
+	@RequestMapping("/write")
+	public String write() {
+		return "write";
 	}
 }
