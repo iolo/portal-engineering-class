@@ -12,4 +12,6 @@ public interface CommentDao {
 
 	List<Comment> getList(String string);
 
+	void increaseLikeCount(int commentId);
+
 }

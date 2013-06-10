@@ -14,4 +14,11 @@
 		SELECT * FROM `jejunu`.comments
 		ORDER BY ${sortColumn}
 	</select>
+	
+	<update id="increaseLikeCount">
+		UPDATE `jejunu`.comments
+			SET likeCount = likeCount + 1
+		WHERE
+			id = #{commentId}
+	</update>
 </mapper>
