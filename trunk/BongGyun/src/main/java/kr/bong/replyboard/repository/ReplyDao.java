@@ -1,0 +1,14 @@
+package kr.bong.replyboard.repository;
+
+import java.util.List;
+
+import kr.bong.replyboard.model.Reply;
+
+public interface ReplyDao {
+	int insertReply(Reply reply);
+
+	Reply selectReplyByReplyNo(int replyNo);
+
+	List<Reply> selectReplyList();
+
+}
