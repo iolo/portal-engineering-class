@@ -37,5 +37,18 @@ public class CommentMapperTest {
 		 
 		 mapper.insertComment(comment);
 	}
-
+	
+	@Test
+	public void deleteComment(){
+		mapper.deleteComment(1);
+	}
+	
+	@Test
+	public void dateTest(){
+		List<Comment> list = mapper.getList();
+		for(int listCount = 0; listCount < list.size(); listCount++){
+			Comment comment = list.get(listCount);
+			System.out.println(comment.getListId()+" : "+comment.getRegTime());
+		}
+	}
 }
