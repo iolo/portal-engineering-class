@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:forEach items="${replyList}" var="reply" varStatus="status">
-			<td>${reply.content}</td>
+			${reply.content}<br>
 	</c:forEach>
 </body>
 </html>
