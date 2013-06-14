@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.mg.comment.repository.mapper.UserMapper">
+	<select id="getUser" parameterType="String" resultType="kr.mg.comment.model.User">
+		SELECT * FROM user WHERE id = #{id}
+	</select>
+	
+	<insert id="insertUser" parameterType="kr.mg.comment.model.User">
+		INSERT INTO user (id, name, password, description, image)
+		VALUES (#{id}, #{name}, #{password}, #{description}, #{image})
+	</insert>
+	
+	<select id="getList" parameterType="String" resultType="kr.mg.comment.model.User">
+		SELECT * FROM user
+	</select>
+	
+</mapper>

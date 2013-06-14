@@ -19,9 +19,9 @@
 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://127.0.0.1/jejunu?useUnicode=true&amp;characterEncoding=utf8"/>
-		<property name="username" value="jejunu"/>
-		<property name="password" value="jejunu1"/>
+		<property name="url" value="jdbc:mysql://127.0.0.1/mg?useUnicode=true&amp;characterEncoding=utf8"/>
+		<property name="username" value="root"/>
+		<property name="password" value="apmsetup"/>
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -30,7 +30,7 @@
 	</bean>
 
 	<bean id="mapperConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.ac.jejunu.repository.mapper"/>
+		<property name="basePackage" value="kr.mg.comment.repository.mapper"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 	
