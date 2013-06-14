@@ -1,4 +1,4 @@
-package kr.bong.replyboard.repository;
+package kr.bong.replyboard.service;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import kr.bong.replyboard.model.Reply;
+import kr.bong.replyboard.repository.ReplyDao;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,14 +16,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * 댓글 DAO 기능 테스트
+ * 댓글 Service 기능 테스트
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:spring/servlet-context.xml")
-public class ReplyDaoTest {
+public class ReplyServiceTest {
 
 	@Autowired
-	private ReplyDao replyDao;
+	private ReplyService replyService;
 
 	@Test
 	public void testInsertReply() {
@@ -31,19 +32,19 @@ public class ReplyDaoTest {
 		reply.setContent("댓글을 달자!");
 		reply.setRegiDate(new Date());
 
-		int affectedRow = replyDao.insertReply(reply);
+		int affectedRow = replyService.save(reply);
 		assertEquals(1, affectedRow);
 	}
 	
 	@Test
 	public void testDeleteReply() {
-		int affectedRow = replyDao.deleteReply(3);
+		int affectedRow = replyService.delete(4);
 		assertEquals(1, affectedRow);
 	}
 
 	@Test
 	public void testSelectReply() {
-		Reply reply = replyDao.selectReplyByReplyNo(2);
+		Reply reply = replyService.getByReplyNo(2);
 		
 		System.out.println("-------select Test------");
 		System.out.println(reply.getId() + ":" + reply.getContent() + "-" + reply.getRegiDate());
@@ -53,7 +54,7 @@ public class ReplyDaoTest {
 
 	@Test
 	public void testSelectReplyList() {
-		List<Reply> replyList = replyDao.selectReplyList();
+		List<Reply> replyList = replyService.getList();
 		
 		System.out.println("-------List Test------");
 		for (Reply reply : replyList) {

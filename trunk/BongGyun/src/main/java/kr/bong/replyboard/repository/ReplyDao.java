@@ -4,6 +4,9 @@ import java.util.List;
 
 import kr.bong.replyboard.model.Reply;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface ReplyDao {
 	int insertReply(Reply reply);
 
@@ -11,4 +14,5 @@ public interface ReplyDao {
 
 	List<Reply> selectReplyList();
 
+	int deleteReply(int replyNo);
 }
