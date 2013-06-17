@@ -9,5 +9,6 @@ public interface UserService {
 	
 	User getUser(String id);
 	
-	boolean loginCheck(String id, String password);
+	/** null이면 로그인 실패 아니면 해당하는 사용자 정보 */
+	User loginCheck(String id, String password);
 }

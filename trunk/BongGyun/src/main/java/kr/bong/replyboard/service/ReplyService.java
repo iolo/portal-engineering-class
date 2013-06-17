@@ -9,7 +9,7 @@ public interface ReplyService {
 	
 	Reply getByReplyNo(int replyNo);
 	
-	int save(Reply reply);
+	int write(Reply reply);
 	
 	int delete(int replyNo);
 }

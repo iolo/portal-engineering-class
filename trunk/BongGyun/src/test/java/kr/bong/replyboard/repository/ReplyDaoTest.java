@@ -29,7 +29,6 @@ public class ReplyDaoTest {
 		Reply reply = new Reply();
 		reply.setId("newmin19");
 		reply.setContent("댓글을 달자!");
-		reply.setRegiDate(new Date());
 
 		int affectedRow = replyDao.insertReply(reply);
 		assertEquals(1, affectedRow);

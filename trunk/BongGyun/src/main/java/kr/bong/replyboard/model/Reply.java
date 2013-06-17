@@ -7,6 +7,7 @@ public class Reply {
 	private String id;
 	private String content;
 	private Date regiDate;
+	private String strRegiDate;
 	private int upCount;
 	private int downCount;
 
@@ -58,4 +59,11 @@ public class Reply {
 		this.downCount = downCount;
 	}
 
+	public String getStrRegiDate() {
+		return strRegiDate;
+	}
+
+	public void setStrRegiDate(String strRegiDate) {
+		this.strRegiDate = strRegiDate;
+	}
 }

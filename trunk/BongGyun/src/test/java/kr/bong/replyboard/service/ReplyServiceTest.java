@@ -28,11 +28,11 @@ public class ReplyServiceTest {
 	@Test
 	public void testInsertReply() {
 		Reply reply = new Reply();
-		reply.setId("newmin19");
-		reply.setContent("댓글을 달자!");
+		reply.setId("bbong8926");
+		reply.setContent("개발개발 ");
 		reply.setRegiDate(new Date());
 
-		int affectedRow = replyService.save(reply);
+		int affectedRow = replyService.write(reply);
 		assertEquals(1, affectedRow);
 	}
 	

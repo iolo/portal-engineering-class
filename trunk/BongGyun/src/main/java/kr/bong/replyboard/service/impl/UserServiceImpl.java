@@ -29,13 +29,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean loginCheck(String id, String password) {
+	public User loginCheck(String id, String password) {
 		User user = userDao.selectUser(id);
 		
-		if(user == null)
-			return false;
-		
-		return user.getPassword().equals(password);
+		if(user != null && user.getPassword().equals(password))
+			return user;
+		else
+			return null;
 	}
 
 	
