@@ -9,13 +9,13 @@
 </head>
 <body>
 <div id="wrap">
-	<form name="replyForm" id="replyForm" action="<c:url value='/writeProcess'/>" method="post" onsubmit="login(); return false;">
+	<form name="replyForm" id="replyForm" action="<c:url value='/writeProcess'/>" method="post" onsubmit="login();">
 	<div id="login">
 		<h2>댓글 등록</h2>
 		<textarea rows="3" style="width:96%;" name="content"></textarea>
 		<div>
 			<input type="submit" value="글쓰기" />
-			<button onclick="window.close();">취소</button>
+			<button type="button"  onclick="window.close();">취소</button>
 		</div>
 	</div>
 	</form>
