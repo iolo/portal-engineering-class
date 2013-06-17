@@ -7,30 +7,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인 페이지</title>
 <script type="text/javascript">
-function login() {
-    if (document.loginForm.id.value =="") {
+function login(loginForm) {
+    if (loginForm.id.value =="") {
         alert("아이디를 입력하세요");
-    } else if (document.loginForm.password.value =="") {
+        loginForm.id.focus();
+        return false;
+    } 
+    else if (loginForm.password.value =="") {
         alert("비밀번호를 입력하세요");
-    } else {
-        document.loginForm.action="<c:url value='/loginProcess'/>";
-        document.loginForm.submit();
+        loginForm.id.focus();
+        return false;
     }
+	return true;
 }
 </script>
 </head>
 <body>
-	<form name="loginForm" id="loginForm" method="post" onsubmit="login(); return false;">
+	<form action="<c:url value='/loginProcess'/>" name="loginForm" action="<c:url value='/loginProcess'/>" id="loginForm" method="post" onsubmit="return login(this);">
 	<div id="login">
 		<h2>로그인</h2>
 	   	<table>
 	  		<tr>
 	  			<td>ID</td>
-	  			<td><input type="text" title="아이디를 입력하세요." id="id" name="id" maxlength="40" tabindex="1" /></td>
+	  			<td><input type="text" title="아이디를 입력하세요." name="id" maxlength="40" tabindex="1" /></td>
 	  		</tr>
 	  		<tr>
 	  			<td>비밀번호</td>
-	  			<td><input type="password" maxlength="40" title="비밀번호를 입력하세요." id="password" name="password" tabindex="2" /></td>
+	  			<td><input type="password" maxlength="40" title="비밀번호를 입력하세요." name="password" tabindex="2" /></td>
 	  		</tr>
 	  	</table>
 	  	<input type="submit"  value="로그인" />
