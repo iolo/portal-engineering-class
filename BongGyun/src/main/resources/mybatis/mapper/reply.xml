@@ -3,7 +3,7 @@
 <mapper namespace="kr.bong.replyboard.repository.ReplyDao">
 	<insert id="insertReply" parameterType="kr.bong.replyboard.model.Reply">
 		INSERT INTO reply (id, content, regiDate)
-		VALUES (#{id}, #{content}, #{regiDate})
+		VALUES (#{id}, #{content}, now())
 	</insert>
 	
 	<select id="selectReplyByReplyNo" parameterType="int" resultType="kr.bong.replyboard.model.Reply">
@@ -13,12 +13,13 @@
 	</select>
 	
 	<select id="selectReplyList" resultType="kr.bong.replyboard.model.Reply">
-		SELECT * 
-		  FROM reply
+			SELECT * 
+			  FROM reply
+		  ORDER BY regiDate DESC
 	</select>
 	
 	<delete id="deleteReply" parameterType="int">
-		DELETE  
+		DELETE 
 		  FROM reply
 		 WHERE replyNo = #{replyNo}
 	</delete>

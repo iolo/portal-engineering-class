@@ -61,8 +61,8 @@ public class UserServiceTest {
 
 	@Test
 	public void testLogin() {
-		boolean ok = userService.loginCheck("kbg8926", "1234");
+		User user = userService.loginCheck("kbg8926", "1234");
 		
-		Assert.assertTrue(ok);
+		Assert.assertTrue(user != null);
 	}
 }
