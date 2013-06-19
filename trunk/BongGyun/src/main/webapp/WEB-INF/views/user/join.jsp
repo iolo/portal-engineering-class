@@ -25,39 +25,48 @@ function join(joinForm) {
     }
     return true;
 }
-function cancel() {
-	location.href="${referURL}";
-}
 </script>
 </head>
 <body>
+	<!-- 로그인 상태에 따른 처리 -->
+	<c:choose>
+		<c:when test="${not empty user}">
+			<c:set value="/user/modifyProcess" var="actionUrl" />
+			<c:set value="수정" var="btnText" />
+			<c:set value="readonly='readonly'" var="readonly" />
+		</c:when>
+		<c:otherwise>
+			<c:set value="/user/joinProcess" var="actionUrl" />
+			<c:set value="회원가입" var="btnText" />
+		</c:otherwise>
+	</c:choose>
 	<div id="wrap">
 		<h2>회원가입</h2>
-		<form action="<c:url value='/joinProcess'/>" name="joinForm" id="joinForm" method="post" onsubmit="return join(this);">
+		<form action="<c:url value='${actionUrl}'/>" name="joinForm" id="joinForm" method="post" onsubmit="return join(this);">
 		<input type="hidden" name="referURL" value="${referURL}" />
 		<table>
 			<tr>
 				<th><label for="id">ID</label></th>
-				<td><input type="text" title="아이디를 입력하세요." name="id" maxlength="40" tabindex="1" /></td>
+				<td><input type="text" title="아이디를 입력하세요." name="id" maxlength="40" tabindex="1" value="${user.id}" ${readonly} /></td>
 			</tr>
 			<tr>
 				<th><label for="password">비밀번호</label></th>
-				<td><input type="password" title="비밀번호를 입력하세요." name="password" maxlength="40" tabindex="2" /></td>
+				<td><input type="password" title="비밀번호를 입력하세요." name="password" maxlength="40" tabindex="2" value="${user.password}" /></td>
 			</tr>
 			<tr>
 				<th><label for="name">이름</label></th>
-				<td><input type="text" title="이름을 입력하세요." name="name" maxlength="40" tabindex="3" /></td>
+				<td><input type="text" title="이름을 입력하세요." name="name" maxlength="40" tabindex="3" value="${user.name}" /></td>
 			</tr>
 			<tr>
 				<th><label for="description">설명</label></th>
-				<td><input type="text" title="설명을 입력하세요." name="description" maxlength="100" tabindex="4" /></td>
+				<td><input type="text" title="설명을 입력하세요." name="description" maxlength="100" tabindex="4" value="${user.description}" /></td>
 			</tr>
 			<tr>
 				<th><label for="profPath">프로필이미지</label></th>
-				<td><input type="file" name="profPath" maxlength="40" tabindex="4" /></td>
+				<td><input type="file" name="profPath" maxlength="40" tabindex="4" value="${user.profPath}" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="회원가입" />
+		<input type="submit" value="${btnText}" />
 		<button type="button" onclick="cancel();">취소</button>
 		</form>
 	</div>

@@ -15,7 +15,7 @@
 		<textarea rows="3" style="width:96%;" name="content"></textarea>
 		<div>
 			<input type="submit" value="글쓰기" />
-			<button type="button"  onclick="window.close();">취소</button>
+			<button type="button"  onclick="window.close()">취소</button>
 		</div>
 	</div>
 	</form>

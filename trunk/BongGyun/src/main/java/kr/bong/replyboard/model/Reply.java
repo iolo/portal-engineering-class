@@ -5,6 +5,7 @@ import java.util.Date;
 public class Reply {
 	private int replyNo;
 	private String id;
+	private String name;
 	private String content;
 	private Date regiDate;
 	private String strRegiDate;
@@ -65,5 +66,13 @@ public class Reply {
 
 	public void setStrRegiDate(String strRegiDate) {
 		this.strRegiDate = strRegiDate;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

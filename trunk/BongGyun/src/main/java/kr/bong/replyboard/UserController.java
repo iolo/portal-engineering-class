@@ -18,7 +18,11 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(value = "/login")
-	public String login() {
+	public String login(Model model, HttpServletRequest request) {
+		String fail = request.getParameter("fail");
+		
+		model.addAttribute("fail", fail);
+		
 		return "user/login";
 	}
 
@@ -30,7 +34,7 @@ public class UserController {
 		if (loginUser != null) {
 			session.setAttribute("user", loginUser);
 
-			return "redirect:/";
+			return "redirect:/write";
 		} else {
 			return "redirect:/login?fail=1";
 		}
@@ -42,7 +46,7 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "/join")
+	@RequestMapping(value = "/user/join")
 	public String join(Model model, HttpServletRequest request) {
 		String referURL = request.getHeader("referer");
 		
@@ -51,11 +55,34 @@ public class UserController {
 		return "user/join";
 	}
 	
-	@RequestMapping(value = "/joinProcess")
+	@RequestMapping(value = "/user/joinProcess")
 	public String joinProcess(User user, HttpServletRequest request) {
 		String referURL = request.getParameter("referURL");
 		
 		userService.join(user);
+		return "redirect:"+referURL;
+	}
+
+	@RequestMapping(value = "/user/modify")
+	public String modify(Model model, HttpServletRequest request, HttpSession session) {
+		String referURL = request.getHeader("referer");
+		User user = (User) session.getAttribute("user");
+		
+		model.addAttribute("referURL", referURL);
+		model.addAttribute("user", user);
+		
+		return "user/join";
+	}
+
+	@RequestMapping(value = "/user/modifyProcess")
+	public String modifyProcess(User user, HttpServletRequest request, HttpSession session) {
+		String referURL = request.getParameter("referURL");
+		
+		userService.modify(user);
+		
+		// 수정 데이터 세션에 반영
+		session.setAttribute("user", user);
+		
 		return "redirect:"+referURL;
 	}
 }
