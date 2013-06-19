@@ -8,11 +8,17 @@
 <title>댓글 시스템</title>
 <script type="text/javascript">
 function writePopup() {
-	window.open(
+	var popup = window.open(
 		"<c:url value='/write'/>",
-		"asdfs",
-		"menubar=no,width=400,height=160,toolbar=no"
+		"글쓰기",
+		"menubar=no,width=400,height=170,toolbar=no"
 	);
+	
+	popup.onunload = refreshParent;
+}
+
+function refreshParent() {
+    window.location.reload();
 }
 </script>
 </head>
@@ -22,16 +28,15 @@ function writePopup() {
 		<c:when test="${not empty sessionScope.user}">
 			<!-- 로그인 상태 -->
 			${sessionScope.user.name} (${sessionScope.user.description})
-			<a href="<c:url value='/modifyUser'/>">프로필수정</a>
-			<a href="#WRITE" onclick="writePopup();">글쓰기</a>
+			<a href="<c:url value='/user/modify'/>">프로필수정</a>
 			<a href="<c:url value='/logout'/>">로그아웃</a>
 		</c:when>
 		<c:otherwise>
 			<!-- 비로그인 상태 -->
-			<a href="<c:url value='/join'/>">회원가입</a>
-			<a href="<c:url value='/login'/>">글쓰기</a>
+			<a href="<c:url value='/user/join'/>">회원가입</a>
 		</c:otherwise>
 	</c:choose>
+	<a href="#WRITE" onclick="writePopup();">글쓰기</a>
 	<!--// 회원정보, 메뉴버튼 부분 끝 -->
 	<hr>
 	<!-- 댓글 리스트 부분 시작 -->

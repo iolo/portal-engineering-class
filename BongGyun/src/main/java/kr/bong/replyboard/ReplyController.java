@@ -30,7 +30,13 @@ public class ReplyController {
 	}
 	
 	@RequestMapping(value = "/write")
-	public String write() {
+	public String write(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		
+		if(user == null) {
+			return "redirect:/login";
+		}
+		
 		return "reply/write";
 	}
 	

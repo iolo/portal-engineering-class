@@ -15,15 +15,24 @@ function login(loginForm) {
     } 
     else if (loginForm.password.value =="") {
         alert("비밀번호를 입력하세요");
-        loginForm.id.focus();
+        loginForm.password.focus();
         return false;
     }
 	return true;
 }
+
+function popup(fail) {
+	if(fail) {
+		alert("아이디 또는 비밀번호가 잘못되었습니다.");	
+        loginForm.id.focus();
+	}
+}
+
 </script>
 </head>
-<body>
-	<form action="<c:url value='/loginProcess'/>" name="loginForm" action="<c:url value='/loginProcess'/>" id="loginForm" method="post" onsubmit="return login(this);">
+<body onload="popup(${fail})">
+	<form action="<c:url value='/loginProcess'/>" name="loginForm" id="loginForm" method="post" onsubmit="return login(this);">
+	<input type="hidden" name="referURL" value="${referURL}" />
 	<div id="login">
 		<h2>로그인</h2>
 	   	<table>
@@ -37,7 +46,7 @@ function login(loginForm) {
 	  		</tr>
 	  	</table>
 	  	<input type="submit"  value="로그인" />
-	  	<input type="reset" value="취소" />
+		<button type="button" onclick="window.close()">취소</button>
 	</div>
 	</form>
 </body>
