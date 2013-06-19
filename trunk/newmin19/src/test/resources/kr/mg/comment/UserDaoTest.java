@@ -1,7 +1,9 @@
 package kr.mg.comment;
 
 import static org.junit.Assert.*;
+import kr.mg.comment.model.Comment;
 import kr.mg.comment.model.User;
+import kr.mg.comment.repository.CommentDao;
 import kr.mg.comment.repository.UserDao;
 
 import org.junit.Test;
@@ -11,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(value="classpath:spring/dao-context.xml")
+@ContextConfiguration(value="classpath:spring/servlet-context.xml")
 public class UserDaoTest {
 	
 	@Autowired private UserDao dao;
@@ -19,7 +21,7 @@ public class UserDaoTest {
 	@Test
 	public void insertTest() {
 		User user = new User();
-		user.setId("a1");
+		user.setId("b3");
 		user.setName("MG");
 		user.setPassword("1111");
 		user.setDescription("first user");
@@ -36,5 +38,4 @@ public class UserDaoTest {
 		assertEquals("MG", user.getName());
 	}
 
-	
 }

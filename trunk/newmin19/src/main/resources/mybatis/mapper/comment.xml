@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.mg.comment.repository.CommentDao">
+	<select id="getComment" parameterType="int" resultType="kr.mg.comment.model.Comment">
+		SELECT * FROM comment WHERE commentNum = #{commentNum}
+	</select>
+	
+	<insert id="insertComment" parameterType="kr.mg.comment.model.Comment">
+		INSERT INTO comment (id, comment, regdate, likeCount, unlikeCount)
+		VALUES (#{id}, #{comment}, #{regdate}, #{likeCount}, #{unlikeCount})
+	</insert>
+	
+	<select id="getList" parameterType="String" resultType="kr.mg.comment.model.Comment">
+		SELECT * FROM comment
+	</select>
+	
+</mapper>
