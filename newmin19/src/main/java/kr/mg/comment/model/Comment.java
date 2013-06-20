@@ -5,7 +5,6 @@ import java.util.Date;
 public class Comment {
 
 	private String id;
-	private int commentNum;
 	private String comment;
 	private Date regdate;
 	private int likeCount;
@@ -16,12 +15,6 @@ public class Comment {
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public int getCommentNum() {
-		return commentNum;
-	}
-	public void setCommentNum(int commentNum) {
-		this.commentNum = commentNum;
 	}
 	public String getComment() {
 		return comment;
