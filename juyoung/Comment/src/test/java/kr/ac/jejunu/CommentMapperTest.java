@@ -73,9 +73,24 @@ public class CommentMapperTest {
 		assertEquals(user.getProflie_url(), "url");
 	}
 	
-//	@Test
-//	public void insertLikeComment(){
-//		mapper.userLikeComment();
-//		
-//	}
+	@Test
+	public void getComment(){
+		Comment comment = mapper.getComment(2);
+	}
+	
+	@Test
+	public void userLikeComment(){
+		//1. id와 선택된 코멘드 가져오기
+		UserInfo user = mapper.selectUser("kim");
+		Comment comment = mapper.getComment(2);
+		//2. id로 코멘트에 평가를 했는지 확인하기
+		
+		//3-1. 평가를 하지 않았을 때 평가를 입력
+		//3-2. 평가를 한 경우 정지
+		//4. userLikeComment에 평가를 한 것을 입력
+		//문제점 1. id와 listId가 둘다 일치하는 경우 처리
+		//2.id나 listId가 하나만 일치하는 하는 경우 제외
+		//인젝션을 이용한 처리는 나중에 당장은 순서대로 쿼리문을 사용
+		//mapper.userLikeComment("kim", "2");
+	}
 }
