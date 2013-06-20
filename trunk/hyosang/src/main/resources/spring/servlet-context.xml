@@ -21,8 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.ac.jejunu" />
+	<context:component-scan base-package="kr.ac.hyosang" />
 	
-	<beans:import resource="dao-context.xml"/>
+	<beans:import resource="dao-context.xml" />
 	
 </beans:beans>
