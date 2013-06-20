@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.ac.hyosang.repository.mapper.CommentMapper">
+<mapper namespace="kr.ac.hyosang.repository.CommentDao">
 	<select id="getComment" parameterType="int" resultType="kr.ac.hyosang.model.Comment">
 		SELECT * FROM `jejunu`.comments WHERE id = #{id}
 	</select>
@@ -12,6 +12,6 @@
 	
 	<select id="getList" parameterType="String" resultType="kr.ac.hyosang.model.Comment">
 		SELECT * FROM `jejunu`.comments
-		ORDER BY ${sortColumn}
+		ORDER BY `id`
 	</select>
 </mapper>

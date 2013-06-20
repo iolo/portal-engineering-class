@@ -1,10 +1,9 @@
 package kr.ac.hyosang.service;
 
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
-@Transactional
+import kr.ac.hyosang.model.Comment;
+
 public interface CommentService {
-	
-	public void likeComment(int commentId);
-
+	List<Comment> getCommentList();
 }
