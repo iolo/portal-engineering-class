@@ -52,13 +52,7 @@ public class CommentMapperTest {
 			System.out.println(comment.getListId()+" : "+comment.getRegTime());
 		}
 	}
-	
-//	@Test
-//	public void selectUserInfo(){
-//		mappser.selectUser();
-//	}
-	
-	
+
 	@Test
 	public void joinUser(){
 		UserInfo user = new UserInfo();
@@ -68,6 +62,11 @@ public class CommentMapperTest {
 		user.setProflie("안녕하세요 김주영입니다.");
 		user.setProflie_url("url");
 		mapper.joinUser(user);
+	}
+	
+	@Test
+	public void selectUserInfo(){
+		UserInfo user = mapper.selectUser("kim");
 	}
 	
 //	@Test
