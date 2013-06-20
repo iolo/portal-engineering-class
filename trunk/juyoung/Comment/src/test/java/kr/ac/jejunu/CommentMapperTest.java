@@ -67,6 +67,10 @@ public class CommentMapperTest {
 	@Test
 	public void selectUserInfo(){
 		UserInfo user = mapper.selectUser("kim");
+		assertEquals(user.getName(), "±Ë¡÷øµ");
+		assertEquals(user.getPassword(), "1123");
+		assertEquals(user.getProflie(), "æ»≥Á«œººø‰ ±Ë¡÷øµ¿‘¥œ¥Ÿ.");
+		assertEquals(user.getProflie_url(), "url");
 	}
 	
 //	@Test
