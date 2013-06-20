@@ -25,14 +25,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/app-15/.m2/repository/org/mybatis/mybatis/3.2.2/mybatis-3.2.2.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.mybatis"/>
-			<attribute name="maven.artifactId" value="mybatis"/>
-			<attribute name="maven.version" value="3.2.2"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
