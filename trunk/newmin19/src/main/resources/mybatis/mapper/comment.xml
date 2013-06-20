@@ -7,7 +7,7 @@
 	
 	<insert id="insertComment" parameterType="kr.mg.comment.model.Comment">
 		INSERT INTO comment (id, comment, regdate, likeCount, unlikeCount)
-		VALUES (#{id}, #{comment}, #{regdate}, #{likeCount}, #{unlikeCount})
+		VALUES (#{id}, #{comment}, now(), #{likeCount}, #{unlikeCount})
 	</insert>
 	
 	<select id="getList" parameterType="String" resultType="kr.mg.comment.model.Comment">

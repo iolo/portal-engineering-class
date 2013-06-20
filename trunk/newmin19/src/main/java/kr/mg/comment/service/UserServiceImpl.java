@@ -11,20 +11,19 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao userdao;
-	
-	
+
 	@Override
 	public int join(User user) {
 		return userdao.insertUser(user);
 	}
-	
+
 	@Override
 	public User login(User user) {
 		User user1 = userdao.getUser(user.getId());
-		
-		if(user1 !=  null && user.getPassword().equals(user1.getPassword())){
+
+		if (user1 != null && user.getPassword().equals(user1.getPassword())) {
 			return user1;
-		}else{
+		} else {
 			return null;
 		}
 	}
@@ -40,6 +39,5 @@ public class UserServiceImpl implements UserService {
 		// TODO DATA가져오기 로직
 		return 0;
 	}
-	
-	
+
 }
