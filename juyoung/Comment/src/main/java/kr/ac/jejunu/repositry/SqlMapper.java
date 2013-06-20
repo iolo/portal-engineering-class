@@ -11,14 +11,13 @@ import kr.ac.jejunu.model.Comment;
 
 public interface SqlMapper {
 
-	@Select(value = { "SELECT * FROM comment.list;" })
+	@Select(value = { "SELECT * FROM commentdb.list;" })
 	List<Comment> getList();
 
-	
-	@Insert(value = { "INSERT INTO comment.list (userUrl, writer, commentText, positive, negative, regTime) VALUES (#{userUrl}, #{writer}, #{commentText}, #{positive}, #{negative}, #{regTime});" })
+	@Insert(value = { "INSERT INTO commentdb.list (userUrl, writer, commentText, positive, negative, regTime) VALUES (#{userUrl}, #{writer}, #{commentText}, #{positive}, #{negative}, #{regTime});" })
 	void insertComment(Comment comment);
 
-	@Delete(value = {"DELETE FROM comment.list WHERE listId = #{listId}"})
+	@Delete(value = {"DELETE FROM commentdb.list WHERE listId = #{listId}"})
 	void deleteComment(@Param("listId") int listId);
 
 }
