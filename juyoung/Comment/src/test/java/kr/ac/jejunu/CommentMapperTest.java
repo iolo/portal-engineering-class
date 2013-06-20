@@ -91,6 +91,11 @@ public class CommentMapperTest {
 		//문제점 1. id와 listId가 둘다 일치하는 경우 처리
 		//2.id나 listId가 하나만 일치하는 하는 경우 제외
 		//인젝션을 이용한 처리는 나중에 당장은 순서대로 쿼리문을 사용
-		//mapper.userLikeComment("kim", "2");
+		//코멘트에 평가 입력 
+		//긍정
+		//mapper.positiveUser(comment.getListId());
+		//부정
+		//mapper.negativeUser(comment.getListId());
+		//코멘트를 평가한 것을 입력 mapper.userLikeComment("kim", "2");
 	}
 }
