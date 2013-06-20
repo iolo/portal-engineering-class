@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import kr.ac.jejunu.model.Comment;
+import kr.ac.jejunu.model.UserInfo;
 
 public interface SqlMapper {
 
@@ -19,5 +20,8 @@ public interface SqlMapper {
 
 	@Delete(value = {"DELETE FROM commentdb.list WHERE listId = #{listId}"})
 	void deleteComment(@Param("listId") int listId);
+	
+	@Insert(value = {"INSERT INTO commentdb.userJoinInfo (id, password, name, profile, profile_url) VALUES (#{id}, #{password}, #{name}, #{profile}, #{profile_url});"})
+	void joinUser(UserInfo user);
 
 }

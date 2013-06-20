@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import kr.ac.jejunu.model.Comment;
+import kr.ac.jejunu.model.UserInfo;
 import kr.ac.jejunu.repositry.SqlMapper;
 
 import static org.junit.Assert.*;
@@ -51,4 +52,27 @@ public class CommentMapperTest {
 			System.out.println(comment.getListId()+" : "+comment.getRegTime());
 		}
 	}
+	
+//	@Test
+//	public void selectUserInfo(){
+//		mappser.selectUser();
+//	}
+	
+	
+	@Test
+	public void joinUser(){
+		UserInfo user = new UserInfo();
+		user.setId("kim");
+		user.setName("±Ë¡÷øµ");
+		user.setPassword("1123");
+		user.setProflie("æ»≥Á«œººø‰ ±Ë¡÷øµ¿‘¥œ¥Ÿ.");
+		user.setProflie_url("url");
+		mapper.joinUser(user);
+	}
+	
+//	@Test
+//	public void insertLikeComment(){
+//		mapper.userLikeComment();
+//		
+//	}
 }
