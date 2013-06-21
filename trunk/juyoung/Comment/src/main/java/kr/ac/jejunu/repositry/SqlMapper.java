@@ -52,10 +52,4 @@ public interface SqlMapper {
 	//delete
 	@Delete(value = {"DELETE FROM list WHERE listId = #{listId}"})
 	void deleteComment(@Param("listId") int listId);
-
-
-
-
-
-
 }

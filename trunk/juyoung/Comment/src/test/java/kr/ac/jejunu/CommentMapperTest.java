@@ -1,5 +1,6 @@
 package kr.ac.jejunu;
 
+import java.net.BindException;
 import java.util.Date;
 import java.util.List;
 
@@ -10,12 +11,14 @@ import kr.ac.jejunu.repositry.SqlMapper;
 
 import static org.junit.Assert.*;
 
+import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.NumberUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:spring/mapper-context.xml")
@@ -74,11 +77,13 @@ public class CommentMapperTest {
 
 	@Test
 	public void selectUserInfo() {
-		UserInfo user = mapper.selectUser("kim");
+		UserInfo user = mapper.selectUser("ju");
 		assertEquals(user.getName(), "김주영");
 		assertEquals(user.getPassword(), "1123");
 		assertEquals(user.getProflie(), "안녕하세요 김주영입니다.");
 		assertEquals(user.getProflie_url(), "url");
+		
+		// 사용자가 없는 경우 문제가 발
 	}
 
 	@Test
@@ -89,8 +94,10 @@ public class CommentMapperTest {
 	@Test
 	public void userLikeComment() {
 		// 1. id와 선택된 코멘드 가져오기
-		UserInfo user = mapper.selectUser("kim");
-		Comment comment = mapper.getComment(5);
+		//아래 두가지가 데이터가 있는지 확인을 하고 시행할 
+		UserInfo user = mapper.selectUser("ju");
+		Comment comment = mapper.getComment(2);
+		//코멘트가 있는 지 확인하고 실행해 볼것 
 		// 2. id로 코멘트에 평가를 했는지 확인하기
 		try {
 			mapper.checkPositiveAndNegative(user.getId(), comment.getListId());
