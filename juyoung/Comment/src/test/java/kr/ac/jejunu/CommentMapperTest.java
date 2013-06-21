@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import kr.ac.jejunu.model.Comment;
+import kr.ac.jejunu.model.IndexList;
 import kr.ac.jejunu.model.UserInfo;
 import kr.ac.jejunu.repositry.SqlMapper;
 
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.NumberUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:spring/mapper-context.xml")
@@ -53,8 +55,8 @@ public class CommentMapperTest {
 		List<Comment> list = mapper.getAllList();
 		for (int listCount = 0; listCount < list.size(); listCount++) {
 			Comment comment = list.get(listCount);
-			System.out.println(comment.getListId() + " : "
-					+ comment.getRegTime());
+//			System.out.println(comment.getListId() + " : "
+//					+ comment.getRegTime());
 		}
 	}
 
@@ -108,25 +110,45 @@ public class CommentMapperTest {
 		}
 	}
 
+	private int up(double num) {
+		double tmp = num / 10;
+		//System.out.println(tmp);
+		return (int) (Math.ceil(tmp) * 10);
+	}
+
 	@Test
-	public void pagingParamsExtr(){
-		//전체 개시물 수
-		int count = mapper.countlist();
-		//페이지 계산 페이지당 10개
-		int page = count / 10;
-		//페이지 추출
-		for(int pageNum = 0; pageNum < page; pageNum ++){
-			int pageEndNum = ;
-			//특정 페이지 호출
-			List<Comment> pageOne = mapper.getSelectPage(pageEndNum);
-			//페이지 출력 확인용
-			for(int comment = 0; comment < 9; comment++){
-				Comment co = pageOne.get(comment);
-				System.out.println(comment+" : "+co.getCommentText());
+	public void pagingParamsExtr() {
+		// 전체 comment 정보
+		List<IndexList> index = mapper.indexlist();
+		// 페이지 계산 페이지당 10개
+		int pageCount = up(index.size()) / 10;
+		// 페이지가 담당하는 comments 가지기
+		for (int count = pageCount -1 ; count >= 0; count--) {
+			int pageLastListId = -99;
+			System.out.println("page stat : "+count);
+			//페이지 마지막 게시물 가져오기
+			try {
+				int in= count * 10 - 1;
+				if(in != -1 ){
+					pageLastListId = index.get(in).getListId();
+				}else{
+					pageLastListId = index.get(0).getListId();
+				}
+			//마지막 페이지에 대한 처리
+			} catch (ArrayIndexOutOfBoundsException e) {
+				pageLastListId = index.get(index.size() - 1).getListId();
 			}
+			
+			//해당 페이지 가져오기
+			List<Comment> pageResult = mapper.getSelectPage(pageLastListId);
+			for(int pageComment = 0; pageComment < pageResult.size(); pageComment++){
+				Comment tmp = pageResult.get(pageComment);
+				System.out.println(" : "+tmp.getListId()+" : "+ tmp.getWriter());
+			}
+			System.out.println("page end : "+count);
 		}
-		//총 페이지 개수
-		System.out.println("페이지 개수 : "+page);
-		
+
+		// 총 페이지 개수
+		System.out.println("페이지 개수 : " + pageCount);
 	}
 }
