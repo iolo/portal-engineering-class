@@ -26,15 +26,6 @@ public class CommentController {
 		return "error";
 	}
 	
-	@RequestMapping("/ss")
-	public String list(HttpServletRequest request) {
-		
-		List<Comment> list = mapper.getAllList();
-		request.setAttribute("list", list);
-		
-		return "list";
-	}
-	
 	@RequestMapping("/join")
 	public String join() {
 		return "join";
