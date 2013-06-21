@@ -6,8 +6,8 @@
 	</select>
 	
 	<insert id="saveComment" parameterType="kr.ac.hyosang.model.Comment">
-		INSERT INTO comments (comment, `password`, regdate)
-		VALUES (#{comment}, #{password}, #{regdate})
+		INSERT INTO comments (comment, `password`, regdate, userId)
+		VALUES (#{comment}, #{password}, #{regdate}, #{userId})
 	</insert>
 	
 	<select id="getList" parameterType="String" resultType="kr.ac.hyosang.model.Comment">
