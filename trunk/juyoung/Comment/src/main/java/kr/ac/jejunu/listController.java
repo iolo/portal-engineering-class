@@ -21,9 +21,15 @@ public class listController {
 	
 	@RequestMapping
 	public void callListByGest(HttpServletRequest request) {
+		System.out.println("gest check");
 		List<Comment> list = mapper.getAllList();
 		request.setAttribute("list", list);
 		RedirectView rd = new RedirectView("./list");
+	}
+	
+	@RequestMapping("/listUser")
+	public void callListByUser(){
+		
 	}
 	
 }
