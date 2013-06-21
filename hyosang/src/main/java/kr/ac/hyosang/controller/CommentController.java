@@ -33,7 +33,9 @@ public class CommentController {
 	@RequestMapping(value = "/writeprocess")
 	public String writeProcess(@ModelAttribute("comment") Comment comment) {
 		comment.setComment(comment.getComment());
-		comment.setPassword("임의 페스워드! 유저 모델 만든 다음에 유저 페스워드로 입력되도록 수정합시다.");
+		//패스워드 및 아이디는 유저 정보를 받아와 사용. - 미구현
+		comment.setPassword("임의 패스워드!");
+		comment.setUserId("임의 유저 아이디!");
 		commentService.write(comment);
 		return "redirect:/";
 	}

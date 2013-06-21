@@ -5,6 +5,7 @@ import java.util.Date;
 public class Comment {
 	
 	private int id;
+	private String userId;
 	private String comment;
 	private String password;
 	private Date regdate;
@@ -46,6 +47,14 @@ public class Comment {
 	@Override
 	public String toString() {
 		return id + ":" + comment;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 }
