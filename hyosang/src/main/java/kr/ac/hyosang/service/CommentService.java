@@ -6,4 +6,6 @@ import kr.ac.hyosang.model.Comment;
 
 public interface CommentService {
 	List<Comment> getCommentList();
+
+	int write(Comment comment);
 }

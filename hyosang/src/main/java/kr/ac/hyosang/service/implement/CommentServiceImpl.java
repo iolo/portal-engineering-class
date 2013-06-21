@@ -19,4 +19,9 @@ public class CommentServiceImpl implements CommentService {
 		return commentDao.getList();
 	}
 
+	@Override
+	public int write(Comment comment) {
+		return commentDao.saveComment(comment);		
+	}
+
 }
