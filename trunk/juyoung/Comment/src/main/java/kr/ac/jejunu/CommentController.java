@@ -15,8 +15,7 @@ public class CommentController {
 	}
 	
 	@RequestMapping("/")
-	public String list(HttpServletRequest request, HttpServletResponse response) {
-		
+	public String list() {
 		return "list";
 	}
 	
