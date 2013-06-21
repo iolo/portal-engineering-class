@@ -129,7 +129,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>3.2.2.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -143,7 +143,21 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.2.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test-mvc</artifactId>
+			<version>1.0.0.M1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+	<repositories>  
+        <repository>  
+            <id>spring-maven-milestone</id>  
+            <name>Spring Maven Milestone Repository</name>  
+            <url>http://maven.springframework.org/milestone</url>  
+        </repository>  
+    </repositories> 
 	<build>
 		<plugins>
 			<plugin>

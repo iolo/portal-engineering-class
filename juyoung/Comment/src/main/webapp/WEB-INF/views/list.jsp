@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,22 +8,22 @@
 </head>
 <body>
 	<div id="login">
-		<button onclick="location.href='./write'">±Û¾²±â</button>
+		<button onclick="location.href='./write'">ê¸€ì“°ê¸°</button>
 	</div>
 	<%
-		//ÀÌÇÏ ¹Ýº¹ ½ÃÀÛ
+		//ì´í•˜ ë°˜ë³µ ì‹œìž‘
 	%>
 	<div id="line">
 		<div id=""></div>
 		<div id="userName"></div>
 		<div id="text"></div>
 		<div id="btn">
-			<button>ÃßÃµ</button>
-			<button>¹Ý´ë</button>
+			<button>ì¶”ì²œ</button>
+			<button>ë°˜ëŒ€</button>
 		</div>
 	</div>
 	<%
-		//ÀÌÇÏ ¹Ýº¹ Á¾·á
+		//ì´í•˜ ë°˜ë³µ ì¢…ë£Œ
 	%>
 </body>
 </html>
