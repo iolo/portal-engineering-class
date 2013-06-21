@@ -20,17 +20,26 @@ public interface SqlMapper {
 	void joinUser(UserInfo user);
 	
 	@Insert(value = {"INSERT INTO commentdb.userlikecomment (id,listId) VALUES (#{id}, #{listId})"})
-	void userLikeComment(@Param("id")String id,@Param("listId") String listId);
+	void userLikeComment(@Param("id")String id,@Param("listId") int listId);
 
 	//select
 	@Select(value = { "SELECT * FROM commentdb.list;" })
-	List<Comment> getList();
+	List<Comment> getAllList();
 
 	@Select(value = {"SELECT * FROM commentdb.userJoinInfo WHERE id = #{id}"})
 	UserInfo selectUser(@Param("id")String id);
 	
 	@Select(value = {"SELECT * FROM commentdb.list WHERE listId = #{listId}"})
 	Comment getComment(@Param("listId")int listId);
+
+	@Select(value = {"SELECT * FROM commentdb.userlikecomment WHERE listId = #{listId} AND listId = #{listId}"})
+	boolean checkPositiveAndNegative(@Param("id")String id, @Param("listId")int listId);
+
+	@Select(value = {"SELECT COUNT(*) FROM commentdb.list"})
+	int countlist();
+
+	@Select(value = {"SELECT * FROM commentdb.list WHERE listId < #{selectPage} ORDER BY listId DESC LIMIT 10"})
+	List<Comment> getSelectPage(@Param("selectPage")int selectPage);
 
 	//update
 	@Update(value = {"UPDATE commentdb.list SET positive = positive + 1 WHERE listId = #{listId}"})
@@ -42,5 +51,6 @@ public interface SqlMapper {
 	//delete
 	@Delete(value = {"DELETE FROM commentdb.list WHERE listId = #{listId}"})
 	void deleteComment(@Param("listId") int listId);
-	
+
+
 }
