@@ -1,11 +1,14 @@
 package kr.bong.replyboard.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User {
 	private String id;
 	private String name;
 	private String password;
 	private String description;
 	private String profPath;
+	private MultipartFile profFile;
 
 	public String getId() {
 		return id;
@@ -45,6 +48,14 @@ public class User {
 
 	public void setProfPath(String profPath) {
 		this.profPath = profPath;
+	}
+
+	public MultipartFile getProfFile() {
+		return profFile;
+	}
+
+	public void setProfFile(MultipartFile profFile) {
+		this.profFile = profFile;
 	}
 
 }

@@ -25,6 +25,11 @@ function join(joinForm) {
     }
     return true;
 }
+
+function cancel() {
+	location.href="<c:url value='/'/>";
+}
+
 </script>
 </head>
 <body>
@@ -42,28 +47,35 @@ function join(joinForm) {
 	</c:choose>
 	<div id="wrap">
 		<h2>회원가입</h2>
-		<form action="<c:url value='${actionUrl}'/>" name="joinForm" id="joinForm" method="post" onsubmit="return join(this);">
+		<form action="<c:url value='${actionUrl}'/>" name="joinForm" id="joinForm" method="post" enctype="multipart/form-data" onsubmit="return join(this);">
 		<input type="hidden" name="referURL" value="${referURL}" />
 		<table>
 			<tr>
 				<th><label for="id">ID</label></th>
-				<td><input type="text" title="아이디를 입력하세요." name="id" maxlength="40" tabindex="1" value="${user.id}" ${readonly} /></td>
+				<td colspan="2"><input type="text" title="아이디를 입력하세요." name="id" maxlength="40" tabindex="1" value="${user.id}" ${readonly} /></td>
 			</tr>
 			<tr>
 				<th><label for="password">비밀번호</label></th>
-				<td><input type="password" title="비밀번호를 입력하세요." name="password" maxlength="40" tabindex="2" value="${user.password}" /></td>
+				<td colspan="2"><input type="password" title="비밀번호를 입력하세요." name="password" maxlength="40" tabindex="2" value="${user.password}" /></td>
 			</tr>
 			<tr>
 				<th><label for="name">이름</label></th>
-				<td><input type="text" title="이름을 입력하세요." name="name" maxlength="40" tabindex="3" value="${user.name}" /></td>
+				<td colspan="2"><input type="text" title="이름을 입력하세요." name="name" maxlength="40" tabindex="3" value="${user.name}" /></td>
 			</tr>
 			<tr>
 				<th><label for="description">설명</label></th>
-				<td><input type="text" title="설명을 입력하세요." name="description" maxlength="100" tabindex="4" value="${user.description}" /></td>
+				<td colspan="2"><input type="text" title="설명을 입력하세요." name="description" maxlength="100" tabindex="4" value="${user.description}" /></td>
 			</tr>
 			<tr>
-				<th><label for="profPath">프로필이미지</label></th>
-				<td><input type="file" name="profPath" maxlength="40" tabindex="4" value="${user.profPath}" /></td>
+				<th><label for="profFile">프로필이미지</label></th>
+				<td>
+					<input type="file" name="profFile" tabindex="4" value="" />
+				</td>
+				<td>
+					<c:if test="${not empty user.profPath }">
+						<img src="<c:url value='/resources/profile/${user.profPath}'/>" style="width:60px;"/>
+					</c:if>
+				</td>
 			</tr>
 		</table>
 		<input type="submit" value="${btnText}" />
