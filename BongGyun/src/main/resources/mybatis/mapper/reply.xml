@@ -13,8 +13,9 @@
 	</select>
 	
 	<select id="selectReplyList" resultType="kr.bong.replyboard.model.Reply">
-			SELECT * 
-			  FROM reply
+			SELECT B.name, B.profPath, A.*
+			  FROM reply A, user B
+			 WHERE A.id = B.id
 		  ORDER BY regiDate DESC
 	</select>
 	

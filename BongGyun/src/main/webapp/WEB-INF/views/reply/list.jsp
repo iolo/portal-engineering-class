@@ -43,10 +43,10 @@ function refreshParent() {
 	<table>		 
 	<c:forEach items="${replyList}" var="reply" varStatus="status">
 		<tr>
-			<td><img src="" /></td>
-			<td>${reply.id}</td>
+			<td><img src="<c:url value='/resources/profile/${reply.profPath}'/>" style="width:40px;"/></td>
+			<td>${reply.name}(${reply.id})</td>
 			<td>${reply.content}</td>
-			<td><a href="#">추천</a> <a href="#">반대</a></td>
+			<td><a href="#">추천(${reply.upCount})</a> <a href="#">반대(${reply.downCount})</a></td>
 			<td>${reply.strRegiDate}</td>
 		</tr>
 	</c:forEach>

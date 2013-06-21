@@ -6,6 +6,7 @@ public class Reply {
 	private int replyNo;
 	private String id;
 	private String name;
+	private String profPath;
 	private String content;
 	private Date regiDate;
 	private String strRegiDate;
@@ -74,5 +75,13 @@ public class Reply {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getProfPath() {
+		return profPath;
+	}
+
+	public void setProfPath(String profPath) {
+		this.profPath = profPath;
 	}
 }
