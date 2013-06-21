@@ -116,9 +116,10 @@ public class CommentMapperTest {
 		return (int) (Math.ceil(tmp) * 10);
 	}
 
+	//페이징 처리에 필요한 정보 추출
 	@Test
 	public void pagingParamsExtr() {
-		// 전체 comment 정보
+		// comment의 listId만 추출한 정보
 		List<IndexList> index = mapper.indexlist();
 		// 페이지 계산 페이지당 10개
 		int pageCount = up(index.size()) / 10;
