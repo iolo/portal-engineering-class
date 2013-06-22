@@ -1,9 +1,9 @@
 package kr.mg.comment.repository;
 
 
-import org.springframework.stereotype.Repository;
-
 import kr.mg.comment.model.User;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserDao {

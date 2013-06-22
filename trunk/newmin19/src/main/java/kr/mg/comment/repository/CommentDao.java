@@ -2,9 +2,9 @@ package kr.mg.comment.repository;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import kr.mg.comment.model.Comment;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CommentDao {
@@ -12,6 +12,6 @@ public interface CommentDao {
 	
 	Comment getComment(int commentNum);
 	
-	List<Comment> getList(String string);
+	List<Comment> getList();
 
 }

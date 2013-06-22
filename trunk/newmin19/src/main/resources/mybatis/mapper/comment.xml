@@ -10,8 +10,11 @@
 		VALUES (#{id}, #{comment}, now(), #{likeCount}, #{unlikeCount})
 	</insert>
 	
-	<select id="getList" parameterType="String" resultType="kr.mg.comment.model.Comment">
-		SELECT * FROM comment
+	<select id="getList" resultType="kr.mg.comment.model.Comment">
+		SELECT B.name, B.image, A.*
+		FROM comment A, user B
+		WHERE A.id = B.id
+		ORDER BY regdate DESC
 	</select>
 	
 </mapper>

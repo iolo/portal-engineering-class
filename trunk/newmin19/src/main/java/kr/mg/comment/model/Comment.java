@@ -5,6 +5,8 @@ import java.util.Date;
 public class Comment {
 
 	private String id;
+	private String name;
+	private String image;
 	private String comment;
 	private Date regdate;
 	private int likeCount;
@@ -40,5 +42,16 @@ public class Comment {
 	public void setUnlikeCount(int unlikeCount) {
 		this.unlikeCount = unlikeCount;
 	}
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 }
