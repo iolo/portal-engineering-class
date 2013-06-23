@@ -1,6 +1,5 @@
 package kr.ac.jejunu;
 
-import java.net.BindException;
 import java.util.Date;
 import java.util.List;
 
@@ -11,14 +10,12 @@ import kr.ac.jejunu.repositry.SqlMapper;
 
 import static org.junit.Assert.*;
 
-import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.NumberUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:spring/mapper-context.xml")
@@ -27,9 +24,14 @@ public class CommentMapperTest {
 	private SqlMapper mapper;
 
 	@Test
-	public void getlist() {
-		List<Comment> list = mapper.getAllList();
+	public void getListAndDateTest() {
+		List<Comment> list = mapper.selectAll();
 		assertNotNull(list);
+		for (int listCount = 0; listCount < list.size(); listCount++) {
+			Comment comment = list.get(listCount);
+			System.out.println(comment.getListId() + " : "
+					+ comment.getRegTime());
+		}
 	}
 
 	@Test
@@ -51,16 +53,6 @@ public class CommentMapperTest {
 	}
 
 	@Test
-	public void dateTest() {
-		List<Comment> list = mapper.getAllList();
-		for (int listCount = 0; listCount < list.size(); listCount++) {
-			Comment comment = list.get(listCount);
-//			System.out.println(comment.getListId() + " : "
-//					+ comment.getRegTime());
-		}
-	}
-
-	@Test
 	public void joinUser() {
 		try {
 			UserInfo user = new UserInfo();
@@ -69,7 +61,7 @@ public class CommentMapperTest {
 			user.setPassword("1123");
 			user.setProflie("안녕하세요 김주영입니다.");
 			user.setProflie_url("url");
-			mapper.joinUser(user);
+			mapper.insertUser(user);
 		} catch (DuplicateKeyException e) {
 			System.out.println("가입 되어 있습니다.");
 		}
@@ -88,7 +80,7 @@ public class CommentMapperTest {
 
 	@Test
 	public void getComment() {
-		Comment comment = mapper.getComment(2);
+		Comment comment = mapper.selectComment(2);
 	}
 
 	@Test
@@ -96,21 +88,21 @@ public class CommentMapperTest {
 		// 1. id와 선택된 코멘드 가져오기
 		//아래 두가지가 데이터가 있는지 확인을 하고 시행할 
 		UserInfo user = mapper.selectUser("ju");
-		Comment comment = mapper.getComment(2);
+		Comment comment = mapper.selectComment(2);
 		//코멘트가 있는 지 확인하고 실행해 볼것 
 		// 2. id로 코멘트에 평가를 했는지 확인하기
 		try {
-			mapper.checkPositiveAndNegative(user.getId(), comment.getListId());
+			mapper.selectUserLikeCheck(user.getId(), comment.getListId());
 			// 3-1. 평가를 하지 않았을 때 평가를 입력
 			System.out.println("평가 불가");
 		} catch (Exception e) {
 			// 3-2. 평가를 한 경우 정지
 			System.out.println("평가 가능");
 			// 긍정
-			mapper.positiveUser(comment.getListId());
+			mapper.updatePositiveUser(comment.getListId());
 			// 부정
-			// mapper.negativeUser(comment.getListId());
-			mapper.userLikeComment(user.getId(), comment.getListId());
+			 mapper.updateNegativeUser(comment.getListId());
+			mapper.insertUserLikeCommentCheck(user.getId(), comment.getListId());
 		}
 	}
 
@@ -124,7 +116,7 @@ public class CommentMapperTest {
 	@Test
 	public void pagingParamsExtr() {
 		// comment의 listId만 추출한 정보
-		List<IndexList> index = mapper.indexlist();
+		List<IndexList> index = mapper.selectListForIndex();
 		// 페이지 계산 페이지당 10개
 		int pageCount = up(index.size()) / 10;
 		// 페이지가 담당하는 comments 가지기
@@ -145,7 +137,7 @@ public class CommentMapperTest {
 			}
 			
 			//해당 페이지 가져오기
-			List<Comment> pageResult = mapper.getSelectPage(pageLastListId);
+			List<Comment> pageResult = mapper.selectPageOne(pageLastListId);
 			for(int pageComment = 0; pageComment < pageResult.size(); pageComment++){
 				Comment tmp = pageResult.get(pageComment);
 				System.out.println(" : "+tmp.getListId()+" : "+ tmp.getWriter());
