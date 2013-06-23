@@ -13,43 +13,45 @@ import kr.ac.jejunu.model.IndexList;
 import kr.ac.jejunu.model.UserInfo;
 
 public interface SqlMapper {
-	//inset
+	// inset
 	@Insert(value = { "INSERT INTO list (userUrl, writer, commentText, positive, negative, regTime) VALUES (#{userUrl}, #{writer}, #{commentText}, #{positive}, #{negative}, #{regTime});" })
 	void insertComment(Comment comment);
-	
-	@Insert(value = {"INSERT INTO userJoinInfo (id, password, name, profile, profile_url) VALUES (#{id}, #{password}, #{name}, #{profile}, #{profile_url});"})
-	void joinUser(UserInfo user);
-	
-	@Insert(value = {"INSERT INTO userlikecomment (id,listId) VALUES (#{id}, #{listId})"})
-	void userLikeComment(@Param("id")String id,@Param("listId") int listId);
 
-	//select
+	@Insert(value = { "INSERT INTO userJoinInfo (id, password, name, profile, profile_url) VALUES (#{id}, #{password}, #{name}, #{profile}, #{profile_url});" })
+	void insertUser(UserInfo user);
+
+	@Insert(value = { "INSERT INTO userlikecomment (id,listId) VALUES (#{id}, #{listId})" })
+	void insertUserLikeCommentCheck(@Param("id") String id, @Param("listId") int listId);
+
+	// select
 	@Select(value = { "SELECT * FROM list;" })
-	List<Comment> getAllList();
+	List<Comment> selectAll();
 
-	@Select(value = {"SELECT * FROM userJoinInfo WHERE id = #{id}"})
-	UserInfo selectUser(@Param("id")String id);
-	
-	@Select(value = {"SELECT * FROM list WHERE listId = #{listId}"})
-	Comment getComment(@Param("listId")int listId);
+	@Select(value = { "SELECT * FROM userJoinInfo WHERE id = #{id}" })
+	UserInfo selectUser(@Param("id") String id);
 
-	@Select(value = {"SELECT * FROM userlikecomment WHERE listId = #{listId} AND listId = #{listId}"})
-	boolean checkPositiveAndNegative(@Param("id")String id, @Param("listId")int listId);
+	@Select(value = { "SELECT * FROM list WHERE listId = #{listId}" })
+	Comment selectComment(@Param("listId") int listId);
 
-	@Select(value = {"SELECT listId FROM list"})
-	List<IndexList> indexlist();
-	
-	@Select(value = {"SELECT * FROM list WHERE listId >= #{selectPageLastListId} LIMIT 10"})
-	List<Comment> getSelectPage(@Param("selectPageLastListId")int selectPageLastListId);
-	
-	//update
-	@Update(value = {"UPDATE list SET positive = positive + 1 WHERE listId = #{listId}"})
-	void positiveUser(@Param("listId")int listId);
-	
-	@Update(value = {"UPDATE list SET neagtive = neagtive + 1 WHERE listId = #{listId}"})
-	void negativeUser(@Param("listId")int listId);
+	@Select(value = { "SELECT * FROM userlikecomment WHERE listId = #{listId} AND listId = #{listId}" })
+	boolean selectUserLikeCheck(@Param("id") String id,
+			@Param("listId") int listId);
 
-	//delete
-	@Delete(value = {"DELETE FROM list WHERE listId = #{listId}"})
+	@Select(value = { "SELECT listId FROM list" })
+	List<IndexList> selectListForIndex();
+
+	@Select(value = { "SELECT * FROM list WHERE listId >= #{selectPageLastListId} LIMIT 10" })
+	List<Comment> selectPageOne(
+			@Param("selectPageLastListId") int selectPageLastListId);
+
+	// update
+	@Update(value = { "UPDATE list SET positive = positive + 1 WHERE listId = #{listId}" })
+	void updatePositiveUser(@Param("listId") int listId);
+
+	@Update(value = { "UPDATE list SET neagtive = neagtive + 1 WHERE listId = #{listId}" })
+	void updateNegativeUser(@Param("listId") int listId);
+
+	// delete
+	@Delete(value = { "DELETE FROM list WHERE listId = #{listId}" })
 	void deleteComment(@Param("listId") int listId);
 }
