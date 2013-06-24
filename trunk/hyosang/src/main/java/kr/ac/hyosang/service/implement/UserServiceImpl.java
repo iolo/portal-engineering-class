@@ -16,5 +16,14 @@ public class UserServiceImpl implements UserService {
 	public int userJoin(User user) {
 		return userdao.insertUser(user);
 	}
+	
+	@Override
+	public User loginCheck(String userId, String password) {
+		User user = userdao.selectUser(userId);
+		if(user != null && user.getPassword().equals(password))
+			return user;
+		else
+			return null;
+	}
  
 }
