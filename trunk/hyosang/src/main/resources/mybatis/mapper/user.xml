@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.hyosang.repository.UserDao">
+	<insert id="insertUser" parameterType="kr.ac.hyosang.model.User">
+		INSERT INTO users (userId, password, userName, userInfo, userImagePath)
+		VALUES (#{userId}, #{password}, #{userName}, #{userInfo}, #{userImagePath})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE
+		FROM users
+		WHERE userId = #{userId}
+	</delete>
+	
+	<update id="updateUser" parameterType="kr.ac.hyosang.model.User">
+		UPDATE users
+		SET userName = #{userName},
+			password = #{password},
+			userInfo = #{userInfo},
+			userImagePath = #{userImagePath}
+		WHERE userId = #{userId}
+	</update>
+	
+	<select id="selectUser" parameterType="String" resultType="kr.ac.hyosang.model.User">
+		SELECT userId, password, userName, userInfo, userImagePath 
+		FROM users 
+		WHERE userId = #{userId}
+	</select>
+</mapper>

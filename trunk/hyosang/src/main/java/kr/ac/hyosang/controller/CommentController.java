@@ -3,6 +3,7 @@ package kr.ac.hyosang.controller;
 import java.util.List;
 
 import kr.ac.hyosang.model.Comment;
+import kr.ac.hyosang.model.User;
 import kr.ac.hyosang.service.CommentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,9 @@ public class CommentController {
 	CommentService commentService;
 	
 	@RequestMapping(value = "/")
-	public String home(Model model) {
+	public String listView(Model model) {
 		List<Comment> comment = commentService.getCommentList();
 		model.addAttribute("commentList", comment);
-		
 		return "list";
 	}
 	
@@ -39,5 +39,4 @@ public class CommentController {
 		commentService.write(comment);
 		return "redirect:/";
 	}
-	
 }

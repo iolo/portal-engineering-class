@@ -23,5 +23,4 @@ public class CommentServiceImpl implements CommentService {
 	public int write(Comment comment) {
 		return commentDao.saveComment(comment);		
 	}
-
 }
