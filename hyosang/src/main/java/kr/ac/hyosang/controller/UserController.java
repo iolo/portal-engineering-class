@@ -43,7 +43,7 @@ public class UserController {
 		User loginUser = userService.loginCheck(user.getUserId(), user.getPassword());
 		if (loginUser != null) {
 			session.setAttribute("user", loginUser);
-			return "redirect:/";
+			return "redirect:/write";
 		} else {
 			return "redirect:/login";
 		}

@@ -3,30 +3,30 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<title>Comment List</title>
+	<title>댓글리스트</title>
 	<style type="text/css">
-		td{border: solid 1px; height: 50px;}
-		.commentNumber{}
+		body{text-align: center;}
+		table{margin: 0 auto;}
+		td{border: solid 1px; height: 50px; padding: 10px;}
 		.profileImage{width: 50px;}
 		.commentContent{width: 250px;}
-		.commentRecommend{}
-		.commentRegDate{}
 		.userInfo{font-weight: bold;}
 	</style>
+	<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/bootstrap.css'/>" />
 </head>
 
 <h1>댓글리스트(로그인 됨)</h1>
-<span class="userInfo">${user.userName}(${user.userInfo})</span> <a href="./modify">프로필 수정</a> <a href="./write">글쓰기</a>
+<span class="userInfo btn btn-success">${user.userName}(${user.userInfo})</span> <a class="btn" href="./modify">프로필 수정</a> <a class="btn" href="./write">글쓰기</a><br /><br />
 <table id="commentList">
 	<c:forEach items="${commentList}" var="comment" varStatus="status">
 		<tr>
 			<td class="profileImage"><img src="" alt="프로필 사진"/></td>
 			<td class="userName">${comment.userName}</td>
 			<td class="commentContent">${comment.comment}</td>
-			<td class="commentRecommend"><button>추천</button><button>반대</button></td>
+			<td class="commentRecommend"><a class="btn" href="">추천[0]</a></td>
 			<c:choose>
 				<c:when test="${comment.userId==user.userId}">
-					<td class="commentDelete"><a href="./delete?id=${comment.id}">삭제</a></td>
+					<td class="commentDelete"><a class="btn" href="./delete?id=${comment.id}">삭제</a></td>
 				</c:when>
 				<c:otherwise>
 					<td class="commentDelete"></td>
@@ -36,5 +36,7 @@
 		</tr>
 	</c:forEach>
 </table>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
 </body>
 </html>
