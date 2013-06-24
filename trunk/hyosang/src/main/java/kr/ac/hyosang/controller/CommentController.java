@@ -2,7 +2,11 @@ package kr.ac.hyosang.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import kr.ac.hyosang.model.Comment;
+import kr.ac.hyosang.model.User;
 import kr.ac.hyosang.service.CommentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,25 +21,49 @@ public class CommentController {
 	CommentService commentService;
 	
 	@RequestMapping(value = "/")
-	public String listView(Model model) {
+	public String listView(Model model, HttpSession session) {
+		
 		List<Comment> comment = commentService.getCommentList();
 		model.addAttribute("commentList", comment);
-		return "list";
+		User user = (User) session.getAttribute("user");
+		
+		if (user != null) {
+			model.addAttribute("user", user);
+			return "loginUserList";
+		} else {
+			return "list";
+		}
 	}
 	
-	
 	@RequestMapping(value = "/write")
-	public String write() {
-		return "write";
+	public String write(Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		
+		if (user != null) {
+			model.addAttribute("user", user);
+			return "write";
+		} else {
+			return "login";
+		}
 	}
 	
 	@RequestMapping(value = "/writeprocess")
-	public String writeProcess(@ModelAttribute("comment") Comment comment) {
+	public String writeProcess(@ModelAttribute("comment") Comment comment, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+
 		comment.setComment(comment.getComment());
-		//패스워드 및 아이디는 유저 정보를 받아와 사용. - 미구현
-		comment.setPassword("임의 패스워드!");
-		comment.setUserId("임의 유저 아이디!");
+		comment.setUserName(user.getUserName());
+		comment.setUserId(user.getUserId());
 		commentService.write(comment);
 		return "redirect:/";
 	}
+
+	
+	@RequestMapping(value = "/delete")
+	public String delete(HttpSession session, HttpServletRequest request) {
+		String id = request.getParameter("id");
+		commentService.deleteComment(Integer.parseInt(id));
+		return "redirect:/";
+	}
+
 }
