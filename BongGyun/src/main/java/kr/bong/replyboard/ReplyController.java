@@ -46,6 +46,6 @@ public class ReplyController {
 		reply.setId(user.getId());
 		replyService.write(reply);
 		
-		return "reply/writeProcess";
+		return "redirect:/";
 	}
 }

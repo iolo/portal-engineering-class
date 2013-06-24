@@ -39,7 +39,7 @@ function refreshParent() {
 				<a href="<c:url value='/user/join'/>">회원가입</a>
 			</c:otherwise>
 		</c:choose>
-		<a href="#WRITE" onclick="writePopup();">글쓰기</a>
+		<a href="<c:url value='/write'/>">글쓰기</a>
 		<!--// 회원정보, 메뉴버튼 부분 끝 -->
 		<!-- 댓글 리스트 부분 시작 -->
 		<div id="replyList">
