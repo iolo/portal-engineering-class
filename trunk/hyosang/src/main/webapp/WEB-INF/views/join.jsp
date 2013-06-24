@@ -24,7 +24,7 @@
 		설명 <input type="text" name="userInfo" /><br>
 	</label>
 	<label>
-		프로필 사진
+		프로필 사진 <input type="hidden" name="userImagePath" value="임의 이미지 경로" />
 	</label>
 	<input type="submit" value="회원가입" />
 	<button>취소</button>

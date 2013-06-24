@@ -3,7 +3,6 @@ package kr.ac.hyosang.controller;
 import java.util.List;
 
 import kr.ac.hyosang.model.Comment;
-import kr.ac.hyosang.model.User;
 import kr.ac.hyosang.service.CommentService;
 
 import org.springframework.beans.factory.annotation.Autowired;

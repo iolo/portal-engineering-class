@@ -7,6 +7,7 @@ import kr.ac.hyosang.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,7 +27,7 @@ public class UserController {
 		user.setPassword(user.getPassword());
 		user.setUserName(user.getUserName());
 		user.setUserInfo(user.getUserInfo());
-		user.setUserImagePath("임의 경로");
+		user.setUserImagePath(user.getUserImagePath());
 		userService.userJoin(user);
 		
 		return "redirect:/";
@@ -46,5 +47,21 @@ public class UserController {
 		} else {
 			return "redirect:/login";
 		}
+	}
+	
+	@RequestMapping(value = "/modify")
+	public String modify(Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		model.addAttribute("user", user);
+		
+		return "modify";
+	}
+	
+	@RequestMapping(value = "/modifyprocess")
+	public String modifyProcess(User user, HttpSession session) {
+		userService.modify(user);
+		session.setAttribute("user", user);
+		
+		return "redirect:/";
 	}
 }
