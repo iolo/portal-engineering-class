@@ -6,4 +6,6 @@ public interface UserService {
 	int userJoin(User user);
 
 	User loginCheck(String UserId, String password);
+
+	int modify(User user);
 }
