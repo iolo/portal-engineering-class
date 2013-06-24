@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 			<property name="driverClass" value="com.mysql.jdbc.Driver" />
-			<property name="url" value="jdbc:mysql://localhost/comment?useUnicode=true&amp;characterEncoding=utf8" />
+			<property name="url" value="jdbc:mysql://localhost/commentdb?useUnicode=true&amp;characterEncoding=utf8" />
 			<property name="username" value="juyoung" />
 			<property name="password" value="comment" />
 		</bean>

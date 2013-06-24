@@ -7,6 +7,6 @@
 <h1>
 	없는 페이지입니다.
 </h1>
-<a href="http://localhost:8080/jejunu">go to home</a>
+<a href="http://localhost:8080/jejunu/list">go to home</a>
 </body>
 </html>
