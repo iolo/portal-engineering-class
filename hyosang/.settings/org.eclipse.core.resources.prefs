@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java/kr/ac/hyosang/controller/CommentController.java=UTF-8
+encoding//src/main/java/kr/ac/hyosang/controller/UserController.java=UTF-8
+encoding//src/test/java/kr/ac/hyosang/repository/UserDaoTest.java=UTF-8
+encoding//src/test/java/kr/ac/hyosang/service/UserServiceTest.java=UTF-8
