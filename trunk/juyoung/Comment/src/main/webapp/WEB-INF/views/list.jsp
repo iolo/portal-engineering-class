@@ -1,4 +1,4 @@
-<%@ taglib prefix="c"    uri="http://java.sun.com/jstl/core_rt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,19 +9,31 @@
 </head>
 <body>
 	<div id="login">
+		<c:choose>
+			<c:when test="${user=='guset'}">
+				<button onclick="location.href='./join'">회원가입</button>
+			</c:when>
+			<c:when test="${user!='guset'}">
+				<div>안녕하십니까? ${user}님</div>
+			</c:when>
+		</c:choose>
 		<button onclick="location.href='./write'">글쓰기</button>
 	</div>
-	<c:forEach items="${list}" var="comment" >
-	<div id="line">
-		<div id="${comment.listId}">${comment.listId}</div>
-		<div id="userName">${comment.writer}</div>
-		<div id="text">${comment.commentText}</div>
-		<div id="btn">
-			<button href="like?po=${comment.listId}">추천 : ${comment.positive}</button>
-			<button href="like?ne=${comment.listId}">반대 : ${comment.negative}</button>
+	<c:forEach items="${list}" var="comment">
+		<div id="line">
+			<span id="${comment.listId}">${comment.listId}</span> <span
+				id="userName">${comment.writer}</span> <span id="text">${comment.commentText}</span>
+			<span id="btn">
+				<button href="list?po=${comment.listId}">추천 :
+					${comment.positive}</button>
+				<button href="list?ne=${comment.listId}">반대 :
+					${comment.negative}</button>
+			</span>
 		</div>
-	</div>
 	</c:forEach>
 
+	<c:forEach begin="1" end="${pageCount}" var="count">
+		<button onclick="location.href='./list?page=${count}'">${count}</button>
+	</c:forEach>
 </body>
 </html>
