@@ -35,7 +35,7 @@ public class ReplyServiceImpl implements ReplyService {
 						, regiDate.get(Calendar.MINUTE));
 				reply.setStrRegiDate(strDate);
 			} else {
-				String strDate = String.format("%04d/%02d/%02d"
+				String strDate = String.format("%04d.%02d.%02d"
 						, regiDate.get(Calendar.YEAR)
 						, regiDate.get(Calendar.MONTH)
 						, regiDate.get(Calendar.DATE));

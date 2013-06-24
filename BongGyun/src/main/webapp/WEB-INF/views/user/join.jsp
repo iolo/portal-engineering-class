@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<c:url value='/resources/css/common.css'/>" type="text/css" rel="stylesheet" />
 <title>회원가입</title>
 <script type="text/javascript">
 function join(joinForm) {
@@ -56,7 +57,7 @@ function cancel() {
 			</tr>
 			<tr>
 				<th><label for="password">비밀번호</label></th>
-				<td colspan="2"><input type="password" title="비밀번호를 입력하세요." name="password" maxlength="40" tabindex="2" value="${user.password}" /></td>
+				<td colspan="2"><input type="password" title="비밀번호를 입력하세요." name="password" maxlength="40" tabindex="2" value="" /></td>
 			</tr>
 			<tr>
 				<th><label for="name">이름</label></th>
