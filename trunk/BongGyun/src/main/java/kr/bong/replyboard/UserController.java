@@ -3,7 +3,6 @@ package kr.bong.replyboard;
 import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,14 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class UserController {
-
-	public static final String PROFILE_IMAGE_PATH = 
-			"C:/BongGyun/project/spring/workspace/ReplyBoard/src/main/webapp/resources/profile/";
 	
 	@Autowired
 	UserService userService;
@@ -67,12 +62,9 @@ public class UserController {
 	@RequestMapping(value = "/user/joinProcess")
 	public String joinProcess(User user, HttpServletRequest request) {
 		String referURL = request.getParameter("referURL");
-
-		MultipartFile imageFile = user.getProfFile();
-		moveFile(imageFile);
-		user.setProfPath(imageFile.getOriginalFilename());
 		
 		userService.join(user);
+		
 		return "redirect:"+referURL;
 	}
 
@@ -91,30 +83,11 @@ public class UserController {
 	public String modifyProcess(User user, HttpServletRequest request, HttpSession session) {
 		String referURL = request.getParameter("referURL");
 		
-		MultipartFile imageFile = user.getProfFile();
-		moveFile(imageFile);
-		user.setProfPath(imageFile.getOriginalFilename());
-		
 		userService.modify(user);
 		
 		// 수정 데이터 세션에 반영
 		session.setAttribute("user", user);
 		
 		return "redirect:"+referURL;
-	}
-
-	/**
-	 * 파일 이동 수행
-	 */
-	private void moveFile(MultipartFile imageFile) {
-		File file = new File(PROFILE_IMAGE_PATH + imageFile.getOriginalFilename());
-		
-		try {
-			imageFile.transferTo(file);
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }

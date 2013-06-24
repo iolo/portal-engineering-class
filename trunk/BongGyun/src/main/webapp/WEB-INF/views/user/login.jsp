@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<c:url value='/resources/css/common.css'/>" type="text/css" rel="stylesheet" />
 <title>로그인 페이지</title>
 <script type="text/javascript">
 function login(loginForm) {
@@ -31,23 +32,25 @@ function popup(fail) {
 </script>
 </head>
 <body onload="popup(${fail})">
-	<form action="<c:url value='/loginProcess'/>" name="loginForm" id="loginForm" method="post" onsubmit="return login(this);">
-	<input type="hidden" name="referURL" value="${referURL}" />
-	<div id="login">
-		<h2>로그인</h2>
-	   	<table>
-	  		<tr>
-	  			<td>ID</td>
-	  			<td><input type="text" title="아이디를 입력하세요." name="id" maxlength="40" tabindex="1" /></td>
-	  		</tr>
-	  		<tr>
-	  			<td>비밀번호</td>
-	  			<td><input type="password" maxlength="40" title="비밀번호를 입력하세요." name="password" tabindex="2" /></td>
-	  		</tr>
-	  	</table>
-	  	<input type="submit"  value="로그인" />
-		<button type="button" onclick="window.close()">취소</button>
+	<div id="wrap">
+		<form action="<c:url value='/loginProcess'/>" name="loginForm" id="loginForm" method="post" onsubmit="return login(this);">
+		<input type="hidden" name="referURL" value="${referURL}" />
+		<div id="login">
+			<h2>로그인</h2>
+		   	<table>
+		  		<tr>
+		  			<td>ID</td>
+		  			<td><input type="text" title="아이디를 입력하세요." name="id" maxlength="40" tabindex="1" /></td>
+		  		</tr>
+		  		<tr>
+		  			<td>비밀번호</td>
+		  			<td><input type="password" maxlength="40" title="비밀번호를 입력하세요." name="password" tabindex="2" /></td>
+		  		</tr>
+		  	</table>
+		  	<input type="submit"  value="로그인" />
+			<button type="button" onclick="window.close()">취소</button>
+		</div>
+		</form>
 	</div>
-	</form>
 </body>
 </html>
