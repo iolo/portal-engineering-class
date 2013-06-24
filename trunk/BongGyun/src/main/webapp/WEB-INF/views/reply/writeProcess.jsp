@@ -6,12 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>글쓰기 진행</title>
 <script type="text/javascript">
-function writeProcess() {
-	window.opener.location.reload();
-	window.close();
+function close() {
+    window.opener.location.reload();
+    window.close();
 }
 </script>
 </head>
-<body onload="writeProcess();">
+<body onload="close()">
 </body>
 </html>
