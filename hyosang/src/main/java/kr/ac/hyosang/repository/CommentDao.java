@@ -14,4 +14,6 @@ public interface CommentDao {
 	Comment getComment(int id);
 
 	List<Comment> getList();
+	
+	int deleteComment(int id);
 }

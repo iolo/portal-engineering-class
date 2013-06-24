@@ -8,4 +8,6 @@ public interface CommentService {
 	List<Comment> getCommentList();
 
 	int write(Comment comment);
+	
+	int deleteComment(int id);
 }

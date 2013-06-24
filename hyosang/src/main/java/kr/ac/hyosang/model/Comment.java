@@ -9,6 +9,8 @@ public class Comment {
 	private String comment;
 	private String password;
 	private Date regdate;
+	private String regdateToString;
+	private String userName;
 	
 	public Comment() {}
 
@@ -55,6 +57,22 @@ public class Comment {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getRegdateToString() {
+		return regdateToString;
+	}
+
+	public void setRegdateToString(String regdateToString) {
+		this.regdateToString = regdateToString;
 	}
 
 }

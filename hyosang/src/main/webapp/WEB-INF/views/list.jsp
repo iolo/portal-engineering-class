@@ -14,15 +14,16 @@
 	</style>
 </head>
 
-<h1>댓글리스트</h1>
+<h1>댓글리스트(로그인 안됨)</h1>
+<a href="./join">회원가입</a><a href="./write">글쓰기</a>
 <table id="commentList">
 	<c:forEach items="${commentList}" var="comment" varStatus="status">
 		<tr>
-			<td class="commentNumber">${comment.id}</td>
 			<td class="profileImage"><img src="" alt="프로필 사진"/></td>
+			<td class="userName">${comment.userName}</td>
 			<td class="commentContent">${comment.comment}</td>
 			<td class="commentRecommend"><button>추천</button><button>반대</button></td>
-			<td class="commentRegDate">${comment.regdate}</td>
+			<td class="commentRegDate">${comment.regdateToString}</td>
 		</tr>
 	</c:forEach>
 </table>
