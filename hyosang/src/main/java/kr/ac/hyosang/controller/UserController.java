@@ -1,5 +1,7 @@
 package kr.ac.hyosang.controller;
 
+import javax.servlet.http.HttpSession;
+
 import kr.ac.hyosang.model.User;
 import kr.ac.hyosang.service.UserService;
 
@@ -28,5 +30,21 @@ public class UserController {
 		userService.userJoin(user);
 		
 		return "redirect:/";
-	}	
+	}
+	
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
+
+	@RequestMapping(value = "/loginprocess")
+	public String loginProcess(User user, HttpSession session) {
+		User loginUser = userService.loginCheck(user.getUserId(), user.getPassword());
+		if (loginUser != null) {
+			session.setAttribute("user", loginUser);
+			return "redirect:/";
+		} else {
+			return "redirect:/login";
+		}
+	}
 }
