@@ -25,22 +25,27 @@ import org.springframework.web.multipart.MultipartFile;
 public class GusetUseViewsController {
 	@Autowired
 	private CommentService service;
-	
+
 	@RequestMapping("/")
-	public String pageNotFound(HttpServletResponse response){
+	public String pageNotFound(HttpServletResponse response) {
 		response.addCookie(new Cookie("user", "guset"));
 		return "error";
 	}
 
 	@RequestMapping("/list")
-	public String requestList(@CookieValue("user")String user, HttpServletRequest request,
-			HttpServletResponse response) {
-		// get parameter 확인
+	public String requestList(@CookieValue("user") String user,
+			HttpServletRequest request, HttpServletResponse response) {
+		// get parameter
 		String pageParameter = request.getParameter("page");
-		if(user == null || user == "guset"){
+		if (user == null || user == "guset") {
 			response.addCookie(new Cookie("user", "guset"));
-		}else{
-			request.setAttribute("userName", user);
+		} else {
+			UserInfo info = service.findUserInfoById(user);
+			try {
+				request.setAttribute("userName", info.getName());
+			} catch (Exception e) {
+
+			}
 		}
 
 		int nowPage;
@@ -49,16 +54,12 @@ public class GusetUseViewsController {
 		} catch (NumberFormatException e) {
 			nowPage = 1;
 		}
-		// 페이지 수 확인
 		int pageCount = service.pageCount();
 
-		// 페이지에 따라 코멘트 호출
 		List<Comment> list = service.showPageOne(nowPage);
-		// 데이터 저장
 		Collections.reverse(list);
 		request.setAttribute("list", list);
 		request.setAttribute("pageCount", pageCount);
-		// 로그인 구별
 		if (user == null || user == "guset") {
 			response.addCookie(new Cookie("user", "guset"));
 			request.setAttribute("user", "guset");
@@ -81,8 +82,9 @@ public class GusetUseViewsController {
 		return "redirect:/list";
 	}
 
-	@RequestMapping(value = "/image", produces = {"image/jpeg"})
-	public @ResponseBody HttpEntity<byte[]> getImage(HttpServletRequest request,
+	@RequestMapping(value = "/image", produces = { "image/jpeg" })
+	public @ResponseBody
+	HttpEntity<byte[]> getImage(HttpServletRequest request,
 			HttpServletResponse response) {
 		return service.getImage(request);
 	}

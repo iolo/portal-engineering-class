@@ -15,6 +15,7 @@
 			</c:when>
 			<c:when test="${user!='guset'}">
 				<div>안녕하십니까? ${user}님</div>
+				<button onclick="location.href='login.out'">로그아웃</button>
 			</c:when>
 			<c:when test="${user == null}">
 			
@@ -26,14 +27,13 @@
 		<div id="line">
 			<span id="${comment.listId}">${comment.listId}</span> 
 			<img style="width: 100px; height: 100px;" src="${comment.userUrl}" />
-			<span>작성자 : ${comment.writer}</span>
 			<span
 				id="userName">${comment.writer}</span> <span id="text">${comment.commentText}</span>
 			<span id="btn">
 				<button onclick="location.href='like?it=${comment.listId}&like=po'">추천 :${comment.positive} </button>
 				<button onclick="location.href='like?it=${comment.listId}&like=ne'">반대 :${comment.negative} </button>
 			</span>
-			<c:if test="${user == comment.writer}">
+			<c:if test="${userName == comment.writer}">
 				<button onclick="location.href='detele?it=${comment.listId}'">삭제</button>
 			</c:if>
 		</div>

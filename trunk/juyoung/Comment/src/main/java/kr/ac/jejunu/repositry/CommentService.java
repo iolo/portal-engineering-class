@@ -32,7 +32,7 @@ public class CommentService {
 
 	@Autowired
 	private SqlMapper sqlMapper;
-	
+
 	@Autowired
 	private DataSourceTransactionManager txManager;
 
@@ -84,24 +84,26 @@ public class CommentService {
 	public void addUserLikeComment(String user, int comment, String like) {
 		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
 		def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-		
+
 		TransactionStatus status = txManager.getTransaction(def);
 		try {
-			if(!sqlMapper.selectUserLikeCheck(user, comment)){
-				if(like == "po"){
-					//±‡¡§
-					sqlMapper.updatePositiveUser(comment);
-				}else if(like == "ne"){
-					//∫Œ¡§
-					sqlMapper.updateNegativeUser(comment);
+			try {
+				if (sqlMapper.selectUserLikeCheck(user, comment) != false) {
+					if (like == "po") {
+						sqlMapper.updatePositiveUser(comment);
+					} else if (like == "ne") {
+						sqlMapper.updateNegativeUser(comment);
+					}
+					sqlMapper.insertUserLikeCommentCheck(user, comment);
 				}
-				sqlMapper.insertUserLikeCommentCheck(user, comment);
+			} catch (BindingException e) {
+				
 			}
 		} catch (RuntimeException e) {
 			txManager.rollback(status);
-			throw e;			
+			throw e;
 		}
-		
+
 		txManager.commit(status);
 	}
 
@@ -135,17 +137,17 @@ public class CommentService {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		user.setProflie_url("http://localhost:8080/jejunu/image?id="+fileName);
+		user.setProflie_url("http://localhost:8080/jejunu/image?id=" + fileName);
 		return user;
 	}
 
 	public boolean checkLogin(String id, String password) {
 		boolean result = true;
-		try{
+		try {
 			result = sqlMapper.selectLoginCheck(id, password);
-		}catch(BindingException e){
+		} catch (BindingException e) {
 			return true;
 		}
-		return result;	
+		return result;
 	}
 }
