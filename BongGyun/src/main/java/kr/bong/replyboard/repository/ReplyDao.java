@@ -2,9 +2,11 @@ package kr.bong.replyboard.repository;
 
 import java.util.List;
 
+import kr.bong.replyboard.model.Rating;
 import kr.bong.replyboard.model.Reply;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface ReplyDao {
@@ -15,4 +17,8 @@ public interface ReplyDao {
 	List<Reply> selectReplyList();
 
 	int deleteReply(int replyNo);
+	
+	int updateUpCount(int replyNo);
+
+	int updateDownCount(int replyNo);
 }
