@@ -60,4 +60,4 @@ a.btn:hover, a.btn:active, a.btn:focus {
 #paging{margin-top:5px;margin-bottom: 5px; }
 #paging .prev{width:49%; float:left;text-align:center; border: solid 1px #999999;}
 #paging .next{width:49%; float:right;text-align:center; border: solid 1px #999999;}
-#paging a{width:100%;display: block;}
+#paging a{width:100%;height:30px;display: block;line-height: 30px;font-weight: bold;}
