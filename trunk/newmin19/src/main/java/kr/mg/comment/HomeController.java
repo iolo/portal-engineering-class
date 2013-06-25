@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Handles requests for the application home page.
@@ -59,10 +60,10 @@ public class HomeController {
 	}
 
 	// 로그아웃
-	@RequestMapping("logout")
+	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
 		session.setAttribute("userLoginInfo", null);
-		return "redirect:login";
+		return "redirect:/";
 	}
 
 	// 로그인 처리
@@ -73,7 +74,7 @@ public class HomeController {
 		User loginUser = userservice.login(user);
 
 		if (loginUser != null) {
-			session.setAttribute("userLoginInfo", user);
+			session.setAttribute("userLoginInfo", loginUser);
 			return "redirect:writeComment";
 		} else {
 			return "redirect:login?fail=1";
@@ -91,5 +92,19 @@ public class HomeController {
 		userservice.join(user);
 
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/modify")
+	public String modify(Model model, HttpServletRequest request, HttpSession session) {
+
+		return "modify";
+	}
+
+	@RequestMapping(value = "/modifyProcess")
+	public String modifyProcess(User user, HttpServletRequest request, HttpSession session) {
+		
+		userservice.modify(user);
+		
+		return "redirect:";
 	}
 }

@@ -10,6 +10,8 @@ public interface UserDao {
 	
 	int insertUser(User user);
 	
+	int modify(User user);
+	
 	User getUser(String id);
 	
 }
