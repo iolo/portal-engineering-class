@@ -18,8 +18,8 @@ public class ReplyServiceImpl implements ReplyService {
 	ReplyDao replyDao;
 	
 	@Override
-	public List<Reply> getList() {
-		List<Reply> list = replyDao.selectReplyList();
+	public List<Reply> getList(int page) {
+		List<Reply> list = replyDao.selectReplyList(page);
 		
 		Calendar today = Calendar.getInstance();
 		Calendar regiDate = Calendar.getInstance();
@@ -49,6 +49,11 @@ public class ReplyServiceImpl implements ReplyService {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public int getCount() {
+		return replyDao.selectReplyCount();
 	}
 
 	@Override

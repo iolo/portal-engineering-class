@@ -89,6 +89,28 @@ function popup(duple) {
 			</c:forEach>
 		</div>
 	<!--// 댓글 리스트 부분 끝 -->
+		<div id="paging">
+			<p class="prev">
+				<c:choose>
+					<c:when test="${not empty prevPage}">
+						<a href="<c:url value='/'/>?page=${prevPage}">이전</a>
+					</c:when>
+					<c:otherwise>
+						<a href="#" onclick="alert('첫 페이지입니다.')">이전</a>
+					</c:otherwise>
+				</c:choose>
+			</p>
+			<p class="next">
+				<c:choose>
+					<c:when test="${not empty nextPage}">
+					<a href="<c:url value='/'/>?page=${nextPage}">다음</a>
+					</c:when>
+					<c:otherwise>
+						<a href="#" onclick="alert('마지막 페이지입니다.')">다음</a>
+					</c:otherwise>
+				</c:choose>
+			</p>
+		</div>
 	</div>
 </body>
 </html>
