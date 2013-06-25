@@ -148,4 +148,11 @@ public class CommentMapperTest {
 		// 총 페이지 개수
 		System.out.println("페이지 개수 : " + pageCount);
 	}
+	
+	@Test
+	public void loginCheck(){
+		String userId = "juyoung";
+		String userPassword = "asdf";
+		assertEquals(true, !mapper.selectLoginCheck(userId, userPassword));
+	}
 }

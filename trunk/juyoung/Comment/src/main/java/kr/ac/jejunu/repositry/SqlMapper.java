@@ -43,6 +43,9 @@ public interface SqlMapper {
 	@Select(value = { "SELECT * FROM list WHERE listId >= #{selectPageLastListId} LIMIT 10" })
 	List<Comment> selectPageOne(
 			@Param("selectPageLastListId") int selectPageLastListId);
+	
+	@Select(value = {"SELECT * FROM userjoininfo WHERE id = #{userId} AND password = #{userPassword}"})
+	boolean selectLoginCheck(@Param("userId")String userId, @Param("userPassword")String userPassword);
 
 	// update
 	@Update(value = { "UPDATE list SET positive = positive + 1 WHERE listId = #{listId}" })
@@ -54,4 +57,6 @@ public interface SqlMapper {
 	// delete
 	@Delete(value = { "DELETE FROM list WHERE listId = #{listId}" })
 	void deleteComment(@Param("listId") int listId);
+
+	
 }

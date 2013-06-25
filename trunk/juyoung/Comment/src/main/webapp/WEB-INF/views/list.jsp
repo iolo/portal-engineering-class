@@ -29,10 +29,10 @@
 			<span
 				id="userName">${comment.writer}</span> <span id="text">${comment.commentText}</span>
 			<span id="btn">
-				<button href="list?po=${comment.listId}">추천 :
-					${comment.positive}</button>
-				<button href="list?ne=${comment.listId}">반대 :
-					${comment.negative}</button>
+				<button onclick="like?it=${comment.listId}&like=po">추천 :
+					${comment.positive} </button>
+				<button onclick="like?it=${comment.listId}&like=ne">반대 :
+					${comment.negative} </button>
 			</span>
 		</div>
 	</c:forEach>
