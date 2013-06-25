@@ -9,4 +9,5 @@ public interface CommentService {
 	int insertCommentData(Comment comment);
 	
 	List<Comment> getList();
+
 }
