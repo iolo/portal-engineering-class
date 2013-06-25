@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>댓글 시스템</title>
 <link href="<c:url value='/resources/css/common.css'/>" type="text/css" rel="stylesheet" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 <script type="text/javascript">
 function writePopup() {
 	var popup = window.open(
@@ -39,16 +40,21 @@ function popup(duple) {
 		<c:choose>
 			<c:when test="${not empty sessionScope.user}">
 				<!-- 로그인 상태 -->
-				${sessionScope.user.name} (${sessionScope.user.description})
-				<a href="<c:url value='/user/modify'/>">프로필수정</a>
-				<a href="<c:url value='/logout'/>">로그아웃</a>
+				<p class="profile"><strong>${sessionScope.user.name}님</strong> (${sessionScope.user.description})</p>
+				<div id="btnList">
+					<a href="<c:url value='/user/modify'/>" class="btn">프로필수정</a>
+					<a href="<c:url value='/write'/>" class="btn">글쓰기</a>
+					<a href="<c:url value='/logout'/>" class="btn">로그아웃</a>
+				</div>
 			</c:when>
 			<c:otherwise>
 				<!-- 비로그인 상태 -->
-				<a href="<c:url value='/user/join'/>">회원가입</a>
+				<div id="btnList">
+					<a href="<c:url value='/user/join'/>" class="btn">회원가입</a>
+					<a href="<c:url value='/write'/>" class="btn">글쓰기</a>
+				</div>
 			</c:otherwise>
 		</c:choose>
-		<a href="<c:url value='/write'/>">글쓰기</a>
 		<!--// 회원정보, 메뉴버튼 부분 끝 -->
 		<!-- 댓글 리스트 부분 시작 -->
 		<div id="replyList">
@@ -65,13 +71,13 @@ function popup(duple) {
 							<c:choose>
 								<c:when test="${not empty sessionScope.user}">
 									<!-- 로그인 상태 -->
-									<a href="<c:url value='/upRating'/>?replyNo=${reply.replyNo}">추천(${reply.upCount})</a> 
-									<a href="<c:url value='/downRating'/>?replyNo=${reply.replyNo}">반대(${reply.downCount})</a>
+									<a href="<c:url value='/upRating'/>?replyNo=${reply.replyNo}" class="up">추천(${reply.upCount})</a> 
+									<a href="<c:url value='/downRating'/>?replyNo=${reply.replyNo}" class="down">반대(${reply.downCount})</a>
 								</c:when>
 								<c:otherwise>
 									<!-- 비로그인 상태 -->
-									<a href="<c:url value='/login'/>">추천(${reply.upCount})</a> 
-									<a href="<c:url value='/login'/>">반대(${reply.downCount})</a>
+									<a href="<c:url value='/login'/>" class="up">추천(${reply.upCount})</a> 
+									<a href="<c:url value='/login'/>" class="down">반대(${reply.downCount})</a>
 								</c:otherwise>
 							</c:choose>
 							</dd>
