@@ -30,8 +30,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int modify(User user) {
-		// TODO 수정 로직
-		return 0;
+		return userdao.modify(user);
 	}
 
 	@Override
