@@ -7,6 +7,13 @@
 <title>write</title>
 </head>
 <body>
+<form name="comment" action="./write.save" method="post">
+	${profile_url}<input type="hidden" name="userUrl" value="${profile_url}"><br />
+	${name}<input type="hidden" name="writer" value="${name}"><br />
+	commentText<input type="text" name="commentText"><br />
+	<button type="submit">write</button>
+</form>
+<button onclick="location.href='http://localhost:8080/jejunu/list'">√Îº“</button>
 
 </body>
 </html>
