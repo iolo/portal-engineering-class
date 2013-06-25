@@ -1,5 +1,8 @@
 package kr.bong.replyboard.service;
 
+import kr.bong.replyboard.model.Rating;
+
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +20,30 @@ public class RatingServiceTest {
 	@Test
 	public void testUpRating() {
 		
-		int replyNo = 0;
+		int replyNo = 32;
 		String id = "kbg8926"; 
-		ratingService.upRating(replyNo, id);
+		
+		Rating rating = new Rating();
+		rating.setId(id);
+		rating.setReplyNo(replyNo);
+		
+		int result = ratingService.upRating(rating);
+		
+		Assert.assertEquals(result, 1);
+	}
+	
+	@Test
+	public void testDownRating() {
+		
+		int replyNo = 31;
+		String id = "kbg8926"; 
+		
+		Rating rating = new Rating();
+		rating.setId(id);
+		rating.setReplyNo(replyNo);
+		
+		int result = ratingService.downRating(rating);
+		
+		Assert.assertEquals(result, 1);
 	}
 }

@@ -24,4 +24,17 @@
 		  FROM reply
 		 WHERE replyNo = #{replyNo}
 	</delete>
+	
+	<update id="updateUpCount" parameterType="int">
+		UPDATE reply  
+		   SET upCount = upCount + 1
+		 WHERE replyNo = #{replyNo}
+	</update>
+	
+	<update id="updateDownCount" parameterType="int">
+		UPDATE reply  
+		   SET downCount = downCount + 1
+		 WHERE replyNo = #{replyNo}
+	</update>
+	
 </mapper>
