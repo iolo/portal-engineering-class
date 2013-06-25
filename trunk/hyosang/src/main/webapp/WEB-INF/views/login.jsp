@@ -16,7 +16,7 @@
 	<input class="input-block-level" type="text" name="userId" placeholder="아이디" /><br>
 	<input class="input-block-level" type="password" name="password" placeholder="비밀번호" /><br>
 	<input class="btn" type="submit" value="로그인" />
-	<button class="btn">취소</button>
+	<a href="javascript:history.back();" class="btn">취소</a>
 </form>
 
 <script src="http://code.jquery.com/jquery.js"></script>

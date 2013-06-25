@@ -18,7 +18,8 @@
 		<input class="input-block-level" type="text" name="userName" placeholder="이름" /><br>
 		<input class="input-block-level" type="text" name="userInfo" placeholder="설명" /><br>
 		<input class="input-block-level" type="hidden" name="userImagePath" value="임의 이미지 경로" />
-	<input class="btn" type="submit" value="회원가입" /> <button class="btn">취소</button>
+	<input class="btn" type="submit" value="회원가입" /> 
+	<a href="javascript:history.back();" class="btn">취소</a>
 </form>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>

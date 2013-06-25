@@ -16,7 +16,7 @@
 	<textarea class="input-block-level" name="comment"></textarea>
 	<input type="hidden" name="userName" value="${user.userName}"><br />
 	<input class="btn" type="submit" value="글쓰기" />
-	<button class="btn">취소</button>
+	<a href="javascript:history.back();" class="btn">취소</a>
 </form>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
