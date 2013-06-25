@@ -64,7 +64,10 @@ function popup(duple) {
 					<dl>
 						<dt>
 							<span class="userName">${reply.name}</span><span class="userId">(${reply.id})</span>
-							<span class="date">| ${reply.strRegiDate}</span> 
+							<span class="date">| ${reply.strRegiDate}</span>
+							<c:if test="${reply.id == sessionScope.user.id}">
+								<a href="<c:url value='/delete'/>?replyNo=${reply.replyNo}" class="del"> 삭제</a>
+							</c:if>
 						</dt>
 						<dd class="content">${reply.content}</dd>
 						<dd class="rating">

@@ -56,6 +56,16 @@ public class ReplyController {
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/delete")
+	public String write(HttpServletRequest request) {
+		String strReplyNo = request.getParameter("replyNo");
+		int replyNo = Integer.parseInt(strReplyNo);
+		
+		replyService.delete(replyNo);
+
+		return "redirect:/";
+	}
 
 	@RequestMapping(value = "/upRating")
 	public String upRating(HttpSession session, HttpServletRequest request) {
