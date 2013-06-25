@@ -55,16 +55,13 @@ public class RequestLoginViewsController {
 	public String logout(HttpServletResponse response) {
 		Cookie cookie = new Cookie("user", "guset");
 		response.addCookie(cookie);
-		return "list";
+		return "redirect:/list";
 	}
 
 	@RequestMapping("/write")
 	public String writeComment(@CookieValue(value = "user") String cookie,
 			HttpServletRequest request) {
-		System.out.println("로그인 확인 전" + cookie);
-		// 로그인 확인
 		if (cookie.equals("guset")) {
-			System.out.println("확인");
 			request.setAttribute("preRequest", "write");
 			return "login";
 		}
@@ -76,10 +73,9 @@ public class RequestLoginViewsController {
 
 	@RequestMapping("/write.save")
 	public String writeComment(@ModelAttribute("comment") Comment comment) {
-		comment.setCommentText(URLEncoder.encode(comment.getCommentText()));
 		comment.setRegTime(new Date());
 		service.writeComment(comment);
-		return "list";
+		return "redirect:list";
 	}
 
 	@RequestMapping("like")
@@ -87,13 +83,12 @@ public class RequestLoginViewsController {
 			HttpServletRequest request) {
 			String like = request.getParameter("like");
 			int comment =Integer.parseInt(request.getParameter("it"));
-		// 로그인 확인
 		if (cookie.equals("guset")) {
-			System.out.println("확인");
+			System.out.println("확占쏙옙");
 			request.setAttribute("preRequest", "write");
 			return "login";
 		}
 		service.addUserLikeComment(cookie, comment, like);
-		return "list";
+		return "redirect:list";
 	}
 }
