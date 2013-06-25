@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,29 +11,31 @@
 	<div id="login">
 		<c:choose>
 			<c:when test="${user=='guset'}">
-				<button onclick="location.href='./join.write'">È¸¿ø°¡ÀÔ</button>
+				<button onclick="location.href='./join.write'">íšŒì›ê°€ì…</button>
 			</c:when>
 			<c:when test="${user!='guset'}">
-				<div>¾È³çÇÏ½Ê´Ï±î? ${user}´Ô</div>
+				<div>ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ? ${user}ë‹˜</div>
 			</c:when>
 			<c:when test="${user == null}">
 			
 			</c:when>
 		</c:choose>
-		<button onclick="location.href='./write'">±Û¾²±â</button>
+		<button onclick="location.href='./write'">ê¸€ì“°ê¸°</button>
 	</div>
 	<c:forEach items="${list}" var="comment">
 		<div id="line">
 			<span id="${comment.listId}">${comment.listId}</span> 
-			<img style="width: 100px; height: 100px;" src="${comment.userUrl}"></img>
+			<img style="width: 100px; height: 100px;" src="${comment.userUrl}" />
+			<span>ì‘ì„±ì : ${comment.writer}</span>
 			<span
 				id="userName">${comment.writer}</span> <span id="text">${comment.commentText}</span>
 			<span id="btn">
-				<button onclick="like?it=${comment.listId}&like=po">ÃßÃµ :
-					${comment.positive} </button>
-				<button onclick="like?it=${comment.listId}&like=ne">¹İ´ë :
-					${comment.negative} </button>
+				<button onclick="location.href='like?it=${comment.listId}&like=po'">ì¶”ì²œ :${comment.positive} </button>
+				<button onclick="location.href='like?it=${comment.listId}&like=ne'">ë°˜ëŒ€ :${comment.negative} </button>
 			</span>
+			<c:if test="${user == comment.writer}">
+				<button onclick="location.href='detele?it=${comment.listId}'">ì‚­ì œ</button>
+			</c:if>
 		</div>
 	</c:forEach>
 
