@@ -11,7 +11,14 @@ public class Comment {
 	private Date regdate;
 	private int likeCount;
 	private int unlikeCount;
+	private String strRegdate;
 	
+	public String getStrRegdate() {
+		return strRegdate;
+	}
+	public void setStrRegdate(String strRegdate) {
+		this.strRegdate = strRegdate;
+	}
 	public String getId() {
 		return id;
 	}

@@ -102,8 +102,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/modifyProcess")
 	public String modifyProcess(User user, HttpServletRequest request, HttpSession session) {
-		
 		userservice.modify(user);
+		
+		session.setAttribute("userLoginInfo", user);
 		
 		return "redirect:";
 	}
