@@ -5,7 +5,9 @@ import java.util.List;
 import kr.bong.replyboard.model.Reply;
 
 public interface ReplyService {
-	List<Reply> getList();
+	List<Reply> getList(int page);
+
+	int getCount();
 	
 	Reply getByReplyNo(int replyNo);
 	

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ReplyController {
 	
+	private static final int PAGE_COUNT = 10;
+	
 	@Autowired
 	ReplyService replyService;
 	
@@ -27,11 +29,25 @@ public class ReplyController {
 	
 	@RequestMapping(value = "/")
 	public String list(Model model, HttpServletRequest request) {
-		List<Reply> replyList = replyService.getList();
+		String strPage = request.getParameter("page");
+		int page = 0;
+		try{
+			page = Integer.parseInt(strPage);
+		} catch(Exception e) {
+		}
+		
+		List<Reply> replyList = replyService.getList(page*PAGE_COUNT);
+		
+		int replyCount = replyService.getCount();
 		String duple = request.getParameter("duple");
 		
 		model.addAttribute("replyList", replyList);
 		model.addAttribute("duple", duple);
+		if(page-1 >= 0)
+			model.addAttribute("prevPage", page-1);
+		
+		if(page+1 <= replyCount/PAGE_COUNT)
+			model.addAttribute("nextPage", page+1);
 		
 		return "reply/list";
 	}

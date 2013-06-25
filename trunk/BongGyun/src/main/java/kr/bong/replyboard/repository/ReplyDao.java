@@ -14,8 +14,10 @@ public interface ReplyDao {
 
 	Reply selectReplyByReplyNo(int replyNo);
 
-	List<Reply> selectReplyList();
+	List<Reply> selectReplyList(int page);
 
+	int selectReplyCount();
+	
 	int deleteReply(int replyNo);
 	
 	int updateUpCount(int replyNo);

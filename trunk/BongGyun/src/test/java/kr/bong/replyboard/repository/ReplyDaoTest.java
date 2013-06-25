@@ -52,7 +52,7 @@ public class ReplyDaoTest {
 
 	@Test
 	public void testSelectReplyList() {
-		List<Reply> replyList = replyDao.selectReplyList();
+		List<Reply> replyList = replyDao.selectReplyList(0);
 		
 		System.out.println("-------List Test------");
 		for (Reply reply : replyList) {

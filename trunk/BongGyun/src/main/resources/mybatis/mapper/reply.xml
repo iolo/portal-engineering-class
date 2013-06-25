@@ -12,11 +12,17 @@
 		 WHERE replyNo = #{replyNo}
 	</select>
 	
-	<select id="selectReplyList" resultType="kr.bong.replyboard.model.Reply">
+	<select id="selectReplyList" parameterType="int"  resultType="kr.bong.replyboard.model.Reply">
 			SELECT B.name, B.profPath, A.*
 			  FROM reply A, user B
 			 WHERE A.id = B.id
 		  ORDER BY regiDate DESC
+		     Limit #{page}, 10
+	</select>
+	
+	<select id="selectReplyCount" resultType="int">
+			SELECT count(*)
+			  FROM reply
 	</select>
 	
 	<delete id="deleteReply" parameterType="int">

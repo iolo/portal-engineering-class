@@ -54,7 +54,7 @@ public class ReplyServiceTest {
 
 	@Test
 	public void testSelectReplyList() {
-		List<Reply> replyList = replyService.getList();
+		List<Reply> replyList = replyService.getList(1);
 		
 		System.out.println("-------List Test------");
 		for (Reply reply : replyList) {
