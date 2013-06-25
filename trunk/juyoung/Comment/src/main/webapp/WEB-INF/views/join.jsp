@@ -7,7 +7,19 @@
 <title>join</title>
 </head>
 <body>
-<form action=""></form>
+<div>
+	<form name="joinUserInfo" action="./join.save" method="post" enctype="multipart/form-data">
+		id : <input type="text" name="id"><br />
+		password : <input type="password" name="password"><br />
+		이름 : <input type="text" name="name"><br />
+		설명 : <input type="text" name="proflie"><br />
+		프로필 이미지 : <input type="file" name="file"><br />
+		<input type="submit" value="회원가입" />
+		<button onclick="location.href='http://localhost:8080/jejunu/list'">취소</button>
+	</form>
+	
+	
+</div>
 
 </body>
 </html>

@@ -11,17 +11,22 @@
 	<div id="login">
 		<c:choose>
 			<c:when test="${user=='guset'}">
-				<button onclick="location.href='./join'">회원가입</button>
+				<button onclick="location.href='./join.write'">회원가입</button>
 			</c:when>
 			<c:when test="${user!='guset'}">
 				<div>안녕하십니까? ${user}님</div>
+			</c:when>
+			<c:when test="${user == null}">
+			
 			</c:when>
 		</c:choose>
 		<button onclick="location.href='./write'">글쓰기</button>
 	</div>
 	<c:forEach items="${list}" var="comment">
 		<div id="line">
-			<span id="${comment.listId}">${comment.listId}</span> <span
+			<span id="${comment.listId}">${comment.listId}</span> 
+			<img style="width: 100px; height: 100px;" src="${comment.userUrl}"></img>
+			<span
 				id="userName">${comment.writer}</span> <span id="text">${comment.commentText}</span>
 			<span id="btn">
 				<button href="list?po=${comment.listId}">추천 :
