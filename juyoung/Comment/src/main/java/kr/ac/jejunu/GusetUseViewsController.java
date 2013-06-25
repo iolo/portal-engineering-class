@@ -14,6 +14,7 @@ import kr.ac.jejunu.repositry.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,27 +27,20 @@ public class GusetUseViewsController {
 	private CommentService service;
 	
 	@RequestMapping("/")
-	public String pageNotFound(){
+	public String pageNotFound(HttpServletResponse response){
+		response.addCookie(new Cookie("user", "guset"));
 		return "error";
 	}
 
 	@RequestMapping("/list")
-	public String requestList(HttpServletRequest request,
+	public String requestList(@CookieValue("user")String user, HttpServletRequest request,
 			HttpServletResponse response) {
 		// get parameter »Æ¿Œ
 		String pageParameter = request.getParameter("page");
-		Cookie[] cookies = request.getCookies();
-		String user = "";
-		try {
-			for (int check = 0; check < cookies.length; check++) {
-				if (cookies[check].getName() == "user") {
-					user = cookies[check].getValue();
-					break;
-				}
-				user = null;
-			}
-		} catch (NullPointerException e) {
-			request.setAttribute("user", "guset");
+		if(user == null || user == "guset"){
+			response.addCookie(new Cookie("user", "guset"));
+		}else{
+			request.setAttribute("userName", user);
 		}
 
 		int nowPage;

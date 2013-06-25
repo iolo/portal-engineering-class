@@ -1,5 +1,6 @@
 package kr.ac.jejunu;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.net.URLEncoder;
 import java.util.Date;
 
@@ -46,7 +47,8 @@ public class RequestLoginViewsController {
 
 		Cookie cookie2 = new Cookie("user", userId);
 		response.addCookie(cookie2);
-		return "list";
+		
+		return "redirect:list";
 	}
 
 	@RequestMapping("login.out")

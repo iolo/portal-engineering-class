@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,12 +11,12 @@
 		<form name="joinUserInfo" action="./join.save" method="post"
 			enctype="multipart/form-data">
 			id : <input type="text" name="id"><br /> password : <input
-				type="password" name="password"><br /> юл╦╖ : <input
-				type="text" name="name"><br /> ╪Ё╦М : <input type="text"
-				name="proflie"><br /> га╥нгй юл╧лаЖ : <input type="file"
-				name="file"><br /> <input type="submit" value="х╦©Ь╟║ют" />
+				type="password" name="password"><br /> Л²╢К╕└ : <input
+				type="text" name="name"><br /> Л└╓К╙┘ : <input type="text"
+				name="proflie"><br /> М■└К║°М∙└ Л²╢К╞╦Л╖─ : <input type="file"
+				name="file"><br /> <input type="submit" value="М ▄Л⌡░Й╟─Л·┘" />
 		</form>
-		<button onclick="location.href='http://localhost:8080/jejunu/list'">цК╪р</button>
+		<button onclick="location.href='http://localhost:8080/jejunu/list'">Л╥╗Л├▄</button>
 	</div>
 
 </body>
