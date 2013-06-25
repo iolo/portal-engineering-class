@@ -23,22 +23,26 @@ public class UserController {
 
 	@RequestMapping(value = "/login")
 	public String login(Model model, HttpServletRequest request) {
+		String referURL = request.getParameter("referURL");
+		if(referURL == null || referURL.isEmpty())
+			referURL = request.getHeader("referer");
 		String fail = request.getParameter("fail");
 		
 		model.addAttribute("fail", fail);
+		model.addAttribute("referURL", referURL);
 		
 		return "user/login";
 	}
 
 	@RequestMapping(value = "/loginProcess")
-	public String loginProcess(User user, HttpSession session) {
-
+	public String loginProcess(User user, HttpSession session, HttpServletRequest request) {
+		String referURL = request.getParameter("referURL");
 		User loginUser = userService.loginCheck(user.getId(), user.getPassword());
 
 		if (loginUser != null) {
 			session.setAttribute("user", loginUser);
 
-			return "redirect:/write";
+			return "redirect:"+referURL;
 		} else {
 			return "redirect:/login?fail=1";
 		}

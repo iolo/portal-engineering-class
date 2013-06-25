@@ -48,7 +48,7 @@ function popup(fail) {
 		  		</tr>
 		  	</table>
 		  	<input type="submit"  value="로그인" />
-			<button type="button" onclick="window.close()">취소</button>
+			<button type="button" onclick="location.href=<c:url value='/' />">취소</button>
 		</div>
 		</form>
 	</div>

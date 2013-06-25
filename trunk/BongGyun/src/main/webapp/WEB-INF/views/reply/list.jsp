@@ -21,9 +21,18 @@ function writePopup() {
 function refreshParent() {
     window.location.reload();
 }
+
+function popup(duple) {
+	if(duple == '1') {
+		alert("이미 추천을 하셨습니다.");	
+	}
+	if(duple == '2') {
+		alert("이미 반대를 하셨습니다.");	
+	}
+}
 </script>
 </head>
-<body>
+<body onload="popup(${duple})">
 	<div id="wrap">
 		<h2>댓글 시스템</h2>
 		<!-- 회원정보, 메뉴버튼 부분 시작 -->
@@ -53,9 +62,19 @@ function refreshParent() {
 						</dt>
 						<dd class="content">${reply.content}</dd>
 						<dd class="rating">
-							<a href="#">추천(${reply.upCount})</a> 
-							<a href="#">반대(${reply.downCount})</a>
-						</dd>
+							<c:choose>
+								<c:when test="${not empty sessionScope.user}">
+									<!-- 로그인 상태 -->
+									<a href="<c:url value='/upRating'/>?replyNo=${reply.replyNo}">추천(${reply.upCount})</a> 
+									<a href="<c:url value='/downRating'/>?replyNo=${reply.replyNo}">반대(${reply.downCount})</a>
+								</c:when>
+								<c:otherwise>
+									<!-- 비로그인 상태 -->
+									<a href="<c:url value='/login'/>">추천(${reply.upCount})</a> 
+									<a href="<c:url value='/login'/>">반대(${reply.downCount})</a>
+								</c:otherwise>
+							</c:choose>
+							</dd>
 					</dl>
 				</div>
 			</c:forEach>
