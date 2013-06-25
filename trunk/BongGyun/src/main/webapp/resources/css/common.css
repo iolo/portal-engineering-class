@@ -27,6 +27,8 @@ h2 { font-size:15pt;text-align:center; font-weight: bold;padding:10px; }
 #replyList .content{min-height: 50px;padding-top: 10px; padding-bottom: 5px;}
 #replyList .rating {position: absolute; right:15px;bottom: 15px;}
 #replyList .date {color: #999999; font-size: 10pt;}
+#replyList .del {color: #999999; font-size: 10pt;}
+#replyList .del:hover, .del:hover {color: #ff6666; font-size: 10pt;}
 
 #replyList .up {color: #ff0000; font-size: 10pt;}
 #replyList .down {color: #666666; font-size: 10pt;}
