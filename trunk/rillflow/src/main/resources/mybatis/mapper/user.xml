@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rillflow.memo.repository.UserDao">
+	<insert id="insertUser" parameterType="com.rillflow.memo.model.User">
+		INSERT INTO USER (id, name, password, etc, imagePath)
+		VALUES (#{id}, #{name}, #{password}, #{etc}, #{imagePath})
+	</insert>
+	
+	<update id="updateUser" parameterType="com.rillflow.memo.model.User">
+		UPDATE USER SET 
+		name = #{name}, password = #{password}, etc = #{etc}, imagePath = #{imagePath}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM USER WHERE id = #{id}
+	</delete>
+	
+	<select id="selectUser" parameterType="String" resultType="com.rillflow.memo.model.User">
+		SELECT id, name, password, etc, imagePath FROM USER WHERE id = #{id}
+	</select>
+</mapper>
